@@ -1,0 +1,49 @@
+				User Stories
+
+**User and admin are the same in this app**
+
+
+As a admin I want to  be able to invented other user to compete
+so the games can be more exciting.
+
+As a admin I want to  be able to remove other user so that
+so that I can avoid some other user.
+
+As a admin I want to  be able to block and unblock other user 
+so that I can block unblock depend on my mood.
+
+As a admin I want to  be able to create a group 
+so that I can communicate with a certain group of user at same time.
+
+As a user I want to be able have an account
+so that I can secure my information.
+
+As a user I want to be able to suggest games      
+so that I can share my ideas.
+
+As a user I want to be able to find solution       
+so that when I'm stuck I can continue.
+
+As a user I want to able to join a game       
+so that I can participate.
+
+As a user I want to be able share my points or awards      
+so that I can show them off.
+
+As a user I want to be able to take pictures      
+so that I share the place I have been.
+
+As a user I want to be learn through the games      
+so that I can gain more knowledge while having fun.
+
+As a user I want to be able enter a password       
+so that not anybody can access it.
+
+As a user I want to be able able play games without internet      
+so that I can play anywhere I want.
+
+As a user I want to be able to have access to the games information      
+so that I can understand how to play them.
+
+As a user I want to able to see when other user are playing       
+so that I can join them.
