@@ -1,0 +1,11 @@
+Weifan's User Stories:
+1. As an admin I want to be able to add different games so that users can be attracted to play.
+2. As an admin I want to be able to delete unpopular games so that users wouldn't choose to play.
+3. As an admin I want to be able to give a permission to a game review/feedback from a user so that it can appear on the site and other users can read it.
+4. As an admin I want to be able to reward parents and their children after they played their game together so they would want to play.
+5. As an user I want to be able to suggest a game so that I want to play with my child and others can play with their child too.
+6. As an user I want to be able to have discussions on the website so that I can ask questions regarding to how to play a game.
+7. As an user I want to be able to rate a game after I played so other users can see people's feedback of a game.
+8. As an user I want to be able to link my account with my Facebook so that I can share what my family is playing with my friend and invite them too.
+9. As an user I want my child to get a reward after we played a game so she/he can be attracted to play more.
+10. As an user I want to be able to get notifications when a new game is added so I can plan my next play with my child.
