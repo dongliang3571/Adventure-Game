@@ -9,3 +9,15 @@ Weifan's User Stories:
 8. As an user I want to be able to link my account with my Facebook so that I can share what my family is playing with my friend and invite them too.
 9. As an user I want my child to get a reward after we played a game so she/he can be attracted to play more.
 10. As an user I want to be able to get notifications when a new game is added so I can plan my next play with my child.
+
+Dong Liang's User Stories:
+1. As a child, I want be able to leave a message to my parent when my parent is not available so that we can still communicate each other when we can’t play at the same time.
+2. As a parent, I want to have all missions’ solutions so that I am able to help my child.
+3. As a parent, I want to see my child’s progress so that I can help him/here more easily
+4. As a user, I want to have my progress saved so that I can continue next time I play.
+5. As a user, I want to be able to review my history of the game so that I can know which one I’ve played.
+6. As a new user, I want to be able to know the way games run so that I can understand the game really quick.
+7. As a returned user, I want to be able to know what new games has been rolled out so that I can play new games.
+8. As a new user, I want to be able to know which game is most popular and easy so that I can pick my game easily.
+9. As an admin, I want to be able to leave message for both kids and parents so that I can give them help when they need.
+10. As a user, I want to get hint when I stuck in the mission so that I can continue my game.
