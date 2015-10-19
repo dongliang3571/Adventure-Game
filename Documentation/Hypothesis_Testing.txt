@@ -1,0 +1,13 @@
+Dong Liang's
+1. A possible customer (user). Don’t be generic. This should be different from your other team mates.
+      A father whose job is waiter and works at night.
+
+2.A possible problem that or some other customer may have that you will be solving. (again this should be different from other team members)
+      Stuck in certain step of the game, we will give hint manually via leaving a message.
+
+3. List 5 possible risks regarding your assumptions that might make the project unsuccessful. At least 2 of these risks should be customer/problem related and the others could be technical.
+      Customers realize that games are not fun
+      To find a destination is difficult for some body
+      Can not invent more games, customers lose interests
+      Some destination might have no network connection
+      Can’t properly process picture customers send to us
