@@ -1,7 +1,7 @@
 .. image:: http://i.imgur.com/7YrYkc4.jpg?1
    :height: 356
    :width: 427
-   :scale: 80
+   :scale: 100
    :alt: alternate text
    :align: center
 
