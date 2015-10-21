@@ -21,3 +21,15 @@ Dong Liang's User Stories:
 8. As a new user, I want to be able to know which game is most popular and easy so that I can pick my game easily.
 9. As an admin, I want to be able to leave message for both kids and parents so that I can give them help when they need.
 10. As a user, I want to get hint when I stuck in the mission so that I can continue my game.
+
+Raymond's User Stories:
+1. As an admin, I want to be certain that the games are fun for adults and children so that I can attract more people to my game.
+2. As a parent, I want to be able to teach my child things through the game so that I can further educate them.
+3. As a child, I want to be able to play with my other friends so that we can all have fun and learn.
+4. As an user, I want to have someone to contact for technical problems and bugs so that I can continue playing the game.
+5. As an user, I want to play through a variety of different adventures so that I won't get bored.
+6. As an admin, I want to have the game run smoothly on both a desktop environment and a mobile environment so that all users will have the same experience.
+7. As a parent,I want to be able to interact with my child more when playing the game so that I am spending more time with them.
+8. As an admin, I want to be able to secure any data being sent to me so that I can maintain the privay of my users.
+9. As an user, I want to be able to co-op with people nearby that has the app so that I can meet new people to play with and make new friends.
+10. As an user, I want to be able to contact friends through a buddy or chat system and invite them on an adventure with me so that I can play the game with my friends.
