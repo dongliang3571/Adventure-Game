@@ -25,7 +25,8 @@ Dong Liang's User Stories:
 Raymond's User Stories:
 1. As an admin, I want to be certain that the games are fun for adults and children so that I can attract more people to my game.
 2. As a parent, I want to be able to teach my child things through the game so that I can further educate them.
-3. As a child, I want to be able to play with my other friends so that we can all have fun and learn.
+3. As a child, I want to be able to play with my other friends so that we can all
+have fun and learn.
 4. As an user, I want to have someone to contact for technical problems and bugs so that I can continue playing the game.
 5. As an user, I want to play through a variety of different adventures so that I won't get bored.
 6. As an admin, I want to have the game run smoothly on both a desktop environment and a mobile environment so that all users will have the same experience.
@@ -33,3 +34,62 @@ Raymond's User Stories:
 8. As an admin, I want to be able to secure any data being sent to me so that I can maintain the privay of my users.
 9. As an user, I want to be able to co-op with people nearby that has the app so that I can meet new people to play with and make new friends.
 10. As an user, I want to be able to contact friends through a buddy or chat system and invite them on an adventure with me so that I can play the game with my friends.
+
+Meg's User Stories
+As a user, I want to be able to learn about something my child enjoys so that our relationship grows stronger.
+As a developer, I want to design an all inclusive layout so that no child is alienated by it. (Ex: If it was all pink, boys would most likely have no interest.)
+As a developer, I want to ensure the security of the children so that no parent has to worry if someone can track the location of their child.
+As a user, I want to be able to take my child to a variety of places so that they can be exposed to a lot of different things and learn about the city that they live in.
+As a developer, I want to make sure that the user interface is streamlined and easy to follow so that parents and children aren’t frustrated while trying to figure out how to use the app.
+As a developer, I’d like to make it so that parent/child teams can share their achievements on Facebook both to promote the app and to create a lasting memory that they can look back on.
+As a developer, I want to design a variety of different types of adventures so that both parents and children can learn more about each other’s interests.
+As a user, I want for not only my child to be entertained but myself as well so that I don’t dread the adventures.
+As a user, I want these adventures to be able to work with not just a single child but with several children with different ages.
+As a developer, I want to keep a log of the most popular adventures so that I can understand exactly which types of activities they enjoy most.
+
+Emma’s Users stories
+1. As a admin I want to  be able to invented other user to compete
+so the games can be more exciting.
+
+2.As a admin I want to  be able to remove other user so that
+so that I can avoid some other user.
+
+3.As a admin I want to  be able to block and unblock other user
+so that I can block unblock depend on my mood.
+
+4.As a admin I want to  be able to create a group
+so that I can communicate with a certain group of user at same time.
+
+5.As a user I want to be able have an account
+so that I can secure my information.
+
+6.As a user I want to be able to suggest games
+so that I can share my ideas.
+
+7.As a user I want to be able to find solution
+so that when I'm stuck I can continue.
+
+8.As a user I want to able to join a game
+so that I can participate.
+
+9.As a user I want to be able share my points or awards
+so that I can show them off.
+
+10.As a user I want to be able to take pictures
+so that I share the place I have been.
+
+11.As a user I want to be learn through the games
+so that I can gain more knowledge while having fun.
+
+12.As a user I want to be able enter a password
+so that not anybody can access it.
+
+13.As a user I want to be able able play games without internet
+so that I can play anywhere I want.
+
+14.As a user I want to be able to have access to the games information
+so that I can understand how to play them.
+
+15.As a user I want to able to see when other user are playing
+so that I can join them.
+
