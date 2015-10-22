@@ -35,6 +35,18 @@ have fun and learn.
 9. As an user, I want to be able to co-op with people nearby that has the app so that I can meet new people to play with and make new friends.
 10. As an user, I want to be able to contact friends through a buddy or chat system and invite them on an adventure with me so that I can play the game with my friends.
 
+Meg's User Stories
+As a user, I want to be able to learn about something my child enjoys so that our relationship grows stronger.
+As a developer, I want to design an all inclusive layout so that no child is alienated by it. (Ex: If it was all pink, boys would most likely have no interest.)
+As a developer, I want to ensure the security of the children so that no parent has to worry if someone can track the location of their child.
+As a user, I want to be able to take my child to a variety of places so that they can be exposed to a lot of different things and learn about the city that they live in.
+As a developer, I want to make sure that the user interface is streamlined and easy to follow so that parents and children aren’t frustrated while trying to figure out how to use the app.
+As a developer, I’d like to make it so that parent/child teams can share their achievements on Facebook both to promote the app and to create a lasting memory that they can look back on.
+As a developer, I want to design a variety of different types of adventures so that both parents and children can learn more about each other’s interests.
+As a user, I want for not only my child to be entertained but myself as well so that I don’t dread the adventures.
+As a user, I want these adventures to be able to work with not just a single child but with several children with different ages.
+As a developer, I want to keep a log of the most popular adventures so that I can understand exactly which types of activities they enjoy most.
+
 Emma’s Users stories
 1. As a admin I want to  be able to invented other user to compete
 so the games can be more exciting.
@@ -80,3 +92,4 @@ so that I can understand how to play them.
 
 15.As a user I want to able to see when other user are playing
 so that I can join them.
+
