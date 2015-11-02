@@ -1,0 +1,26 @@
+Dong Liang's
+1. A possible customer (user). Don’t be generic. This should be different from your other team mates.
+      A father whose job is waiter and works at night.
+
+2.A possible problem that or some other customer may have that you will be solving. (again this should be different from other team members)
+      Stuck in certain step of the game, we will give hint manually via leaving a message.
+
+3. List 5 possible risks regarding your assumptions that might make the project unsuccessful. At least 2 of these risks should be customer/problem related and the others could be technical.
+      Customers realize that games are not fun
+      To find a destination is difficult for some body
+      Can not invent more games, customers lose interests
+      Some destination might have no network connection
+      Can’t properly process picture customers send to us
+
+Raymond's
+1. A young boy who wishes to spend more time with his parents and has a hard time communicating with them.
+
+2. Parents and children have a hard time finding things to do together.
+
+3. a) Parents think playing games is bad for their children.
+   b) High schoolers enjoy the game, whereas Parent/Child do not which defeats the purpose of using an adventure
+      game to bring them closer.
+   c) User experience or interface might be different depending on the device used to play the game
+   d) Some features might be possible due to a desktop's hardware and browser but not plausible on a mobile
+      device's.
+   e) Browser compatability issues.
