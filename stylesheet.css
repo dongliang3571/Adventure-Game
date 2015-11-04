@@ -1,0 +1,60 @@
+@import url('http://fonts.googleapis.com/css?family=Montserrat');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+header {
+  text-align:center;
+  color: #fff;
+  background: #2BAACF;
+}
+
+header .container {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+header .name {
+  display: block;
+  font-size: 4.75em;
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+header .description {
+    font-size: 1.25em;
+    font-weight: 300;
+}
+
+section {
+    padding: 100px 0;
+}
+
+section h2 {
+    margin: 0;
+    font-size: 3em;
+}
+
+
+.navbar {
+  margin-bottom:0;
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+
+.navbar-nav li a {
+	padding-top: 19.5px;
+	padding-bottom: 19.5px;
+}
+
