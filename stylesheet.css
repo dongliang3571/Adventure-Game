@@ -35,6 +35,17 @@ header .description {
     font-weight: 300;
 }
 
+hr.dark {
+	margin: 25px auto 30px;
+    padding: 0;
+    max-width: 250px;
+    border: 0;
+    border-top: solid 5px;
+    text-align: center;
+    border-color: #2c3e50;
+    height: 2px;
+}
+
 section {
     padding: 100px 0;
 }
@@ -58,3 +69,47 @@ section h2 {
 	padding-bottom: 19.5px;
 }
 
+#adventures .adventure-item {
+	right:0;
+	margin:0 0 15px;
+}
+
+#adventures .adventure-item .adventure-link {
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	max-width: 400px;
+}
+
+.caption{
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    -webkit-transition: all ease .5s;
+    -moz-transition: all ease .5s;
+    transition: all ease .5s;
+}
+
+.caption:hover{
+	opacity:1;
+}
+
+.caption-content{
+	position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 20px;
+    margin-top: -12px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+}
+
+.caption-content i {
+	margin-top: -12px;
+}
+
+#adventures * {
+	z-index:2;
+}
