@@ -1,5 +1,13 @@
 @import url('http://fonts.googleapis.com/css?family=Montserrat');
 
+body {
+    overflow-x: hidden;
+}
+
+p {
+  font-size:20px;
+}
+
 h1,
 h2,
 h3,
