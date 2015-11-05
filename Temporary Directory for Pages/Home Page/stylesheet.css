@@ -46,6 +46,17 @@ hr.dark {
     height: 2px;
 }
 
+hr.light {
+	margin: 25px auto 30px;
+    padding: 0;
+    max-width: 250px;
+    border: 0;
+    border-top: solid 5px;
+    text-align: center;
+    border-color: #fff;
+    height: 2px;
+}
+
 section {
     padding: 100px 0;
 }
@@ -55,6 +66,10 @@ section h2 {
     font-size: 3em;
 }
 
+#about {
+    color:#fff;
+    background-color:#2BAACF
+}
 
 .navbar {
   margin-bottom:0;
