@@ -7,6 +7,6 @@ pip install -r requirements.txt
 ```
 
 
-**PostgresSQL**: Go to http://postgresapp.com/ to download postgresSQL
+**PostgresSQL**: Go to http://www.postgresql.org/ to download postgresSQL
 
 **psycopg2**: Go to http://initd.org/psycopg/ to download  psycopg2, this is database binding so that you can connect project to database.
