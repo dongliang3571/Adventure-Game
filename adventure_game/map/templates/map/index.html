@@ -1,0 +1,64 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+      <link rel="stylesheet" type="text/css" href={% static "map/css/bootstrap-theme.min.css" %}>
+      <link rel="stylesheet" type="text/css" href={% static "map/css/bootstrap.min.css" %}>
+      <link rel="stylesheet" type="text/css" href={% static "map/css/style.css" %}>
+
+      <meta charset="UTF-8"></meta>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>map</title>
+</head>
+
+<body>
+
+
+      <div class="container">
+
+      <!-- <canvas id="coinAnimation" style="border:1px solid #000000;"></canvas> -->
+
+
+      <img id="empire" src={% static "map/images/buildings/Empire_State_Building.png" %}>
+      <img id="statue_liberty" src={% static "map/images/buildings/statue_liberty.png" %}>
+      <img id="metropolitan" src={% static "map/images/buildings/metropolitan.png" %}>
+      <img id="grand" src={% static "map/images/buildings/grand.png" %}>
+      <img id="central" src={% static "map/images/buildings/central.png" %}>
+
+      <div id="grand_title" class="building_name">Grand Central Terminal</div>
+      <div id="empire_title" class="building_name">Empire State Building</div>
+      <div id="central_title" class="building_name">Central Park</div>
+      <div id="statue_title" class="building_name">Statue of Liberty</div>
+      <div id="metropolitan_title" class="building_name">The Metropolitan Museum of Art</div>
+
+      <a href=""><img id="number1" class="number_mission" src={% static "map/images/numbers/number1.png" %}></a>
+      <a href=""><img id="number2" class="number_mission" src={% static "map/images/numbers/number2.png" %}></a>
+      <a href=""><img id="number3" class="number_mission" src={% static "map/images/numbers/number3.png" %}></a>
+      <a href=""><img id="number4" class="number_mission" src={% static "map/images/numbers/number4.png" %}></a>
+      <a href=""><img id="number5" class="number_mission" src={% static "map/images/numbers/number5.png" %}></a>
+      <!-- <img id="mist" src="static/images/mist/mist.png"> -->
+      <img id="path1" src={% static "map/images/path1.png" %}>
+      <img id="path2" src={% static "map/images/path1.png" %}>
+      <img id="path3" src={% static "map/images/path1.png" %}>
+      <img id="path4" src={% static "map/images/path1.png" %}>
+
+
+      <img id="daddy" class="parent" src={% static "map/images/characters/daddy1.png" %}>
+      <img id="girl" src={% static "map/images/characters/girl1.png" %}>
+      <img id="mom" class="parent" src={% static "map/images/characters/mom1.png" %}>
+      </div>
+
+
+
+
+    <script src={% static "map/js/jquery-2.1.4.min.js" %}></script>
+    <script src={% static "map/js/bootstrap.min.js" %}></script>
+    <script src={% static "map/js/sprite.js" %}></script>
+
+
+
+</body>
+
+
+</html>
