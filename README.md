@@ -1,6 +1,6 @@
 # !!!README!!! #
 
-requirements.txt: Dependencies which you need to install in your computer.
+**requirements.txt**: Dependencies which you need to install in your computer.
 run following command in terminal
 ```
 pip install -r requirements.txt
