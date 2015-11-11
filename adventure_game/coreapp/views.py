@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf #user security
-
+from django.contrib.auth.models import User
 
 def home(request):
     return render(request, 'coreapp/home.html')
