@@ -47,3 +47,10 @@ def registration_submission(request):
     user = auth.authenticate(username=username, password=password)
     auth.login(request, user)
     return HttpResponseRedirect('/')#'/registration-success')
+
+def registration(request, message=None):
+    context = {}
+    context.update(csrf(request))
+    if message is not None:
+        context['message'] = message
+    return render(request, 'auth/registration.html', context)
