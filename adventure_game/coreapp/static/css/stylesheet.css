@@ -4,7 +4,7 @@ body {
     overflow-x: hidden;
 }
 
-p {
+.col-lg-4 > p {
   font-size:20px;
 }
 
@@ -177,8 +177,49 @@ footer.footer-below {
     transition: all .3s ease-in-out;
 }
 
+img.park {
+  margin-top: 30px;
+  width:100%;
+  position: relative;
+}
+
+.park-text {
+  position:absolute;
+  top: 200px;
+  left: 200px;
+  width:100%;
+  font-size:100px;
+  color:#fff;
+}
 .btn:focus,
 .btn:active,
 .btn.active {
     outline: 0;
+}
+
+.fb-profile img.fb-image-lg{
+    z-index: 0;
+    width: 100%;  
+    margin-bottom: 10px;
+}
+
+.fb-image-profile {
+    margin: -90px 10px 0px 50px;
+    z-index: 9;
+    width: 20%; 
+}
+
+@media (max-width:768px) {
+    
+.fb-profile-text>h1{
+    font-weight: 700;
+    font-size:16px;
+    font-family: Montserrat, sans-serif;
+}
+
+.fb-image-profile {
+    margin: -45px 10px 0px 25px;
+    z-index: 9;
+    width: 20%; 
+}
 }

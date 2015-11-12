@@ -22,7 +22,7 @@ def auth_view(request):
     if user is not None:
         if user.is_active:
             auth.login(request, user)
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/profile')
         else:
             return HttpResponseRedirect('/invalid')
     else:
