@@ -8,7 +8,7 @@ class AccountTests(unittest.TestCase):
         self.user = Client()
     #registration test
     def regi_test(self):
-        info = self.user.post('/registration/',{'username': 'sam123', 'email': 'abc@gmail.com', 'password': 'abc123'})
+        info = self.user.post('/register/',{'username': 'sam123', 'email': 'abc@gmail.com', 'password': 'abc123'})
         self.assertEqual(info.status_code,200)
 
     #login test
