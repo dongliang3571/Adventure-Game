@@ -4,6 +4,6 @@ from django.db import models
 
 class Level(models.Model):
     level_number = models.IntegerField(default=0)
-    
+
     def __unicode__(self):
-        return "current level is"+self.level_number
+        return "Current level is " + str(self.level_number)

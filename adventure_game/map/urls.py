@@ -4,6 +4,6 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^$', views.map, name='map'),
+    url(r'^$', views.index, name='map'),
     url(r'^task1/$',views.task1, name="task1"),
 ]

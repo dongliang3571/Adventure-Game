@@ -1,7 +1,36 @@
 body{
   background-color: #D2DEC2;
 }
-
+canvas.boy{
+  position: absolute;
+  top: 450px;
+  left:120px;
+  z-index: 10;
+}
+canvas.boy.boy1{
+  position: absolute;
+  top: 410px;
+  left: 430px;
+  z-index: 10;
+}
+canvas.boy.boy1.boy2{
+  position: absolute;
+  top: 250px;
+  left: 880px;
+  z-index: 10;
+}
+canvas.boy.boy1.boy2.boy3{
+  position: absolute;
+  top: 200px;
+  left: 280px;
+  z-index: 10;
+}
+canvas.boy.boy1.boy2.boy3.boy4{
+  position: absolute;
+  top: 170px;
+  left: 800px;
+  z-index: 10;
+}
 
 #empire{
   position: absolute;
@@ -148,4 +177,20 @@ div.building_name{
   -ms-transform: rotate(-10deg); /* IE 9 */
   -webkit-transform: rotate(-10deg); /* Chrome, Safari, Opera */
   transform: rotate(-10deg);
+}
+
+#next{
+  position: absolute;
+  top: 550px;
+  left: 740px;
+  width: 70px;
+  height: 50px;
+
+}
+#previous{
+  position: absolute;
+  top: 550px;
+  left: 660px;
+  width: 70px;
+  height: 50px;
 }

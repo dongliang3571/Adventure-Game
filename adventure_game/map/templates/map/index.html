@@ -9,7 +9,7 @@
 
       <meta charset="UTF-8"></meta>
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Map</title>
+      <title>map</title>
 </head>
 
 <body>
@@ -17,7 +17,9 @@
 
       <div class="container">
 
-      <!-- <canvas id="coinAnimation" style="border:1px solid #000000;"></canvas> -->
+      <!-- <canvas id="girl" style="border:1px solid #000000;"></canvas> -->
+      <canvas id="boy" class="{{ boyn }}"></canvas>
+      <!-- <canvas class="boy1"></canvas> -->
 
 
       <img id="empire" src={% static "map/images/buildings/Empire_State_Building.png" %}>
@@ -26,13 +28,19 @@
       <img id="grand" src={% static "map/images/buildings/grand.png" %}>
       <img id="central" src={% static "map/images/buildings/central.png" %}>
 
+      {% if image1 %}
+      {% autoescape off %}
+      {{ image1 }}
+      {% endautoescape %}
+      {% endif %}
+      <!-- <img src="https://i.kinja-img.com/gawker-media/image/upload/en4oskk7fjw1dm0dczaj.jpg" /> -->
       <div id="grand_title" class="building_name">Grand Central Terminal</div>
       <div id="empire_title" class="building_name">Empire State Building</div>
       <div id="central_title" class="building_name">Central Park</div>
       <div id="statue_title" class="building_name">Statue of Liberty</div>
       <div id="metropolitan_title" class="building_name">The Metropolitan Museum of Art</div>
 
-      <a href="/map/task1/"><img id="number1" class="number_mission" src={% static "map/images/numbers/number1.png" %}></a>
+      <a href=""><img id="number1" class="number_mission" src={% static "map/images/numbers/number1.png" %}></a>
       <a href=""><img id="number2" class="number_mission" src={% static "map/images/numbers/number2.png" %}></a>
       <a href=""><img id="number3" class="number_mission" src={% static "map/images/numbers/number3.png" %}></a>
       <a href=""><img id="number4" class="number_mission" src={% static "map/images/numbers/number4.png" %}></a>
@@ -44,10 +52,13 @@
       <img id="path4" src={% static "map/images/path1.png" %}>
 
 
-      <img id="daddy" class="parent" src={% static "map/images/characters/daddy1.png" %}>
+      <!-- <img id="daddy" class="parent" src={% static "map/images/characters/daddy1.png" %}>
       <img id="girl" src={% static "map/images/characters/girl1.png" %}>
-      <img id="mom" class="parent" src={% static "map/images/characters/mom1.png" %}>
+      <img id="mom" class="parent" src={% static "map/images/characters/mom1.png" %}> -->
       </div>
+
+      <button id="next" type="button">Next</button>
+      <button id="previous" type="button">Previous</button>
 
 
 
