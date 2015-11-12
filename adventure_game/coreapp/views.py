@@ -7,6 +7,9 @@ from django.contrib.auth.models import User
 def home(request):
     return render(request, 'coreapp/home.html')
 
+def profile(request):
+    return render(request, 'coreapp/profile.html')
+
 def login(request):
 	context = {}
 	context.update(csrf(request))

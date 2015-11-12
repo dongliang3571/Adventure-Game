@@ -1,0 +1,112 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href={% static "css/profilepage.css" %} rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <title>Team Profile</title>
+  </head><body class="color">
+    <div class="section color">
+      <div class="container"></div>
+    </div>
+    <div class="navbar navbar-default navbar-fixed-top navbar-shrink">
+      <div class="container">
+        <div class="navbar-header page-scroll">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../Home Page/home.html"><span>Adventure Game</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="page-scroll">
+              <a href="#adventures">Adventures</a>
+            </li>
+            <li class="page-scroll">
+              <a href="#about">About</a>
+            </li>
+            <li class="page-scroll">
+              <a href="#contact">Contact</a>
+            </li>
+            <!-- TODO Move the styling to css -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section color">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center white">Team Name</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p class="text-center white">Enter A slogan</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <a>
+              <img class="center-block img-responsive img-rounded" src={% static"img/father.ico" % } width="190">
+</a>
+            <h3 class="text-center white">John Doe</h3>
+            <p class="text-center white">Father</p>
+          </div>
+          <div class="col-md-4">
+            <img src={% static "images/mother.png" %} class="center-block img-responsive img-rounded" width="190">
+            <h3 class="text-center white">Marie Doe</h3>
+            <p class="text-center white">Mother</p>
+          </div>
+          <div class="col-md-4">
+            <img src= {% static "images/child.png" %} class="center-block img-responsive img-rounded" width="190">
+            <h3 class="text-center white">Sammy Doe</h3>
+            <p class="text-center white">Son/Daughter</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="section color">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row1">
+              <div class="login-wrap">
+                <div class="login">PIN</div>
+                <div class="form-wrap clearfix">
+                  <div class="form-shadow clearfix">
+                    <form action="">
+                      <button type="submit" class="submit">
+                        <i class="fa fa-arrow-right"></i>
+                      </button>
+                      <div class="password-icon">
+                        <i class="fa fa-key" id="user-password"></i>
+                      </div>
+                      <input type="password" id="password" placeholder="Enter PIN">
+                    </form>
+                  </div>
+                  <div class="remember-me">
+                    <input type="checkbox" value="None" id="remember-me" name="check">
+                    <label for="remember-me">Remember Me</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+</body></html>
