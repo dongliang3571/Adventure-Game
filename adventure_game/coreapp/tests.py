@@ -11,4 +11,4 @@ def login_test(self):
 def regi_test(self):
     new_user = Client()
     info = new_user.post('/registration/',{'username': 'sam123', 'email': 'abc@gmail.com', 'password': 'abc123'})
-    self.assertEqual(.status_code,200)
+    self.assertEqual(info.status_code,200)
