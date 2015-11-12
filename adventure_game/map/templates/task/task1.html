@@ -1,0 +1,80 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href={% static "task/css/task1a.css" rel="stylesheet" type="text/css">
+</head><body>
+<div class="navbar navbar-default navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><span>Adventure Game</span></a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="{% url 'home' %}profile/">Profile</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="{% url 'home' %}logout/">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">The Angel of Water and the Wish</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p class="lead text-center" id="Left">Bethesda Fountain in your world has special qualities! The Angel of Water
+          statue you see above it was carved by sorceress from my world to help your
+          people. The Angel gives the water the power to heal and the Angel herself
+          is able to grant wishes. &nbsp;Please! Wish for the water to &nbsp;reverse
+          the petrification of my people!</p>
+        </div>
+        <div class="col-md-6">
+          <img src={% static "task/img/vivi.gif" % }class="img-responsive">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="nav nav-pills"></ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <a class="btn btn-block btn-lg btn-primary" href="{% url 'home' %}map/">We have made our wishes!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+</body></html>

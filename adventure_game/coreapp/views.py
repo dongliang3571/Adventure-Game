@@ -10,6 +10,12 @@ def home(request):
 def profile(request):
     return render(request, 'coreapp/profile.html')
 
+def individual(request):
+    return render(request, 'coreapp/individual.html')
+
+def story(request):
+    return render(request, 'coreapp/story.html')
+
 def login(request):
 	context = {}
 	context.update(csrf(request))

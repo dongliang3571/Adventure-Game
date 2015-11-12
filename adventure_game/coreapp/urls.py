@@ -10,4 +10,6 @@ urlpatterns = patterns('',
     url(r'^register/$', views.registration, name='registration'),
     url(r'^registration-submission/$', views.registration_submission, name='registrationSubmission'),
     url(r'^profile/$', views.profile, name='profile'),
+    url(r'^individual/$',views.individual, name="invidual"),
+    url(r'^story/$',views.story, name='story'),
 )
