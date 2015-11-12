@@ -6,4 +6,4 @@ def map(request):
     return render(request, 'map/map.html')
 
 def task1(request):
-	return render(request,'task/task1.html')
+    return render(request,'task/task1.html')

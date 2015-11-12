@@ -9,7 +9,8 @@
 </head>
 <body>
   <!-- Moves style to stylesheet -->
-  <form class="form-horizontal" style="margin: 0 auto; width:500px; padding-top:200px;" action="{% url 'home' %}/registration-submission/" method="POST">
+  <form class="form-horizontal" style="margin: 0 auto; width:500px; padding-top:200px;" action="/registration-submission/" method="POST">
+  {% csrf_token %}
   <fieldset>
     <div id="legend">
       <legend class="">Register</legend>
@@ -22,7 +23,7 @@
         <p class="help-block">Username can contain any letters or numbers, without spaces</p>
       </div>
     </div>
- 
+
     <div class="control-group">
       <!-- E-mail -->
       <label class="control-label" for="email">E-mail</label>
@@ -31,7 +32,7 @@
         <p class="help-block">Please provide your E-mail</p>
       </div>
     </div>
- 
+
     <div class="control-group">
       <!-- Password-->
       <label class="control-label" for="password">Password</label>
@@ -40,7 +41,7 @@
         <p class="help-block">Password should be at least 4 characters</p>
       </div>
     </div>
- 
+
     <div class="control-group">
       <!-- Button -->
       <div class="controls">

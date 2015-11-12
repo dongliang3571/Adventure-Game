@@ -1,7 +1,7 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from coreapp import views
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^login/$', views.login, name='login'),
     url(r'^auth/$', views.auth_view, name='auth'),
@@ -12,4 +12,4 @@ urlpatterns = patterns('',
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^individual/$',views.individual, name="invidual"),
     url(r'^story/$',views.story, name='story'),
-)
+]

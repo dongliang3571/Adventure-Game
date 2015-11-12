@@ -4,8 +4,10 @@ from django.contrib import auth
 from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
 
-def home(request):
-    return render(request, 'coreapp/home.html')
+def home(request,message=None):
+    context = {}
+    context.update(csrf(request))
+    return render_to_response('coreapp/home.html',context)
 
 def profile(request):
     return render(request, 'coreapp/profile.html')
