@@ -7,7 +7,7 @@
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href={% static "task/css/task1a.css" rel="stylesheet" type="text/css">
+  <link href={% static "task/css/task1a.css" %} rel="stylesheet" type="text/css">
 </head><body>
 <div class="navbar navbar-default navbar-inverse navbar-static-top">
   <div class="container">
@@ -23,13 +23,13 @@
     <div class="collapse navbar-collapse" id="navbar-ex-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="{% url 'home' %}profile/">Profile</a>
+          <a href="/profile/">Profile</a>
         </li>
         <li>
           <a href="#">About</a>
         </li>
         <li>
-          <a href="{% url 'home' %}logout/">Log Out</a>
+          <a href="/logout/">Log Out</a>
         </li>
       </ul>
     </div>
@@ -55,7 +55,7 @@
           the petrification of my people!</p>
         </div>
         <div class="col-md-6">
-          <img src={% static "task/img/vivi.gif" % }class="img-responsive">
+          <img src={% static "task/img/vivi.gif" %} class="img-responsive">
         </div>
       </div>
       <div class="row">
@@ -70,11 +70,11 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <a class="btn btn-block btn-lg btn-primary" href="{% url 'home' %}map/">We have made our wishes!</a>
+          <a class="btn btn-block btn-lg btn-primary" href="/map/">We have made our wishes!</a>
         </div>
       </div>
     </div>
   </div>
-  
+
 
 </body></html>
