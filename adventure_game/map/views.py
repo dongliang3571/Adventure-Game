@@ -3,7 +3,7 @@ from .models import Level
 # Create your views here.
 
 def index(request):
-    if Level.objects.all()[0]:
+    if Level.objects.all():
         ln = Level.objects.all()[0].level_number;
         if ln==0:
             boyn="boy"
