@@ -13,5 +13,5 @@ class AccountTests(unittest.TestCase):
 
     #login test
     def login_test(self):
-        response = self.user.post('/login/',{'username': 'sam123', 'password': 'abc123'})
+        response = self.user.post('/auth/',{'username': 'sam123', 'password': 'abc123'})
         self.assertEqual(response.status_code,200)
