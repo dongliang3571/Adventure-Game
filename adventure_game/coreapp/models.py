@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+
+class UserProfile(models.Model):
+    # user = models.ForeignKey(User, unique=True)
+    user = models.OneToOneField(User)
+    character = models.CharField(max_length=200)
