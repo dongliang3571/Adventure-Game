@@ -2,5 +2,11 @@ from django.contrib import admin
 from .models import UserProfile, PIN
 
 # Register your models here.
-admin.site.register(UserProfile)
-admin.site.register(PIN)
+
+class UserProfileAdmin(admin.ModelAdmin):
+	fieldsets = [
+		(None,	{'fields': ['user']}),
+	]
+
+admin.site.register(UserProfile, UserProfileAdmin)
+# admin.site.register(PIN)
