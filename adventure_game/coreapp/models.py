@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class UserProfile(models.Model):
     # user = models.ForeignKey(User, unique=True)
@@ -7,5 +8,5 @@ class UserProfile(models.Model):
     character = models.CharField(max_length=200)
 
 class PIN(models.Model):
-    character = models.ForeignKey(character)
-    character_pin = models.CharField(max_length=4, min_length=4)
+    character = models.ForeignKey(UserProfile)
+    character_pin = models.IntegerField(validators=[MaxValueValidator(100),MinValueValidator(1)])
