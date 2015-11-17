@@ -1,12 +1,19 @@
 from django.contrib import admin
-from .models import UserProfile, PIN
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin
+from .models import UserProfile, Character, PIN
 
-# Register your models here.
 
-class UserProfileAdmin(admin.ModelAdmin):
-	fieldsets = [
-		(None,	{'fields': ['user']}),
-	]
+admin.site.unregister(User)
 
-admin.site.register(UserProfile, UserProfileAdmin)
-# admin.site.register(PIN)
+class UserProfileInline(admin.StackedInline):
+    model = UserProfile
+
+class CharacterInline(admin.TabularInline):
+    model = Character
+    extra = 4
+
+class UserProfileAdmin(UserAdmin):
+    inlines = [UserProfileInline, CharacterInline]
+
+admin.site.register(User, UserProfileAdmin)
