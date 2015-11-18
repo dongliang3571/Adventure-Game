@@ -8,13 +8,12 @@
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href={% static "css/stylesheet" %} rel="stylesheet" type="text/css">
+    <link href={% static "css/stylesheet.css" %} rel="stylesheet" type="text/css">
     <!-- <link rel="stylesheet" type="text/css" href="static/bootstrap-3.3.5-dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="static/bootstrap-3.3.5-dist/css/bootstrap-theme.min.css"> -->
   	<!-- <script src="static/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script> -->
 </head>
 <body>
-  {% if user.is_authenticated %}
   <div class="navbar navbar-default navbar-static-top">
     <div class="container">
       <div class="navbar-header page-scroll">
@@ -26,10 +25,11 @@
         </button>
         <a class="navbar-brand" href="{% url 'coreapp:home' %}"><span>Adventure Game</span></a>
       </div>
+    {% if user.is_authenticated %}
       <div class="collapse navbar-collapse" id="navbar-ex-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="{% url'coreapp:home' %}/individual/">Adventures</a>
+            <a href="{% url 'coreapp:home' %}/individual/">Adventures</a>
           </li>
           <li>
             <a href="{% url 'coreapp:home' %}/profile/">Profile</a>
@@ -39,20 +39,7 @@
           </li>
         </ul>
       </div>
-    </div>
-  </div>
-  {% else %}
-  <div class="navbar navbar-default navbar-static-top">
-    <div class="container">
-      <div class="navbar-header page-scroll">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="{% url 'coreapp:home' %}"><span>Adventure Game</span></a>
-      </div>
+    {% else %}
       <div class="collapse navbar-collapse" id="navbar-ex-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li class="page-scroll">
@@ -65,23 +52,26 @@
             <a href="#contact">Contact</a>
           </li>
           <li class="dropdown">
-            <button type="buton" class="navbar-toggle" data-toggle="collapse" data-target=>
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In</a>
             <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-              <form action="" method="post" accept-charset="UTF-8">
+              <form action="/auth/" method="post" accept-charset="UTF-8">
+                {% csrf_token %}
                 <input id="user_username" style="margin-bottom: 15px;" type="text" name="username" size="30">
                 <input id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30">
                 <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="remember_Me" value="1">
                 <label class="string optional" for="user_remember_me">Remember me</label>
-                <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In">
+                <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px; padding: 0px;" type="submit" name="commit" value="Sign In">
+                <div style="text-align:center; margin-top:10px">
+                <a href="/register/" style="color: #2c3e50; position: relative; bottom: 5px;">Register</a>
+                </div>
               </form>
             </div>
           </li>
         </ul>
       </div>
+  {% endif %}
     </div>
   </div>
-  {% endif %}
 	{% block content %}{% endblock %}
 </body>
 
