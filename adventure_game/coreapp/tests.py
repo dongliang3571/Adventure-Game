@@ -1,19 +1,18 @@
 import unittest
 from django.test import TestCase
 from django.test import Client
+from django.contrib.auth.models import User
+
+from coreapp.views import auth_view
 
 class AccountTests(TestCase):
 
     def setUp(self):
-        self.user = Client()
-    #registration test
-    def test_regi(self):
-        info = self.user.post('/registration-submission/',{'username': 'sam123', 'email': 'abc@gmail.com', 'password': 'abc123'})
-        self.assertEqual(info.status_code,200)
-
+        self.c = Client()
+        self.c = User.objects.create_user(username="sam123", email="test@test.com", password="abc123")
     #login test
     def test_login(self):
-        response = self.user.post('/auth/',{'username': 'sam123', 'password': 'abc123'})
+        response = self.c.login('/auth/',{'username': 'sam123', 'password': 'abc123'})
         self.assertEqual(response.status_code,200)
 
 class SimpleTest(TestCase):
