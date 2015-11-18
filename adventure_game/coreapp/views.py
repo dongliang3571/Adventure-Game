@@ -3,11 +3,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
+from django.template import RequestContext
 
 def home(request,message=None):
     context = {}
     context.update(csrf(request))
-    return render_to_response('coreapp/home.html',context)
+    return render_to_response('coreapp/home.html',context,context_instance=RequestContext(request))
 
 def profile(request):
     return render(request, 'coreapp/profile.html')
@@ -30,14 +31,14 @@ def auth_view(request):
     if user is not None:
         if user.is_active:
             auth.login(request, user)
-            return HttpResponseRedirect('/profile')
+            return HttpResponseRedirect('/')
         else:
             return HttpResponseRedirect('/invalid')
     else:
         return HttpResponseRedirect('/invalid')
 
 def invalid_login(request):
-	return render_to_response('auth/invalid_login.html')
+    return render_to_response('auth/invalid_login.html')
 
 def logout(request):
     auth.logout(request)
