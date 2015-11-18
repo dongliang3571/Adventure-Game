@@ -1,8 +1,18 @@
 @import url('http://fonts.googleapis.com/css?family=Montserrat');
 
+* {
+   margin:0;
+}
+
+html {
+    height:100%;
+}
+
 body {
+    height:100%;
     overflow-x: hidden;
 }
+
 
 .col-lg-4 > p {
   font-size:20px;
@@ -32,6 +42,10 @@ h6 {
   padding-bottom: 19.5px;
 }
 
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color:#2BAACF;
+}
+
 header {
   text-align:center;
   color: #fff;
@@ -56,6 +70,10 @@ header .description {
     font-weight: 300;
 }
 
+.form-signin-heading {
+    font-size: 3em;
+    text-align: center;
+}
 
 section {
     padding: 100px 0;
@@ -222,4 +240,9 @@ img.park {
     z-index: 9;
     width: 20%;
 }
+}
+
+#register {
+    padding: 150px;
+    background-color: #2BAACF;
 }
