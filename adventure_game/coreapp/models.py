@@ -12,7 +12,7 @@ class Character(models.Model):
     character_pin = models.IntegerField(null=True)
 
     def __str__(self):
-		return self.character_name
+        return self.character_name
 
     def add_character(self, character, user=user):
         user.character_name.add(character)
