@@ -13,5 +13,5 @@ urlpatterns = [
     url(r'^individual/$',views.individual, name="individual"),
     url(r'^story/$',views.story, name='story'),
     url(r'^add-familly-member-submission/$',views.add_family_member_submission, name="addFamilySubmission"),
-    url(r'^add-family-member/$',views.add_family_member,name="addfamilymember"),
+    url(r'^add-family-member/$',views.add_family_member,name="add-family-member"),
 ]
