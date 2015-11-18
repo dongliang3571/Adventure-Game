@@ -1,0 +1,37 @@
+{% extends "coreapp/base.html" %}
+{% load staticfiles %}
+{% block title %}User Creation{% endblock %}
+{% block content %}
+
+<section id="register-family-member">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-sm-5 col-md-4 col-lg-6 col-lg-offset-3">
+            <div class="panel panel-default transparent">
+                <div class="panel-body">
+                    <form action="" method="POST" class="form-register" id="registration-form"> {%csrf_token %}
+                        <h3 class="form-register-heading">Add a Family Member</h3>
+                        <br>
+                        {% if message != None %}
+                        <div class="panel panel-danger transparent">
+                            <div class="panel-body">
+                                {{ message }}
+                            </div>
+                        </div>
+                        {% endif %}
+                        <label for="member-name" class="sr-only"></label>
+                        <input type="text" name="member-name" id="member-name" class="form-control" placeholder="Full Name" required autofocus>
+                        <br>
+                        <label for="member-pin" class="sr-only"></label>
+                        <input type="password" name="member-pin" id="member-pin" class="form-control" placeholder="PIN" required>
+                        <br>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5 col-md-4"></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

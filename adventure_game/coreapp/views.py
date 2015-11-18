@@ -66,3 +66,14 @@ def registration(request, message=None):
     if message is not None:
         context['message'] = message
     return render(request, 'auth/registration.html', context)
+
+def add_family_member(request,message=None):
+    context= {}
+    context.update(csrf(request))
+    if message is not None:
+        context['message'] = message
+    return render(request, 'auth/addfamily.html', context)
+
+def add_family_member_submission(request):
+    return HttpResponseRedirect('/')
+
