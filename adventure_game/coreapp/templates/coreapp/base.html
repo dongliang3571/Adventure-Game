@@ -30,13 +30,13 @@
       <div class="collapse navbar-collapse" id="navbar-ex-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="{% url 'coreapp:home' %}/individual/">Adventures</a>
+            <a href="{% url 'coreapp:individual' %}">Adventures</a>
           </li>
           <li>
-            <a href="{% url 'coreapp:home' %}/profile/">Profile</a>
+            <a href="{% url 'coreapp:profile' %}">Profile</a>
           </li>
           <li >
-            <a href="{% url 'coreapp:home' %}/logout/">Log Out</a>
+            <a href="{% url 'coreapp:logout' %}">Log Out</a>
           </li>
         </ul>
       </div>
@@ -55,7 +55,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In</a>
             <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-              <form action="/auth/" method="post" accept-charset="UTF-8">
+              <form action="{% url 'coreapp:auth' %}" method="post" accept-charset="UTF-8">
                 {% csrf_token %}
                 <input id="user_username" style="margin-bottom: 15px;" type="text" name="username" size="30">
                 <input id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30">
