@@ -70,7 +70,7 @@ header .description {
     font-weight: 300;
 }
 
-.form-signin-heading {
+.form-register-heading {
     font-size: 3em;
     text-align: center;
 }
@@ -115,6 +115,7 @@ hr.dark {
     height: 32px;
     font-size: 13px;
     padding: 0px;
+    text-transform: uppercase;
 }
 
 .register-link {
@@ -272,5 +273,10 @@ img.park {
 
 #register {
     padding: 150px;
+    background-color: #2BAACF;
+}
+
+#register-family-member {
+    padding: 200px;
     background-color: #2BAACF;
 }
