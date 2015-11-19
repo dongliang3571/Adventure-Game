@@ -11,20 +11,24 @@ class AccountTests(TestCase):
     #login test with unregistred user
     def test_login_fail(self):
         c=Client()
-
         #Supposed to fail. User is not registered - should give redirect code 302
         response = c.post('/auth/',{'username': 'sam123', 'password': 'abc123'})
-        self.assertRedirects(response,'invalid_login')
+        self.assertRedirects(response,'/invalid_login/')
 
-    #register user then login
+    #register user
     def test_regi(self):
         c2=Client()
-
-        regi_response = c2.post('registrationSubmission',{'username':'janice22','firstname':'janice','lastname':'goralnik', 'email':'friends@show.com','password':'yemen'})
+        regi_response = c2.post('/registrationSubmission/',{'username':'janice22','firstname':'janice','lastname':'goralnik', 'email':'friends@show.com','password':'yemen'})
         self.assertEqual(regi_response.status_code,200)
 
+    #login test that's supposed to pass
     def test_login_pass(self):
-
         c3=Client()
         login_response = c3.post('/auth/',{'username':'janice22','password':'yemen'})
         self.assertEqual(login_response.status_code,200)
+
+    #create new family member
+    def test_create_family_member(self):
+        c4=Client()
+        member_response = c4.post('/addFamilySubmission/',{'member-name':'Mom','member-pin','1221'})
+        self.assertRedirects(member_response,'/profile/')
