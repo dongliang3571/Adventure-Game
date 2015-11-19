@@ -1,41 +1,29 @@
 {% extends "coreapp/base.html" %}
 {% load staticfiles %}
 {% block content %}
-
 <div class ="team">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 family-member">
-        <img src={% static "img/mother.png" %} class=" center-block img-responsive" width="285">
-        <h3 class ="text-center"> Marie Doe</h3>
-      </div>
-      <div class="col-md-4 family-member">
-        <img src={% static "img/father.ico" %} class=" center-block img-responsive" width="285">
-        <h3 class ="text-center"> John Doe</h3>
-      </div>
-      <div class="col-md-4 family-member">
-        <img src={% static "img/child.png" %} class=" center-block img-responsive" width="285">
-        <h3 class ="text-center"> Sammy Doe</h3>
-      </div>
+  <div class="container-fluid">
+  <div class="row">
+    {% for items in family_members %}
+    <div class="col-md-4">
+      <img src={% static "img/mother.png" %} class="center-block img-responsive" width="285"/>
+      <h3 class="text-center"> {{ items }} </h3>
     </div>
+    {% endfor %}
+
+    <!--<div class="col-md-4">-->
+      <!--<img src={% static "img/mother.png" %} class=" center-block img-responsive" width="285">-->
+      <!--<h3 class ="text-center"> Marie Doe</h3>-->
+    <!--</div>-->
+    <!--<div class="col-md-4">-->
+      <!--<img src={% static "img/father.ico" %} class=" center-block img-responsive" width="285">-->
+      <!--<h3 class ="text-center"> John Doe</h3>-->
+    <!--</div>-->
+    <!--<div class="col-md-4">-->
+      <!--<img src={% static "img/child.png" %} class=" center-block img-responsive" width="285">-->
+      <!--<h3 class ="text-center"> Sammy Doe</h3>-->
+    <!--</div>-->
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-lg-offset-4 box-shadow--6p">
-        <div class="panel panel-default pin-panel">
-          <div class="text-center panel-body">
-            <h3>Pin</h3>
-            <form class="form-inline text-center" action="#" method="POST">
-              <input type="password" name="pin" id="pin" class="form-control" placeholder="Enter PIN">
-              <button type="submit" class="btn submit-button">
-                <i class="fa fa-arrow-right"></i>
-              </button>
-            </form>
-            <a class="add-family-link" href="{% url 'coreapp:add-family-member' %}">Add a Family Member</a>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 {% endblock %}

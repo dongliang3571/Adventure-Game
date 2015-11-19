@@ -9,7 +9,7 @@
         <div class="col-xs-6 col-sm-5 col-md-4 col-lg-6 col-lg-offset-3">
             <div class="panel panel-default transparent">
                 <div class="panel-body">
-                    <form action="" method="POST" class="form-register" id="registration-form"> {%csrf_token %}
+                  <form action="{% url 'coreapp:addFamilySubmission' %}" method="POST" class="form-register" id="registration-form"> {%csrf_token %}
                         <h3 class="form-register-heading">Add a Family Member</h3>
                         <br>
                         {% if message != None %}

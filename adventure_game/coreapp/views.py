@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.template import RequestContext
 
 def home(request,message=None):
@@ -11,7 +12,8 @@ def home(request,message=None):
     return render_to_response('coreapp/home.html',context,context_instance=RequestContext(request))
 
 def profile(request):
-    return render(request, 'coreapp/profile.html')
+    family_members = request.user.character_set.all()
+    return render(request, 'coreapp/profile.html',{'family_members' : family_members})
 
 def individual(request):
     return render(request, 'coreapp/individual.html')
@@ -75,5 +77,12 @@ def add_family_member(request,message=None):
     return render(request, 'auth/addfamily.html', context)
 
 def add_family_member_submission(request):
+    full_name = request.POST.get('member-name','')
+    pin = request.POST.get('member-pin','')
+    family_member = Character.objects.create(character_name=full_name,character_pin=pin)
+    family_member.save()
+    current_user = request.user
+    user.character_set.add(family_member)
+    user.save()
     return HttpResponseRedirect('/')
 
