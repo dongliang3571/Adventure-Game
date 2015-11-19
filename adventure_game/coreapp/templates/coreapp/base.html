@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href={% static "css/stylesheet.css" %} rel="stylesheet" type="text/css">
     <!-- <link rel="stylesheet" type="text/css" href="static/bootstrap-3.3.5-dist/css/bootstrap.min.css">
@@ -29,13 +30,13 @@
       <div class="collapse navbar-collapse" id="navbar-ex-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="{% url 'coreapp:home' %}/individual/">Adventures</a>
+            <a href="{% url 'coreapp:individual' %}">My Adventures</a>
           </li>
           <li>
-            <a href="{% url 'coreapp:home' %}/profile/">Profile</a>
+            <a href="{% url 'coreapp:profile' %}">Profile</a>
           </li>
           <li >
-            <a href="{% url 'coreapp:home' %}/logout/">Log Out</a>
+            <a href="{% url 'coreapp:logout' %}">Log Out</a>
           </li>
         </ul>
       </div>
@@ -43,26 +44,26 @@
       <div class="collapse navbar-collapse" id="navbar-ex-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li class="page-scroll">
-            <a href="#adventures">Adventures</a>
+            <a href="{% url 'coreapp:home' %}#adventures">Adventures</a>
           </li>
           <li class="page-scroll">
-            <a href="#about">About</a>
+            <a href="{% url 'coreapp:home' %}#about">About</a>
           </li>
           <li class="page-scroll">
-            <a href="#contact">Contact</a>
+            <a href="{% url 'coreapp:home' %}#contact">Contact</a>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In</a>
             <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-              <form action="/auth/" method="post" accept-charset="UTF-8">
+              <form action="{% url 'coreapp:auth' %}" method="post" accept-charset="UTF-8">
                 {% csrf_token %}
-                <input id="user_username" style="margin-bottom: 15px;" type="text" name="username" size="30">
-                <input id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30">
-                <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="remember_Me" value="1">
+                <input id="user_username" type="text" name="username" size="30">
+                <input id="user_password" type="password" name="password" size="30">
+                <input id="user_remember_me" type="checkbox" name="remember_Me" value="1">
                 <label class="string optional" for="user_remember_me">Remember me</label>
-                <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px; padding: 0px;" type="submit" name="commit" value="Sign In">
-                <div style="text-align:center; margin-top:10px">
-                <a href="/register/" style="color: #2c3e50; position: relative; bottom: 5px;">Register</a>
+                <input class="btn btn-primary signin-btn" type="submit" name="commit" value="Sign In">
+                <div  class = "register-link">
+                  <a href="{% url 'coreapp:registration' %}">Register</a>
                 </div>
               </form>
             </div>
@@ -75,6 +76,7 @@
 	{% block content %}{% endblock %}
 </body>
 
+<div class="wrapper">
 <footer class="footer-above">
   <div class="container">
     <div class="row">
@@ -110,4 +112,5 @@
     </div>
   </div>
 </footer>
+</div>
 </html>

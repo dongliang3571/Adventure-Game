@@ -3,12 +3,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
-#from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
 
 def home(request,message=None):
     context = {}
     context.update(csrf(request))
-    return render_to_response('coreapp/home.html',context)
+    return render_to_response('coreapp/home.html',context,context_instance=RequestContext(request))
 
 def profile(request):
     return render(request, 'coreapp/profile.html')
@@ -31,7 +31,7 @@ def auth_view(request):
     if user is not None:
         if user.is_active:
             auth.login(request, user)
-            return HttpResponseRedirect('/profile')
+            return HttpResponseRedirect('/')
         else:
             return HttpResponseRedirect('/invalid')
     else:
@@ -67,11 +67,13 @@ def registration(request, message=None):
         context['message'] = message
     return render(request, 'auth/registration.html', context)
 
-#@login_required(login_url='/')
-def add_character(request):
-    user1 =  request.user
-    name = request.POST.get('character_name', '')
-    pin = request.POST.get('character_pin', '')
-    user1.character_set.create(character_name=name, character_pin=pin)
+def add_family_member(request,message=None):
+    context= {}
+    context.update(csrf(request))
+    if message is not None:
+        context['message'] = message
+    return render(request, 'auth/addfamily.html', context)
 
+def add_family_member_submission(request):
     return HttpResponseRedirect('/')
+
