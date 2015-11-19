@@ -1,5 +1,9 @@
 
 // var canvas_girl = document.getElementById("girl");
+
+var canvas_tree = document.getElementById("env");
+canvas_tree.width = 120;
+canvas_tree.height = 150;
 var canvas_tem = document.getElementsByClassName("boy");
 var canvas_boy = canvas_tem[0];
 canvas_boy.width=80;
@@ -8,6 +12,7 @@ var count=0;
 
 // var female = new Image();
 var male = new Image();
+var tree = new Image();
 // var grand_terminal = new Image();
 // var empire_building = new Image();
 // var metropolitan_museum = new Image();
@@ -21,6 +26,7 @@ var male = new Image();
 
 // female.src = "../static/map/images/characters/girl2.png";
 male.src="../static/map/images/characters/boy_sprite.png";
+tree.src="http://i444.photobucket.com/albums/qq168/grandmadeb_rmvx/Shareable%20Artists/BenBen%20CONFIRMED/BenBen%20Trees%20Seasonal_zps6pwibcy7.png";
 
 // grand_terminal.src="../static/map/images/buildings/grand.png";
 // empire_building.src="../static/map/images/buildings/Empire_State_Building.png";
@@ -70,9 +76,9 @@ function sprite(options) {
 
    };
 
-  //  that.render_number = function(x,y){
-  //    that.context.drawImage(that.image,0,0,that.width,that.height,x,y,50,50);
-  //  };
+   that.render_static = function(x,y,j,k){
+     that.context.drawImage(that.image,0,0,x,y,0,0,j,k);
+   };
 
   //  that.update = function () {
   //   //  canvas.width = window.innerWidth;
@@ -111,12 +117,13 @@ var male_sprite = sprite({
     frameIndex: frameIndex_boy
 });
 
-// var grand_terminal_sprite = sprite({
-//     context: canvas.getContext("2d"),
-//     width: 32,
-//     height: 48,
-//     image: grand_terminal
-// });
+var tree_sprite = sprite({
+    context: canvas_tree.getContext("2d"),
+    width: 768,
+    height: 768,
+    image: tree,
+    frameIndex:0
+});
 //
 // var empire_building_sprite = sprite({
 //     context: canvas.getContext("2d"),
@@ -194,15 +201,9 @@ var male_sprite = sprite({
 //   // male_sprite.update();
 //
 // }
-// function render_girl(){
-//   female_sprite.render();
-//   // male_sprite.render();
-//   female_sprite.frameIndex += 1;
-//   if (female_sprite.frameIndex > numberOfFrames_girl) {
-//     female_sprite.frameIndex=0;
-//   }
-//   // male_sprite.render();
-// }
+function render_tree(){
+  tree_sprite.render_static(200,310,100,150);
+}
 function render_boy(){
   male_sprite.render();
   male_sprite.frameIndex +=1;
@@ -216,6 +217,12 @@ function render_boy(){
 //     $('#path4').append(" <b>Appended text</b>.");
 //   })
 // });
+$(document).on('keypress', function(e) {
+    if(e.KeyCode == 13) {
+        alert('You pressed enter!');
+    }
+});
+
 
 $(document).ready(function(){
     $("#next").click(function(){
@@ -259,6 +266,7 @@ $(document).ready(function(){
     });
 });
 setInterval(render_boy,250);
+setInterval(render_tree,10);
 // function gameLoop () {
   // update();
   // female.addEventListener("load",render());

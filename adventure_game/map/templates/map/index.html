@@ -1,25 +1,18 @@
+{% extends "coreapp/base.html" %}
 {% load staticfiles %}
+{% block map_css_js %}
+<link rel="stylesheet" type="text/css" href={% static "map/css/style.css" %}>
 
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-      <link rel="stylesheet" type="text/css" href={% static "map/css/bootstrap-theme.min.css" %}>
-      <link rel="stylesheet" type="text/css" href={% static "map/css/bootstrap.min.css" %}>
-      <link rel="stylesheet" type="text/css" href={% static "map/css/style.css" %}>
-
-      <meta charset="UTF-8"></meta>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>map</title>
-</head>
-
-<body>
+{% endblock %}
+{% block content %}
 
 
+      <div id="space"></div>
       <div class="container">
 
       <!-- <canvas id="girl" style="border:1px solid #000000;"></canvas> -->
       <canvas id="boy" class="{{ boyn }}"></canvas>
-      <!-- <canvas class="boy1"></canvas> -->
+      <canvas id="env"></canvas>
 
 
       <img id="empire" src={% static "map/images/buildings/Empire_State_Building.png" %}>
@@ -51,11 +44,20 @@
       <img id="path3" src={% static "map/images/path1.png" %}>
       <img id="path4" src={% static "map/images/path1.png" %}>
 
+      <img id="tree1" src={% static "map/images/env/tree1.png" %}>
+      <img id="tree2" src={% static "map/images/env/tree2.png" %}>
+      <img id="tree3" src={% static "map/images/env/tree3.png" %}>
+
+      <img id="hamster" src={% static "map/images/env/hamster.png" %}>
+      <img id="dog" src={% static "map/images/env/dog.png" %}>
+      <img id="monster" src={% static "map/images/env/monster.png" %}>
+
 
       <!-- <img id="daddy" class="parent" src={% static "map/images/characters/daddy1.png" %}>
       <img id="girl" src={% static "map/images/characters/girl1.png" %}>
       <img id="mom" class="parent" src={% static "map/images/characters/mom1.png" %}> -->
       </div>
+
 
       <button id="next" type="button">Next</button>
       <button id="previous" type="button">Previous</button>
@@ -63,13 +65,10 @@
 
 
 
-    <script src={% static "map/js/jquery-2.1.4.min.js" %}></script>
+
+    <!-- <script src={% static "map/js/jquery-2.1.4.min.js" %}></script>
     <script src={% static "map/js/bootstrap.min.js" %}></script>
-    <script src={% static "map/js/sprite.js" %}></script>
+    <script src={% static "map/js/sprite.js" %}></script> -->
+<script src={% static "map/js/sprite.js" %}></script>
 
-
-
-</body>
-
-
-</html>
+{% endblock %}
