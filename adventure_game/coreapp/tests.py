@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 from coreapp.views import auth_view
 from coreapp.views import registration_submission
+from coreapp.views import add_family_member_submission
 
 class AccountTests(TestCase):
 
@@ -30,5 +31,5 @@ class AccountTests(TestCase):
     #create new family member
     def test_create_family_member(self):
         c4=Client()
-        member_response = c4.post('/addFamilySubmission/',{'member-name':'Mom','member-pin','1221'})
+        member_response = c4.post('/addFamilySubmission/',{'member-name':'Mom','member-pin':'1221'})
         self.assertRedirects(member_response,'/profile/')
