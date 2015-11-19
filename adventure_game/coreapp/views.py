@@ -79,10 +79,7 @@ def add_family_member(request,message=None):
 def add_family_member_submission(request):
     full_name = request.POST.get('member-name','')
     pin = request.POST.get('member-pin','')
-    family_member = Character.objects.create(character_name=full_name,character_pin=pin)
-    family_member.save()
     current_user = request.user
-    user.character_set.add(family_member)
-    user.save()
-    return HttpResponseRedirect('/')
+    current_user.character_set.create(character_name=full_name, character_pin=pin)
+    return HttpResponseRedirect('/profile/')
 
