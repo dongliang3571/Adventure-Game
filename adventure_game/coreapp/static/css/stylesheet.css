@@ -70,7 +70,7 @@ header .description {
     font-weight: 300;
 }
 
-.form-signin-heading {
+.form-register-heading {
     font-size: 3em;
     text-align: center;
 }
@@ -98,6 +98,35 @@ hr.dark {
     text-align: center;
     border-color: #2c3e50;
     height: 2px;
+}
+
+#user_username, #user_password {
+    margin-bottom: 15px;
+}
+
+#user_remember_me {
+    float: left;
+    margin-right: 10px;
+}
+
+.signin-btn {
+    clear: left;
+    width: 100%;
+    height: 32px;
+    font-size: 13px;
+    padding: 0px;
+    text-transform: uppercase;
+}
+
+.register-link {
+    position: relative;
+    bottom: 5px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.register-link > a {
+    color: #2c3e50;
 }
 
 hr.light {
@@ -243,6 +272,16 @@ img.park {
 }
 
 #register {
-    padding: 150px;
+    padding: 150px 0;
     background-color: #2BAACF;
+}
+
+#register-family-member {
+    padding: 200px 0;
+    background-color: #2BAACF;
+}
+
+.team {
+    padding: 200px 0;
+    background-color:#f7f6f5;
 }
