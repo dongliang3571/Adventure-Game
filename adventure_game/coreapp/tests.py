@@ -3,10 +3,6 @@ from django.test import TestCase
 from django.test import Client
 from django.contrib.auth.models import User
 
-from coreapp.views import auth_view
-from coreapp.views import registration_submission
-from coreapp.views import add_family_member_submission
-
 class AccountTests(TestCase):
 
     #login test with unregistred user
