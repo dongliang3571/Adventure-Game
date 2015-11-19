@@ -8,7 +8,7 @@ def index(request):
     user=request.user
     if(user.is_authenticated()):
         ln=user.level.level_number
-        
+
         if ln==0:
             boyn="boy"
         elif ln==1:
@@ -25,6 +25,20 @@ def index(request):
 
 def task1(request):
     return render(request,'map/task1.html')
+
+def task1_question1(request):
+    ans = request.GET.get('answer','')
+    if ans:
+        if ans=='2':
+            l = request.user.level
+            l.level_number=1
+            l.save()
+            return render(request, 'map/task1_1.html',{'message':'Congradulations, Your answer is correct!!!'})
+        else:
+            return render(request, 'map/task1_1.html',{'message2':'Sorry, Your answer is Wrong, Try again....','after':'show'})
+    else:
+        return render(request, 'map/task1_1.html',{'after':'show'})
+
 
 def task2(request):
     return render(request,'map/task2.html')
