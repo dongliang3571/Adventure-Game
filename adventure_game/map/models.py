@@ -10,4 +10,4 @@ class Level(models.Model):
     level_number = models.IntegerField(default=0)
 
     def __unicode__(self):
-        return "Current level is " + str(self.level_number)
+        return str(self.user.username)+"'s current level is '" + str(self.level_number)
