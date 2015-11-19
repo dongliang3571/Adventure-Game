@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
+#from django.contrib.auth.decorators import login_required
 
 def home(request,message=None):
     context = {}
@@ -65,3 +66,12 @@ def registration(request, message=None):
     if message is not None:
         context['message'] = message
     return render(request, 'auth/registration.html', context)
+
+#@login_required(login_url='/')
+def add_character(request):
+    user1 =  request.user
+    name = request.POST.get('character_name', '')
+    pin = request.POST.get('character_pin', '')
+    user1.character_set.create(character_name=name, character_pin=pin)
+
+    return HttpResponseRedirect('/')

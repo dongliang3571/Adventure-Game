@@ -108,5 +108,9 @@
       </div>
     </div>
 
-
+    <form action="/addchar/" method="post" accept-charset="UTF-8"> {%csrf_token %}
+      <input id="character_name" style="margin-bottom: 15px;" type="text" name="character_name" size="30">
+      <input id="character_pin" style="margin-bottom: 15px;" type="text" name="character_pin" size="30">
+      <button type="submit">add</button>
+    </form>
 </body></html>

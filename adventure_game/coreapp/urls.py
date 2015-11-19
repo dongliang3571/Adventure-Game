@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^individual/$',views.individual, name="invidual"),
     url(r'^story/$',views.story, name='story'),
+    url(r'^addchar/$',views.add_character, name='addchar'),
 ]
