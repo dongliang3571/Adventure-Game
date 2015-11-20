@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.template import RequestContext
 from map.models import Level
+from django.contrib import messages
 
 def home(request,message=None):
     context = {}
@@ -34,6 +35,9 @@ def auth_view(request):
     if user is not None:
         if user.is_active:
             auth.login(request, user)
+            # messages.add_message(request, messages.INFO, 'Hello world.')
+            messages.success(request, 'You have successfully logged in.')
+            # return render(request,'coreapp/home.html')
             return HttpResponseRedirect('/')
         else:
             return HttpResponseRedirect('/invalid')
@@ -46,6 +50,8 @@ def invalid_login(request):
 def logout(request):
     auth.logout(request)
     # context = {'page': 'home'}
+    messages.success(request, 'You have successfully logged out.')
+    # return render(request,'coreapp/home.html')
     return HttpResponseRedirect('/')
 
 def registration_submission(request):
