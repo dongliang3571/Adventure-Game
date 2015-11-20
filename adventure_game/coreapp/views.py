@@ -5,6 +5,7 @@ from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.template import RequestContext
+from map.models import Level
 
 def home(request,message=None):
     context = {}
@@ -58,6 +59,7 @@ def registration_submission(request):
     if len(User.objects.filter(email=email)) != 0: #pylint: disable=E1101
         return registration(request, "Try again, %s %s." %("there is already an account with email", email))
     user = User.objects.create_user(username=username, email=email, password=password, first_name=firstname, last_name=lastname) #pylint: disable=E1101
+    level=Level.objects.create(user=user,level_number=0)
     user = auth.authenticate(username=username, password=password)
     auth.login(request, user)
     return HttpResponseRedirect('/')#'/registration-success')
@@ -82,4 +84,3 @@ def add_family_member_submission(request):
     current_user = request.user
     current_user.character_set.create(character_name=full_name, character_pin=pin)
     return HttpResponseRedirect('/profile/')
-
