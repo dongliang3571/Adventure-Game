@@ -332,6 +332,6 @@ img.park {
     margin-bottom: 0px;
     position: absolute;
     width: 100%;
-    
+    z-index: 11;
 
 }

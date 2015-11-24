@@ -1,10 +1,6 @@
-{% extends "coreapp/base.html" %}
-{% load staticfiles %}
-{% block map_css_js %}
-<link rel="stylesheet" type="text/css" href={% static "map/css/task.css" %}>
-{% endblock %}
+{% extends "map/question_base.html" %}
 
-{% block content %}
+{% block question %}
 
 {% if after %}
 

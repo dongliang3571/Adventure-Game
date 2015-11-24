@@ -1,14 +1,16 @@
 {% extends "coreapp/base.html" %}
 {% load staticfiles %}
+{% block title %}Adventure Map{% endblock %}
 {% block map_css_js %}
 <link rel="stylesheet" type="text/css" href={% static "map/css/style.css" %}>
 
 {% endblock %}
+
 {% block content %}
 
 
       <div id="space"></div>
-      <div class="container">
+      <div>
 
       <!-- <canvas id="girl" style="border:1px solid #000000;"></canvas> -->
       <canvas id="boy" class="{{ boyn }}"></canvas>
@@ -59,16 +61,6 @@
       </div>
 
 
-      <button id="next" type="button">Next</button>
-      <button id="previous" type="button">Previous</button>
-
-
-
-
-
-    <!-- <script src={% static "map/js/jquery-2.1.4.min.js" %}></script>
-    <script src={% static "map/js/bootstrap.min.js" %}></script>
-    <script src={% static "map/js/sprite.js" %}></script> -->
 <script src={% static "map/js/sprite.js" %}></script>
 
 {% endblock %}

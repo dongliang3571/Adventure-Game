@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Level
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.contrib import messages
 # Create your views here.
 
 def index(request):
@@ -19,8 +20,10 @@ def index(request):
             boyn="boy boy1 boy2 boy3"
         elif ln==4:
             boyn="boy boy1 boy2 boy3 boy4"
+        messages.warning(request, 'Welcome to your adventures')
         return render(request, 'map/index.html',{'boyn':boyn})
     else:
+        messages.warning(request, 'Please Sign in')
         return HttpResponseRedirect(reverse('coreapp:home'))
 
 def task1(request):
