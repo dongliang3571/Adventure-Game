@@ -15,6 +15,9 @@ def home(request,message=None):
 
 def profile(request):
     family_members = request.user.character_set.all()
+    user=request.user
+    uerfname = user.first_name
+    userlname = user.last_name
     return render(request, 'coreapp/profile.html',{'family_members' : family_members})
 
 def individual(request):
