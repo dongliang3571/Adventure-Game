@@ -35,7 +35,7 @@ def auth_view(request):
     if user is not None:
         if user.is_active:
             auth.login(request, user)
-            messages.success(request, 'You have successfully logged in.')
+            messages.success(request, 'Hi %s, you have successfully logged in.' %(user.last_name))
             return HttpResponseRedirect('/')
         else:
             messages.success(request, 'Your account has been banned, please contact us to re-active your account!')
@@ -59,7 +59,7 @@ def registration_submission(request):
     if len(User.objects.filter(username=username)) != 0: #pylint: disable=E1101
         return registration(request, "Try again, the username %s %s." %(username, "is already taken"))
     if len(User.objects.filter(email=email)) != 0: #pylint: disable=E1101
-        return registration(request, "Try again, %s %s." %("there is already an account with this email", email))
+        return registration(request, "Try again, %s %s." %("there is already an account with email", email))
     user = User.objects.create_user(username=username, email=email, password=password, first_name=firstname, last_name=lastname) #pylint: disable=E1101
     level=Level.objects.create(user=user,level_number=0)
     user = auth.authenticate(username=username, password=password)
