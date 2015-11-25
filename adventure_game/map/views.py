@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Level
+from .models import QuestionAndAnswer
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib import messages
@@ -30,11 +31,13 @@ def task1(request):
     return render(request,'map/task1.html')
 
 def task1_question1(request):
+    ques = request.GET.get('question','')
     ans = request.GET.get('answer','')
     if ans:
-        if ans=='2':
+        correct_answer = QuestionAndAnswer.objects.get(Question=ques).Answer
+        if ans==correct_answer:
             l = request.user.level
-            l.level_number=1
+            l.level_number=l.level_number+1
             l.save()
             return render(request, 'map/task1_1.html',{'message':'Congradulations, Your answer is correct!!!'})
         else:

@@ -28,7 +28,7 @@ h1{
   float: right;
   max-width: 13%;
 }
-/*#midhead{
+
+.address{
   text-align: center;
-  min-width: 800px;
-}*/
+}

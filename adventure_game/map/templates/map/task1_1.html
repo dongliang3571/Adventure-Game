@@ -2,10 +2,22 @@
 
 {% block question %}
 
+
+
 {% if after %}
+<div class="address">
+  <span class="houseNumber">{{ houseNumber }}</span>
+  <span class="street">{{ street }}</span>
+  <span class="city">{{ city }}</span>
+  {% if city %}
+  <span class="state">NY 11021</span>
+  {% endif %}
+</div>
+
 
 <form id="form" method="get">
-<div id="question">What is 1 + 1 = ?</div>
+<div id="question">What is 1 + 0 = ?</div>
+<input type="hidden" name="question" value="What is 1 + 0 = ?">
 <input type="text" name="answer"><br>
 <input type="submit" value="submit"><br>
 </form><br>
