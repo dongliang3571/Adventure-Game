@@ -32,3 +32,7 @@ h1{
 .address{
   text-align: center;
 }
+
+.hasBorder{
+  border: 1px solid black;
+}

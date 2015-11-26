@@ -39,11 +39,11 @@ def task1_question1(request):
             l = request.user.level
             l.level_number=l.level_number+1
             l.save()
-            return render(request, 'map/task1_1.html',{'message':'Congradulations, Your answer is correct!!!'})
+            return render(request, 'map/task1_question1.html',{'message':'Congradulations, Your answer is correct!!!'})
         else:
-            return render(request, 'map/task1_1.html',{'message2':'Sorry, Your answer is Wrong, Try again....','after':'show'})
+            return render(request, 'map/task1_question1.html',{'message2':'Sorry, Your answer is Wrong, Try again....','after':'show'})
     else:
-        return render(request, 'map/task1_1.html',{'after':'show'})
+        return render(request, 'map/task1_question1.html',{'isShow':'show'})
 
 
 def task2(request):
