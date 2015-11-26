@@ -8,7 +8,7 @@ class Level(models.Model):
 
     user = models.OneToOneField(User,primary_key=True)
     level_number = models.IntegerField(default=0)
-    question_number = models.IntegerField(default=0)
+    question_number = models.IntegerField(default=1)
 
 
     def __unicode__(self):
@@ -19,6 +19,6 @@ class QuestionAndAnswer(models.Model):
 
     Question = models.CharField(max_length=200)
     Answer = models.CharField(max_length=200)
-    QuestionNumber = models.IntegerField(default=0)
+    QuestionNumber = models.IntegerField(default=1)
     def __unicode__(self):
-        return 'Question #'+str(QuestionNumber)+'Question: '+str(self.Question)+'Answer: '+str(self.Answer)
+        return 'Question #'+str(self.QuestionNumber)+' Question: '+str(self.Question)+'Answer: '+str(self.Answer)

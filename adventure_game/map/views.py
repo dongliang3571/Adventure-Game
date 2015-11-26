@@ -33,17 +33,31 @@ def task1(request):
 def task1_question1(request):
     ques = request.GET.get('question','')
     ans = request.GET.get('answer','')
+    questionnumber = request.GET.get('questionNumber','')
     if ans:
         correct_answer = QuestionAndAnswer.objects.get(Question=ques).Answer
         if ans==correct_answer:
+            user=request.user
             l = request.user.level
-            l.level_number=l.level_number+1
+            # l.level_number=l.level_number+1
+            l.question_number=l.question_number+1
             l.save()
-            return render(request, 'map/task1_question1.html',{'message':'Congradulations, Your answer is correct!!!'})
+            questionNumber=l.question_number
+            questionObject=QuestionAndAnswer.objects.get(QuestionNumber=questionNumber)
+            question=questionObject.Question
+            return render(request, 'map/task1_question1.html',{'message':'Congradulations, Your answer is correct!!!','isShow':'show','question':question})
         else:
-            return render(request, 'map/task1_question1.html',{'message2':'Sorry, Your answer is Wrong, Try again....','after':'show'})
+            user=request.user
+            questionNumber=user.level.question_number
+            questionObject=QuestionAndAnswer.objects.get(QuestionNumber=questionNumber)
+            question=questionObject.Question
+            return render(request, 'map/task1_question1.html',{'message2':'Sorry, Your answer is Wrong, Try again....','isShow':'show','question':question})
     else:
-        return render(request, 'map/task1_question1.html',{'isShow':'show'})
+        user=request.user
+        questionNumber=user.level.question_number
+        questionObject=QuestionAndAnswer.objects.get(QuestionNumber=questionNumber)
+        question=questionObject.Question
+        return render(request, 'map/task1_question1.html',{'isShow':'show','question':question})
 
 
 def task2(request):
