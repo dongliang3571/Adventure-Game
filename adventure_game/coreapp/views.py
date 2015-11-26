@@ -15,6 +15,9 @@ def home(request,message=None):
 
 def profile(request):
     family_members = request.user.character_set.all()
+    user=request.user
+    uerfname = user.first_name
+    userlname = user.last_name
     return render(request, 'coreapp/profile.html',{'family_members' : family_members})
 
 def individual(request):
@@ -35,23 +38,19 @@ def auth_view(request):
     if user is not None:
         if user.is_active:
             auth.login(request, user)
-            # messages.add_message(request, messages.INFO, 'Hello world.')
-            messages.success(request, 'You have successfully logged in.')
-            # return render(request,'coreapp/home.html')
+            messages.success(request, 'Hi %s, you have successfully logged in.' %(user.last_name))
             return HttpResponseRedirect('/')
         else:
-            return HttpResponseRedirect('/invalid')
+            messages.success(request, 'Your account has been banned, please contact us to re-active your account!')
+            return HttpResponseRedirect('/')
     else:
-        return HttpResponseRedirect('/invalid')
+        messages.success(request, 'The account you entered is invalid, please try agian!')
+        return HttpResponseRedirect('/')
 
-def invalid_login(request):
-    return render_to_response('auth/invalid_login.html')
 
 def logout(request):
     auth.logout(request)
-    # context = {'page': 'home'}
     messages.success(request, 'You have successfully logged out.')
-    # return render(request,'coreapp/home.html')
     return HttpResponseRedirect('/')
 
 def registration_submission(request):
@@ -68,7 +67,7 @@ def registration_submission(request):
     level=Level.objects.create(user=user,level_number=0)
     user = auth.authenticate(username=username, password=password)
     auth.login(request, user)
-    return HttpResponseRedirect('/')#'/registration-success')
+    return HttpResponseRedirect('/')
 
 def registration(request, message=None):
     context = {}
