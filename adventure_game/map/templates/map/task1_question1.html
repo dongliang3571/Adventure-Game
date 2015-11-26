@@ -4,7 +4,7 @@
 
 
 
-{% if after %}
+<!-- {% if isShow %}
 <div class="address">
   <span class="houseNumber">{{ houseNumber }}</span>
   <span class="street">{{ street }}</span>
@@ -12,9 +12,18 @@
   {% if city %}
   <span class="state">NY 11021</span>
   {% endif %}
+</div> -->
+
+
+<div class="address">
+  <span class="houseNumber hasBorder">{{ houseNumber }}</span>
+  <span class="street hasBorder">{{ street }}</span>
+  <span class="city hasBorder">{{ city }}</span>
+  <span class="state hasBorder">{{ state }}</span>
+  {% endif %}
 </div>
 
-
+{% if isShow %}
 <form id="form" method="get">
 <div id="question">What is 1 + 0 = ?</div>
 <input type="hidden" name="question" value="What is 1 + 0 = ?">
