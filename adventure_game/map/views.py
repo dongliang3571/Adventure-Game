@@ -8,21 +8,27 @@ from django.contrib import messages
 
 def index(request):
     user=request.user
-    if(user.is_authenticated()):
-        ln=user.level.level_number
 
-        if ln==0:
-            boyn="boy"
-        elif ln==1:
-            boyn="boy boy1"
-        elif ln==2:
-            boyn="boy boy1 boy2"
-        elif ln==3:
-            boyn="boy boy1 boy2 boy3"
-        elif ln==4:
-            boyn="boy boy1 boy2 boy3 boy4"
-        messages.warning(request, 'Welcome to your adventures')
-        return render(request, 'map/index.html',{'boyn':boyn})
+    if user.is_authenticated():
+        if user.is_superuser==True:
+            messages.warning(request, 'Please login as a regular user to enter the map rather than a super user')
+            return HttpResponseRedirect(reverse('coreapp:home'))
+        else:
+
+            ln=user.level.level_number
+
+            if ln==0:
+                boyn="boy"
+            elif ln==1:
+                boyn="boy boy1"
+            elif ln==2:
+                boyn="boy boy1 boy2"
+            elif ln==3:
+                boyn="boy boy1 boy2 boy3"
+            elif ln==4:
+                boyn="boy boy1 boy2 boy3 boy4"
+            messages.warning(request, 'Welcome to your adventures')
+            return render(request, 'map/index.html',{'boyn':boyn})
     else:
         messages.warning(request, 'Please Sign in')
         return HttpResponseRedirect(reverse('coreapp:home'))
@@ -45,7 +51,14 @@ def task1_question1(request):
             questionNumber=l.question_number
             questionObject=QuestionAndAnswer.objects.get(QuestionNumber=questionNumber)
             question=questionObject.Question
-            return render(request, 'map/task1_question1.html',{'message':'Congradulations, Your answer is correct!!!','isShow':'show','question':question})
+
+            housenumber=''
+            for n in range(questionNumber-1):
+                questionTempObject=QuestionAndAnswer.objects.get(QuestionNumber=n+1)
+                housenumber=housenumber+str(questionTempObject.Answer)
+
+            return render(request, 'map/task1_question1.html',{'message':'Congradulations, Your answer is correct, keep going.',
+            'isShow':'show','question':question,'houseNumber':housenumber})
         else:
             user=request.user
             questionNumber=user.level.question_number
