@@ -52,6 +52,7 @@ def task1_question1(request):
                     # for n in range(request.user.level.question_number):
                     #     questionTempObject=QuestionAndAnswer.objects.get(QuestionNumber=n+1)
                     #     housenumber=housenumber+' '+str(questionTempObject.Answer)
+
                     housenumber='888 Madision ave, New York, NY 10021'
                     return render(request, 'map/task1_question1.html',{'isShow':'show','houseNumber':housenumber,
                     'message':'Congradulations, You have gotten your clue.','isComplete':'complete'})
