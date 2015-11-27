@@ -91,6 +91,7 @@ DATABASES = {
     }
 }
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
