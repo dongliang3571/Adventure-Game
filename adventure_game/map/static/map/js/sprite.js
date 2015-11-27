@@ -265,8 +265,12 @@ $(document).on('keypress', function(e) {
 //       }
 //     });
 // });
-setInterval(render_boy,250);
-setInterval(render_tree,10);
+
+$(function() {
+  setInterval(render_boy,250);
+  setInterval(render_tree,10);
+
+});
 // function gameLoop () {
   // update();
   // female.addEventListener("load",render());

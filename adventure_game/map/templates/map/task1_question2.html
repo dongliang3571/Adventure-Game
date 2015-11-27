@@ -25,10 +25,7 @@
 
 {% if isShow %}
 <form id="form" method="get">
-<div id="question">{{ question }}</div>
-<input type="hidden" name="question" value="{{ question }}">
-<input type="hidden" name="questionNumber" value="{{ number }}">
-<input id="input_answer" type="text" name="answer"><br>
+
 <input type="submit" value="submit"><br>
 </form><br>
 
@@ -36,13 +33,9 @@
 <div id="space">
 {% if message %}
 {{ message }}
-
-{% if isComplete %}
-<form action={% url "map:task1_question2" %}>
-    <input type="submit" value="Continue">
-</form>
-{% endif %}
-
+<!-- <form action={% url "map:map" %}>
+    <input type="submit" value="Go to Next Level">
+</form> -->
 {% endif %}
 
 {% if message2 %}

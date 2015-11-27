@@ -35,5 +35,6 @@ h1{
 }
 
 .hasBorder{
-  border: 1px solid black;
+  border: 2px solid red;
+  font-size: 2em;
 }
