@@ -26,11 +26,6 @@ def individual(request):
 def story(request):
     return render(request, 'coreapp/story.html')
 
-def login(request):
-	context = {}
-	context.update(csrf(request))
-	return render_to_response('auth/login.html', context)
-
 def auth_view(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
@@ -44,7 +39,7 @@ def auth_view(request):
             messages.success(request, 'Your account has been banned, please contact us to re-active your account!')
             return HttpResponseRedirect('/')
     else:
-        messages.success(request, 'The account you entered is invalid, please try agian!')
+        messages.success(request, 'The account you entered is invalid, please try again!')
         return HttpResponseRedirect('/')
 
 
@@ -62,7 +57,7 @@ def registration_submission(request):
     if len(User.objects.filter(username=username)) != 0: #pylint: disable=E1101
         return registration(request, "Try again, the username %s %s." %(username, "is already taken"))
     if len(User.objects.filter(email=email)) != 0: #pylint: disable=E1101
-        return registration(request, "Try again, %s %s." %("there is already an account with email", email))
+        return registration(request, "Try again, %s %s." %("there is already an account with that email", email))
     user = User.objects.create_user(username=username, email=email, password=password, first_name=firstname, last_name=lastname) #pylint: disable=E1101
     level=Level.objects.create(user=user,level_number=0)
     user = auth.authenticate(username=username, password=password)

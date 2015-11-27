@@ -24,3 +24,18 @@ class LoginTests(TestCase):
         message = list(response.context['messages'])
         self.assertEqual("Hi test, you have successfully logged in." , str(message[0]))
 
+
+class RegisterTests(TestCase):
+    def setUp(self):
+        self.client = Client()
+        User.objects.create_user(username='testuser',password='pass',email = "test@123.com")
+
+    def test_duplicate_user(self):
+        response = self.client.post("/registration-submission/",{'username': 'testuser'})
+        self.assertEqual(response.context['message'],"Try again, the username testuser is already taken.")
+
+    def test_duplicate_email(self):
+        response = self.client.post("/registration-submission/",{'email': 'test@123.com'})
+        self.assertEqual(response.context['message'],"Try again, there is already an account with that email test@123.com.")
+
+
