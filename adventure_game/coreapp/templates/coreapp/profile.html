@@ -4,7 +4,7 @@
 <div class ="team">
   <div class="container-fluid">
     <div class="row">
-      <h2 class="text-center">Welcome the {{ lastname }} family!</h2>
+      <h2 class="text-center">Welcome the <i>{{ lastname }}</i> family!</h2>
   {% if not family_members %}
     <p class="text-center">It seems you have no family members added to your account yet!<br>
       Would you like to add one now?</p>
@@ -41,17 +41,24 @@
             <h3>Pin</h3>
             <!-- <form class="form-inline text-center" action="/individual/" method="POST"> -->
               {% csrf_token %}
-              <input type="password" name="character_pin" id="pin" class="form-control" placeholder="Enter PIN">
-              <button type="submit" class="btn submit-button">
+              <input type="password" name="character_pin" id="pin" class="form-control" placeholder="Enter PIN To Go To Your Page">
+              <br>
+              <div id=button>
+              <button type="submit" class="btn submit-button">To my individual page
                 <i class="fa fa-arrow-right"></i>
               </button>
+            </div>
+            <br>
+            <a class="add-family-link" href="{% url 'coreapp:add-family-member' %}">Click Here To Add More Family Members</a>
+
             </form>
-            <a class="add-family-link" href="{% url 'coreapp:add-family-member' %}">Add a Family Member</a>
+
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 {% endif %}
 {% endblock %}

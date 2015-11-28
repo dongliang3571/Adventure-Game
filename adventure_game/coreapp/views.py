@@ -86,13 +86,17 @@ def add_family_member(request,message=None):
 def add_family_member_submission(request):
     full_name = request.POST.get('member-name','')
     pin = request.POST.get('member-pin','')
-    current_user = request.user
-    if current_user.character_set.filter(character_name=full_name):
-        messages.success(request, 'This member has already been added, try another name')
+    if not len(pin) == 4:
+        messages.success(request, 'Please enter 4 characters as your PIN number')
         return HttpResponseRedirect('/add-family-member/')
     else:
-        current_user.character_set.create(character_name=full_name, character_pin=pin)
-        return HttpResponseRedirect('/profile/')
+        current_user = request.user
+        if current_user.character_set.filter(character_name=full_name):
+            messages.success(request, 'This member has already been added, try another name')
+            return HttpResponseRedirect('/add-family-member/')
+        else:
+            current_user.character_set.create(character_name=full_name, character_pin=pin)
+            return HttpResponseRedirect('/profile/')
 
 
 @login_required(login_url='/')
