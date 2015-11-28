@@ -87,8 +87,12 @@ def add_family_member_submission(request):
     full_name = request.POST.get('member-name','')
     pin = request.POST.get('member-pin','')
     current_user = request.user
-    current_user.character_set.create(character_name=full_name, character_pin=pin)
-    return HttpResponseRedirect('/profile/')
+    if current_user.character_set.filter(character_name=full_name):
+        messages.success(request, 'This member has already been added, try another name')
+        return HttpResponseRedirect('/add-family-member/')
+    else:
+        current_user.character_set.create(character_name=full_name, character_pin=pin)
+        return HttpResponseRedirect('/profile/')
 
 
 @login_required(login_url='/')
@@ -104,5 +108,5 @@ def individual(request):
                   }
         return render(request, 'coreapp/individual.html', context)
     else:
-        messages.success(request, '%s The PIN you entered is incorrect, please try agian!' %(character_name))
+        messages.success(request, 'The PIN you entered is incorrect, please try agian!')
         return HttpResponseRedirect('/profile/')
