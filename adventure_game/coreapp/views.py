@@ -20,7 +20,10 @@ def profile(request):
     user=request.user
     userfname = user.first_name
     userlname = user.last_name
-    return render(request, 'coreapp/profile.html',{'family_members' : family_members})
+    context = {'family_members' : family_members,
+               'lastname' : userlname,
+               }
+    return render(request, 'coreapp/profile.html', context)
 
 @login_required(login_url='/')
 def individual(request):
