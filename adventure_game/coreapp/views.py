@@ -93,3 +93,7 @@ def add_family_member_submission(request):
     current_user = request.user
     current_user.character_set.create(character_name=full_name, character_pin=pin)
     return HttpResponseRedirect('/profile/')
+
+@login_required(login_url='/')
+def enter_pin(request):
+    return render(request, 'coreapp/individual.html')
