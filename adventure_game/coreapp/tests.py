@@ -49,4 +49,7 @@ class RegisterTests(TestCase):
         response = self.client.post("/registration-submission/",{'username' : 'test', 'password': 'test', 'email' : 'test123@123.com'},follow=True)
         self.assertIn('_auth_user_id',self.client.session)
 
+class ProfileTests(TestCase):
+    def setUp(self):
+        self.client = Client()
 

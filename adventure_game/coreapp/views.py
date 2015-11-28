@@ -4,6 +4,7 @@ from django.contrib import auth
 from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from map.models import Level
 from django.contrib import messages
@@ -13,6 +14,7 @@ def home(request,message=None):
     context.update(csrf(request))
     return render_to_response('coreapp/home.html',context,context_instance=RequestContext(request))
 
+@login_required(login_url='/')
 def profile(request):
     family_members = request.user.character_set.all()
     user=request.user
@@ -20,12 +22,15 @@ def profile(request):
     userlname = user.last_name
     return render(request, 'coreapp/profile.html',{'family_members' : family_members})
 
+@login_required(login_url='/')
 def individual(request):
     return render(request, 'coreapp/individual.html')
 
+@login_required(login_url='/')
 def story(request):
     return render(request, 'coreapp/story.html')
 
+@login_required(login_url='/')
 def auth_view(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
@@ -42,7 +47,7 @@ def auth_view(request):
         messages.success(request, 'The account you entered is invalid, please try again!')
         return HttpResponseRedirect('/')
 
-
+@login_required(login_url='/')
 def logout(request):
     auth.logout(request)
     messages.success(request, 'You have successfully logged out.')
@@ -71,6 +76,7 @@ def registration(request, message=None):
         context['message'] = message
     return render(request, 'auth/registration.html', context)
 
+@login_required(login_url='/')
 def add_family_member(request,message=None):
     context= {}
     context.update(csrf(request))
@@ -78,6 +84,7 @@ def add_family_member(request,message=None):
         context['message'] = message
     return render(request, 'auth/addfamily.html', context)
 
+@login_required(login_url='/')
 def add_family_member_submission(request):
     full_name = request.POST.get('member-name','')
     pin = request.POST.get('member-pin','')
