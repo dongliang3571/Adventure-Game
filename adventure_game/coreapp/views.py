@@ -18,7 +18,7 @@ def home(request,message=None):
 def profile(request):
     family_members = request.user.character_set.all()
     user=request.user
-    uerfname = user.first_name
+    userfname = user.first_name
     userlname = user.last_name
     return render(request, 'coreapp/profile.html',{'family_members' : family_members})
 
@@ -30,7 +30,6 @@ def individual(request):
 def story(request):
     return render(request, 'coreapp/story.html')
 
-@login_required(login_url='/')
 def auth_view(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')

@@ -52,4 +52,9 @@ class RegisterTests(TestCase):
 class ProfileTests(TestCase):
     def setUp(self):
         self.client = Client()
+        User.objects.create_user(username='testuser',password='pass')
+
+    def test_profile_view(self):
+        self.assertTrue(self.client.login(username='testuser',password='pass'))
+
 
