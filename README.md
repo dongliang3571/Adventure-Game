@@ -9,4 +9,9 @@ pip install -r requirements.txt
 
 **PostgresSQL**: Go to http://www.postgresql.org/ to download postgresSQL
 
-**psycopg2**: Go to http://initd.org/psycopg/ to download  psycopg2, this is database binding so that you can connect project to database.
+
+Initial data(for example, math questions) is saved in adventure_game/map/migrations/0002_auto_2...0618.py, run
+```
+python manage.py migrate
+```
+will automatically import the data to database.
