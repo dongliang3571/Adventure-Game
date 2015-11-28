@@ -97,4 +97,11 @@ def individual(request):
     character_name = request.POST.get('character_name', '')
     character_pin = request.POST.get('character_pin', '')
 
-    return render(request, 'coreapp/individual.html')
+    if user.character_set.filter(character_name=character_name, character_pin=character_pin):
+        character_name = character_name
+        context = { 'character_name' : character_name,
+        
+                  }
+        return render(request, 'coreapp/individual.html', context)
+    else:
+        return HttpResponseRedirect('/profile/')
