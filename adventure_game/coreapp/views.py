@@ -75,11 +75,9 @@ def registration(request, message=None):
     return render(request, 'auth/registration.html', context)
 
 @login_required(login_url='/')
-def add_family_member(request,message=None):
+def add_family_member(request):
     context= {}
     context.update(csrf(request))
-    if message is not None:
-        context['message'] = message
     return render(request, 'auth/addfamily.html', context)
 
 @login_required(login_url='/')

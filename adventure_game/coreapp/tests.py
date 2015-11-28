@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from coreapp.views import auth_view
 from coreapp.views import registration_submission
 from coreapp.views import add_family_member_submission
+from coreapp.views import add_family_member
 
 class LoginTests(TestCase):
     def setUp(self):
@@ -49,6 +50,13 @@ class RegisterTests(TestCase):
         response = self.client.post("/registration-submission/",{'username' : 'test', 'password': 'test', 'email' : 'test123@123.com'},follow=True)
         self.assertIn('_auth_user_id',self.client.session)
 
+    def test_user_added_to_db(self):
+        self.client.post("/registration-submission/",{'username' : 'test', 'password' : 'test'})
+        try:
+           test = User.objects.get(username="test")
+        except DoesNotExist:
+            self.fail("Retrieving brand new registered user from database failed. DoesNotExist exception raised.")
+
 
 class ProfileTests(TestCase):
     def setUp(self):
@@ -67,14 +75,22 @@ class ProfileTests(TestCase):
         family_members = list(response.context['family_members'])
         self.assertEqual(str(family_members[0]),'testchar')
 
+
 class AddFamilyMemberTests(TestCase):
     def setUp(self):
         self.client=Client()
         self.user = User.objects.create_user(username='testuser',password='pass')
         self.client.login(username='testuser',password='pass')
+        self.user.character_set.create(character_name="test",character_pin="1234")
 
     def test_pin_invalid_length(self):
         response = self.client.post('/add-family-member-submission/',{'member-name':'test','member-pin' :'12345'},follow=True)
         self.assertRedirects(response,'/add-family-member/')
         message = list(response.context['messages'])
         self.assertEqual(str(message[0]),'Please enter 4 characters as your PIN number')
+
+    def test_duplicate_family_member(self):
+        response = self.client.post('/add-family-member-submission/',{'member-name':'test','member-pin' :'1234'},follow=True)
+        self.assertRedirects(response,'/add-family-member/')
+        message = list(response.context['messages'])
+        self.assertEqual(str(message[0]),"This member has already been added, try another name")
