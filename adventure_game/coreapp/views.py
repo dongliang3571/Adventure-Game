@@ -1,9 +1,8 @@
-from django.shortcuts import get_object_or_404, render, render_to_response
-from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, render_to_response
+from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from map.models import Level
@@ -12,17 +11,15 @@ from django.contrib import messages
 def home(request,message=None):
     context = {}
     context.update(csrf(request))
-    return render_to_response('coreapp/home.html',context,context_instance=RequestContext(request))
+    return render_to_response('coreapp/home.html', context, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
 def profile(request):
     family_members = request.user.character_set.all()
-    user=request.user
-    userfname = user.first_name
+    user = request.user
     userlname = user.last_name
     context = {'family_members' : family_members,
-               'lastname' : userlname,
-               }
+               'lastname' : userlname}
     return render(request, 'coreapp/profile.html', context)
 
 @login_required(login_url='/')
@@ -61,8 +58,9 @@ def registration_submission(request):
         return registration(request, "Try again, the username %s %s." %(username, "is already taken"))
     if len(User.objects.filter(email=email)) != 0: #pylint: disable=E1101
         return registration(request, "Try again, %s %s." %("there is already an account with that email", email))
-    user = User.objects.create_user(username=username, email=email, password=password, first_name=firstname, last_name=lastname) #pylint: disable=E1101
-    level=Level.objects.create(user=user,level_number=0)
+    user = User.objects.create_user(username=username, email=email, password=password,
+                                    first_name=firstname, last_name=lastname) #pylint: disable=E1101
+    Level.objects.create(user=user,level_number=0)
     user = auth.authenticate(username=username, password=password)
     auth.login(request, user)
     return HttpResponseRedirect('/')
@@ -76,14 +74,14 @@ def registration(request, message=None):
 
 @login_required(login_url='/')
 def add_family_member(request):
-    context= {}
+    context = {}
     context.update(csrf(request))
     return render(request, 'auth/addfamily.html', context)
 
 @login_required(login_url='/')
 def add_family_member_submission(request):
-    full_name = request.POST.get('member-name','')
-    pin = request.POST.get('member-pin','')
+    full_name = request.POST.get('member-name', '')
+    pin = request.POST.get('member-pin', '')
     if not len(pin) == 4:
         messages.success(request, 'Please enter 4 characters as your PIN number')
         return HttpResponseRedirect('/add-family-member/')
