@@ -49,12 +49,20 @@ class RegisterTests(TestCase):
         response = self.client.post("/registration-submission/",{'username' : 'test', 'password': 'test', 'email' : 'test123@123.com'},follow=True)
         self.assertIn('_auth_user_id',self.client.session)
 
+
 class ProfileTests(TestCase):
     def setUp(self):
         self.client = Client()
-        User.objects.create_user(username='testuser',password='pass')
+        self.user = User.objects.create_user(username='testuser',password='pass')
 
-    def test_profile_view(self):
+    def test_view_not_loggedin(self):
+        response = self.client.get('/profile/')
+        self.assertEqual(response.status_code,302)
+
+    def test_context(self):
         self.assertTrue(self.client.login(username='testuser',password='pass'))
-
-
+        self.user.character_set.create(character_name="testchar",character_pin="1234")
+        self.assertEqual(len(self.user.character_set.all()),1)
+        response = self.client.get('/profile/')
+        family_members = list(response.context['family_members'])
+        self.assertEqual(str(family_members[0]),'testchar')
