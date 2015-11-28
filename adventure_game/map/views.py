@@ -37,7 +37,8 @@ def task1(request):
 
 def task1_question1(request):
     if request.user.is_authenticated():
-
+        if request.user.level.task1_question1_completion==True:
+            return HttpResponseRedirect(reverse('map:task1_question2'))
     # if request.user.level.question_number==11:
     #     housenumber='888 Madision ave, New York, NY10021'
     #     return render(request, 'map/task1_question1.html', {'message':'Congradulations, You have gotten your clue.','isComplete':'complete','houseNumber':housenumber})
@@ -54,6 +55,10 @@ def task1_question1(request):
                     #     housenumber=housenumber+' '+str(questionTempObject.Answer)
 
                     housenumber='888 Madision ave, New York, NY 10021'
+                    user=request.user
+                    l = request.user.level
+                    l.task1_question1_completion = True;
+                    l.save()
                     return render(request, 'map/task1_question1.html',{'isShow':'show','houseNumber':housenumber,
                     'message':'Congradulations, You have gotten your clue.','isComplete':'complete'})
                 user=request.user
