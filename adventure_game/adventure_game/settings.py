@@ -54,7 +54,7 @@ MIDDLEWARE_CLASSES = (
     'adventure_game.middleware.AutoLogout',
 )
 
-AUTO_LOGOUT_DELAY = 5 # logout after 5 minutes
+AUTO_LOGOUT_DELAY = 30 # logout after 30 minutes
 
 ROOT_URLCONF = 'adventure_game.urls'
 
