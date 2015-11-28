@@ -100,8 +100,9 @@ def individual(request):
     if user.character_set.filter(character_name=character_name, character_pin=character_pin):
         character_name = character_name
         context = { 'character_name' : character_name,
-        
+
                   }
         return render(request, 'coreapp/individual.html', context)
     else:
+        messages.success(request, 'The PIN you entered is incorrect, please try agian!')
         return HttpResponseRedirect('/profile/')
