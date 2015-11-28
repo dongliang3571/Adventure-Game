@@ -26,10 +26,6 @@ def profile(request):
     return render(request, 'coreapp/profile.html', context)
 
 @login_required(login_url='/')
-def individual(request):
-    return render(request, 'coreapp/individual.html')
-
-@login_required(login_url='/')
 def story(request):
     return render(request, 'coreapp/story.html')
 
@@ -94,6 +90,11 @@ def add_family_member_submission(request):
     current_user.character_set.create(character_name=full_name, character_pin=pin)
     return HttpResponseRedirect('/profile/')
 
+
 @login_required(login_url='/')
-def enter_pin(request):
+def individual(request):
+    user = request.user
+    character_name = request.POST.get('character_name', '')
+    character_pin = request.POST.get('character_pin', '')
+
     return render(request, 'coreapp/individual.html')
