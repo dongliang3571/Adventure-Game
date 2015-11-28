@@ -1,6 +1,7 @@
 import unittest
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 
 from coreapp.views import auth_view
 from coreapp.views import registration_submission
@@ -10,7 +11,7 @@ from coreapp.views import add_family_member
 class LoginTests(TestCase):
     def setUp(self):
         self.client = Client()
-        User.objects.create_user(username='testuser',password='testpass', last_name="test")
+        self.user = User.objects.create_user(username='testuser',password='testpass', last_name="test")
 
     def test_auth_view_redirect(self):
         response = self.client.post('/auth/',{'username': 'sam123', 'password': 'abc123'})
@@ -28,6 +29,12 @@ class LoginTests(TestCase):
         message = list(response.context['messages'])
         self.assertEqual("Hi test, you have successfully logged in." , str(message[0]))
 
+    def test_auth_banned_message(self):
+        self.user.is_active = False
+        self.user.save()
+        response = self.client.post('/auth/',{'username':'testuser','password':'testpass'},follow=True)
+        message = list(response.context['messages'])
+        self.assertEqual("Your account has been banned, please contact us to re-activate your account!" , str(message[0]))
 
 class RegisterTests(TestCase):
     def setUp(self):
@@ -54,8 +61,8 @@ class RegisterTests(TestCase):
         self.client.post("/registration-submission/",{'username' : 'test', 'password' : 'test'})
         try:
            test = User.objects.get(username="test")
-        except DoesNotExist:
-            self.fail("Retrieving brand new registered user from database failed. DoesNotExist exception raised.")
+        except ObjectDoesNotExist:
+            self.fail("Retrieving brand new registered user from database failed. ObjectDoesNotExist exception raised.")
 
 
 class ProfileTests(TestCase):
@@ -94,3 +101,33 @@ class AddFamilyMemberTests(TestCase):
         self.assertRedirects(response,'/add-family-member/')
         message = list(response.context['messages'])
         self.assertEqual(str(message[0]),"This member has already been added, try another name")
+
+    def test_add_member_success(self):
+        response = self.client.post('/add-family-member-submission/',{'member-name' : 'testmember', 'member-pin' : '1234'})
+        self.assertRedirects(response,'/profile/')
+        self.assertTrue(self.user.character_set.get(character_name="testmember"))
+
+class StoryViewTests(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser',password='pass')
+        self.client.login(username='testuser',password='pass')
+
+    def test_template(self):
+        response = self.client.get('/story/')
+        self.assertEqual(response.status_code,200)
+        self.assertTemplateUsed(response,'coreapp/story.html')
+
+class LogoutTests(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser',password='pass')
+        self.client.login(username='testuser',password='pass')
+
+    def test_logout(self):
+        response = self.client.get('/logout/',follow=True)
+        self.assertRedirects(response,'/')
+        message = list(response.context['messages'])
+        self.assertEqual(str(message[0]),'You have successfully logged out.')
+        self.assertNotIn('_auth_user_id',self.client.session)
+

@@ -39,7 +39,7 @@ def auth_view(request):
             messages.success(request, 'Hi %s, you have successfully logged in.' %(user.last_name))
             return HttpResponseRedirect('/')
         else:
-            messages.success(request, 'Your account has been banned, please contact us to re-active your account!')
+            messages.success(request, 'Your account has been banned, please contact us to re-activate your account!')
             return HttpResponseRedirect('/')
     else:
         messages.success(request, 'The account you entered is invalid, please try again!')
