@@ -112,5 +112,5 @@ def individual(request):
                   }
         return render(request, 'coreapp/individual.html', context)
     else:
-        messages.success(request, 'The PIN you entered is incorrect, please try agian!')
+        messages.success(request, 'The PIN you entered is incorrect, please try again!')
         return HttpResponseRedirect('/profile/')

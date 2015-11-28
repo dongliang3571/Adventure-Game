@@ -66,3 +66,15 @@ class ProfileTests(TestCase):
         response = self.client.get('/profile/')
         family_members = list(response.context['family_members'])
         self.assertEqual(str(family_members[0]),'testchar')
+
+class AddFamilyMemberTests(TestCase):
+    def setUp(self):
+        self.client=Client()
+        self.user = User.objects.create_user(username='testuser',password='pass')
+        self.client.login(username='testuser',password='pass')
+
+    def test_pin_invalid_length(self):
+        response = self.client.post('/add-family-member-submission/',{'member-name':'test','member-pin' :'12345'},follow=True)
+        self.assertRedirects(response,'/add-family-member/')
+        message = list(response.context['messages'])
+        self.assertEqual(str(message[0]),'Please enter 4 characters as your PIN number')
