@@ -4,7 +4,7 @@
 <div class ="team">
   <div class="container-fluid">
     <div class="row">
-      <h1 class="text-center">Welcome!</h1>
+      <h2 class="text-center">Welcome the <i>{{ lastname }}</i> family!</h2>
   {% if not family_members %}
     <p class="text-center">It seems you have no family members added to your account yet!<br>
       Would you like to add one now?</p>
@@ -16,33 +16,49 @@
     </a>
     </div>
   {% else %}
+    <br>
+    <h5 class="text-center">Select your character below.. </h5>
+    <br>
+
+    <form action="/individual/" method="POST">
+
+
         {% for items in family_members %}
           <div class="col-md-4">
             <img src={% static "img/mother.png" %} class="center-block img-responsive" width="285"/>
-            <h3 class="text-center"> {{ items }} </h3>
+            <h3 class="text-center"> <input type="radio" name="character_name" value =  "{{ items }}" > {{ items }} </h3>
           </div>
         {% endfor %}
     </div>
   </div>
+  <br>
+  <h5 class="text-center"> Enter the PIN for the selected character </h5>
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-lg-offset-4 box-shadow--6p">
         <div class="panel panel-default pin-panel">
           <div class="text-center panel-body">
             <h3>Pin</h3>
-            <form class="form-inline text-center" action="/individual/" method="POST">
+            <!-- <form class="form-inline text-center" action="/individual/" method="POST"> -->
               {% csrf_token %}
-              <input type="password" name="pin" id="pin" class="form-control" placeholder="Enter PIN">
-              <button type="submit" class="btn submit-button">
+              <input type="password" name="character_pin" id="pin" class="form-control" placeholder="Enter PIN To Go To Your Page">
+              <br>
+              <div id=button>
+              <button type="submit" class="btn submit-button">To my individual page
                 <i class="fa fa-arrow-right"></i>
               </button>
+            </div>
+            <br>
+            <a class="add-family-link" href="{% url 'coreapp:add-family-member' %}">Click Here To Add More Family Members</a>
+
             </form>
-            <a class="add-family-link" href="{% url 'coreapp:add-family-member' %}">Add a Family Member</a>
+
           </div>
         </div>
       </div>
-  {% endif %}
     </div>
   </div>
 </div>
+
+{% endif %}
 {% endblock %}

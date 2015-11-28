@@ -54,7 +54,7 @@ MIDDLEWARE_CLASSES = (
     'adventure_game.middleware.AutoLogout',
 )
 
-AUTO_LOGOUT_DELAY = 5 # logout after 5 minutes
+AUTO_LOGOUT_DELAY = 30 # logout after 30 minutes
 
 ROOT_URLCONF = 'adventure_game.urls'
 
@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'adventure_game.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'testing',
+        'NAME': 'agdb',
         'USER': '',
         'PASSWORD': '',
         'HOST': 'localhost',
