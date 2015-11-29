@@ -9,6 +9,7 @@ class Level(models.Model):
     user = models.OneToOneField(User,primary_key=True)
     level_number = models.IntegerField(default=0)
     question_number = models.IntegerField(default=1)
+    task1_question1_completion = models.BooleanField(default=False)
 
 
     def __unicode__(self):
