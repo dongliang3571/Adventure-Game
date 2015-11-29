@@ -8,6 +8,8 @@ def combine_names(apps, schema_editor):
     # version than this migration expects. We use the historical version.
     hint=apps.get_model("map","hint")
     hint.objects.create(hint_text="888 Madision ave, New York, NY 10021")
+    hint.objects.create(
+        hint_text="Find the hidden paper and string around Bethesda Fountain, make an origami boat")
     h=hint.objects.get(pk=1)
     questions = apps.get_model("map", "QuestionAndAnswer")
     questions.objects.create(
@@ -40,6 +42,12 @@ def combine_names(apps, schema_editor):
     questions.objects.create(
         hint=h, Question="What is the 14th letter of the English alphabet?", Answer="n",
         QuestionNumber=10)
+
+    h2=hint.objects.get(pk=2)
+    questions.objects.create(
+        hint=h2, Question="Enter the number on the paper that you found around the clothing store",
+        Answer="1234", QuestionNumber=0
+    )
 
 
 class Migration(migrations.Migration):

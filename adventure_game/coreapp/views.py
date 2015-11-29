@@ -16,6 +16,15 @@ def home(request,message=None):
 
 @login_required(login_url='/')
 def profile(request):
+    characters = request.user.character_set.all()
+
+    if characters.filter(is_logged=True):
+        character_name = characters.filter(is_logged=True)[0].character_name
+        context = { 'character_name' : character_name,
+
+                  }
+        return render(request, 'coreapp/individual.html', context)
+
     family_members = request.user.character_set.all()
     user=request.user
     userfname = user.first_name
@@ -110,6 +119,10 @@ def individual(request):
         context = { 'character_name' : character_name,
 
                   }
+        char = user.character_set.all().filter(character_name=character_name, character_pin=character_pin)[0]
+        char.is_logged = True
+        char.save();
+
         return render(request, 'coreapp/individual.html', context)
     else:
         messages.success(request, 'The PIN you entered is incorrect, please try agian!')
