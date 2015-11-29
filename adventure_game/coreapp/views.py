@@ -114,6 +114,20 @@ def individual(request):
     character_name = request.POST.get('character_name', '')
     character_pin = request.POST.get('character_pin', '')
 
+    characters = request.user.character_set.all()
+    if characters.filter(is_logged=True):
+        family_members = request.user.character_set.all()
+        user=request.user
+        userfname = user.first_name
+        userlname = user.last_name
+        context = {'family_members' : family_members,
+                   'lastname' : userlname,
+                   }
+        char = characters.filter(is_logged=True)[0]
+        char.is_logged = False
+        char.save()
+        return render(request, 'coreapp/profile.html', context)
+
     if user.character_set.filter(character_name=character_name, character_pin=character_pin):
         character_name = character_name
         context = { 'character_name' : character_name,
