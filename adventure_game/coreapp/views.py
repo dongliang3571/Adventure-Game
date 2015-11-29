@@ -39,7 +39,7 @@ def auth_view(request):
             messages.success(request, 'Hi %s, you have successfully logged in.' %(user.last_name))
             return HttpResponseRedirect('/')
         else:
-            messages.success(request, 'Your account has been banned, please contact us to re-active your account!')
+            messages.success(request, 'Your account has been banned, please contact us to re-activate your account!')
             return HttpResponseRedirect('/')
     else:
         messages.success(request, 'The account you entered is invalid, please try again!')
@@ -75,11 +75,9 @@ def registration(request, message=None):
     return render(request, 'auth/registration.html', context)
 
 @login_required(login_url='/')
-def add_family_member(request,message=None):
+def add_family_member(request):
     context= {}
     context.update(csrf(request))
-    if message is not None:
-        context['message'] = message
     return render(request, 'auth/addfamily.html', context)
 
 @login_required(login_url='/')
@@ -112,5 +110,5 @@ def individual(request):
                   }
         return render(request, 'coreapp/individual.html', context)
     else:
-        messages.success(request, 'The PIN you entered is incorrect, please try agian!')
+        messages.success(request, 'The PIN you entered is incorrect, please try again!')
         return HttpResponseRedirect('/profile/')
