@@ -5,3 +5,19 @@ from .models import QuestionAndAnswer
 
 admin.site.register(Level)
 admin.site.register(QuestionAndAnswer)
+
+##########################################
+from .models import Adventure, Task
+
+class HintsInLine(admin.StackedInline):
+    model = Hints
+    extra = 3
+
+class TaskInLine(admin.StackedInline):
+    model = Task
+    extra = 3
+
+class AdventureAdmin(admin.ModelAdmin):
+    inlines = [TaskInLine]
+
+admin.site.register(Adventure, AdventureAdmin)
