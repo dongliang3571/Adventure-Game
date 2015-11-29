@@ -1,3 +1,5 @@
+#pylint: disable=E1101
+
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponseRedirect
 from django.contrib import auth
@@ -8,7 +10,7 @@ from django.template import RequestContext
 from map.models import Level
 from django.contrib import messages
 
-def home(request,message=None):
+def home(request):
     context = {}
     context.update(csrf(request))
     return render_to_response('coreapp/home.html', context, context_instance=RequestContext(request))
@@ -54,13 +56,13 @@ def registration_submission(request):
     lastname = request.POST.get('lastname', '')
     email = request.POST.get('email', '')
     password = request.POST.get('password', '')
-    if len(User.objects.filter(username=username)) != 0: #pylint: disable=E1101
+    if len(User.objects.filter(username=username)) != 0:
         return registration(request, "Try again, the username %s %s." %(username, "is already taken"))
-    if len(User.objects.filter(email=email)) != 0: #pylint: disable=E1101
+    if len(User.objects.filter(email=email)) != 0:
         return registration(request, "Try again, %s %s." %("there is already an account with that email", email))
     user = User.objects.create_user(username=username, email=email, password=password,
-                                    first_name=firstname, last_name=lastname) #pylint: disable=E1101
-    Level.objects.create(user=user,level_number=0)
+                                    first_name=firstname, last_name=lastname)
+    Level.objects.create(user=user, level_number=0)
     user = auth.authenticate(username=username, password=password)
     auth.login(request, user)
     return HttpResponseRedirect('/')
@@ -103,7 +105,7 @@ def individual(request):
 
     if user.character_set.filter(character_name=character_name, character_pin=character_pin):
         character_name = character_name
-        context = { 'character_name' : character_name,
+        context = {'character_name' : character_name,
 
                   }
         return render(request, 'coreapp/individual.html', context)
