@@ -23,3 +23,7 @@ class QuestionAndAnswer(models.Model):
     QuestionNumber = models.IntegerField(default=1)
     def __unicode__(self):
         return 'Question #'+str(self.QuestionNumber)+' Question: '+str(self.Question)+'Answer: '+str(self.Answer)
+
+
+class hints(models.Model):
+    task1_hint1 = models.CharField(max_length=200)
