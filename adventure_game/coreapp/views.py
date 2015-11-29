@@ -17,22 +17,21 @@ def home(request,message=None):
 @login_required(login_url='/')
 def profile(request):
     characters = request.user.character_set.all()
-
     if characters.filter(is_logged=True):
         character_name = characters.filter(is_logged=True)[0].character_name
         context = { 'character_name' : character_name,
 
                   }
         return render(request, 'coreapp/individual.html', context)
-
-    family_members = request.user.character_set.all()
-    user=request.user
-    userfname = user.first_name
-    userlname = user.last_name
-    context = {'family_members' : family_members,
-               'lastname' : userlname,
-               }
-    return render(request, 'coreapp/profile.html', context)
+    else:
+        family_members = request.user.character_set.all()
+        user=request.user
+        userfname = user.first_name
+        userlname = user.last_name
+        context = {'family_members' : family_members,
+                   'lastname' : userlname,
+                   }
+        return render(request, 'coreapp/profile.html', context)
 
 @login_required(login_url='/')
 def story(request):
@@ -110,6 +109,7 @@ def add_family_member_submission(request):
 
 @login_required(login_url='/')
 def individual(request):
+
     user = request.user
     character_name = request.POST.get('character_name', '')
     character_pin = request.POST.get('character_pin', '')
