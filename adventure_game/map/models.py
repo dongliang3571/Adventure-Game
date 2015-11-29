@@ -15,9 +15,16 @@ class Level(models.Model):
     def __unicode__(self):
         return str(self.user.username)+"'s current level is '" + str(self.level_number)
 
+class hint(models.Model):
+
+    hint_text = models.CharField(max_length=200)
+
+
+    def __unicode__(self):
+        return 'Hint is <'+str(self.hint_text)+'>'
 
 class QuestionAndAnswer(models.Model):
-
+    hint = models.ForeignKey(hint)
     Question = models.CharField(max_length=200)
     Answer = models.CharField(max_length=200)
     QuestionNumber = models.IntegerField(default=1)
