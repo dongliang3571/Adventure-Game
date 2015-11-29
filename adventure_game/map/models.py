@@ -30,3 +30,36 @@ class QuestionAndAnswer(models.Model):
     QuestionNumber = models.IntegerField(default=1)
     def __unicode__(self):
         return 'Question #'+str(self.QuestionNumber)+' Question: '+str(self.Question)+'Answer: '+str(self.Answer)
+
+################################################################
+class Adventure(models.Model):
+    adventure_name = models.CharField(max_length=200)
+    adventure_description = models.TextField(max_length=200)
+
+    def __str__(self):
+        return self.adventure_name
+
+
+class Task(models.Model):
+    adventure_name = models.ForeignKey(Adventure)
+    task = models.CharField(max_length=200)
+    task_details = models.TextField(max_length=200)
+    hint = models.CharField(max_length=200, null=True)
+    def __str__(self):
+        return self.task
+
+class Hints(models.Model):
+    task = models.ForeignKey(Task)
+    hints = models.CharField(max_length=200) #answers to the all the questions
+    question = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.hint
+
+
+class Answer(models.Model):
+    question = models.ForeignKey(Hints)
+    answer = models.CharField(max_length=200)
+
+    def __str__(self):
+        return 'Q: '+self.question + 'A: '+self.answer
