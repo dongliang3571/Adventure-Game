@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    def __unicode__(self):
+    def __str__(self):
         return u'Profile of user: %s' % self.user.username
 
 class Character(models.Model):

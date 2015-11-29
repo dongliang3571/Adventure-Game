@@ -1,9 +1,11 @@
 #pylint: disable=E1101
+# -*- coding: utf-8 -*-
 #import unittest
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 
+from coreapp.models import UserProfile
 # from coreapp.views import auth_view
 # from coreapp.views import registration_submission
 # from coreapp.views import add_family_member_submission
@@ -115,6 +117,25 @@ class AddFamilyMemberTests(TestCase):
         self.assertRedirects(response, '/profile/')
         self.assertTrue(self.user.character_set.get(character_name="testmember"))
 
+class IndividualViewTests(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='pass')
+        self.client.login(username='testuser', password='pass')
+        self.user.character_set.create(character_name="test", character_pin="1234")
+
+    def test_invalid_pin(self):
+        response = self.client.post('/individual/', {'character_name': 'test', 'character_pin': '2234'},follow = True)
+        message = list(response.context['messages'])
+        self.assertRedirects(response, '/profile/')
+        self.assertEqual(str(message[0]), 'The PIN you entered is incorrect, please try again!')
+
+    def test_valid_pin(self):
+        response = self.client.post('/individual/', {'character_name': 'test', 'character_pin': '1234'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['character_name'], 'test')
+
+
 class StoryViewTests(TestCase):
     def setUp(self):
         self.client = Client()
@@ -139,3 +160,10 @@ class LogoutTests(TestCase):
         self.assertEqual(str(message[0]), 'You have successfully logged out.')
         self.assertNotIn('_auth_user_id', self.client.session)
 
+# Not sure if we even need this since I don't think we're using UserProfile.
+class UserProfileModel(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='test', password='pass')
+        self.userprofile = UserProfile(user=self.user)
+    def test_to_string(self):
+        self.assertEqual(str(self.userprofile), u'Profile of user: test')
