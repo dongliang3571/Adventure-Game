@@ -33,8 +33,15 @@ class QuestionAndAnswer(models.Model):
 
 ################################################################
 class Adventure(models.Model):
+    adventure_id = models.CharField(unique=True, max_length=50, default=0000)
     adventure_name = models.CharField(max_length=200)
     adventure_description = models.TextField(max_length=200)
+
+    adventure_category_choices = (
+        ('Indoor', 'Indoor'),
+        ('Outdoor', 'Outdoor'),
+    )
+    adventure_category = models.CharField(max_length=10, choices = adventure_category_choices, default='Outdoor')
 
     def __str__(self):
         return self.adventure_name

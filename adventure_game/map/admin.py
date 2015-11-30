@@ -19,5 +19,6 @@ class TaskInLine(admin.StackedInline):
 
 class AdventureAdmin(admin.ModelAdmin):
     inlines = [TaskInLine]
-
+    list_display = ('adventure_id', 'adventure_name', 'adventure_category')
+    ordering = ['adventure_id']
 admin.site.register(Adventure, AdventureAdmin)
