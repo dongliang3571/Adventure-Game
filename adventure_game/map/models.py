@@ -33,9 +33,9 @@ class QuestionAndAnswer(models.Model):
 
 ################################################################
 class Adventure(models.Model):
-    adventure_id = models.CharField(unique=True, max_length=50, default=0000)
+    adventure_id = models.CharField(unique=True, max_length=50, default='0000')
     adventure_name = models.CharField(max_length=200)
-    adventure_description = models.TextField(max_length=200)
+    adventure_description = models.TextField(max_length=200, blank=True, default='')
 
     adventure_category_choices = (
         ('Indoor', 'Indoor'),
@@ -49,11 +49,11 @@ class Adventure(models.Model):
 
 class Task(models.Model):
     adventure_name = models.ForeignKey(Adventure)
-    task = models.CharField(max_length=200)
-    task_details = models.TextField(max_length=200)
-    hint = models.CharField(max_length=200, null=True)
+    task_number = models.CharField(max_length=50, default='')
+    task_detail = models.TextField(max_length=200, blank=True, default='')
+    hint = models.CharField(max_length=200, blank=True, default='')
     def __str__(self):
-        return self.task
+        return self.task_detail
 
 class Hints(models.Model):
     task = models.ForeignKey(Task)
