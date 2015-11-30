@@ -51,7 +51,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'adventure_game.middleware.AutoLogout',
 )
+
+AUTO_LOGOUT_DELAY = 30 # logout after 30 minutes
 
 ROOT_URLCONF = 'adventure_game.urls'
 
@@ -84,10 +87,11 @@ DATABASES = {
         'USER': '',
         'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '',  
+        'PORT': '',
     }
 }
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -102,6 +106,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/

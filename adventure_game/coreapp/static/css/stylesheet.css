@@ -284,15 +284,16 @@ img.park {
     padding: 200px 0;
     background-color:#ece9e7;
 }
+
 .team {
-    padding-bottom: 200px;
+    padding-bottom: 100px;
     padding-top: 100px;
     background-color:#ece9e7;
-    min-height: 700px;
+    min-height: 500px;
 }
 
-.team h1 {
-    font-size:5.0em;
+.team h2 {
+    font-size:3.0em;
     margin-bottom: 100px;
 }
 
@@ -325,4 +326,13 @@ img.park {
 }
 .pin-panel{
     margin-top: 100px;
+}
+
+#alertmessage{
+    text-align: center;
+    margin-bottom: 0px;
+    position: absolute;
+    width: 100%;
+    z-index: 11;
+
 }

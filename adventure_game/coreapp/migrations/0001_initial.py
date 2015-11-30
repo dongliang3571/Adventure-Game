@@ -1,3 +1,4 @@
+#pylint: disable=C0103
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 

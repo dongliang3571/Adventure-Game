@@ -1,38 +1,62 @@
+{% extends "map/task_base.html" %}
 {% load staticfiles %}
-<html><head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href={% static "task/css/task2.css" %} rel="stylesheet" type="text/css">
-    </head><body>
-        <div class="navbar navbar-default navbar-inverse navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"><span>Adventure Game</span></a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                          <a href={% url 'coreapp:profile' %}>Profile</a>
-                        </li>
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-                        <li>
-                          <a href={% url 'coreapp:logout' %}>Log Out</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div><div class="section"><div class="container"><div class="row"><div class="col-md-12"><h1 class="text-center">Magic Lessons at Belvedere Castle</h1></div></div></div></div><div class="section"><div class="container"><div class="row"><div class="col-md-6"><p>I"m so glad you made it! I felt the king trying to block my message to you and I feared you wouldn't find your way here! You have proven yourselves to be great adventurers! I fear that things will only get more difficult though. I think we'll have to use some magic of our own now. Belvedere Castle is the highest place in your Central Park. Being there makes it easier to talk to you without interference, but even I can't cast a spell at this distnace. What I can do is teach you the spells you need!<br></p></div><div class="col-md-6"><img src= {% static "task/img/pic.gif" %} class="img-responsive"></div></div></div></div><div class="section"><div class="container"><div class="row"><div class="col-md-6"><div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" allowfullscreen="" src="https://www.youtube.com/watch?v=8cDQTlwlQGE"></iframe></div></div><div class="col-md-6"><p>I'm sure the king knows that you're helping us now since he's trying to block my messages. You may be in danger. This first spell will allow you to make a warrior's helm from an ordinary piece of paper. This helm will increase the power you already possess. It will definitely make you quite formidable!</p></div></div></div></div><div class="section"><div class="container"><div class="row"><div class="col-md-12"><a class="btn btn-block btn-info">We've mastered the first spell!</a></div></div></div></div>
+{% block title %}Task 2{% endblock %}
+{% block map_css_js %}
+<link rel="stylesheet" type="text/css" href={% static "map/css/task.css" %}>
 
+{% endblock %}
+{% block content %}
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">Magic Lessons at Belvedere Castle</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p>I"m so glad you made it! I felt the king trying to block my message
+           to you and I feared you wouldn't find your way here! You have proven
+            yourselves to be great adventurers! I fear that things will only
+            get more difficult though. I think we'll have to use some magic of
+            our own now. Belvedere Castle is the highest place in your Central
+            Park. Being there makes it easier to talk to you without
+            interference, but even I can't cast a spell at this distnace.
+            What I can do is teach you the spells you need!<br>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <img src= {% static "task/img/pic.gif" %} class="img-responsive">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="row"><div class="col-md-6">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" allowfullscreen="" src="https://www.youtube.com/watch?v=8cDQTlwlQGE"></iframe>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <p>I'm sure the king knows that you're helping us now since he's trying to block my messages. You may be in danger. This first spell will allow you to make a warrior's helm from an ordinary piece of paper. This helm will increase the power you already possess. It will definitely make you quite formidable!</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a class="btn btn-block btn-info">We've mastered the first spell!</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-</body></html>
+{% endblock %}

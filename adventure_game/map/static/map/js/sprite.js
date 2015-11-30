@@ -224,49 +224,53 @@ $(document).on('keypress', function(e) {
 });
 
 
-$(document).ready(function(){
-    $("#next").click(function(){
-      count=count+1;
-      if (count>4) {
-        count=4;
-      }
-      if (count==1) {
-        $("#boy").attr('class','boy boy1');
-      }
-      else if(count==2){
-        $("#boy").attr('class','boy boy1 boy2');
-      }
-      else if(count==3){
-        $("#boy").attr('class','boy boy1 boy2 boy3');
-      }
-      else if(count==4){
-        $("#boy").attr('class','boy boy1 boy2 boy3 boy4');
-      }
+// $(document).ready(function(){
+//     $("#next").click(function(){
+//       count=count+1;
+//       if (count>4) {
+//         count=4;
+//       }
+//       if (count==1) {
+//         $("#boy").attr('class','boy boy1');
+//       }
+//       else if(count==2){
+//         $("#boy").attr('class','boy boy1 boy2');
+//       }
+//       else if(count==3){
+//         $("#boy").attr('class','boy boy1 boy2 boy3');
+//       }
+//       else if(count==4){
+//         $("#boy").attr('class','boy boy1 boy2 boy3 boy4');
+//       }
+//
+//
+//     });
+//
+//     $("#previous").click(function(){
+//       count=count-1;
+//       if (count<0) {
+//         count=0;
+//       }
+//       if (count==3) {
+//         $("#boy").attr('class','boy boy1 boy2 boy3');
+//       }
+//       else if(count==2){
+//         $("#boy").attr('class','boy boy1 boy2');
+//       }
+//       else if (count==1) {
+//         $("#boy").attr('class','boy boy1');
+//       }
+//       else if (count==0) {
+//         $("#boy").attr('class','boy');
+//       }
+//     });
+// });
 
+$(function() {
+  setInterval(render_boy,250);
+  setInterval(render_tree,10);
 
-    });
-
-    $("#previous").click(function(){
-      count=count-1;
-      if (count<0) {
-        count=0;
-      }
-      if (count==3) {
-        $("#boy").attr('class','boy boy1 boy2 boy3');
-      }
-      else if(count==2){
-        $("#boy").attr('class','boy boy1 boy2');
-      }
-      else if (count==1) {
-        $("#boy").attr('class','boy boy1');
-      }
-      else if (count==0) {
-        $("#boy").attr('class','boy');
-      }
-    });
 });
-setInterval(render_boy,250);
-setInterval(render_tree,10);
 // function gameLoop () {
   // update();
   // female.addEventListener("load",render());

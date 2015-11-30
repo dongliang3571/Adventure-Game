@@ -3,11 +3,46 @@
 
 }
 #form{
-  margin-top: 200px;
+  margin-top: 100px;
   text-align: center;
 }
 #space{
   text-align: center;
   height: 400px;
+}
+body{
+  background-color: #2baacf;
+}
+
+h1{
+  margin-top: 40px;
+  text-align: center;
+  font-size: 2em;
+  min-width: 80%;
+}
+.hamster_head1{
+  float: left;
+  max-width: 10%;
+
+}
+.hamster_head2{
+  float: right;
+  max-width: 13%;
+}
+
+.address{
+  text-align: center;
+}
+
+.hasBorder{
+  border: 2px solid red;
+  font-size: 2em;
+}
+.completion{
   margin-top: 100px;
+  text-align: center;
+}
+
+.hint{
+  font-size: 2em;
 }
