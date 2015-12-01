@@ -27,5 +27,13 @@ class Level(models.Model):
     )
     user_level = models.IntegerField(choices = user_level_choices, default='1')
 
-    def __unicode__ (self):
+    def __unicode__(self):
         return self.user_level
+
+
+class Track(models.Model):
+    user = models.ForeignKey(User)
+    adventures_done = models.CharField(blank=True, default='')
+
+    def __unicode__(self):
+        return self.adventures_done
