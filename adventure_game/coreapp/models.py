@@ -14,3 +14,18 @@ class Character(models.Model):
 
     def __str__(self):
         return self.character_name
+
+class Level(models.Model):
+    user = models.ForeignKey(User)
+    user_point = models.PositiveIntegerField(default=0)
+    user_level_choices = (
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+    )
+    user_level = models.IntegerField(choices = user_level_choices, default='1')
+
+    def __unicode__ (self):
+        return self.user_level
