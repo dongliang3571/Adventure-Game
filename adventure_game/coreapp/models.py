@@ -15,6 +15,7 @@ class Character(models.Model):
     def __str__(self):
         return self.character_name
 
+#############################################
 class Level(models.Model):
     user = models.ForeignKey(User)
     user_point = models.PositiveIntegerField(default=0)
@@ -37,3 +38,12 @@ class Track(models.Model):
 
     def __unicode__(self):
         return self.adventures_done
+
+
+class Game_saved(models.Model):
+    user = models.ForeignKey(User)
+    adventure_saved = models.CharField(blank=True, default='')  #adventure_id
+    task_saved = models.CharField(blank=True, default='')   #task_number
+
+    def __unicode__(self):
+        return 'Last saved at adventure id#'+str(self.adventure_saved) + 'task #:' + str(self.task_saved)
