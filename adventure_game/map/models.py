@@ -68,18 +68,20 @@ class Task(models.Model):
     def __str__(self):
         return self.task_number +': ' + self.task_detail
 
-class Hints(models.Model):
-    task_number = models.ForeignKey(Task)
-    hints = models.CharField(max_length=200) #answers to the all the questions
-    question = models.CharField(max_length=200)
-
+class Question(models.Model):
+    question_type_choices = (
+        ('Math', 'Math'),
+        ('English', 'English'),
+        ('History', 'History'),
+        ('Science', 'Science'),
+    )
+    question_type = models.CharField(max_length=10, choices = question_type_choices, default='Math')
+    question_age_choices = (
+        ('Pre-k', 'Pre-k'),
+        ('Age 4-7', 'Age 4-7'),
+        ('Age 8-10', 'Age 8-10'),
+    )
+    question_age = models.CharField(max_length=10, choices = question_age_choices, default='Pre-k')
+    question_text = models.CharField(max_length=200, blank=True, default='')
     def __str__(self):
-        return self.hints
-
-
-class Answer(models.Model):
-    question = models.ForeignKey(Hints)
-    answer = models.CharField(max_length=200)
-
-    def __str__(self):
-        return 'Q: '+self.question + 'A: '+self.answer
+        return self.question_text

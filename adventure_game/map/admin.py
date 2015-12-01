@@ -7,11 +7,11 @@ admin.site.register(Level)
 admin.site.register(QuestionAndAnswer)
 
 ##########################################
-from .models import Adventure, Task, Hints
+from .models import Adventure, Task, Question
 
-class HintsInLine(admin.StackedInline):
-    model = Hints
-    extra = 3
+# class HintsInLine(admin.StackedInline):
+#     model = Hints
+#     extra = 3
 
 class TaskInLine(admin.StackedInline):
     model = Task
