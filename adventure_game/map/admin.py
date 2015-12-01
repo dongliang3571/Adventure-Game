@@ -4,14 +4,11 @@ from .models import QuestionAndAnswer
 # Register your models here.
 
 admin.site.register(Level)
-admin.site.register(QuestionAndAnswer)
+# admin.site.register(QuestionAndAnswer)
 
 ##########################################
-from .models import Adventure, Task, Question
+from .models import Adventure, Task, Question, Answer
 
-# class HintsInLine(admin.StackedInline):
-#     model = Hints
-#     extra = 3
 
 class TaskInLine(admin.StackedInline):
     model = Task
@@ -24,7 +21,7 @@ class TaskInLine(admin.StackedInline):
 
 class AdventureAdmin(admin.ModelAdmin):
     inlines = [TaskInLine]
-    list_display = ('adventure_id', 'adventure_name', 'adventure_category')
+    list_display = ('adventure_name', 'adventure_id', 'adventure_category')
     ordering = ['adventure_id']
 
     fieldsets = [
@@ -33,4 +30,15 @@ class AdventureAdmin(admin.ModelAdmin):
         (None,               {'fields': ['adventure_category']}),
         ('Description',      {'fields': ['adventure_description'], 'classes': ['collapse']}),
     ]
+
+
+class AnswerInLine(admin.StackedInline):
+    model = Answer
+
+class QuestionAdmin(admin.ModelAdmin):
+    inlines = [AnswerInLine]
+    list_display = ('question_text', 'question_age', 'question_type')
+    ordering = ['question_age']
+
 admin.site.register(Adventure, AdventureAdmin)
+admin.site.register(Question, QuestionAdmin)

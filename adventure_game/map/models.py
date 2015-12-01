@@ -77,21 +77,21 @@ class Question(models.Model):
     )
     question_type = models.CharField(max_length=10, choices = question_type_choices, default='Math')
     question_age_choices = (
-        ('Pre-k', 'Pre-k'),
-        ('Age 4-7', 'Age 4-7'),
-        ('Age 8-10', 'Age 8-10'),
+        ('1. Pre-k', 'Pre-k'),
+        ('2. Age 4-7', 'Age 4-7'),
+        ('3. Age 8-10', 'Age 8-10'),
     )
-    question_age = models.CharField(max_length=10, choices = question_age_choices, default='Pre-k')
+    question_age = models.CharField(max_length=20, choices = question_age_choices, default='Pre-k')
     question_text = models.CharField(max_length=200, blank=True, default='')
     def __str__(self):
         return self.question_text
 
 class Answer(models.Model):
-    question_text = models.ForeignKey(Question)
-    answer_choice1 = question_text = models.CharField(max_length=200, blank=True, default='')
-    answer_choice2 = question_text = models.CharField(max_length=200, blank=True, default='')
-    answer_choice3 = question_text = models.CharField(max_length=200, blank=True, default='')
-    answer_choice4 = question_text = models.CharField(max_length=200, blank=True, default='')
+    question_text = models.OneToOneField(Question)
+    answer_choice1 = models.CharField(max_length=200, blank=True, default='')
+    answer_choice2 = models.CharField(max_length=200, blank=True, default='')
+    answer_choice3 = models.CharField(max_length=200, blank=True, default='')
+    answer_choice4 = models.CharField(max_length=200, blank=True, default='')
     answer_choices = (
         ('1', '1'),
         ('2', '2'),
@@ -102,4 +102,4 @@ class Answer(models.Model):
     answer = models.CharField(max_length=10, choices = answer_choices, default='5')
 
     def __str__(self):
-        return 'Q: '+self.question_text + 'A: '+self.answer
+        return 'Q: '+str(self.question_text) + 'A: '+str(self.answer)
