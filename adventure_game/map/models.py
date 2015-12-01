@@ -85,3 +85,21 @@ class Question(models.Model):
     question_text = models.CharField(max_length=200, blank=True, default='')
     def __str__(self):
         return self.question_text
+
+class Answer(models.Model):
+    question_text = models.ForeignKey(Question)
+    answer_choice1 = question_text = models.CharField(max_length=200, blank=True, default='')
+    answer_choice2 = question_text = models.CharField(max_length=200, blank=True, default='')
+    answer_choice3 = question_text = models.CharField(max_length=200, blank=True, default='')
+    answer_choice4 = question_text = models.CharField(max_length=200, blank=True, default='')
+    answer_choices = (
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', 'None from above'),
+    )
+    answer = models.CharField(max_length=10, choices = answer_choices, default='5')
+
+    def __str__(self):
+        return 'Q: '+self.question_text + 'A: '+self.answer
