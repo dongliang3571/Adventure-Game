@@ -20,24 +20,24 @@ class Level_num(models.Model):
     user = models.OneToOneField(User)
     user_point = models.PositiveIntegerField(default=0)
     user_level_choices = (
-        ('1', '1'),
-        ('2', '2'),
-        ('3', '3'),
-        ('4', '4'),
-        ('5', '5'),
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
     )
     user_level = models.IntegerField(choices = user_level_choices, default='1')
 
     def __unicode__(self):
-        return self.user_level
+        return str(self.user_level)
 
 
 class Track(models.Model):
     user = models.ForeignKey(User)
-    adventures_done = models.CharField(max_length=10, blank=True, default='')
+    adventure_done = models.CharField(max_length=10, blank=True, default='')
 
     def __unicode__(self):
-        return self.adventures_done
+        return self.adventure_done
 
 
 class Game_saved(models.Model):
