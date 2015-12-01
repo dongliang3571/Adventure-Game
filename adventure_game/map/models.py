@@ -49,19 +49,32 @@ class Adventure(models.Model):
 
 class Task(models.Model):
     adventure_name = models.ForeignKey(Adventure)
-    task_number = models.CharField(max_length=50, default='')
+    task_num_choices = (
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+    )
+    task_number = models.CharField(max_length=10, choices = task_num_choices, default='1')
+    task_type_choices = (
+        ('Mission', 'Mission'),
+        ('Questions', 'Questions'),
+    )
+    task_type = models.CharField(max_length=10, choices = task_type_choices, default='Mission')
     task_detail = models.TextField(max_length=200, blank=True, default='')
+    place_img_url = models.URLField(blank=True, default='')
     hint = models.CharField(max_length=200, blank=True, default='')
     def __str__(self):
-        return self.task_detail
+        return self.task_number +': ' + self.task_detail
 
 class Hints(models.Model):
-    task = models.ForeignKey(Task)
+    task_number = models.ForeignKey(Task)
     hints = models.CharField(max_length=200) #answers to the all the questions
     question = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.hint
+        return self.hints
 
 
 class Answer(models.Model):
