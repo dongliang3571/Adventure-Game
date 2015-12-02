@@ -1,0 +1,26 @@
+[
+  {
+    "model": "map.Adventure",
+    "pk": 1,
+    "fields": {
+      "adventure_id": "0000",
+      "adventure_name": "Help the Wizard",
+      "adventure_description": "*****this need to be changed***",
+      "adventure_img_url": "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg",
+      "adventure_category": "Outdoor"
+    }
+  },
+
+  {
+    "model": "map.Adventure",
+    "pk": 2,
+    "fields": {
+      "adventure_id": "0001",
+      "adventure_name": "Go find McChicken",
+      "adventure_description": "*****this need to be changed***",
+      "adventure_img_url": "http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/110.png&w=350&h=254",
+      "adventure_category": "Outdoor"
+    }
+  }
+
+]
