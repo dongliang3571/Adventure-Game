@@ -33,6 +33,9 @@ class QuestionAndAnswer(models.Model):
 
 ################################################################
 class Adventure(models.Model):
+    """
+    This holds our adventure game
+    """
     adventure_id = models.CharField(unique=True, max_length=50, default='0000')
     adventure_name = models.CharField(max_length=200)
     adventure_description = models.TextField(max_length=200, blank=True, default='')
@@ -48,6 +51,9 @@ class Adventure(models.Model):
 
 
 class Task(models.Model):
+    """
+    This holds the tasks of each adventure game.
+    """
     adventure_name = models.ForeignKey(Adventure)
     task_num_choices = (
         ('1', '1'),

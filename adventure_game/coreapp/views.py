@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-from map.models import Level
+from map.models import Level, Adventure
 from django.contrib import messages
 
 def home(request,message=None):
@@ -17,10 +17,13 @@ def home(request,message=None):
 @login_required(login_url='/')
 def profile(request):
     characters = request.user.character_set.all()
+    adventures = Adventure.objects.all()
+    level = request.user.level_num
     if characters.filter(is_logged=True):
         character_name = characters.filter(is_logged=True)[0].character_name
         context = { 'character_name' : character_name,
-
+                    'level' : level,
+                    'adventures' : adventures,
                   }
         return render(request, 'coreapp/individual.html', context)
     else:
@@ -109,12 +112,12 @@ def add_family_member_submission(request):
 
 @login_required(login_url='/')
 def individual(request):
-
     user = request.user
     character_name = request.POST.get('character_name', '')
     character_pin = request.POST.get('character_pin', '')
-
+    level = user.level_num
     characters = request.user.character_set.all()
+
     if characters.filter(is_logged=True):
         family_members = request.user.character_set.all()
         user=request.user
@@ -131,7 +134,6 @@ def individual(request):
     if user.character_set.filter(character_name=character_name, character_pin=character_pin):
         character_name = character_name
         context = { 'character_name' : character_name,
-
                   }
         char = user.character_set.all().filter(character_name=character_name, character_pin=character_pin)[0]
         char.is_logged = True
