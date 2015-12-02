@@ -14,6 +14,18 @@
         "password": "pbkdf2_sha256$20000$foKVHeV323EC$h3092tZqVMhzMUSoNlLXGOFsfAtREcHR8E16LF97slc="
     }
   },
+  
+  {
+  "fields": {
+    "user_level": 1,
+    "user_point": 0,
+    "user": [
+      "admin"
+    ]
+  },
+  "model": "coreapp.level_num",
+  "pk": 1
+  },
 
   {
     "model": "auth.user",
@@ -30,6 +42,18 @@
         "password": "pbkdf2_sha256$20000$foKVHeV323EC$h3092tZqVMhzMUSoNlLXGOFsfAtREcHR8E16LF97slc="
     }
   },
+  
+  {
+  "fields": {
+    "user_level": 1,
+    "user_point": 0,
+    "user": [
+      "user1"
+    ]
+  },
+  "model": "coreapp.level_num",
+  "pk": 1
+  },
 
   {
     "model": "auth.user",
@@ -45,6 +69,18 @@
         "user_permissions": [],
         "password": "pbkdf2_sha256$20000$foKVHeV323EC$h3092tZqVMhzMUSoNlLXGOFsfAtREcHR8E16LF97slc="
     }
+  },
+  
+  {
+  "fields": {
+    "user_level": 1,
+    "user_point": 0,
+    "user": [
+      "user2"
+    ]
+  },
+  "model": "coreapp.level_num",
+  "pk": 1
   }
 
 ]

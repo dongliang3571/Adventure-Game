@@ -4,4 +4,4 @@ syntax: glob
 .coverage
 htmlcov
 venv
-backup.*
+backup*
