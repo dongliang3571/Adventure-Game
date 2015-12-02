@@ -28,6 +28,7 @@ class AdventureAdmin(admin.ModelAdmin):
         (None,               {'fields': ['adventure_id']}),
         (None,               {'fields': ['adventure_name']}),
         (None,               {'fields': ['adventure_category']}),
+        (None,               {'fields': ['adventure_img_url']}),
         ('Description',      {'fields': ['adventure_description'], 'classes': ['collapse']}),
     ]
 

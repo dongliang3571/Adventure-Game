@@ -18,8 +18,9 @@ class LevelInline(admin.StackedInline):
 
 class TrackInLine(admin.StackedInline):
     model = Track
+    extra = 1
 
-class Game_savedInLine(admin.StackedInline):
+class Game_savedInLine(admin.TabularInline):
     model = Game_saved
 
 class UserProfileAdmin(UserAdmin):

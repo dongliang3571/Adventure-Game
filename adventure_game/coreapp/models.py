@@ -7,6 +7,9 @@ class UserProfile(models.Model):
         return u'Profile of user: %s' % self.user.username
 
 class Character(models.Model):
+    """
+    This holds family members in database. A family member has a name and pin number that need to go to their own profile page.
+    """
     user = models.ForeignKey(User)
     character_name = models.CharField(max_length=200)
     character_pin = models.CharField(max_length=200,null=True)
@@ -17,30 +20,39 @@ class Character(models.Model):
 
 #############################################
 class Level_num(models.Model):
+    """
+    Each user has game points which can be gained from our games. A user's level is determined by their points.
+    """
     user = models.OneToOneField(User)
     user_point = models.PositiveIntegerField(default=0)
     user_level_choices = (
-        ('1', '1'),
-        ('2', '2'),
-        ('3', '3'),
-        ('4', '4'),
-        ('5', '5'),
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
     )
     user_level = models.IntegerField(choices = user_level_choices, default='1')
 
     def __unicode__(self):
-        return self.user_level
+        return str(self.user_level)
 
 
 class Track(models.Model):
+    """
+    This holds a list of adventures that a user has completed.
+    """
     user = models.ForeignKey(User)
-    adventures_done = models.CharField(max_length=10, blank=True, default='')
+    adventure_done = models.CharField(max_length=10, blank=True, default='')
 
     def __unicode__(self):
-        return self.adventures_done
+        return self.adventure_done
 
 
 class Game_saved(models.Model):
+    """
+    This saves the progress of a game.
+    """
     user = models.OneToOneField(User)
     adventure_saved = models.CharField(max_length=10, blank=True, default='')  #adventure_id
     task_saved = models.CharField(max_length=10, blank=True, default='')   #task_number

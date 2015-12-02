@@ -1,0 +1,50 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "username": "admin",
+        "first_name": "McChicken",
+        "last_name": "Chen",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$foKVHeV323EC$h3092tZqVMhzMUSoNlLXGOFsfAtREcHR8E16LF97slc="
+    }
+  },
+
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "username": "user1",
+        "first_name": "user1first",
+        "last_name": "user1last",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$foKVHeV323EC$h3092tZqVMhzMUSoNlLXGOFsfAtREcHR8E16LF97slc="
+    }
+  },
+
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "username": "user2",
+        "first_name": "user2first",
+        "last_name": "user2last",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$foKVHeV323EC$h3092tZqVMhzMUSoNlLXGOFsfAtREcHR8E16LF97slc="
+    }
+  }
+
+]
