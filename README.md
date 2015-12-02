@@ -15,3 +15,7 @@ Initial data(for example, math questions) is saved in adventure_game/map/migrati
 python manage.py migrate
 ```
 will automatically import the data to database.
+
+
+
+Our site link is https://adventuregame.herokuapp.com
