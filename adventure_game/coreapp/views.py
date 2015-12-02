@@ -53,6 +53,9 @@ def story(request):
     return render(request, 'coreapp/story.html')
 
 def auth_view(request):
+    """
+    The user is sent to this page after they login for authentication. They are then redirected to the home page.
+    """
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
     user = auth.authenticate(username=username, password=password)
@@ -70,11 +73,17 @@ def auth_view(request):
 
 @login_required(login_url='/')
 def logout(request):
+    """
+    The user is sent here when they logout. They are then redirected to the home page.
+    """
     auth.logout(request)
     messages.success(request, 'You have successfully logged out.')
     return HttpResponseRedirect('/')
 
 def registration_submission(request):
+    """
+    A visitor is sent to this page when they submit their registration. After being registered they are redirected to the home page.
+    """
     username = request.POST.get('username', '')
     firstname = request.POST.get('firstname', '')
     lastname = request.POST.get('lastname', '')
@@ -91,6 +100,9 @@ def registration_submission(request):
     return HttpResponseRedirect('/')
 
 def registration(request, message=None):
+    """
+    A visitor can register here and submit the registration form.
+    """
     context = {}
     context.update(csrf(request))
     if message is not None:
@@ -99,6 +111,9 @@ def registration(request, message=None):
 
 @login_required(login_url='/')
 def add_family_member(request,message=None):
+    """
+    The user can add family members to their account here
+    """
     context= {}
     context.update(csrf(request))
     if message is not None:
@@ -124,6 +139,9 @@ def add_family_member_submission(request):
 
 @login_required(login_url='/')
 def individual(request):
+    """
+    The user is sent to here after enter thier own pin # for selected member
+    """
     user = request.user
     character_name = request.POST.get('character_name', '')
     character_pin = request.POST.get('character_pin', '')
