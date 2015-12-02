@@ -28,8 +28,8 @@ def profile(request):
     zipped = zip(adventure_img_url_list, adventure_name_list)
     adventure_img = "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg"
     adventure_name = "adv_name"
-    level = request.user.level_num
     if characters.filter(is_logged=True):
+        level = request.user.level_num
         character_name = characters.filter(is_logged=True)[0].character_name
         context = { 'character_name' : character_name,
                     'level' : level,
