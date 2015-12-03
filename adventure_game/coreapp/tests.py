@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 from mock import Mock
 
 from coreapp.models import UserProfile
-from .middleware import AutoLogout
+from adventure_game.middleware import AutoLogout
 
 class LoginTests(TestCase):
     def setUp(self):
@@ -178,5 +178,15 @@ class AutoLogoutTest(unittest.TestCase):
 
     def setUp(self):
         self.lg = AutoLogout()
-        self.request = Mock
+        self.request = Mock()
         self.request.session['last_touch'] = timedelta(31*60)
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='pass')
+        self.client.login(username='testuser', password='pass')
+
+    def test_auto_logout(self):
+        response = self.client.get('/logout/', follow=True)
+        self.assertRedirects(response, '/')
+        message = list(response.context['messages'])
+        self.assertEqual(str(message[0]), 'You have successfully logged out.')
+        self.assertNotIn('_auth_user_id', self.client.session)
