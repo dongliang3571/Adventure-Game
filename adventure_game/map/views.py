@@ -16,6 +16,9 @@ from coreapp.models import Game_saved
 # Create your views here.
 
 def map(request):
+    """
+    This function renders entire map where users can see their adventures progress
+    """
     user = request.user
     adventureid = request.GET.get('adventureid', '')
     if user.is_authenticated():
@@ -44,6 +47,9 @@ def map(request):
         return HttpResponseRedirect(reverse('coreapp:home'))
 
 def beginingstory(request):
+    """
+    This function takes user to a transmission page that only display once when users first begin the adventure.
+    """
     user = request.user
     adventureid = request.GET.get('adventureid', '')
     if Game_saved.objects.filter(user=user):
@@ -54,6 +60,9 @@ def beginingstory(request):
         return render(request, 'map/task1.html')
 
 def task1_question1(request):
+    """
+    This functions retrives tasks from database and display on task pages for users to complete.
+    """
     if request.user.is_authenticated():
         if request.user.level.task1_question1_completion == True:
             return HttpResponseRedirect(reverse('map:task1_question2'))
