@@ -1,15 +1,15 @@
 #pylint: disable=E1101
 # -*- coding: utf-8 -*-
-#import unittest
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
+from datetime import timedelta
+
+from mock import patch, Mock
+import unittest
 
 from coreapp.models import UserProfile
-# from coreapp.views import auth_view
-# from coreapp.views import registration_submission
-# from coreapp.views import add_family_member_submission
-# from coreapp.views import add_family_member
+from adventure_game.middleware import AutoLogout
 
 class LoginTests(TestCase):
     def setUp(self):
@@ -125,7 +125,7 @@ class IndividualViewTests(TestCase):
         self.user.character_set.create(character_name="test", character_pin="1234")
 
     def test_invalid_pin(self):
-        response = self.client.post('/individual/', {'character_name': 'test', 'character_pin': '2234'},follow = True)
+        response = self.client.post('/individual/', {'character_name': 'test', 'character_pin': '2234'}, follow=True)
         message = list(response.context['messages'])
         self.assertRedirects(response, '/profile/')
         self.assertEqual(str(message[0]), 'The PIN you entered is incorrect, please try again!')
@@ -167,3 +167,44 @@ class UserProfileModel(TestCase):
         self.userprofile = UserProfile(user=self.user)
     def test_to_string(self):
         self.assertEqual(str(self.userprofile), u'Profile of user: test')
+
+class TestPages(TestCase):
+
+    def test_home_page(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+
+"""
+class AutoLogoutTest(unittest.TestCase):
+
+    @mock.patch('functions.datetime')
+    def testAutoLogout(self, datetime_mock):
+        datetime_mock.datetime.now = Mock(return_value = datetime.strptime("21/11/16 16:30", "%d/%m/%y %H:%M")
+
+class AutoLogoutTest(unittest.TestCase):
+
+    def setUp(self):
+        self.loggedout = AutoLogout()
+        request = Mock()
+        request.session['last_touch'] = timedelta(31*60)
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='pass')
+        self.client.login(username='testuser', password='pass')
+
+    def test_auto_logout(self):
+
+        response = self.client.get('/logout/', follow=True)
+        self.assertRedirects(response, '/')
+        message = list(response.context['messages'])
+        self.assertEqual(str(message[0]), 'You have successfully logged out.')
+        self.assertNotIn('_auth_user_id', self.client.session)
+class UnitTests(unittest.TestCase):
+
+    @patch('coreapp.views.auth_view')
+
+    def test_calls_auth_login_if_authenticate_returns_a_user(
+        self, mock_authenticate):
+        response = client.post('/auth/', {'username': 'sam123', 'password': 'abc123'})
+        mock_user = mock_authenticate.return_value
+        mock_login.assert_called_once_with(response, mock_user)
+"""
