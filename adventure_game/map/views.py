@@ -59,10 +59,10 @@ def beginingstory(request):
         # task_saved = int(game_saved.task_saved)
         return render(request, 'map/task1.html')
 
-# def task(request):
-#     """
-#     This functions retrives tasks from database and display on task pages for users to complete.
-#     """
+def task(request):
+    """
+    This functions retrives tasks from database and display on task pages for users to complete.
+    """
 #     if request.user.is_authenticated():
 #         if request.user.level.task1_question1_completion == True:
 #             return HttpResponseRedirect(reverse('map:task1_question2'))
