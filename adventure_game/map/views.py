@@ -9,9 +9,9 @@ from django.contrib import messages
 def index(request):
     user = request.user
     if user.is_authenticated():
-        if user.is_superuser == True:
-            messages.warning(request, 'Please login as a regular user to enter the map rather than a super user')
-            return HttpResponseRedirect(reverse('coreapp:home'))
+        if not user.character_set.all():
+            messages.warning(request, 'Create your family roles so that you can start your adventures.')
+            return HttpResponseRedirect(reverse('coreapp:profile'))
         else:
 
             ln = user.level.level_number
