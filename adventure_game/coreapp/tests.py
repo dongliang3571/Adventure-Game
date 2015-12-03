@@ -6,10 +6,6 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 
 from coreapp.models import UserProfile
-# from coreapp.views import auth_view
-# from coreapp.views import registration_submission
-# from coreapp.views import add_family_member_submission
-# from coreapp.views import add_family_member
 
 class LoginTests(TestCase):
     def setUp(self):
