@@ -3,7 +3,7 @@
 {% load staticfiles %}
 {% block content %}
 
-<body>
+
 
 		<div class="fb-profile">
 			<img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example"/>
@@ -39,7 +39,7 @@
 		<div class="container marketing">
 
 
-			{% for x,y in zipped %}
+			{% for x,y,z in zipped %}
 
       <!-- START THE FEATURETTES -->
 
@@ -53,8 +53,11 @@
         <div class="col-md-5">
           <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="500x500" src="{{ x }}" data-holder-rendered="true">
         </div>
-				
       </div>
+			<form class="adventureform" action="/adventure{{ z }}" method="get">
+			<input type="hidden" name="adventureid" value="{{ z }}">
+			<input type="submit" value="Play it!"><br>
+			</form>
 			{% endfor%}
 
 
@@ -64,16 +67,6 @@
       </footer>
 
     </div>
-	{% for x,y in zipped %}
 
-			<div class="col-lg-12">
 
-				<a href="/story/">
-					<img src= {{ x }} class ="park img-responsive"/>
-					<span class ="park-text">{{ y }}</span>
-				</a>
-			</div>
-
-	{% endfor%}
-	</body>
 {% endblock %}

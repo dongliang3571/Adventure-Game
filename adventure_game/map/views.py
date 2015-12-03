@@ -15,25 +15,26 @@ from coreapp.models import Game_saved
 
 # Create your views here.
 
-def index(request):
+def map(request):
     user = request.user
+    adventureid = request.GET.get('adventureid', '')
     if user.is_authenticated():
         if not user.character_set.all():
             messages.warning(request, 'Create your family roles so that you can start your adventures.')
             return HttpResponseRedirect(reverse('coreapp:profile'))
         else:
+            game_saved = Game_saved.objects.create(user=user, adventure_saved=adventureid, task_saved='1')
+            task_saved = int(game_saved.task_saved)
 
-            ln = user.level.level_number
-
-            if ln == 0:
+            if task_saved == 0:
                 boyn = "boy"
-            elif ln == 1:
+            elif task_saved == 1:
                 boyn = "boy boy1"
-            elif ln == 2:
+            elif task_saved == 2:
                 boyn = "boy boy1 boy2"
-            elif ln == 3:
+            elif task_saved == 3:
                 boyn = "boy boy1 boy2 boy3"
-            elif ln == 4:
+            elif task_saved == 4:
                 boyn = "boy boy1 boy2 boy3 boy4"
             messages.warning(request, 'Welcome to your adventures')
             return render(request, 'map/index.html', {'boyn':boyn})

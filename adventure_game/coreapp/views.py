@@ -23,12 +23,14 @@ def profile(request):
     adventures = Adventure.objects.all()
     adventure_name_list =[]
     adventure_img_url_list = []
+    adventure_id_list = []
 
     for i in Adventure.objects.all():
         adventure_name_list.append(str(i.adventure_name))
         adventure_img_url_list.append(str(i.adventure_img_url))
+        adventure_id_list.append(str(i.adventure_id))
 
-    zipped = zip(adventure_img_url_list, adventure_name_list)
+    zipped = zip(adventure_img_url_list, adventure_name_list, adventure_id_list)
     adventure_img = "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg"
     adventure_name = "adv_name"
     if characters.filter(is_logged=True):
@@ -38,7 +40,7 @@ def profile(request):
                     'level' : level,
                     # 'adventure_img_url_list' : adventure_img_url_list,
                     # 'adventure_name_list' : adventure_name_list,
-                    'zipped' : zipped
+                    'zipped' : zipped,
                   }
         return render(request, 'coreapp/individual.html', context)
     else:
