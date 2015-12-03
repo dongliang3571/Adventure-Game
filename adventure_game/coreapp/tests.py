@@ -1,13 +1,12 @@
 #pylint: disable=E1101
 # -*- coding: utf-8 -*-
-import unittest
-import mock
-from django.test import TestCase, Client, RequestFactory
+from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from datetime import timedelta
-from django.http import HttpRequest
 
+from mock import patch, Mock
+import unittest
 
 from coreapp.models import UserProfile
 from adventure_game.middleware import AutoLogout
@@ -168,6 +167,13 @@ class UserProfileModel(TestCase):
         self.userprofile = UserProfile(user=self.user)
     def test_to_string(self):
         self.assertEqual(str(self.userprofile), u'Profile of user: test')
+
+class TestPages(TestCase):
+
+    def test_home_page(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+
 """
 class AutoLogoutTest(unittest.TestCase):
 
@@ -192,16 +198,13 @@ class AutoLogoutTest(unittest.TestCase):
         message = list(response.context['messages'])
         self.assertEqual(str(message[0]), 'You have successfully logged out.')
         self.assertNotIn('_auth_user_id', self.client.session)
-"""
 class UnitTests(unittest.TestCase):
 
-    @patch('accounts.views.login')
-    @patch('accounts.views.authenticate')
+    @patch('coreapp.views.auth_view')
+
     def test_calls_auth_login_if_authenticate_returns_a_user(
-        self, mock_authenticate, mock_login
-    ):
-        request = HttpRequest()
-        request.POST['assertion'] = 'asserted'
+        self, mock_authenticate):
+        response = client.post('/auth/', {'username': 'sam123', 'password': 'abc123'})
         mock_user = mock_authenticate.return_value
-        persona_login(request)
-        mock_login.assert_called_once_with(request, mock_user)
+        mock_login.assert_called_once_with(response, mock_user)
+"""
