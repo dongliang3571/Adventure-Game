@@ -191,20 +191,13 @@ class AutoLogoutTest(unittest.TestCase):
         self.user = User.objects.create_user(username='testuser', password='pass')
         self.client.login(username='testuser', password='pass')
 
-    def test_auto_logout(self):
 
-        response = self.client.get('/logout/', follow=True)
-        self.assertRedirects(response, '/')
-        message = list(response.context['messages'])
-        self.assertEqual(str(message[0]), 'You have successfully logged out.')
-        self.assertNotIn('_auth_user_id', self.client.session)
-class UnitTests(unittest.TestCase):
+class UnitTests(TestCase):
 
     @patch('coreapp.views.auth_view')
-
-    def test_calls_auth_login_if_authenticate_returns_a_user(
-        self, mock_authenticate):
-        response = client.post('/auth/', {'username': 'sam123', 'password': 'abc123'})
+    def test_unit_login(self,mock_authenticate):
+        mock = Mock(username = 'test', password = 'test')
+        mock_user =
         mock_user = mock_authenticate.return_value
-        mock_login.assert_called_once_with(response, mock_user)
+        mock_login.assert_called_once_with(request, mock_user)
 """
