@@ -1,11 +1,13 @@
 #pylint: disable=E1101
 # -*- coding: utf-8 -*-
 import unittest
-from django.test import TestCase, Client
+import mock
+from django.test import TestCase, Client, RequestFactory
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
-from mock import Mock
 from datetime import timedelta
+from django.http import HttpRequest
+
 
 from coreapp.models import UserProfile
 from adventure_game.middleware import AutoLogout
@@ -169,24 +171,37 @@ class UserProfileModel(TestCase):
 """
 class AutoLogoutTest(unittest.TestCase):
 
-    @patch('functions.datetime')
+    @mock.patch('functions.datetime')
     def testAutoLogout(self, datetime_mock):
-        datetime_mock.datetime.now = Mock(return_value = datetime.strptime("21/11/16 16:30", "%d/%m/%y %H:%M"))
-"""
+        datetime_mock.datetime.now = Mock(return_value = datetime.strptime("21/11/16 16:30", "%d/%m/%y %H:%M")
 
 class AutoLogoutTest(unittest.TestCase):
 
     def setUp(self):
         self.loggedout = AutoLogout()
-        self.request = Mock()
-        self.request.session['last_touch'] = timedelta(31*60)
+        request = Mock()
+        request.session['last_touch'] = timedelta(31*60)
         self.client = Client()
         self.user = User.objects.create_user(username='testuser', password='pass')
         self.client.login(username='testuser', password='pass')
 
     def test_auto_logout(self):
+
         response = self.client.get('/logout/', follow=True)
         self.assertRedirects(response, '/')
         message = list(response.context['messages'])
         self.assertEqual(str(message[0]), 'You have successfully logged out.')
         self.assertNotIn('_auth_user_id', self.client.session)
+"""
+class UnitTests(unittest.TestCase):
+
+    @patch('accounts.views.login')
+    @patch('accounts.views.authenticate')
+    def test_calls_auth_login_if_authenticate_returns_a_user(
+        self, mock_authenticate, mock_login
+    ):
+        request = HttpRequest()
+        request.POST['assertion'] = 'asserted'
+        mock_user = mock_authenticate.return_value
+        persona_login(request)
+        mock_login.assert_called_once_with(request, mock_user)
