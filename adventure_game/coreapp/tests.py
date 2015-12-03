@@ -4,7 +4,8 @@ import unittest
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
-from mock import Mock, patch
+from datetime import datetime, timedelta
+from mock import Mock
 
 from coreapp.models import UserProfile
 from .middleware import AutoLogout
@@ -165,10 +166,17 @@ class UserProfileModel(TestCase):
         self.userprofile = UserProfile(user=self.user)
     def test_to_string(self):
         self.assertEqual(str(self.userprofile), u'Profile of user: test')
-
+"""
 class AutoLogoutTest(unittest.TestCase):
 
     @patch('functions.datetime')
-    def test_get_today(self, datetime_mock):
-        datetime_mock.date.today = Mock(return_value=datetime.strptime('Jun 1 2005', '%b %d %Y'))
-        value = get_today()
+    def testAutoLogout(self, datetime_mock):
+        datetime_mock.datetime.now = Mock(return_value = datetime.strptime("21/11/16 16:30", "%d/%m/%y %H:%M"))
+"""
+
+class AutoLogoutTest(unittest.TestCase):
+
+    def setUp(self):
+        self.lg = AutoLogout()
+        self.request = Mock
+        self.request.session['last_touch'] = timedelta(31*60)
