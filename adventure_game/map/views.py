@@ -59,7 +59,7 @@ def beginingstory(request):
         # task_saved = int(game_saved.task_saved)
         return render(request, 'map/task1.html')
 
-def task1_question1(request):
+def task(request):
     """
     This functions retrives tasks from database and display on task pages for users to complete.
     """

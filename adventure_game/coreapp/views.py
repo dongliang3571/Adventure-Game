@@ -35,11 +35,18 @@ def profile(request):
     adventure_name = "adv_name"
     if characters.filter(is_logged=True):
         level = request.user.level_num
+        user = request.user
+        game_saved_id_list=[]
+
+        if Game_saved.objects.filter(user=user):
+            for game_saved in Game_saved.objects.filter(user=user):
+                game_saved_id_list.append(str(game_saved.adventure_saved))
         character_name = characters.filter(is_logged=True)[0].character_name
         context = { 'character_name' : character_name,
                     'level' : level,
                     # 'adventure_img_url_list' : adventure_img_url_list,
                     # 'adventure_name_list' : adventure_name_list,
+                    'game_saved' : game_saved_id_list,
                     'zipped' : zipped,
                   }
         return render(request, 'coreapp/individual.html', context)
