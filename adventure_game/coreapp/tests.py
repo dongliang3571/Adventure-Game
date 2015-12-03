@@ -4,8 +4,8 @@ import unittest
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
-from datetime import datetime, timedelta
 from mock import Mock
+from datetime import timedelta
 
 from coreapp.models import UserProfile
 from adventure_game.middleware import AutoLogout
@@ -124,7 +124,7 @@ class IndividualViewTests(TestCase):
         self.user.character_set.create(character_name="test", character_pin="1234")
 
     def test_invalid_pin(self):
-        response = self.client.post('/individual/', {'character_name': 'test', 'character_pin': '2234'},follow = True)
+        response = self.client.post('/individual/', {'character_name': 'test', 'character_pin': '2234'}, follow=True)
         message = list(response.context['messages'])
         self.assertRedirects(response, '/profile/')
         self.assertEqual(str(message[0]), 'The PIN you entered is incorrect, please try again!')
@@ -177,7 +177,7 @@ class AutoLogoutTest(unittest.TestCase):
 class AutoLogoutTest(unittest.TestCase):
 
     def setUp(self):
-        self.lg = AutoLogout()
+        self.loggedout = AutoLogout()
         self.request = Mock()
         self.request.session['last_touch'] = timedelta(31*60)
         self.client = Client()
