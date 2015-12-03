@@ -1,11 +1,13 @@
 #pylint: disable=E1101
 # -*- coding: utf-8 -*-
-#import unittest
+import unittest
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
+from mock import Mock, patch
 
 from coreapp.models import UserProfile
+from .middleware import AutoLogout
 
 class LoginTests(TestCase):
     def setUp(self):
@@ -163,3 +165,10 @@ class UserProfileModel(TestCase):
         self.userprofile = UserProfile(user=self.user)
     def test_to_string(self):
         self.assertEqual(str(self.userprofile), u'Profile of user: test')
+
+class AutoLogoutTest(unittest.TestCase):
+
+    @patch('functions.datetime')
+    def test_get_today(self, datetime_mock):
+        datetime_mock.date.today = Mock(return_value=datetime.strptime('Jun 1 2005', '%b %d %Y'))
+        value = get_today()
