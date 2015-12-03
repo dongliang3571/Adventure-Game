@@ -4,7 +4,15 @@
 {% block content %}
 
 <body>
+		{% if islogged %}
 
+		<script>
+		$(document).ready(function(){
+			$("#profile").text("individual");
+		});
+		</script>
+
+		{% endif %}
 		<div class="fb-profile">
 			<img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example"/>
 			<img align="left" class="fb-image-profile thumbnail" src={% static "img/father.ico" %} alt="Profile image"/>

@@ -163,14 +163,18 @@ def individual(request):
 
     if user.character_set.filter(character_name=character_name, character_pin=character_pin):
         character_name = character_name
-        context = { 'character_name' : character_name,
-                    'level' : level,
-                  }
         char = user.character_set.all().filter(character_name=character_name, character_pin=character_pin)[0]
         char.is_logged = True
         char.save();
+        islogged=''
+        if char.is_logged == True:
+            islogged="True"
+        context = { 'character_name' : character_name,
+                    'level' : level,
+                    'islogged' : islogged,
+                  }
 
         return render(request, 'coreapp/individual.html', context)
     else:
-        messages.success(request, 'The PIN you entered is incorrect, please try agian!')
+        messages.success(request, 'The PIN you entered is incorrect or did not select your family role, please try agian!')
         return HttpResponseRedirect('/profile/')
