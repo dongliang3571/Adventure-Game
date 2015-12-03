@@ -23,27 +23,27 @@ def map(request):
             messages.warning(request, 'Create your family roles so that you can start your adventures.')
             return HttpResponseRedirect(reverse('coreapp:profile'))
         else:
-            game_saved = Game_saved.objects.create(user=user, adventure_saved=adventureid, task_saved='1')
-            task_saved = int(game_saved.task_saved)
 
-            if task_saved == 0:
+            game_saved = user.game_saved.task_saved
+            task_saved = int(game_saved)
+
+            if task_saved == 1:
                 boyn = "boy"
-            elif task_saved == 1:
-                boyn = "boy boy1"
             elif task_saved == 2:
-                boyn = "boy boy1 boy2"
+                boyn = "boy boy1"
             elif task_saved == 3:
-                boyn = "boy boy1 boy2 boy3"
+                boyn = "boy boy1 boy2"
             elif task_saved == 4:
+                boyn = "boy boy1 boy2 boy3"
+            elif task_saved == 5:
                 boyn = "boy boy1 boy2 boy3 boy4"
             messages.warning(request, 'Welcome to your adventures')
-            return render(request, 'map/index.html', {'boyn':boyn})
+            return render(request, 'map/map.html', {'boyn':boyn})
     else:
         messages.warning(request, 'Please sign in')
         return HttpResponseRedirect(reverse('coreapp:home'))
 
-def task1(request):
-    return render(request, 'map/task1.html')
+
 
 def task1_question1(request):
     if request.user.is_authenticated():
