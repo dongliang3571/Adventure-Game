@@ -43,7 +43,15 @@ def map(request):
         messages.warning(request, 'Please sign in')
         return HttpResponseRedirect(reverse('coreapp:home'))
 
-
+def beginingstory(request):
+    user = request.user
+    adventureid = request.GET.get('adventureid', '')
+    if Game_saved.objects.filter(user=user):
+        return HttpResponseRedirect(reverse('map:map'))
+    else:
+        game_saved = Game_saved.objects.create(user=user, adventure_saved=adventureid, task_saved='1')
+        # task_saved = int(game_saved.task_saved)
+        return render(request, 'map/task1.html')
 
 def task1_question1(request):
     if request.user.is_authenticated():
