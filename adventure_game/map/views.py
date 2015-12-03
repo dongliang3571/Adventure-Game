@@ -174,7 +174,15 @@ def Task_Submission(request):
     }
     if user_ans == task.task_ans:
         task_num = task_num+1
+        task = Task.objects.get(adventure_name=adv, task_number=task_num)
+        task_detail = task.task_detail
+        task_ans = task.task_ans
 
+        context = {'adv_name' : adv,
+                   'task_num' : task_num,
+                   'task_detail' : task_detail,
+                   'task_ans' : task_ans,
+        }
         return render(request, 'map/taskpage.html', context)
     else:
         messages.success(request, 'Sorry, the result is incorrect..')
