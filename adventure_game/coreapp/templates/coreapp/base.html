@@ -10,6 +10,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href={% static "css/stylesheet.css" %} rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" type="image/x-icon" href="http://vignette2.wikia.nocookie.net/finalfantasy/images/a/ad/BlackWizard-ff1-psp.png/revision/latest?cb=20110503073352">
     <script type="text/javascript" src={% static "js/home.js" %}></script>
     {% block map_css_js %}{% endblock %}
 
@@ -36,7 +37,16 @@
             <a href="{% url 'map:map' %}">My Adventures</a>
           </li>
           <li>
-            <a href="{% url 'coreapp:profile' %}">Profile</a>
+            <a id="profile" href="{% url 'coreapp:profile' %}">Profile</a>
+            {% if islogged %}
+
+        		<script>
+        		$(document).ready(function(){
+        			$("#profile").text("individual");
+        		});
+        		</script>
+
+        		{% endif %}
           </li>
           <li >
             <a href="{% url 'coreapp:logout' %}">Log Out</a>
