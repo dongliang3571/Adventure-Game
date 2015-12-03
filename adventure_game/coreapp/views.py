@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from map.models import Level, Adventure
 from django.contrib import messages
+from .models import Level_num
+from .models import Track
+from .models import Game_saved
 
 def home(request,message=None):
     context = {}
@@ -94,7 +97,7 @@ def registration_submission(request):
     if len(User.objects.filter(email=email)) != 0: #pylint: disable=E1101
         return registration(request, "Try again, %s %s." %("there is already an account with that email", email))
     user = User.objects.create_user(username=username, email=email, password=password, first_name=firstname, last_name=lastname) #pylint: disable=E1101
-    level=Level.objects.create(user=user,level_number=0)
+    level=Level_num.objects.create(user=user, user_point=0, user_level=1)
     user = auth.authenticate(username=username, password=password)
     auth.login(request, user)
     return HttpResponseRedirect('/')

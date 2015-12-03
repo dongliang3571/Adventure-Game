@@ -4,6 +4,15 @@ from .models import QuestionAndAnswer
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib import messages
+from .models import Adventure
+from .models import Task
+from .models import Question
+from .models import Answer
+from coreapp.models import Level_num
+from coreapp.models import Track
+from coreapp.models import Game_saved
+
+
 # Create your views here.
 
 def index(request):
