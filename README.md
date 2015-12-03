@@ -10,12 +10,12 @@ pip install -r requirements.txt
 **PostgresSQL**: Go to http://www.postgresql.org/ to download postgresSQL
 
 
-Initial data(for example, math questions) is saved in adventure_game/map/migrations/0002_auto_2..._0415.py, run
-```
-python manage.py migrate
-```
-will automatically import the data to database.
+Initial data is saved in a folder named fixtures in each app(eg. coreapp/fixtures/coreapp.json)
 
+run following command in terminal to import data to database
+```
+python manage.py loaddata coreapp.json map.json
+```
 
 
 Our site link is https://adventuregame.herokuapp.com
