@@ -139,7 +139,6 @@ def task(request):
 
     user = request.user
 
-
     adv = Adventure.objects.get(adventure_id="0000") #needed to get from adv
     task_num = 1    #needed to get from map
 
@@ -187,6 +186,7 @@ def Task_Submission(request):
     else:
         messages.success(request, 'Sorry, the result is incorrect..')
         return render(request, 'map/taskpage.html', context)
+
 
 
 def task1_question2(request):
