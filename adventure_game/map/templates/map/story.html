@@ -4,6 +4,11 @@
 {% block content %}
 
 <h1> {{ adventureid }} </h1>
+<p> Details: {{ adventuredescrip }} </p>
 
+<form action="/adventure{{ adventureid }}/map" method="get">
+<input type="hidden" name="adventureid" value="{{ adventureid }}">
 
+<input type="submit" value="Play!"><br>
+</form>
 {% endblock %}

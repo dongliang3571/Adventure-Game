@@ -62,7 +62,10 @@ def beginingstory(request):
 
 def story(request):
     adventureid = request.GET.get('adventureid', '')
+    adv = Adventure.objects.get(adventure_id=adventureid)
+    adv_descrip = adv.adventure_description
     context = {'adventureid' : adventureid,
+               'adventuredescrip' : adv_descrip,
 
     }
     return render(request, 'map/story.html', context)
