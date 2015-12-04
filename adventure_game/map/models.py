@@ -64,6 +64,7 @@ class Task(models.Model):
         ('5', '5'),
     )
     task_number = models.CharField(max_length=10, choices = task_num_choices, default='1')
+    task_name = models.CharField(max_length=20, blank=True, default='')
     task_type_choices = (
         ('Mission', 'Mission'),
         ('Questions', 'Questions'),

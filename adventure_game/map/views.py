@@ -19,32 +19,38 @@ def map(request):
     """
     This function renders entire map where users can see their adventures progress
     """
-    user = request.user
+    # user = request.user
+    #
+    # if user.is_authenticated():
+    #     if not user.character_set.all():
+    #         messages.warning(request, 'Create your family roles so that you can start your adventures.')
+    #         return HttpResponseRedirect(reverse('coreapp:profile'))
+    #     else:
+    #
+    #         game_saved = user.game_saved.task_saved
+    #         task_saved = int(game_saved)
+    #
+    #         if task_saved == 1:
+    #             boyn = "boy"
+    #         elif task_saved == 2:
+    #             boyn = "boy boy1"
+    #         elif task_saved == 3:
+    #             boyn = "boy boy1 boy2"
+    #         elif task_saved == 4:
+    #             boyn = "boy boy1 boy2 boy3"
+    #         elif task_saved == 5:
+    #             boyn = "boy boy1 boy2 boy3 boy4"
+    #         messages.warning(request, 'Welcome to your adventures')
+    #         return render(request, 'map/map.html', {'boyn':boyn})
+    # else:
+    #     messages.warning(request, 'Please sign in')
+    #     return HttpResponseRedirect(reverse('coreapp:home'))
     adventureid = request.GET.get('adventureid', '')
-    if user.is_authenticated():
-        if not user.character_set.all():
-            messages.warning(request, 'Create your family roles so that you can start your adventures.')
-            return HttpResponseRedirect(reverse('coreapp:profile'))
-        else:
+    adv = Adventure.objects.get(adventure_id=adventureid)
+    
+    context = {
 
-            game_saved = user.game_saved.task_saved
-            task_saved = int(game_saved)
-
-            if task_saved == 1:
-                boyn = "boy"
-            elif task_saved == 2:
-                boyn = "boy boy1"
-            elif task_saved == 3:
-                boyn = "boy boy1 boy2"
-            elif task_saved == 4:
-                boyn = "boy boy1 boy2 boy3"
-            elif task_saved == 5:
-                boyn = "boy boy1 boy2 boy3 boy4"
-            messages.warning(request, 'Welcome to your adventures')
-            return render(request, 'map/map.html', {'boyn':boyn})
-    else:
-        messages.warning(request, 'Please sign in')
-        return HttpResponseRedirect(reverse('coreapp:home'))
+    }
 
 def beginingstory(request):
     """
