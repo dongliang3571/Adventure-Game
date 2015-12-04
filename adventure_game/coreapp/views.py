@@ -42,26 +42,28 @@ def profile(request):
             for game_saved in Game_saved.objects.filter(user=user):
                 game_saved_id_list.append(str(game_saved.adventure_saved))
         character_name = characters.filter(is_logged=True)[0].character_name
-        context = { 'character_name' : character_name,
-                    'level' : level,
-                    # 'adventure_img_url_list' : adventure_img_url_list,
-                    # 'adventure_name_list' : adventure_name_list,
-                    'game_saved' : game_saved_id_list,
-                    'zipped' : zipped,
+        context = {'character_name' : character_name,
+                   'level' : level,
+                   # 'adventure_img_url_list' : adventure_img_url_list,
+                   # 'adventure_name_list' : adventure_name_list,
+                   'game_saved' : game_saved_id_list,
+                   'zipped' : zipped,
                   }
         return render(request, 'coreapp/individual.html', context)
     else:
         family_members = request.user.character_set.all()
-        user=request.user
-        userfname = user.first_name
+        user = request.user
         userlname = user.last_name
         context = {'family_members' : family_members,
                    'lastname' : userlname,
-                   }
+                  }
         return render(request, 'coreapp/profile.html', context)
 
 @login_required(login_url='/')
 def story(request):
+    """
+    Renders the story.html template when users access this route.
+    """
     return render(request, 'coreapp/story.html')
 
 def auth_view(request):
@@ -77,7 +79,7 @@ def auth_view(request):
             messages.success(request, 'Hi %s, you have successfully logged in.' %(user.last_name))
             return HttpResponseRedirect('/')
         else:
-            messages.success(request, 'Your account has been banned, please contact us to re-active your account!')
+            messages.success(request, 'Your account has been banned, please contact us to re-activate your account!')
             return HttpResponseRedirect('/')
     else:
         messages.success(request, 'The account you entered is invalid, please try again!')
@@ -94,7 +96,8 @@ def logout(request):
 
 def registration_submission(request):
     """
-    A visitor is sent to this page when they submit their registration. After being registered they are redirected to the home page.
+    A visitor is sent to this page when they submit their registration.
+    After being registered they are redirected to the home page.
     """
     username = request.POST.get('username', '')
     firstname = request.POST.get('firstname', '')
@@ -162,12 +165,12 @@ def individual(request):
 
     if characters.filter(is_logged=True):
         family_members = request.user.character_set.all()
-        user=request.user
+        user = request.user
         userfname = user.first_name
         userlname = user.last_name
         context = {'family_members' : family_members,
                    'lastname' : userlname,
-                   }
+                  }
         char = characters.filter(is_logged=True)[0]
         char.is_logged = False
         char.save()
