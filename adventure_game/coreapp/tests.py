@@ -177,7 +177,7 @@ class TestPages(TestCase):
 
 class AutoLogoutTest(unitTest.TestCase):
 
-    def setUp:
+    def setUp(self):
         self.client = Client()
         self.user = User.objects.create_user(username='testuser', password='pass')
         self.client.login(username='testuser', password='pass')
