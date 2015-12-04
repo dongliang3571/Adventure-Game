@@ -77,7 +77,7 @@ class Migration(migrations.Migration):
                 ('task_type', models.CharField(default=b'Mission', max_length=10, choices=[(b'Mission', b'Mission'), (b'Questions', b'Questions')])),
                 ('task_detail', models.TextField(default=b'', max_length=200, blank=True)),
                 ('place_img_url', models.URLField(default=b'', blank=True)),
-                ('hint', models.CharField(default=b'', max_length=200, blank=True)),
+                ('task_ans', models.CharField(default=b'', max_length=200, blank=True)),
                 ('adventure_name', models.ForeignKey(to='map.Adventure')),
             ],
         ),
