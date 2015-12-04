@@ -47,11 +47,25 @@ def map(request):
     #     return HttpResponseRedirect(reverse('coreapp:home'))
     adventureid = request.GET.get('adventureid', '')
     adv = Adventure.objects.get(adventure_id=adventureid)
-    
-    context = {
+    task_list = Task.objects.filter(adventure_name=adv)
+    task_num_list = []
+    task_name_list = []
+    place_img_url_list = []
+    task_ans_list = []
+    for i in task_list:
+        task_num_list.append(i.task_number)
+        task_name_list.append(i.task_name)
+        place_img_url_list.append(i.place_img_url)
+    # task_name_list = Task.task_name.filter(adventure_name=adv)
+
+
+    context = {'task' : task,
 
     }
+    return render(request, 'map/map.html', context)
 
+
+    
 def beginingstory(request):
     """
     This function takes user to a transmission page that only display once when users first begin the adventure.
