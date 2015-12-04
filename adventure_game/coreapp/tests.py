@@ -174,7 +174,7 @@ class TestPages(TestCase):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
 
-
+"""
 class AutoLogoutTest(unitTest.TestCase):
 
     def setUp(self):
@@ -189,7 +189,7 @@ class AutoLogoutTest(unitTest.TestCase):
 
         response = self.client.get('/logout/', follow=True)
         self.assertRedirects(response, '/')
-
+"""
 """
 class UnitTests(TestCase):
 
