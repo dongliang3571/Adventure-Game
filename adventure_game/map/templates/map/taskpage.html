@@ -26,7 +26,8 @@
           <p>{{ task_detail }}</p>
           <br>
 
-          <form action="{% url 'map:map' %}" method="POST" id="BackToMap"> {%csrf_token %}
+          <form action="{% url 'map:map' %}" method="get" id="BackToMap"> {%csrf_token %}
+                <input type="hidden" name="adventureid" value="{{ adventureid }}">
                 <button type="submit">Go Back</button>
           </form>
 
@@ -39,13 +40,25 @@
 
 
       {% if task_ans %}
-        <form action="{% url 'map:tasksubmission' %}" method="POST" id="nexttask1"> {%csrf_token %}
-              <input type="text" name="task_ans" placeholder="Enter you result here">
-              <br>
-              <button type="submit">Next Task</button>
-        </form>
+      <form action="/adventure{{ adventureid }}/map/task{{ task_num }}/tasksubmission" method="POST" id="nexttask1"> {%csrf_token %}
+        <input type="hidden" name="adventureid" value="{{ adventureid }}">
+        <input type="hidden" name="task_num" value="{{ task_num }}">
+            <input type="text" name="user_ans" placeholder="Enter you result here">
+            <br>
+            <button type="submit">Check</button>
+      </form>
+      <p> {{ good }} </p>
+
+      <form action="/adventure{{ adventureid }}/map/task{{ task_num }}/ans_submission" method="get">
+        <input type="hidden" name="adventureid" value="{{ adventureid }}">
+        <input type="hidden" name="task_num" value="{{ task_num_next }}">
+        <button type="submit">Next Task</button>
+      </form>
+
       {% else %}
-        <form action="{% url 'map:tasksubmission' %}" method="POST" id="nexttask2">
+        <form action="/adventure{{ adventureid }}/map/task{{ next_task }}" method="get" id="nexttask2">
+              <input type="hidden" name="adventureid" value="{{ adventureid }}">
+              <input type="hidden" name="next_task" value="{{ next_task }}">
               <button type="submit">Next Task</button>
         </form>
       {% endif %}
