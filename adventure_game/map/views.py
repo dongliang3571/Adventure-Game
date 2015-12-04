@@ -63,79 +63,130 @@ def task(request):
     """
     This functions retrives tasks from database and display on task pages for users to complete.
     """
-    if request.user.is_authenticated():
-        if request.user.level.task1_question1_completion == True:
-            return HttpResponseRedirect(reverse('map:task1_question2'))
+#     if request.user.is_authenticated():
+#         if request.user.level.task1_question1_completion == True:
+#             return HttpResponseRedirect(reverse('map:task1_question2'))
+#
+#         ques = request.GET.get('question', '')
+#         ans = request.GET.get('answer', '')
+#         questionnumber = request.GET.get('questionNumber', '')
+#         if ans:
+#             correct_answer = QuestionAndAnswer.objects.get(Question=ques).Answer
+#             if ans == correct_answer:
+#                 if request.user.level.question_number == 10:
+#                     # housenumber = ''
+#                     # for n in range(request.user.level.question_number):
+#                     #     questionTempObject = QuestionAndAnswer.objects.get(QuestionNumber = n+1)
+#                     #     housenumber = housenumber+' '+str(questionTempObject.Answer)
+#
+#                     hi = QuestionAndAnswer.objects.get(QuestionNumber=10).hint
+#                     housenumber = hi.hint_text
+#                     user = request.user
+#                     le = request.user.level
+#                     le.task1_question1_completion = True;
+#                     le.save()
+#                     return render(
+#                         request, 'map/task1_question1.html', {
+#                             'isShow':'show', 'houseNumber':housenumber,
+#                             'message':'Congradulations, You have gotten your clue.', 'isComplete':'complete'})
+#                 user = request.user
+#                 le = request.user.level
+#                 # l.level_number = l.level_number+1
+#                 le.question_number = le.question_number+1
+#                 le.save()
+#                 questionNumber = le.question_number
+#                 questionObject = QuestionAndAnswer.objects.get(QuestionNumber=questionNumber)
+#                 question = questionObject.Question
+#
+#                 housenumber = ''
+#                 for n in range(questionNumber-1):
+#                     questionTempObject = QuestionAndAnswer.objects.get(QuestionNumber=n+1)
+#                     housenumber = housenumber+' '+str(questionTempObject.Answer)
+#
+#                 return render(
+#                     request, 'map/task1_question1.html', {
+#                         'message':'Your answer is correct, keep going.',
+#                         'isShow':'show', 'question':question, 'houseNumber':housenumber})
+#             else:
+#                 user = request.user
+#                 questionNumber = user.level.question_number
+#                 questionObject = QuestionAndAnswer.objects.get(QuestionNumber=questionNumber)
+#                 question = questionObject.Question
+#                 housenumber = ''
+#                 for n in range(questionNumber-1):
+#                     questionTempObject = QuestionAndAnswer.objects.get(QuestionNumber=n+1)
+#                     housenumber = housenumber+' '+str(questionTempObject.Answer)
+#                 return render(
+#                     request, 'map/task1_question1.html', {
+#                         'message2':'Sorry, Your answer is Wrong, Try again....',
+#                         'isShow':'show', 'question':question, 'houseNumber':housenumber})
+#         else:
+#             user = request.user
+#             questionNumber = user.level.question_number
+#             questionObject = QuestionAndAnswer.objects.get(QuestionNumber=questionNumber)
+#             question = questionObject.Question
+#             housenumber = ''
+#             for n in range(questionNumber-1):
+#                 questionTempObject = QuestionAndAnswer.objects.get(QuestionNumber=n+1)
+#                 housenumber = housenumber+' '+str(questionTempObject.Answer)
+#             return render(
+#                 request, 'map/task1_question1.html', {
+#                     'isShow':'show', 'question':question,
+#                     'houseNumber':housenumber})
+#     else:
+#         messages.warning(request, 'Please sign in.')
+#         return HttpResponseRedirect(reverse('coreapp:home'))
 
-        ques = request.GET.get('question', '')
-        ans = request.GET.get('answer', '')
-        questionnumber = request.GET.get('questionNumber', '')
-        if ans:
-            correct_answer = QuestionAndAnswer.objects.get(Question=ques).Answer
-            if ans == correct_answer:
-                if request.user.level.question_number == 10:
-                    # housenumber = ''
-                    # for n in range(request.user.level.question_number):
-                    #     questionTempObject = QuestionAndAnswer.objects.get(QuestionNumber = n+1)
-                    #     housenumber = housenumber+' '+str(questionTempObject.Answer)
+    user = request.user
 
-                    hi = QuestionAndAnswer.objects.get(QuestionNumber=10).hint
-                    housenumber = hi.hint_text
-                    user = request.user
-                    le = request.user.level
-                    le.task1_question1_completion = True;
-                    le.save()
-                    return render(
-                        request, 'map/task1_question1.html', {
-                            'isShow':'show', 'houseNumber':housenumber,
-                            'message':'Congradulations, You have gotten your clue.', 'isComplete':'complete'})
-                user = request.user
-                le = request.user.level
-                # l.level_number = l.level_number+1
-                le.question_number = le.question_number+1
-                le.save()
-                questionNumber = le.question_number
-                questionObject = QuestionAndAnswer.objects.get(QuestionNumber=questionNumber)
-                question = questionObject.Question
 
-                housenumber = ''
-                for n in range(questionNumber-1):
-                    questionTempObject = QuestionAndAnswer.objects.get(QuestionNumber=n+1)
-                    housenumber = housenumber+' '+str(questionTempObject.Answer)
+    adv = Adventure.objects.get(adventure_id="0000") #needed to get from adv
+    task_num = 1    #needed to get from map
 
-                return render(
-                    request, 'map/task1_question1.html', {
-                        'message':'Your answer is correct, keep going.',
-                        'isShow':'show', 'question':question, 'houseNumber':housenumber})
-            else:
-                user = request.user
-                questionNumber = user.level.question_number
-                questionObject = QuestionAndAnswer.objects.get(QuestionNumber=questionNumber)
-                question = questionObject.Question
-                housenumber = ''
-                for n in range(questionNumber-1):
-                    questionTempObject = QuestionAndAnswer.objects.get(QuestionNumber=n+1)
-                    housenumber = housenumber+' '+str(questionTempObject.Answer)
-                return render(
-                    request, 'map/task1_question1.html', {
-                        'message2':'Sorry, Your answer is Wrong, Try again....',
-                        'isShow':'show', 'question':question, 'houseNumber':housenumber})
-        else:
-            user = request.user
-            questionNumber = user.level.question_number
-            questionObject = QuestionAndAnswer.objects.get(QuestionNumber=questionNumber)
-            question = questionObject.Question
-            housenumber = ''
-            for n in range(questionNumber-1):
-                questionTempObject = QuestionAndAnswer.objects.get(QuestionNumber=n+1)
-                housenumber = housenumber+' '+str(questionTempObject.Answer)
-            return render(
-                request, 'map/task1_question1.html', {
-                    'isShow':'show', 'question':question,
-                    'houseNumber':housenumber})
+    #saving game
+    game_saved_adv = adv
+    game_saved_task = task_num
+
+    task = Task.objects.get(adventure_name=adv, task_number=task_num)
+    task_detail = task.task_detail
+    task_ans = task.task_ans
+
+    context = {'adv_name' : adv,
+               'task_num' : task_num,
+               'task_detail' : task_detail,
+               'task_ans' : task_ans,
+    }
+    return render(request, 'map/taskpage.html', context)
+
+def Task_Submission(request):
+    adv = Adventure.objects.get(adventure_id="0000")
+    task_num = 1
+    task = Task.objects.get(adventure_name=adv, task_number=task_num)
+    task_detail = task.task_detail
+    task_ans = task.task_ans
+
+    user_ans = request.POST.get('task_ans','')
+
+    context = {'adv_name' : adv,
+               'task_num' : task_num,
+               'task_detail' : task_detail,
+               'task_ans' : task_ans,
+    }
+    if user_ans == task.task_ans:
+        task_num = task_num+1
+        task = Task.objects.get(adventure_name=adv, task_number=task_num)
+        task_detail = task.task_detail
+        task_ans = task.task_ans
+
+        context = {'adv_name' : adv,
+                   'task_num' : task_num,
+                   'task_detail' : task_detail,
+                   'task_ans' : task_ans,
+        }
+        return render(request, 'map/taskpage.html', context)
     else:
-        messages.warning(request, 'Please sign in.')
-        return HttpResponseRedirect(reverse('coreapp:home'))
+        messages.success(request, 'Sorry, the result is incorrect..')
+        return render(request, 'map/taskpage.html', context)
 
 
 def task1_question2(request):

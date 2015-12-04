@@ -1,0 +1,57 @@
+{% extends "coreapp/base.html" %}
+{% load staticfiles %}
+{% block map_css_js %}
+<link rel="stylesheet" type="text/css" href={% static "map/css/task.css" %}>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- <img class="img-responsive" src="http://themodernmage.com/wp-content/uploads/2014/01/hamtaro_vector_by_starlyk-d68o33w.png" /> -->
+
+          <h1>
+            <img class="hamster_head1" src="http://cliparts.co/cliparts/di9/Bg6/di9Bg6Ai7.png" />
+            {{ adv_name }} <br>
+            You are at task: {{ task_num }}
+            <img class="hamster_head2 img-responsive" src="http://www.misskatecuttables.com/uploads/shopping_cart/9493/large_cute-witch.png" />
+          </h1>
+          <br>
+          <h3>
+            Task details:
+          </h3>
+          <br>
+
+          <p>{{ task_detail }}</p>
+          <br>
+
+          <form action="{% url 'map:map' %}" method="POST" id="BackToMap"> {%csrf_token %}
+                <button type="submit">Go Back</button>
+          </form>
+
+          <p>The answer for this task is :{{ task_ans }}
+          </p>
+        </div>
+      </div>
+
+
+
+
+      {% if task_ans %}
+        <form action="{% url 'map:tasksubmission' %}" method="POST" id="nexttask1"> {%csrf_token %}
+              <input type="text" name="task_ans" placeholder="Enter you result here">
+              <br>
+              <button type="submit">Next Task</button>
+        </form>
+      {% else %}
+        <form action="{% url 'map:tasksubmission' %}" method="POST" id="nexttask2">
+              <button type="submit">Next Task</button>
+        </form>
+      {% endif %}
+</div>
+
+
+
+
+{% endblock %}
