@@ -30,7 +30,7 @@
                 <button type="submit">Go Back</button>
           </form>
 
-          <p>The answer for this task is :{{ task_ans }}
+
           </p>
         </div>
       </div>
@@ -39,6 +39,7 @@
 
 
       {% if task_ans %}
+      <p>The answer for this task is :{{ task_ans }}
         <form action="{% url 'map:tasksubmission' %}" method="POST" id="nexttask1"> {%csrf_token %}
               <input type="text" name="task_ans" placeholder="Enter you result here">
               <br>

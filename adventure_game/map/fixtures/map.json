@@ -21,6 +21,67 @@
       "adventure_img_url": "http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/110.png&w=350&h=254",
       "adventure_category": "Outdoor"
     }
+  },
+
+  {
+    "fields": {
+      "task_ans": "",
+      "task_type": "Mission",
+      "task_number": "1",
+      "adventure_name": 1,
+      "place_img_url": "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg",
+      "task_detail": "Wizard: There is a fountain in your world that was created by a female wizard from my world. It's watched over by an angel that she calls The Angel of the Waters. She has given it the power to heal those touched by the water. The fountain itself, like all fountains in your amazing world has the power to grant wishes! Please go to the fountain and wish for the Angel of Waters to use her powers on my petrified people!\r\n\r\nSolve the Word scramble to get next clue."
+    },
+    "model": "map.task",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "task_ans": "",
+      "task_type": "Mission",
+      "task_number": "2",
+      "adventure_name": 1,
+      "place_img_url": "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg",
+      "task_detail": "Wizard: Welcome to Belvedere Castle! I knew you would figure out my clues! I'm sorry for all of the deception, but I had to make sure that Balin couldn't find us here. His displeasure would be very dangerous. I'm going to teach you two spells to help you.\r\n\r\nSpell 1: The first spell will let you change an ordinary piece of paper into a warrior's helmet to protect you! Here, follow these instructions and say these words, \"renderum helmetus\"."
+    },
+    "model": "map.task",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "task_ans": "",
+      "task_type": "Mission",
+      "task_number": "3",
+      "adventure_name": 1,
+      "place_img_url": "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg",
+      "task_detail": "Spell 2: The second spell will help you fix our fortress! It's of no use here, but will be most amazing when used in the correct way. For now though, the words are, \"renderum foretaress\". I hear there is a park called Imagination Park that is filled with magical blocks! You should go there and I'll explain how to use the spell."
+    },
+    "model": "map.task",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "task_ans": "",
+      "task_type": "Mission",
+      "task_number": "4",
+      "adventure_name": 1,
+      "place_img_url": "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg",
+      "task_detail": "Wizard: Now the spell only works if you build a fortress and send it to us wit that spell. Those magic blocks at Imagination Park should be perfect for a new fortress! The magic will protect us from Balin's might!"
+    },
+    "model": "map.task",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "task_ans": "2",
+      "task_type": "Mission",
+      "task_number": "5",
+      "adventure_name": 1,
+      "place_img_url": "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg",
+      "task_detail": "what is 1+1"
+    },
+    "model": "map.task",
+    "pk": 5
   }
 
 ]

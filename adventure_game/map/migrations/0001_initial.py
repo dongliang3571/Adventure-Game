@@ -2,13 +2,11 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-from django.conf import settings
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('auth', '0006_require_contenttypes_0002'),
     ]
 
     operations = [
@@ -35,22 +33,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='hint',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('hint_text', models.CharField(max_length=200)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Level',
-            fields=[
-                ('user', models.OneToOneField(primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
-                ('level_number', models.IntegerField(default=0)),
-                ('question_number', models.IntegerField(default=1)),
-                ('task1_question1_completion', models.BooleanField(default=False)),
-            ],
-        ),
-        migrations.CreateModel(
             name='Question',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -60,22 +42,12 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='QuestionAndAnswer',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('Question', models.CharField(max_length=200)),
-                ('Answer', models.CharField(max_length=200)),
-                ('QuestionNumber', models.IntegerField(default=1)),
-                ('hint', models.ForeignKey(to='map.hint')),
-            ],
-        ),
-        migrations.CreateModel(
             name='Task',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('task_number', models.CharField(default=b'1', max_length=10, choices=[(b'1', b'1'), (b'2', b'2'), (b'3', b'3'), (b'4', b'4'), (b'5', b'5')])),
                 ('task_type', models.CharField(default=b'Mission', max_length=10, choices=[(b'Mission', b'Mission'), (b'Questions', b'Questions')])),
-                ('task_detail', models.TextField(default=b'', max_length=200, blank=True)),
+                ('task_detail', models.TextField(default=b'', max_length=2000, blank=True)),
                 ('place_img_url', models.URLField(default=b'', blank=True)),
                 ('task_ans', models.CharField(default=b'', max_length=200, blank=True)),
                 ('adventure_name', models.ForeignKey(to='map.Adventure')),
