@@ -35,12 +35,37 @@
       <div id="task4_name" class="building_name">{{ task_name4 }}</div>
       <div id="task5_name" class="building_name">{{ task_name5 }}</div>
 
+      <form class="ToTaskDetailPage" id="number1" action="/adventure{{ adventureid }}/map/task{{ task_num1 }}" method="get">
+        <input type="hidden" name="adventureid" value="{{ adventureid }}">
+        <input type="hidden" name="task_num" value="{{ task_num1 }}">
+        <input class="number_mission" type="image" src={% static "map/images/numbers/number1.png" %} alt="Submit Form" />
+      </form>
 
-      <a href="/adventure/task1"><img id="number1" class="number_mission" src={% static "map/images/numbers/number1.png" %}></a>
-      <a href="/adventure/task2"><img id="number2" class="number_mission" src={% static "map/images/numbers/number2.png" %}></a>
-      <a href=""><img id="number3" class="number_mission" src={% static "map/images/numbers/number3.png" %}></a>
-      <a href=""><img id="number4" class="number_mission" src={% static "map/images/numbers/number4.png" %}></a>
-      <a href=""><img id="number5" class="number_mission" src={% static "map/images/numbers/number5.png" %}></a>
+      <form class="ToTaskDetailPage" id="number2" action="/adventure{{ adventureid }}/map/task{{ task_num2 }}" method="get">
+        <input type="hidden" name="adventureid" value="{{ adventureid }}">
+        <input type="hidden" name="task_num" value="{{ task_num2 }}">
+        <input class="number_mission" type="image" src={% static "map/images/numbers/number2.png" %} alt="Submit Form" />
+      </form>
+
+      <form class="ToTaskDetailPage" id="number3" action="/adventure{{ adventureid }}/map/task{{ task_num3 }}" method="get">
+        <input type="hidden" name="adventureid" value="{{ adventureid }}">
+        <input type="hidden" name="task_num" value="{{ task_num3 }}">
+        <input class="number_mission" type="image" src={% static "map/images/numbers/number3.png" %} alt="Submit Form" />
+      </form>
+
+      <form class="ToTaskDetailPage" id="number4" action="/adventure{{ adventureid }}/map/task{{ task_num4 }}" method="get">
+        <input type="hidden" name="adventureid" value="{{ adventureid }}">
+        <input type="hidden" name="task_num" value="{{ task_num4 }}">
+        <input class="number_mission" type="image" src={% static "map/images/numbers/number4.png" %} alt="Submit Form" />
+      </form>
+
+      <form class="ToTaskDetailPage" id="number5" action="/adventure{{ adventureid }}/map/task{{ task_num5 }}" method="get">
+        <input type="hidden" name="adventureid" value="{{ adventureid }}">
+        <input type="hidden" name="task_num" value="{{ task_num5 }}">
+        <input class="number_mission" type="image" src={% static "map/images/numbers/number5.png" %} alt="Submit Form" />
+      </form>
+
+      <!-- <a href=""><img id="number5" class="number_mission" src={% static "map/images/numbers/number5.png" %}></a> -->
       <!-- <img id="mist" src="static/images/mist/mist.png"> -->
       <img id="path1" src={% static "map/images/path1.png" %}>
       <img id="path2" src={% static "map/images/path1.png" %}>

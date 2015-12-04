@@ -59,7 +59,8 @@ def map(request):
     # task_name_list = Task.task_name.filter(adventure_name=adv)
 
 
-    context = {'task_num1' : task_num_list[0],
+    context = {'adventureid' : adventureid,
+               'task_num1' : task_num_list[0],
                'task_num2' : task_num_list[1],
                'task_num3' : task_num_list[2],
                'task_num4' : task_num_list[3],
