@@ -161,13 +161,13 @@ class LogoutTests(TestCase):
         self.assertNotIn('_auth_user_id', self.client.session)
 
 # Not sure if we even need this since I don't think we're using UserProfile.
-class UserProfileModel(TestCase):
+"""class UserProfileModel(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='test', password='pass')
         self.userprofile = UserProfile(user=self.user)
     def test_to_string(self):
         self.assertEqual(str(self.userprofile), u'Profile of user: test')
-
+"""
 class TestPages(TestCase):
 
     def test_home_page(self):
