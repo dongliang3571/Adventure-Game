@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-from map.models import Level, Adventure
+from map.models import Adventure
 from django.contrib import messages
 from .models import Level_num
 from .models import Track

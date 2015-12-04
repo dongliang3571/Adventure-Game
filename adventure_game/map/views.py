@@ -1,6 +1,4 @@
 from django.shortcuts import render
-from .models import Level
-from .models import QuestionAndAnswer
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib import messages
@@ -48,7 +46,7 @@ def map(request):
 
 def beginingstory(request):
     """
-    This function takes user to a transmission page that only display once when users first begin the adventure.
+    This function takes user to a transmission page that only displays once when users first begin the adventure.
     """
     user = request.user
     adventureid = request.GET.get('adventureid', '')
@@ -61,7 +59,7 @@ def beginingstory(request):
 
 def task(request):
     """
-    This functions retrives tasks from database and display on task pages for users to complete.
+    This function retrives tasks from database and displays on task pages for users to complete.
     """
 
     user = request.user
