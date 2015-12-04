@@ -3,23 +3,15 @@
 {% load staticfiles %}
 {% block content %}
 
-<body>
-		{% if islogged %}
 
-		<script>
-		$(document).ready(function(){
-			$("#profile").text("individual");
-		});
-		</script>
 
-		{% endif %}
 		<div class="fb-profile">
 			<img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example"/>
 			<img align="left" class="fb-image-profile thumbnail" src={% static "img/father.ico" %} alt="Profile image"/>
 			<div class="fb-profile-text">
 				<h1>Hi, {{ character_name }}! </h1>
 				<h8>
-					<a href="/individual/">Not {{ character_name }}? Change member</a>
+					<a style="color: #0654ba;" href="/individual/">(Not {{ character_name }}? Change member)</a>
 				</h8>
 				<br>
 				<br>
@@ -41,15 +33,60 @@
 		<br> -->
 
 
-	{% for x,y in zipped %}
-		<div class="row">
-			<div class="col-lg-12">
-				<a href="/story/">
-					<img src= {{ x }} class ="park img-responsive"/>
-					<span class ="park-text">{{ y }}</span>
-				</a>
-			</div>
-		</div>
-	{% endfor%}
-	</body>
+		<br><br><br><br>
+
+
+		<div class="container marketing">
+
+
+			{% for x,y,z in zipped %}
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">{{ y }}</h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="500x500" src="{{ x }}" data-holder-rendered="true">
+        </div>
+      </div>
+			<form class="adventureform" action="/adventure{{ z }}/beginingstory" method="get">
+			<input type="hidden" name="adventureid" value="{{ z }}">
+			{% if game_saved %}
+			{% for n in game_saved %}
+			{% if n == z %}
+			<input id="continue" type="submit" value="Continue your adventure"><br>
+			{% endif %}
+			{% endfor %}
+			<input id="play" type="submit" value="Play it!"><br>
+			<script>
+			$(function(){
+			  var el = document.getElementById("continue")
+			  if (el) {
+			    $("#continue").next().remove();
+			  }
+			});
+			</script>
+
+
+			{% else %}
+			<input type="submit" value="Play it!"><br>
+			</form>
+
+			{% endif %}
+			{% endfor%}
+
+
+
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+      </footer>
+
+    </div>
+
+
 {% endblock %}

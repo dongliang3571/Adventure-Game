@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from map.models import Level, Adventure
 from django.contrib import messages
+from .models import Level_num
+from .models import Track
+from .models import Game_saved
 
 def home(request,message=None):
     context = {}
@@ -20,22 +23,31 @@ def profile(request):
     adventures = Adventure.objects.all()
     adventure_name_list =[]
     adventure_img_url_list = []
+    adventure_id_list = []
 
     for i in Adventure.objects.all():
         adventure_name_list.append(str(i.adventure_name))
         adventure_img_url_list.append(str(i.adventure_img_url))
+        adventure_id_list.append(str(i.adventure_id))
 
-    zipped = zip(adventure_img_url_list, adventure_name_list)
+    zipped = zip(adventure_img_url_list, adventure_name_list, adventure_id_list)
     adventure_img = "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg"
     adventure_name = "adv_name"
     if characters.filter(is_logged=True):
         level = request.user.level_num
+        user = request.user
+        game_saved_id_list=[]
+
+        if Game_saved.objects.filter(user=user):
+            for game_saved in Game_saved.objects.filter(user=user):
+                game_saved_id_list.append(str(game_saved.adventure_saved))
         character_name = characters.filter(is_logged=True)[0].character_name
         context = { 'character_name' : character_name,
                     'level' : level,
                     # 'adventure_img_url_list' : adventure_img_url_list,
                     # 'adventure_name_list' : adventure_name_list,
-                    'zipped' : zipped
+                    'game_saved' : game_saved_id_list,
+                    'zipped' : zipped,
                   }
         return render(request, 'coreapp/individual.html', context)
     else:
@@ -94,7 +106,7 @@ def registration_submission(request):
     if len(User.objects.filter(email=email)) != 0: #pylint: disable=E1101
         return registration(request, "Try again, %s %s." %("there is already an account with that email", email))
     user = User.objects.create_user(username=username, email=email, password=password, first_name=firstname, last_name=lastname) #pylint: disable=E1101
-    level=Level.objects.create(user=user,level_number=0)
+    level=Level_num.objects.create(user=user, user_point=0, user_level=1)
     user = auth.authenticate(username=username, password=password)
     auth.login(request, user)
     return HttpResponseRedirect('/')
@@ -166,15 +178,16 @@ def individual(request):
         char = user.character_set.all().filter(character_name=character_name, character_pin=character_pin)[0]
         char.is_logged = True
         char.save();
-        islogged=''
-        if char.is_logged == True:
-            islogged="True"
-        context = { 'character_name' : character_name,
-                    'level' : level,
-                    'islogged' : islogged,
-                  }
+        # islogged=''
+        # if char.is_logged == True:
+        #     islogged="True"
+        # context = { 'character_name' : character_name,
+        #             'level' : level,
+        #             'islogged' : islogged,
+        #           }
 
-        return render(request, 'coreapp/individual.html', context)
+        # return render(request, 'coreapp/individual.html', context)
+        return HttpResponseRedirect('/profile/')
     else:
         messages.success(request, 'The PIN you entered is incorrect or did not select your family role, please try agian!')
         return HttpResponseRedirect('/profile/')

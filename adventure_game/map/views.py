@@ -4,38 +4,65 @@ from .models import QuestionAndAnswer
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib import messages
+from .models import Adventure
+from .models import Task
+from .models import Question
+from .models import Answer
+from coreapp.models import Level_num
+from coreapp.models import Track
+from coreapp.models import Game_saved
+
+
 # Create your views here.
 
-def index(request):
+def map(request):
+    """
+    This function renders entire map where users can see their adventures progress
+    """
     user = request.user
+    adventureid = request.GET.get('adventureid', '')
     if user.is_authenticated():
         if not user.character_set.all():
             messages.warning(request, 'Create your family roles so that you can start your adventures.')
             return HttpResponseRedirect(reverse('coreapp:profile'))
         else:
 
-            ln = user.level.level_number
+            game_saved = user.game_saved.task_saved
+            task_saved = int(game_saved)
 
-            if ln == 0:
+            if task_saved == 1:
                 boyn = "boy"
-            elif ln == 1:
+            elif task_saved == 2:
                 boyn = "boy boy1"
-            elif ln == 2:
+            elif task_saved == 3:
                 boyn = "boy boy1 boy2"
-            elif ln == 3:
+            elif task_saved == 4:
                 boyn = "boy boy1 boy2 boy3"
-            elif ln == 4:
+            elif task_saved == 5:
                 boyn = "boy boy1 boy2 boy3 boy4"
             messages.warning(request, 'Welcome to your adventures')
-            return render(request, 'map/index.html', {'boyn':boyn})
+            return render(request, 'map/map.html', {'boyn':boyn})
     else:
         messages.warning(request, 'Please sign in')
         return HttpResponseRedirect(reverse('coreapp:home'))
 
-def task1(request):
-    return render(request, 'map/task1.html')
+def beginingstory(request):
+    """
+    This function takes user to a transmission page that only display once when users first begin the adventure.
+    """
+    user = request.user
+    adventureid = request.GET.get('adventureid', '')
+    if Game_saved.objects.filter(user=user):
+        return HttpResponseRedirect(reverse('map:map'))
+    else:
+        game_saved = Game_saved.objects.create(user=user, adventure_saved=adventureid, task_saved='1')
+        # task_saved = int(game_saved.task_saved)
+        return render(request, 'map/task1.html')
 
-def task1_question1(request):
+def task(request):
+    """
+    This functions retrives tasks from database and display on task pages for users to complete.
+    """
     if request.user.is_authenticated():
         if request.user.level.task1_question1_completion == True:
             return HttpResponseRedirect(reverse('map:task1_question2'))
