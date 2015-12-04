@@ -118,8 +118,9 @@ def task(request):
     adventureid = request.GET.get('adventureid', '')
     adv = Adventure.objects.get(adventure_id=adventureid)
     task_num = request.GET.get('task_num', '')
-    if int(task_num) < 6:
-        task_num_next = str(int(task_num) + 1)
+
+    if task_num < 6:
+        task_num_next = str(float(task_num) + 1)
     else:
         completed = True
     #saving game
@@ -135,6 +136,7 @@ def task(request):
                'task_num' : task_num,
                'task_detail' : task_detail,
                'task_ans' : task_ans,
+               'task_num_next' : task_num_next,
     }
     return render(request, 'map/taskpage.html', context)
 
@@ -147,9 +149,10 @@ def Task_Submission(request):
 
     task_ans = task.task_ans
 
+    task_num_next = str(int(task_num) + 1)
     if user_ans == task_ans:
         context = {'adventureid' : adventureid,
-                   'task_num' : str(int(task_num)+1),
+                   'task_num' : task_num_next,
         }
         return render(request, 'map/taskpage.html', context)
 
