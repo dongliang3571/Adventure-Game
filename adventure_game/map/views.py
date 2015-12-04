@@ -59,13 +59,29 @@ def map(request):
     # task_name_list = Task.task_name.filter(adventure_name=adv)
 
 
-    context = {'task' : task,
+    context = {'task_num1' : task_num_list[0],
+               'task_num2' : task_num_list[1],
+               'task_num3' : task_num_list[2],
+               'task_num4' : task_num_list[3],
+               'task_num5' : task_num_list[4],
+
+               'task_name1' : task_name_list[0],
+               'task_name2' : task_name_list[1],
+               'task_name3' : task_name_list[2],
+               'task_name4' : task_name_list[3],
+               'task_name5' : task_name_list[4],
+
+               'place_img_url1' : place_img_url_list[0],
+               'place_img_url2' : place_img_url_list[1],
+               'place_img_url3' : place_img_url_list[2],
+               'place_img_url4' : place_img_url_list[3],
+               'place_img_url5' : place_img_url_list[4],
 
     }
     return render(request, 'map/map.html', context)
 
 
-    
+
 def beginingstory(request):
     """
     This function takes user to a transmission page that only display once when users first begin the adventure.

@@ -8,7 +8,7 @@
 
 {% block content %}
 
-<h1> {{ task }}</h1>
+<h1> {{ place_img_url1 }}</h1>
       <div id="space"></div>
       <div>
 
@@ -17,11 +17,11 @@
       <canvas id="env"></canvas>
 
 
-      <img id="empire" src={% static "map/images/buildings/Empire_State_Building.png" %}>
-      <img id="statue_liberty" src={% static "map/images/buildings/statue_liberty.png" %}>
-      <img id="metropolitan" src={% static "map/images/buildings/metropolitan.png" %}>
-      <img id="grand" src={% static "map/images/buildings/grand.png" %}>
-      <img id="central" src={% static "map/images/buildings/central.png" %}>
+      <img id="task1_img" src= "{{ place_img_url1 }}">
+      <img id="task2_img" src= "{{ place_img_url2 }}">
+      <img id="task3_img" src= "{{ place_img_url3 }}">
+      <img id="task4_img" src= "{{ place_img_url4 }}">
+      <img id="task5_img" src= "{{ place_img_url5 }}">
 
       {% if image1 %}
       {% autoescape off %}
@@ -29,11 +29,12 @@
       {% endautoescape %}
       {% endif %}
       <!-- <img src="https://i.kinja-img.com/gawker-media/image/upload/en4oskk7fjw1dm0dczaj.jpg" /> -->
-      <div id="grand_title" class="building_name">Grand Central Terminal</div>
-      <div id="empire_title" class="building_name">Empire State Building</div>
-      <div id="central_title" class="building_name">Central Park</div>
-      <div id="statue_title" class="building_name">Statue of Liberty</div>
-      <div id="metropolitan_title" class="building_name">The Metropolitan Museum of Art</div>
+      <div id="task1_name" class="building_name">{{ task_name1 }}</div>
+      <div id="task2_name" class="building_name">{{ task_name2 }}</div>
+      <div id="task3_name" class="building_name">{{ task_name3 }}</div>
+      <div id="task4_name" class="building_name">{{ task_name4 }}</div>
+      <div id="task5_name" class="building_name">{{ task_name5 }}</div>
+
 
       <a href="/adventure/task1"><img id="number1" class="number_mission" src={% static "map/images/numbers/number1.png" %}></a>
       <a href="/adventure/task2"><img id="number2" class="number_mission" src={% static "map/images/numbers/number2.png" %}></a>
