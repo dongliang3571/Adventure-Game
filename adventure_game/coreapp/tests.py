@@ -174,24 +174,23 @@ class TestPages(TestCase):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
 
-"""
-class AutoLogoutTest(unittest.TestCase):
 
-    @mock.patch('functions.datetime')
-    def testAutoLogout(self, datetime_mock):
-        datetime_mock.datetime.now = Mock(return_value = datetime.strptime("21/11/16 16:30", "%d/%m/%y %H:%M")
+class AutoLogoutTest(unitTest.TestCase):
 
-class AutoLogoutTest(unittest.TestCase):
-
-    def setUp(self):
-        self.loggedout = AutoLogout()
-        request = Mock()
-        request.session['last_touch'] = timedelta(31*60)
+    def setUp:
         self.client = Client()
         self.user = User.objects.create_user(username='testuser', password='pass')
         self.client.login(username='testuser', password='pass')
 
+    def test_auto_logout(self):
+        session = self.client.session
+        session['last_touch'] = datetime.now()-timedelta(hours=1)
+        request.session = session
 
+        response = self.client.get('/logout/', follow=True)
+        self.assertRedirects(response, '/')
+
+"""
 class UnitTests(TestCase):
 
     @patch('coreapp.views.auth_view')
