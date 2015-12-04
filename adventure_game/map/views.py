@@ -59,6 +59,16 @@ def beginingstory(request):
         # task_saved = int(game_saved.task_saved)
         return render(request, 'map/task1.html')
 
+
+def story(request):
+    adventureid = request.GET.get('adventureid', '')
+    context = {'adventureid' : adventureid,
+
+    }
+    return render(request, 'map/story.html', context)
+
+
+
 def task(request):
     """
     This functions retrives tasks from database and display on task pages for users to complete.

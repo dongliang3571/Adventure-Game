@@ -5,7 +5,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.map, name='map'),
-    url(r'^beginingstory$', views.beginingstory, name="beginingstory"),
+    url(r'^story$', views.story, name="story"),
     url(r'^task\d*$', views.task, name="task"),
     # url(r'^task2/$', views.task2, name="task2"),
     url(r'^tasksubmission', views.Task_Submission, name="tasksubmission")
