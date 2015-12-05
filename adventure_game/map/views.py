@@ -54,6 +54,7 @@ def beginingstory(request):
         return HttpResponseRedirect(reverse('map:map'))
     else:
         game_saved = Game_saved.objects.create(user=user, adventure_saved=adventureid, task_saved='1')
+        # track = Track.objects.create(user=user)
         # task_saved = int(game_saved.task_saved)
         return render(request, 'map/task1.html')
 
@@ -107,56 +108,65 @@ def task(request):
 def task_submission_no_ans(request):
     user = request.user
     game_saved = user.game_saved
-    adventure_saved = str(game_saved.adventure_saved)
-    task_saved = int(game_saved.task_saved)
-    adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
-    adv_name = adv.adventure_name
-    task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
+    # if game_saved.task_saved == '5':
+        # Track.objects
+        # return render(request, 'map/adventure_completion.html')
+    # game_saved.task_saved = game_saved.task_saved
+    # game_save()
+    #
+    # adventure_saved = str(game_saved.adventure_saved)
+    # task_saved = int(game_saved.task_saved)
+    # adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
+    # adv_name = adv.adventure_name
+    # task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
+
 
 def Task_Submission(request):
     user = request.user
     game_saved = user.game_saved
-    adventure_saved = str(game_saved.adventure_saved)
-    task_saved = int(game_saved.task_saved)
-    adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
-    adv_name = adv.adventure_name
-    task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
-    user_ans = request.POST.get('task_ans','')
-
-    if user_ans:
-        this_user_ans = task.user_ans
-        if user_ans == this_user_ans:
-
-
-
-    adv = Adventure.objects.get(adventure_id="0000")
-    task_num = 1
-    task = Task.objects.get(adventure_name=adv, task_number=task_num)
-    task_detail = task.task_detail
-    task_ans = task.task_ans
-
-    user_ans = request.POST.get('task_ans','')
-
-    context = {'adv_name' : adv,
-               'task_num' : task_num,
-               'task_detail' : task_detail,
-               'task_ans' : task_ans,
-    }
-    if user_ans == task.task_ans:
-        task_num = task_num+1
-        task = Task.objects.get(adventure_name=adv, task_number=task_num)
-        task_detail = task.task_detail
-        task_ans = task.task_ans
-
-        context = {'adv_name' : adv,
-                   'task_num' : task_num,
-                   'task_detail' : task_detail,
-                   'task_ans' : task_ans,
-        }
-        return render(request, 'map/taskpage.html', context)
-    else:
-        messages.success(request, 'Sorry, the result is incorrect..')
-        return render(request, 'map/taskpage.html', context)
+    # adventure_saved = str(game_saved.adventure_saved)
+#     task_saved = int(game_saved.task_saved)
+#     adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
+#     adv_name = adv.adventure_name
+#     task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
+#     user_ans = request.POST.get('task_ans','')
+#
+#     if user_ans:
+#         this_user_ans = task.user_ans
+#         if user_ans == this_user_ans:
+#             game_saved.task_saved = game_saved.task_saved
+#             game_save()
+#
+#
+#
+#     adv = Adventure.objects.get(adventure_id="0000")
+#     task_num = 1
+#     task = Task.objects.get(adventure_name=adv, task_number=task_num)
+#     task_detail = task.task_detail
+#     task_ans = task.task_ans
+#
+#     user_ans = request.POST.get('task_ans','')
+#
+#     context = {'adv_name' : adv,
+#                'task_num' : task_num,
+#                'task_detail' : task_detail,
+#                'task_ans' : task_ans,
+#     }
+#     if user_ans == task.task_ans:
+#         task_num = task_num+1
+#         task = Task.objects.get(adventure_name=adv, task_number=task_num)
+#         task_detail = task.task_detail
+#         task_ans = task.task_ans
+#
+#         context = {'adv_name' : adv,
+#                    'task_num' : task_num,
+#                    'task_detail' : task_detail,
+#                    'task_ans' : task_ans,
+#         }
+#         return render(request, 'map/taskpage.html', context)
+#     else:
+#         messages.success(request, 'Sorry, the result is incorrect..')
+#         return render(request, 'map/taskpage.html', context)
 
 
 def task1_question2(request):
