@@ -29,13 +29,14 @@ class Task(models.Model):
     """
     adventure_name = models.ForeignKey(Adventure)
     task_num_choices = (
-        ('1', '1'),
-        ('2', '2'),
-        ('3', '3'),
-        ('4', '4'),
-        ('5', '5'),
+        (1, 1),
+        (2, 2),
+        (3, 3),
+        (4, 4),
+        (5, 5),
     )
-    task_number = models.CharField(max_length=10, choices = task_num_choices, default='1')
+    task_number = models.IntegerField(choices = task_num_choices, default=1)
+    task_name = models.CharField(max_length=20, blank=True, default='')
     task_type_choices = (
         ('Mission', 'Mission'),
         ('Questions', 'Questions'),
@@ -45,7 +46,7 @@ class Task(models.Model):
     place_img_url = models.URLField(blank=True, default='')
     task_ans = models.CharField(max_length=200, blank=True, default='')
     def __unicode__(self):
-        return self.task_number
+        return str(self.task_number)
 
 class Question(models.Model):
     question_type_choices = (
