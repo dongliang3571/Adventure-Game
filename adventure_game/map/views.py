@@ -113,13 +113,13 @@ def task(request):
 def mission_task_submission(request):
     user = request.user
     game_saved = user.game_saved
+    adventure_saved = str(game_saved.adventure_saved)
     if game_saved.task_saved == '5':
-        # Track.objects
+        Track.objects.create(user=user, adventure_done=adventure_saved)
         return render(request, 'map/adventure_completion.html')
     game_saved.task_saved = str(int(game_saved.task_saved) + 1)
     game_saved.save()
 
-    adventure_saved = str(game_saved.adventure_saved)
     task_saved = int(game_saved.task_saved)
     adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
     adv_name = adv.adventure_name
