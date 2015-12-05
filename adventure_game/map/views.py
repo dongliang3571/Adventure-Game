@@ -75,7 +75,7 @@ def task(request):
     task_ans = task.task_ans
     task_type = str(task.task_type)
     show_textbox = ''
-    if tsk_type == 'Mission':
+    if task_type == 'Questions':
         show_textbox = "show"
 
     context = {
@@ -110,14 +110,14 @@ def task(request):
     # }
     # return render(request, 'map/taskpage.html', context)
 
-def task_submission_no_ans(request):
+def mission_task_submission(request):
     user = request.user
     game_saved = user.game_saved
     if game_saved.task_saved == '5':
         # Track.objects
         return render(request, 'map/adventure_completion.html')
     game_saved.task_saved = str(int(game_saved.task_saved) + 1)
-    game_save()
+    game_saved.save()
 
     adventure_saved = str(game_saved.adventure_saved)
     task_saved = int(game_saved.task_saved)
@@ -128,7 +128,7 @@ def task_submission_no_ans(request):
     return HttpResponseRedirect(new_url)
 
 
-def task_submission(request):
+def questions_task_submission(request):
     user = request.user
     game_saved = user.game_saved
     adventure_saved = str(game_saved.adventure_saved)
@@ -139,10 +139,10 @@ def task_submission(request):
     user_ans = request.GET.get('task_ans','')
 
     if user_ans:
-        this_user_ans = task.user_ans
-        if user_ans == this_user_ans:
+        task_ans = task.task_ans
+        if user_ans == task_ans:
             game_saved.task_saved = str(int(game_saved.task_saved) + 1)
-            game_save()
+            game_saved.save()
             task_saved = game_saved.task_saved
             new_url = 'task' + str(task_saved)
             return HttpResponseRedirect(new_url)
