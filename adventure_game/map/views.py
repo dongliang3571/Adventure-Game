@@ -108,17 +108,30 @@ def task(request):
 def task_submission_no_ans(request):
     user = request.user
     game_saved = user.game_saved
-    # if game_saved.task_saved == '5':
+    if game_saved.task_saved == '5':
         # Track.objects
-        # return render(request, 'map/adventure_completion.html')
-    # game_saved.task_saved = game_saved.task_saved
-    # game_save()
-    #
-    # adventure_saved = str(game_saved.adventure_saved)
-    # task_saved = int(game_saved.task_saved)
-    # adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
-    # adv_name = adv.adventure_name
-    # task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
+        return render(request, 'map/adventure_completion.html')
+    game_saved.task_saved = game_saved.task_saved
+    game_save()
+
+    adventure_saved = str(game_saved.adventure_saved)
+    task_saved = int(game_saved.task_saved)
+    adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
+    adv_name = adv.adventure_name
+    task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
+
+    task_detail = task.task_detail
+    task_ans = task.task_ans
+
+    context = {
+        'adv_id' : adventure_saved,
+        'adv_name' : adv_name,
+        'task_num' : task_saved,
+        'task_detail' : task_detail,
+        'task_ans' : task_ans,
+    }
+
+    return render(request, 'map/taskpage.html', context)
 
 
 def Task_Submission(request):
