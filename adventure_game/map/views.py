@@ -64,6 +64,7 @@ def task(request):
 
     user = request.user
     adv = Adventure.objects.get(adventure_id="0000") #needed to get from adv
+    adv_id = adv.adventure_id
     task_num = 1    #needed to get from map
 
     #saving game
@@ -75,6 +76,7 @@ def task(request):
     task_ans = task.task_ans
 
     context = {
+        'adv_id' : adv_id,
         'adv_name' : adv,
         'task_num' : task_num,
         'task_detail' : task_detail,
@@ -121,3 +123,6 @@ def task1_question2(request):
 
 def task2(request):
     return render(request, 'map/task2.html')
+
+def scram(request):
+    return render(request, 'map/scramble.html')

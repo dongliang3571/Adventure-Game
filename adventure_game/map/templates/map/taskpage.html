@@ -1,8 +1,11 @@
 {% extends "coreapp/base.html" %}
 {% load staticfiles %}
 {% block map_css_js %}
-<link rel="stylesheet" type="text/css" href={% static "map/css/task.css" %}>
+<link rel="stylesheet" type="text/css" href="{% static "map/css/task.css" %}">
+<!-- <link href="{% static "task/css/scramble.css" %}" rel="stylesheet"> -->
 {% endblock %}
+
+
 
 {% block content %}
 
@@ -21,10 +24,24 @@
           <h3>
             Task details:
           </h3>
-          <br>
+          <br><br><br>
+
+          {% autoescape off %}
 
           <p>{{ task_detail }}</p>
+
+          {% endautoescape %}
           <br>
+
+<!--
+          <div class="scramble" data-unscrambled="STA"></div>
+
+          <div class="scramble" data-unscrambled="TIGER"></div>
+
+          <div class="scramble" data-unscrambled="SPIDER"></div>
+          <script type="text/javascript" src="{% static "task/js/scramble.js" %}"></script> -->
+
+
 
           <form action="{% url 'map:map' %}" method="POST" id="BackToMap"> {%csrf_token %}
                 <button type="submit">Go Back</button>
