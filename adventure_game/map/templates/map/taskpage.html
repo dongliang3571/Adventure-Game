@@ -57,13 +57,13 @@
 
       {% if task_ans %}
       <p>The answer for this task is :{{ task_ans }}
-        <form action="{% url 'map:tasksubmission' %}" method="POST" id="nexttask1"> {%csrf_token %}
+        <form action="{% url 'map:tasksubmission' %}" method="get" id="nexttask1">
               <input type="text" name="task_ans" placeholder="Enter you result here">
               <br>
               <button type="submit">Next Task</button>
         </form>
       {% else %}
-        <form action="{% url 'map:tasksubmission' %}" method="POST" id="nexttask2">
+        <form action="{% url 'map:tasksubmission' %}" method="get" id="nexttask2">
               <button type="submit">Next Task</button>
         </form>
       {% endif %}

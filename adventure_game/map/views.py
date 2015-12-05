@@ -73,8 +73,13 @@ def task(request):
 
     task_detail = task.task_detail
     task_ans = task.task_ans
+    task_type = str(task.task_type)
+    show_textbox = ''
+    if tsk_type == 'Mission':
+        show_textbox = "show"
 
     context = {
+        'show_textbox' : show_textbox,
         'adv_id' : adventure_saved,
         'adv_name' : adv_name,
         'task_num' : task_saved,
@@ -119,22 +124,11 @@ def task_submission_no_ans(request):
     adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
     adv_name = adv.adventure_name
     task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
-
-    task_detail = task.task_detail
-    task_ans = task.task_ans
-
-    context = {
-        'adv_id' : adventure_saved,
-        'adv_name' : adv_name,
-        'task_num' : task_saved,
-        'task_detail' : task_detail,
-        'task_ans' : task_ans,
-    }
-
-    return render(request, 'map/taskpage.html', context)
+    new_url = 'task' + str(task_saved)
+    return HttpResponseRedirect(new_url)
 
 
-def Task_Submission(request):
+def task_submission(request):
     user = request.user
     game_saved = user.game_saved
     adventure_saved = str(game_saved.adventure_saved)
@@ -142,44 +136,54 @@ def Task_Submission(request):
     adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
     adv_name = adv.adventure_name
     task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
-    user_ans = request.POST.get('task_ans','')
+    user_ans = request.GET.get('task_ans','')
 
     if user_ans:
         this_user_ans = task.user_ans
         if user_ans == this_user_ans:
             game_saved.task_saved = str(int(game_saved.task_saved) + 1)
             game_save()
+            task_saved = game_saved.task_saved
+            new_url = 'task' + str(task_saved)
+            return HttpResponseRedirect(new_url)
+        else:
+            new_url = 'task' + str(task_saved)
+            messages.success(request, 'Sorry, the result is incorrect..')
+            return HttpResponseRedirect(new_url)
 
-
-
-    adv = Adventure.objects.get(adventure_id="0000")
-    task_num = 1
-    task = Task.objects.get(adventure_name=adv, task_number=task_num)
-    task_detail = task.task_detail
-    task_ans = task.task_ans
-
-    user_ans = request.POST.get('task_ans','')
-
-    context = {'adv_name' : adv,
-               'task_num' : task_num,
-               'task_detail' : task_detail,
-               'task_ans' : task_ans,
-    }
-    if user_ans == task.task_ans:
-        task_num = task_num+1
-        task = Task.objects.get(adventure_name=adv, task_number=task_num)
-        task_detail = task.task_detail
-        task_ans = task.task_ans
-
-        context = {'adv_name' : adv,
-                   'task_num' : task_num,
-                   'task_detail' : task_detail,
-                   'task_ans' : task_ans,
-        }
-        return render(request, 'map/taskpage.html', context)
     else:
-        messages.success(request, 'Sorry, the result is incorrect..')
-        return render(request, 'map/taskpage.html', context)
+        new_url = 'task' + str(task_saved)
+        messages.warning(request, 'Sorry, textfield is empty')
+        return HttpResponseRedirect(new_url)
+
+    # adv = Adventure.objects.get(adventure_id="0000")
+    # task_num = 1
+    # task = Task.objects.get(adventure_name=adv, task_number=task_num)
+    # task_detail = task.task_detail
+    # task_ans = task.task_ans
+    #
+    # user_ans = request.POST.get('task_ans','')
+    #
+    # context = {'adv_name' : adv,
+    #            'task_num' : task_num,
+    #            'task_detail' : task_detail,
+    #            'task_ans' : task_ans,
+    # }
+    # if user_ans == task.task_ans:
+    #     task_num = task_num+1
+    #     task = Task.objects.get(adventure_name=adv, task_number=task_num)
+    #     task_detail = task.task_detail
+    #     task_ans = task.task_ans
+    #
+    #     context = {'adv_name' : adv,
+    #                'task_num' : task_num,
+    #                'task_detail' : task_detail,
+    #                'task_ans' : task_ans,
+    #     }
+    #     return render(request, 'map/taskpage.html', context)
+    # else:
+    #     messages.success(request, 'Sorry, the result is incorrect..')
+    #     return render(request, 'map/taskpage.html', context)
 
 
 def task1_question2(request):
