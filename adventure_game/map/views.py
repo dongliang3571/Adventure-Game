@@ -66,14 +66,8 @@ def task(request):
     game_saved = user.game_saved
     adventure_saved = str(game_saved.adventure_saved)
     task_saved = int(game_saved.task_saved)
-    # task_num = 1    #needed to get from map
     adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
     adv_name = adv.adventure_name
-    #saving game
-    # game_saved = Game_saved.objects.filter(user=user)
-    # game_saved_adv = adv
-    # game_saved_task = task_num
-
     task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
 
     task_detail = task.task_detail
@@ -89,9 +83,51 @@ def task(request):
 
     return render(request, 'map/taskpage.html', context)
 
+    #     user = request.user
+    #
+    #
+    # adv = Adventure.objects.get(adventure_id="0000") #needed to get from adv
+    # task_num = 1    #needed to get from map
+    #
+    # #saving game
+    # game_saved_adv = adv
+    # game_saved_task = task_num
+    #
+    # task = Task.objects.get(adventure_name=adv, task_number=task_num)
+    # task_detail = task.task_detail
+    # task_ans = task.task_ans
+    #
+    # context = {'adv_name' : adv,
+    #            'task_num' : task_num,
+    #            'task_detail' : task_detail,
+    #            'task_ans' : task_ans,
+    # }
+    # return render(request, 'map/taskpage.html', context)
 
+def task_submission_no_ans(request):
+    user = request.user
+    game_saved = user.game_saved
+    adventure_saved = str(game_saved.adventure_saved)
+    task_saved = int(game_saved.task_saved)
+    adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
+    adv_name = adv.adventure_name
+    task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
 
 def Task_Submission(request):
+    user = request.user
+    game_saved = user.game_saved
+    adventure_saved = str(game_saved.adventure_saved)
+    task_saved = int(game_saved.task_saved)
+    adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
+    adv_name = adv.adventure_name
+    task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
+    user_ans = request.POST.get('task_ans','')
+
+    if user_ans:
+        this_user_ans = task.user_ans
+        if user_ans == this_user_ans:
+
+
 
     adv = Adventure.objects.get(adventure_id="0000")
     task_num = 1
