@@ -11,6 +11,8 @@ import unittest
 from coreapp.models import UserProfile
 from adventure_game.middleware import AutoLogout
 
+from coreapp.models import Level_num
+
 class LoginTests(TestCase):
     def setUp(self):
         self.client = Client()
@@ -123,17 +125,20 @@ class IndividualViewTests(TestCase):
         self.user = User.objects.create_user(username='testuser', password='pass')
         self.client.login(username='testuser', password='pass')
         self.user.character_set.create(character_name="test", character_pin="1234")
+        self.level_num = Level_num.objects.create(user=self.user, user_point=0, user_level=1)
+
 
     def test_invalid_pin(self):
         response = self.client.post('/individual/', {'character_name': 'test', 'character_pin': '2234'}, follow=True)
         message = list(response.context['messages'])
         self.assertRedirects(response, '/profile/')
-        self.assertEqual(str(message[0]), 'The PIN you entered is incorrect, please try again!')
+        self.assertEqual(str(message[0]), 'The PIN you entered is incorrect or did not select your family role, please try agian!')
 
     def test_valid_pin(self):
+
         response = self.client.post('/individual/', {'character_name': 'test', 'character_pin': '1234'})
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.context['character_name'], 'test')
+        self.assertEqual(response.status_code, 302)
+        # self.assertEqual(response.context['character_name'], 'test')
 
 
 class StoryViewTests(TestCase):
