@@ -17,11 +17,11 @@
       <canvas id="env"></canvas>
 
 
-      <img id="task1_img" src= "{{ place_img_url1 }}">
-      <img id="task2_img" src= "{{ place_img_url2 }}">
-      <img id="task3_img" src= "{{ place_img_url3 }}">
-      <img id="task4_img" src= "{{ place_img_url4 }}">
-      <img id="task5_img" src= "{{ place_img_url5 }}">
+      <img id="empire" src={% static "map/images/buildings/Empire_State_Building.png" %}>
+      <img id="statue_liberty" src={% static "map/images/buildings/statue_liberty.png" %}>
+      <img id="metropolitan" src={% static "map/images/buildings/metropolitan.png" %}>
+      <img id="grand" src={% static "map/images/buildings/grand.png" %}>
+      <img id="central" src={% static "map/images/buildings/central.png" %}>
 
       {% if image1 %}
       {% autoescape off %}
@@ -29,43 +29,17 @@
       {% endautoescape %}
       {% endif %}
       <!-- <img src="https://i.kinja-img.com/gawker-media/image/upload/en4oskk7fjw1dm0dczaj.jpg" /> -->
-      <div id="task1_name" class="building_name">{{ task_name1 }}</div>
-      <div id="task2_name" class="building_name">{{ task_name2 }}</div>
-      <div id="task3_name" class="building_name">{{ task_name3 }}</div>
-      <div id="task4_name" class="building_name">{{ task_name4 }}</div>
-      <div id="task5_name" class="building_name">{{ task_name5 }}</div>
+      <div id="grand_title" class="building_name">Grand Central Terminal</div>
+      <div id="empire_title" class="building_name">Empire State Building</div>
+      <div id="central_title" class="building_name">Central Park</div>
+      <div id="statue_title" class="building_name">Statue of Liberty</div>
+      <div id="metropolitan_title" class="building_name">The Metropolitan Museum of Art</div>
 
-      <form class="ToTaskDetailPage" id="number1" action="/adventure{{ adventureid }}/map/task{{ task_num1 }}" method="get">
-        <input type="hidden" name="adventureid" value="{{ adventureid }}">
-        <input type="hidden" name="task_num" value="{{ task_num1 }}">
-        <input class="number_mission" type="image" src={% static "map/images/numbers/number1.png" %} alt="Submit Form" />
-      </form>
-
-      <form class="ToTaskDetailPage" id="number2" action="/adventure{{ adventureid }}/map/task{{ task_num2 }}" method="get">
-        <input type="hidden" name="adventureid" value="{{ adventureid }}">
-        <input type="hidden" name="task_num" value="{{ task_num2 }}">
-        <input class="number_mission" type="image" src={% static "map/images/numbers/number2.png" %} alt="Submit Form" />
-      </form>
-
-      <form class="ToTaskDetailPage" id="number3" action="/adventure{{ adventureid }}/map/task{{ task_num3 }}" method="get">
-        <input type="hidden" name="adventureid" value="{{ adventureid }}">
-        <input type="hidden" name="task_num" value="{{ task_num3 }}">
-        <input class="number_mission" type="image" src={% static "map/images/numbers/number3.png" %} alt="Submit Form" />
-      </form>
-
-      <form class="ToTaskDetailPage" id="number4" action="/adventure{{ adventureid }}/map/task{{ task_num4 }}" method="get">
-        <input type="hidden" name="adventureid" value="{{ adventureid }}">
-        <input type="hidden" name="task_num" value="{{ task_num4 }}">
-        <input class="number_mission" type="image" src={% static "map/images/numbers/number4.png" %} alt="Submit Form" />
-      </form>
-
-      <form class="ToTaskDetailPage" id="number5" action="/adventure{{ adventureid }}/map/task{{ task_num5 }}" method="get">
-        <input type="hidden" name="adventureid" value="{{ adventureid }}">
-        <input type="hidden" name="task_num" value="{{ task_num5 }}">
-        <input class="number_mission" type="image" src={% static "map/images/numbers/number5.png" %} alt="Submit Form" />
-      </form>
-
-      <!-- <a href=""><img id="number5" class="number_mission" src={% static "map/images/numbers/number5.png" %}></a> -->
+      <a href="/adventure/task1"><img id="number1" class="number_mission" src={% static "map/images/numbers/number1.png" %}></a>
+      <a href="/adventure/task2"><img id="number2" class="number_mission" src={% static "map/images/numbers/number2.png" %}></a>
+      <a href=""><img id="number3" class="number_mission" src={% static "map/images/numbers/number3.png" %}></a>
+      <a href=""><img id="number4" class="number_mission" src={% static "map/images/numbers/number4.png" %}></a>
+      <a href=""><img id="number5" class="number_mission" src={% static "map/images/numbers/number5.png" %}></a>
       <!-- <img id="mist" src="static/images/mist/mist.png"> -->
       <img id="path1" src={% static "map/images/path1.png" %}>
       <img id="path2" src={% static "map/images/path1.png" %}>
