@@ -39,7 +39,7 @@
 		<div class="container marketing">
 
 
-			{% for x,y,z in zipped %}
+			{% for x, y, z in zipped %}
 
       <!-- START THE FEATURETTES -->
 
@@ -59,10 +59,12 @@
 			{% if game_saved %}
 			{% for n in game_saved %}
 			{% if n == z %}
-			<input id="continue" type="submit" value="Continue your adventure"><br>
+			<input class="tobedeleted" id="continue" type="submit" value="Continue your adventure"><br>
 			{% endif %}
+
 			{% endfor %}
-			<input id="play" type="submit" value="Play it!"><br>
+
+			<input class="tobedeleted" id="play" type="submit" value="Play it!"><br>
 			<script>
 			$(function(){
 			  var el = document.getElementById("continue")
@@ -78,7 +80,29 @@
 			</form>
 
 			{% endif %}
+
+			{% if completed_list %}
+			{% for w in completed_list %}
+			{% if w == z %}
+			<p style="color:red;">you have completed this adventure, but if you want to play again, click "Replay"</p>
+			<input id="replay" type="submit" value="Replay">
+			<script>
+			$(function(){
+			  var el = document.getElementById("replay")
+			  if (el) {
+			    $("#replay").prevAll('input.tobedeleted').remove();
+			  }
+			});
+			</script>
+			{% endif %}
+			{% endfor %}
+
+
+
+			{% endif %}
+
 			{% endfor%}
+
 
 
 

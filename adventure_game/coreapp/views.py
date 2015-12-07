@@ -19,17 +19,20 @@ def home(request,message=None):
 
 @login_required(login_url='/')
 def profile(request):
+    user = request.user
     characters = request.user.character_set.all()
     adventures = Adventure.objects.all()
     adventure_name_list =[]
     adventure_img_url_list = []
     adventure_id_list = []
+    adventure_complete_list = []
 
     for i in Adventure.objects.all():
         adventure_name_list.append(str(i.adventure_name))
         adventure_img_url_list.append(str(i.adventure_img_url))
         adventure_id_list.append(str(i.adventure_id))
-
+    for n in Track.objects.filter(user=user):
+        adventure_complete_list.append(str(n.adventure_done))
     zipped = zip(adventure_img_url_list, adventure_name_list, adventure_id_list)
     adventure_img = "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg"
     adventure_name = "adv_name"
@@ -48,6 +51,7 @@ def profile(request):
                    # 'adventure_name_list' : adventure_name_list,
                    'game_saved' : game_saved_id_list,
                    'zipped' : zipped,
+                   'completed_list' : adventure_complete_list,
                   }
         return render(request, 'coreapp/individual.html', context)
     else:
