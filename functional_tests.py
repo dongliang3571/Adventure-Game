@@ -5,6 +5,7 @@ class NewVisitorTest(unittest.TestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(3)
 
     def tearDown(self):
         self.browser.quit()
@@ -18,3 +19,6 @@ class NewVisitorTest(unittest.TestCase):
         #Daniel and his daughter see that the page title
         #mentions adventures.
         assert 'Adventure' in browser.title, "Browser title was " + browser.title
+
+if __name__ == '__main__':
+    unittest.main(warnings = 'ignore')
