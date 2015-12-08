@@ -183,9 +183,8 @@ class HomePageTests(TestCase):
     def test_home_page_retruns_correctly(self):
         request = HttpRequest()
         response = home(request)
-        self.assertTrue(response.content.startswith(b'<html>'))
-        self.assertIn(b'<title> Adventure </title>', response.content)
-        self.assertTrue(response.content.endswith(b'</html>'))
+        expected_html = render_to_string(home.html)
+        self.aseertEqual(response.content.decode(), expected_html)
 
 """
 class AutoLogoutTest(unitTest.TestCase):
