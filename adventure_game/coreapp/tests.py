@@ -173,11 +173,19 @@ class LogoutTests(TestCase):
     def test_to_string(self):
         self.assertEqual(str(self.userprofile), u'Profile of user: test')
 """
-class TestPages(TestCase):
+class HomePageTests(TestCase):
 
-    def test_home_page(self):
-        response = self.client.get('/')
-        self.assertEqual(response.status_code, 200)
+    def test_root_url_resolves_to_home(self):
+        #Check Root Url takes us to home
+        found = resolve('/')
+        self.assertEqual(found.func, home)
+
+    def test_home_page_retruns_correctly(self):
+        request = HttpRequest()
+        response = home(request)
+        self.assertTrue(response.content.startswith(b'<html>'))
+        self.assertIn(b'<title> Adventure </title>', response.content)
+        self.assertTrue(response.content.endswith(b'</html>'))
 
 """
 class AutoLogoutTest(unitTest.TestCase):
