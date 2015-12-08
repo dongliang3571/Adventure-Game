@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 import unittest
 
 class NewVisitorTest(unittest.TestCase):
@@ -24,8 +25,3 @@ class NewVisitorTest(unittest.TestCase):
 
         #They are asked to login to continue but they are new
         #and must click register.
-
-        
-
-if __name__ == '__main__':
-    unittest.main(warnings = 'ignore')
