@@ -173,7 +173,7 @@ class LogoutTests(TestCase):
     def test_to_string(self):
         self.assertEqual(str(self.userprofile), u'Profile of user: test')
 """
-class HomePageTests(TestCase):
+class TemplateTests(TestCase):
 
     def test_root_url_resolves_to_home(self):
         #Check Root Url takes us to home
@@ -185,6 +185,12 @@ class HomePageTests(TestCase):
         response = home(request)
         expected_html = render_to_string(home.html)
         self.aseertEqual(response.content.decode(), expected_html)
+
+    def test_registration_template(self):
+        response = self.client.get('/register/')
+        self.assertTemplateUsed(response, 'register.html')
+
+
 
 """
 class AutoLogoutTest(unitTest.TestCase):
