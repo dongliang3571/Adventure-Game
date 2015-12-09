@@ -19,7 +19,7 @@ class NewVisitorTest(unittest.TestCase):
 
         #Daniel and his daughter see that the page title
         #mentions adventures.
-        assert 'Adventure' in browser.title, "Browser title was " + browser.title
+        assert 'Adventure' in self.browser.title, "Browser title was " + self.browser.title
         header_text = self.browser.find_element_by_tag_name('h2'.text)
         self.assertIn('Check out some of our adventures!',header_text)
 
