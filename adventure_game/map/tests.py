@@ -31,6 +31,7 @@ class AdventureTests(TestCase):
         self.assertTemplateUsed(response, 'coreapp/story.html')
 
     #After accepting the task from the wizard, they are taken to the map view
+    # (They are unable to click on any task but task 1)
     def test_map(self):
         response = self.client.get('/adventure/')
         self.assertEqual(response.status_code, 200)
@@ -57,8 +58,16 @@ class AdventureTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.asssertTemplateUsed(response, 'map/taskpage.html')
 
-    
+    #After they input the code they are taken back to the map. The character has
+    #moved from task 1 to task 2
+    #(They are able to click on task 1 to view it again if they like, but
+    # the only other task they can click on is task 2)
+    """
+    def test_map_position_updated_and_saved(self):
+        todo
+    """
 
+    
 
 """
 class MapTests(TestCase):
