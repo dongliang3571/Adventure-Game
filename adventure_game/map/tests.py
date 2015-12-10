@@ -36,6 +36,11 @@ class AdventureTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.asssertTemplateUsed(response, 'map/map.html')
 
+    def test_task1(self):
+        response = self.client.get('/adventure/task1/')
+        self.assertEqual(response.status_code, 200)
+        self.asssertTemplateUsed(response, 'map/taskpage.html')
+
 
 """
 class MapTests(TestCase):
