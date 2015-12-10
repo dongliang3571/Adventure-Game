@@ -2,7 +2,7 @@ from django.test import TestCase, Client
 from django.contrib.auth.models import User
 
 # Create your tests here.
-class TaskTests(TestCase):
+class AdventureTests(TestCase):
 
     #Daniel and his daughter login to the account they created last time they
     #went on an adventure.
@@ -32,10 +32,12 @@ class TaskTests(TestCase):
 
     #After accepting the task from the wizard, they are taken to the map view
     def test_map(self):
+        response = self.client.get('/adventure/')
+        self.assertEqual(response.status_code, 200)
+        self.asssertTemplateUsed(response, 'map/map.html')
 
 
-
-
+"""
 class MapTests(TestCase):
 
     def setUp(self):
@@ -44,3 +46,4 @@ class MapTests(TestCase):
         self.client.login(username='testuser', password='pass')
 
     def test_(self):
+"""
