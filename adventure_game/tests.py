@@ -165,6 +165,8 @@ class LogoutTests(TestCase):
         self.assertEqual(str(message[0]), 'You have successfully logged out.')
         self.assertNotIn('_auth_user_id', self.client.session)
 
+
+"""
 # Not sure if we even need this since I don't think we're using UserProfile.
 class UserProfileModel(TestCase):
     def setUp(self):
@@ -191,7 +193,7 @@ class TemplateTests(TestCase):
         self.assertTemplateUsed(response, 'register.html')
 
 
-
+"""
 """
 class AutoLogoutTest(unitTest.TestCase):
 

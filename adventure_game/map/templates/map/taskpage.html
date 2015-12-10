@@ -8,7 +8,7 @@
 
 
 {% block content %}
-
+<div class="section">
 <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -16,15 +16,15 @@
 
           <h1>
             <img class="hamster_head1" src="http://cliparts.co/cliparts/di9/Bg6/di9Bg6Ai7.png" />
-            {{ adv_name }} <br>
-            You are at task: {{ task_num }}
+            <p>{{ adv_name }} <br>
+            You are at task: {{ task_num }} </p>
             <img class="hamster_head2 img-responsive" src="http://www.misskatecuttables.com/uploads/shopping_cart/9493/large_cute-witch.png" />
           </h1>
           <br>
-          <h3>
+          <h3 class="task-detail">
             Task details:
           </h3>
-          <br><br><br>
+          <br>
 
           {% autoescape off %}
 
@@ -44,7 +44,7 @@
 
 
           <form action="{% url 'map:map' %}" method="POST" id="BackToMap"> {%csrf_token %}
-                <button type="submit">Go Back</button>
+                <button type="submit" class="btn btn-info go-back">Go Back</button>
           </form>
 
 
@@ -58,15 +58,16 @@
       {% if show_textbox %}
       <p>The answer for this task is :{{ task_ans }}
         <form action="{% url 'map:questionstasksubmission' %}" method="get" id="nexttask1">
-              <input type="text" name="task_ans" placeholder="Enter you result here">
+              <input type="text" class = "result-textarea"name="task_ans" placeholder="Enter you result here">
               <br>
-              <button type="submit">Next Task</button>
+              <button type="submit" class="btn btn-info next-task">Next Task</button>
         </form>
       {% else %}
         <form action="{% url 'map:missiontasksubmission' %}" method="get" id="nexttask2">
-              <button type="submit">Next Task</button>
+              <button type="submit" class="btn btn-info next-task">Next Task</button>
         </form>
       {% endif %}
+</div>
 </div>
 
 

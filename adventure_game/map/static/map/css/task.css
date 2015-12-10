@@ -1,6 +1,5 @@
 #question{
   font-size: 50px;
-
 }
 #form{
   margin-top: 100px;
@@ -10,8 +9,9 @@
   text-align: center;
   height: 400px;
 }
+
 body{
-  background-color: #2baacf;
+  background-color: #2BAACF;
 }
 
 h1{
@@ -20,6 +20,13 @@ h1{
   font-size: 2em;
   min-width: 80%;
 }
+
+
+.task-detail {
+    padding-top: 30px;
+    clear:left;
+}
+
 .hamster_head1{
   float: left;
   max-width: 10%;
@@ -45,4 +52,26 @@ h1{
 
 .hint{
   font-size: 2em;
+}
+
+.section {
+    min-height: 700px;
+}
+
+.congratulate > h1 {
+    color: #FFF;
+    margin-top : 200px;
+    text-transform: none;
+    font-size: 3.5em;
+}
+
+.congratulate > a  {
+    text-align: center;
+}
+.return {
+    font-size: 2.5em;
+    margin-top : 30px;
+}
+.go-back, .result-textarea, .next-task {
+    margin-bottom : 50px;
 }
