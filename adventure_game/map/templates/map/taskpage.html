@@ -41,13 +41,6 @@
           <div class="scramble" data-unscrambled="SPIDER"></div>
           <script type="text/javascript" src="{% static "task/js/scramble.js" %}"></script> -->
 
-
-
-          <form action="{% url 'map:map' %}" method="POST" id="BackToMap"> {%csrf_token %}
-                <button type="submit" class="btn btn-info go-back">Go Back</button>
-          </form>
-
-
           </p>
         </div>
       </div>
@@ -67,6 +60,9 @@
               <button type="submit" class="btn btn-info next-task">Next Task</button>
         </form>
       {% endif %}
+        <form action="{% url 'map:map' %}" method="POST" id="BackToMap"> {%csrf_token %}
+              <button type="submit" class="btn btn-info go-back">Go Back to Map</button>
+        </form>
 </div>
 </div>
 
