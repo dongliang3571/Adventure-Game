@@ -20,10 +20,16 @@ class TaskTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'map/information.html')
 
+    #They have hit accept and have gone on to the actual adventure
+    #They see the wizard asking for help and telling them what's happening to
+    #his land.
     def test_story_so_far(self):
         response = self.client.get('/story/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'coreapp/story.html')
+
+    def test_task1(self):
+        
 
 class MapTests(TestCase):
 
