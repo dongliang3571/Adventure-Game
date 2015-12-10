@@ -20,6 +20,11 @@ class TaskTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'map/information.html')
 
+    def test_story_so_far(self):
+        response = self.client.get('/story/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'coreapp/story.html')
+
 class MapTests(TestCase):
 
     def setUp(self):
