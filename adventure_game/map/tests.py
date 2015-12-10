@@ -50,6 +50,15 @@ class AdventureTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.asssertTemplateUsed(response, 'map/scramble.html')
 
+    #The world scramble gives them the location of a micro geocache nearby that
+    #contains a code. They put the code into the app.
+    def test_geo_code(self):
+        response = self.client.get('adventure/code/')
+        self.assertEqual(response.status_code, 200)
+        self.asssertTemplateUsed(response, 'map/taskpage.html')
+
+    
+
 
 """
 class MapTests(TestCase):
