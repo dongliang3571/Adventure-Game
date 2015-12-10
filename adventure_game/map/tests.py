@@ -17,9 +17,11 @@ class TaskTests(TestCase):
     #complete
     def test_preadventure_information(self):
         response = self.client.get('/information/')
+        advetnureid = response.context('adventureid')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'map/information.html')
-
+        self.assertEqual(adventureid , '0000')
+        
     #They have hit accept and have gone on to the actual adventure
     #They see the wizard asking for help and telling them what's happening to
     #his land.
@@ -29,7 +31,7 @@ class TaskTests(TestCase):
         self.assertTemplateUsed(response, 'coreapp/story.html')
 
     def test_task1(self):
-        
+
 
 class MapTests(TestCase):
 
