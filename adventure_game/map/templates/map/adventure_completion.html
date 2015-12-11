@@ -8,9 +8,14 @@
 
 
 {% block content %}
-
-<h1>Congradulations, you have completed the adventure!!!</h1>
-
-<a href="/profile"><button style="color:black;">Go back</button></a>
-
+<div class = "container section">
+<div row class="congratulate">
+  <h1>Congratulations, you have completed the adventure!!!</h1>
+  <div class ="text-center">
+    <a href="/profile">
+      <button class="btn btn-danger btn-lg return">Return to your profile!</button>
+    </a>
+  </div>
+</div>
+</div>
 {% endblock %}
