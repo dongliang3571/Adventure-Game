@@ -9,7 +9,7 @@ from .models import Level_num
 from .models import Game_saved
 from .queries import is_character_logged_in, get_all_characters;
 from .utilities import  get_profile_context
-f
+
 def home(request):
     context = {}
     context.update(csrf(request))
