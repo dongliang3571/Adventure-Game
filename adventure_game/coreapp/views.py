@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from .models import Level_num
 from .models import Game_saved
-from .queries import is_character_logged_in
+from .queries import is_character_logged_in, get_all_characters;
 from .utilities import  get_profile_context
 f
 def home(request):
@@ -18,7 +18,7 @@ def home(request):
 @login_required(login_url='/')
 def profile(request):
     user = request.user
-    characters = user.character_set.all()
+    characters = get_all_characters(user)
     if is_character_logged_in(characters):
         context = get_profile_context(user, characters)
         return render(request, 'coreapp/individual.html', context)

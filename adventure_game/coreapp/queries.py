@@ -21,3 +21,7 @@ def load_game_save_id(game_saved_id_list, user):
 
 def get_character_name(characters):
     return characters.filter(is_logged=True)[0].character_name
+
+#Temp note, returns list of character models
+def get_all_characters(user):
+    return user.character_set.all()

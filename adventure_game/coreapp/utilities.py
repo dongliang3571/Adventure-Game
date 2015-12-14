@@ -17,9 +17,9 @@ def get_profile_context(user, characters):
     load_game_save_id(game_saved_id_list, user)
     character_name = get_character_name(characters)
     context = {'character_name' : character_name,
-                'level' : level,
-                'game_saved' : game_saved_id_list,
-                'zipped' : zipped,
-                'completed_list' : adventure_complete_list,
-                }
+               'level' : level,
+               'game_saved' : game_saved_id_list,
+               'zipped' : zipped,
+               'completed_list' : adventure_complete_list,
+              }
     return context
