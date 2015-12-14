@@ -1,62 +1,29 @@
 from django.shortcuts import get_object_or_404, render, render_to_response
-from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib import auth
+from django.http import HttpResponseRedirect
+from django.contrib import auth, messages
 from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-from map.models import Adventure
-from django.contrib import messages
 from .models import Level_num
-from .models import Track
 from .models import Game_saved
-
-def home(request,message=None):
+from .queries import is_character_logged_in
+from .utilities import  get_profile_context
+f
+def home(request):
     context = {}
     context.update(csrf(request))
-    return render_to_response('coreapp/home.html',context,context_instance=RequestContext(request))
+    return render_to_response('coreapp/home.html', context, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
 def profile(request):
     user = request.user
-    characters = request.user.character_set.all()
-    adventures = Adventure.objects.all()
-    adventure_name_list =[]
-    adventure_img_url_list = []
-    adventure_id_list = []
-    adventure_complete_list = []
-
-    for i in Adventure.objects.all():
-        adventure_name_list.append(str(i.adventure_name))
-        adventure_img_url_list.append(str(i.adventure_img_url))
-        adventure_id_list.append(str(i.adventure_id))
-    for n in Track.objects.filter(user=user):
-        adventure_complete_list.append(str(n.adventure_done))
-    zipped = zip(adventure_img_url_list, adventure_name_list, adventure_id_list)
-    adventure_img = "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg"
-    adventure_name = "adv_name"
-    if characters.filter(is_logged=True):
-        level = request.user.level_num
-        user = request.user
-        game_saved_id_list=[]
-
-        if Game_saved.objects.filter(user=user):
-            for game_saved in Game_saved.objects.filter(user=user):
-                game_saved_id_list.append(str(game_saved.adventure_saved))
-        character_name = characters.filter(is_logged=True)[0].character_name
-        context = {'character_name' : character_name,
-                   'level' : level,
-                   # 'adventure_img_url_list' : adventure_img_url_list,
-                   # 'adventure_name_list' : adventure_name_list,
-                   'game_saved' : game_saved_id_list,
-                   'zipped' : zipped,
-                   'completed_list' : adventure_complete_list,
-                  }
+    characters = user.character_set.all()
+    if is_character_logged_in(characters):
+        context = get_profile_context(user, characters)
         return render(request, 'coreapp/individual.html', context)
     else:
-        family_members = request.user.character_set.all()
-        user = request.user
+        family_members = characters
         userlname = user.last_name
         context = {'family_members' : family_members,
                    'lastname' : userlname,
