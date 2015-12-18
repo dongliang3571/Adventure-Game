@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.test.client import RequestFactory
 from django.contrib.auth.models import User
 from mock import patch, Mock, mock, MagicMock
-from coreapp.views import profile, story
+from coreapp.views import profile, story, auth_view, logout
 
 @patch('coreapp.views.render')
 @patch('coreapp.views.get_logged_in_char')
@@ -14,29 +14,9 @@ class ProileViewTest(TestCase):
         self.request = self.factory.get('/profile/')
         self.request.user = User()
         self.request.user.last_name = "test"
-    def test_func_calls_logged_in(self, get_all_char_mock, get_prof_context_mock,
-                                  get_logged_in_char_mock, render_mock):
 
-        response = profile(self.request)
-
-        self.assertTrue(get_all_char_mock.called)
-        self.assertTrue(get_prof_context_mock.called)
-        self.assertTrue(get_logged_in_char_mock.called)
-        self.assertTrue(render_mock.called)
-        self.assertEqual(render_mock.return_value, response)
-
-    def test_func_call_not_logged_in(self, get_all_char_mock, get_prof_context_mock,
-                                     get_logged_in_char_mock, render_mock):
-        get_logged_in_char_mock.return_value = None
-        response = profile(self.request)
-        self.assertTrue(get_logged_in_char_mock.called)
-        self.assertTrue(get_all_char_mock.call)
-        self.assertFalse(get_prof_context_mock.called)
-        self.assertTrue(render_mock.called)
-        self.assertEqual(render_mock.return_value, response)
-
-    def test_func_args_logged_in(self, get_all_char_mock, get_prof_context_mock,
-                                 get_logged_in_char_mock, render_mock):
+    def test_func_logged_in(self, get_all_char_mock, get_prof_context_mock,
+                            get_logged_in_char_mock, render_mock):
 
         context = {'test' : 'test'}
         get_prof_context_mock.return_value = context
@@ -48,8 +28,8 @@ class ProileViewTest(TestCase):
         get_prof_context_mock.assert_called_with(self.request.user, "Test Character")
         render_mock.assert_called_with(self.request, 'coreapp/individual.html', context)
 
-    def test_func_args__not_logged_in(self, get_all_char_mock, get_prof_context_mock,
-                                      get_logged_in_char_mock, render_mock):
+    def test_func_not_logged_in(self, get_all_char_mock, get_prof_context_mock,
+                                get_logged_in_char_mock, render_mock):
 
         get_all_char_mock.return_value = "Test Character"
         context = {'family_members' : 'Test Character', 'lastname' : 'test'}
@@ -71,3 +51,56 @@ class StoryViewTest(TestCase):
         story(self.request)
         self.assertTrue(render_mock.called)
         render_mock.assert_called_with(self.request, 'coreapp/story.html')
+
+@patch('coreapp.views.auth.authenticate')
+@patch('coreapp.views.messages.success')
+class AuthViewTest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.user = User()
+        self.request = self.factory.post('/auth/', {'username':'testuser', 'password':'testpass'})
+
+    @patch('coreapp.views.auth.login')
+    def test_sucess_logged_in(self, login_mock, message_mock, auth_mock):
+        self.user.is_active = True
+        self.user.last_name = 'testlname'
+        auth_mock.return_value = self.user
+        response = auth_view(self.request)
+
+        self.assertEqual(response.status_code, 302)
+        auth_mock.assert_called_with(username='testuser', password='testpass')
+        login_mock.assert_called_with(self.request, self.user)
+        message_mock.assert_called_with(self.request,
+                                        'Hi testlname, you have successfully logged in.')
+
+    def test_banned(self, message_mock, auth_mock):
+        self.user.is_active = False
+        auth_mock.return_value = self.user
+        response = auth_view(self.request)
+
+        self.assertEqual(response.status_code, 302)
+        message_mock.assert_called_with(self.request, 'Your account has been banned,' \
+                                        ' please contact us to re-activate your account!')
+
+    def test_failed_logged_in(self, message_mock, auth_mock):
+        auth_mock.return_value = None
+        response = auth_view(self.request)
+        self.assertEqual(response.status_code, 302)
+        message_mock.assert_called_with(self.request, 'The account you entered' \
+                                        ' is invalid, please try again!')
+
+class LogoutViewTest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    @patch('coreapp.views.auth.logout')
+    @patch('coreapp.views.messages.success')
+    def test_func_args(self, message_mock, logout_mock):
+        request = self.factory.get('/')
+        logout(request)
+
+        logout_mock.assert_called_with(request)
+        message_mock.assert_called_with(request, 'You have successfully logged out.')
+
+
+
