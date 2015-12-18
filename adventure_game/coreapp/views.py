@@ -11,7 +11,9 @@ from .utilities import  get_profile_context
 def home(request):
     context = {}
     context.update(csrf(request))
-    return render_to_response('coreapp/home.html', context, context_instance=RequestContext(request))
+    return render_to_response('coreapp/home.html',
+                              context,
+                              context_instance=RequestContext(request))
 
 def profile(request):
     user = request.user
@@ -35,7 +37,8 @@ def story(request):
 
 def auth_view(request):
     """
-    The user is sent to this page after they login for authentication. They are then redirected to the home page.
+    The user is sent to this page after they login for authentication.
+    They are then redirected to the home page.
     """
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
@@ -46,7 +49,8 @@ def auth_view(request):
             messages.success(request, 'Hi %s, you have successfully logged in.' %(user.last_name))
             return HttpResponseRedirect('/')
         else:
-            messages.success(request, 'Your account has been banned, please contact us to re-activate your account!')
+            messages.success(request, 'Your account has been banned,' \
+                             ' please contact us to re-activate your account!')
             return HttpResponseRedirect('/')
     else:
         messages.success(request, 'The account you entered is invalid, please try again!')
@@ -71,9 +75,11 @@ def registration_submission(request):
     email = request.POST.get('email', '')
     password = request.POST.get('password', '')
     if len(User.objects.filter(username=username)) != 0: #pylint: disable=E1101
-        return registration(request, "Try again, the username %s %s." %(username, "is already taken"))
+        return registration(request, "Try again, the username %s %s."
+                            % (username, "is already taken"))
     if len(User.objects.filter(email=email)) != 0: #pylint: disable=E1101
-        return registration(request, "Try again, %s %s." %("there is already an account with that email", email))
+        return registration(request, "Try again, %s %s."
+                            % ("there is already an account with that email", email))
     user = User.objects.create_user(username=username, email=email, password=password,
                                     first_name=firstname, last_name=lastname) #pylint: disable=E1101
     Level_num.objects.create(user=user, user_point=0, user_level=1)
@@ -139,5 +145,6 @@ def individual(request):
         char.save()
         return HttpResponseRedirect('/profile/')
     else:
-        messages.success(request, 'The PIN you entered is incorrect or did not select your family role, please try agian!')
+        messages.success(request, 'The PIN you entered is incorrect or did not' \
+                         ' select your family role, please try agian!')
         return HttpResponseRedirect('/profile/')
