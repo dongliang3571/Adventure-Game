@@ -168,13 +168,6 @@ class LogoutTests(TestCase):
 
 """
 # Not sure if we even need this since I don't think we're using UserProfile.
-class UserProfileModel(TestCase):
-    def setUp(self):
-        self.user = User.objects.create_user(username='test', password='pass')
-        self.userprofile = UserProfile(user=self.user)
-    def test_to_string(self):
-        self.assertEqual(str(self.userprofile), u'Profile of user: test')
-
 class TemplateTests(TestCase):
 
     def test_root_url_resolves_to_home(self):

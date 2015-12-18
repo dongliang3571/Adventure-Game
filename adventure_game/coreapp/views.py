@@ -3,7 +3,6 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth, messages
 from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from .models import Level_num
 from .queries import get_logged_in_char, get_all_characters
@@ -14,7 +13,6 @@ def home(request):
     context.update(csrf(request))
     return render_to_response('coreapp/home.html', context, context_instance=RequestContext(request))
 
-@login_required(login_url='/')
 def profile(request):
     user = request.user
     characters = get_all_characters(user)
@@ -29,7 +27,6 @@ def profile(request):
                   }
         return render(request, 'coreapp/profile.html', context)
 
-@login_required(login_url='/')
 def story(request):
     """
     Renders the story.html template when users access this route.
@@ -55,7 +52,6 @@ def auth_view(request):
         messages.success(request, 'The account you entered is invalid, please try again!')
         return HttpResponseRedirect('/')
 
-@login_required(login_url='/')
 def logout(request):
     """
     The user is sent here when they logout. They are then redirected to the home page.
@@ -95,7 +91,6 @@ def registration(request, message=None):
         context['message'] = message
     return render(request, 'auth/registration.html', context)
 
-@login_required(login_url='/')
 def add_family_member(request, message=None):
     """
     The user can add family members to their account here
@@ -106,7 +101,6 @@ def add_family_member(request, message=None):
         context['message'] = message
     return render(request, 'auth/addfamily.html', context)
 
-@login_required(login_url='/')
 def add_family_member_submission(request):
     full_name = request.POST.get('member-name', '')
     pin = request.POST.get('member-pin', '')
@@ -123,7 +117,6 @@ def add_family_member_submission(request):
             return HttpResponseRedirect('/profile/')
 
 
-@login_required(login_url='/')
 def individual(request):
     """
     The user is sent to here after enter thier own pin # for selected member
