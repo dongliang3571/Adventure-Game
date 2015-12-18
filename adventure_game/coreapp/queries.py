@@ -8,10 +8,10 @@ def load_adventures(adventure_name_list, adventure_img_url_list, adventure_id_li
         adventure_id_list.append(str(i.adventure_id))
 
 def load_completed_adventures(adventure_complete_list, user):
-    for n in Track.objects.filter(user=user):
-        adventure_complete_list.append(str(n.adventure_done))
+    for i in Track.objects.filter(user=user):
+        adventure_complete_list.append(str(i.adventure_done))
 
-def is_character_logged_in(characters):
+def get_logged_in_char(characters):
     return characters.filter(is_logged=True)
 
 def load_game_save_id(game_saved_id_list, user):

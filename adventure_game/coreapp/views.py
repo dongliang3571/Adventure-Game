@@ -6,8 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from .models import Level_num
-from .models import Game_saved
-from .queries import is_character_logged_in, get_all_characters;
+from .queries import get_logged_in_char, get_all_characters
 from .utilities import  get_profile_context
 
 def home(request):
@@ -19,7 +18,7 @@ def home(request):
 def profile(request):
     user = request.user
     characters = get_all_characters(user)
-    if is_character_logged_in(characters):
+    if get_logged_in_char(characters):
         context = get_profile_context(user, characters)
         return render(request, 'coreapp/individual.html', context)
     else:
@@ -79,8 +78,9 @@ def registration_submission(request):
         return registration(request, "Try again, the username %s %s." %(username, "is already taken"))
     if len(User.objects.filter(email=email)) != 0: #pylint: disable=E1101
         return registration(request, "Try again, %s %s." %("there is already an account with that email", email))
-    user = User.objects.create_user(username=username, email=email, password=password, first_name=firstname, last_name=lastname) #pylint: disable=E1101
-    level=Level_num.objects.create(user=user, user_point=0, user_level=1)
+    user = User.objects.create_user(username=username, email=email, password=password,
+                                    first_name=firstname, last_name=lastname) #pylint: disable=E1101
+    Level_num.objects.create(user=user, user_point=0, user_level=1)
     user = auth.authenticate(username=username, password=password)
     auth.login(request, user)
     return HttpResponseRedirect('/')
@@ -96,11 +96,11 @@ def registration(request, message=None):
     return render(request, 'auth/registration.html', context)
 
 @login_required(login_url='/')
-def add_family_member(request,message=None):
+def add_family_member(request, message=None):
     """
     The user can add family members to their account here
     """
-    context= {}
+    context = {}
     context.update(csrf(request))
     if message is not None:
         context['message'] = message
@@ -108,9 +108,9 @@ def add_family_member(request,message=None):
 
 @login_required(login_url='/')
 def add_family_member_submission(request):
-    full_name = request.POST.get('member-name','')
-    pin = request.POST.get('member-pin','')
-    if not len(pin) == 4:
+    full_name = request.POST.get('member-name', '')
+    pin = request.POST.get('member-pin', '')
+    if len(pin) != 4:
         messages.success(request, 'Please enter 4 characters as your PIN number')
         return HttpResponseRedirect('/add-family-member/')
     else:
@@ -131,36 +131,19 @@ def individual(request):
     user = request.user
     character_name = request.POST.get('character_name', '')
     character_pin = request.POST.get('character_pin', '')
-    level = user.level_num
-    characters = request.user.character_set.all()
+    characters = get_all_characters(user)
 
-    if characters.filter(is_logged=True):
-        family_members = request.user.character_set.all()
-        user = request.user
-        userfname = user.first_name
-        userlname = user.last_name
-        context = {'family_members' : family_members,
-                   'lastname' : userlname,
-                  }
-        char = characters.filter(is_logged=True)[0]
+    if get_logged_in_char(characters):
+        char = get_logged_in_char(characters)[0]
         char.is_logged = False
         char.save()
-        return render(request, 'coreapp/profile.html', context)
+        return profile(request)
 
     if user.character_set.filter(character_name=character_name, character_pin=character_pin):
-        character_name = character_name
-        char = user.character_set.all().filter(character_name=character_name, character_pin=character_pin)[0]
+        char = user.character_set.filter(character_name=character_name,
+                                         character_pin=character_pin)[0]
         char.is_logged = True
-        char.save();
-        # islogged=''
-        # if char.is_logged == True:
-        #     islogged="True"
-        # context = { 'character_name' : character_name,
-        #             'level' : level,
-        #             'islogged' : islogged,
-        #           }
-
-        # return render(request, 'coreapp/individual.html', context)
+        char.save()
         return HttpResponseRedirect('/profile/')
     else:
         messages.success(request, 'The PIN you entered is incorrect or did not select your family role, please try agian!')
