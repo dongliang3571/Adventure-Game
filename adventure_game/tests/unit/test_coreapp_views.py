@@ -1,8 +1,8 @@
 from django.test import TestCase
 from django.test.client import RequestFactory
 from django.contrib.auth.models import User
-from mock import patch, Mock, mock, MagicMock
-from coreapp.views import profile, story, auth_view, logout
+from mock import patch
+from coreapp.views import profile, story, auth_view, logout, registration_submission
 
 @patch('coreapp.views.render')
 @patch('coreapp.views.get_logged_in_char')
@@ -102,5 +102,44 @@ class LogoutViewTest(TestCase):
         logout_mock.assert_called_with(request)
         message_mock.assert_called_with(request, 'You have successfully logged out.')
 
+@patch('coreapp.views.registration')
+@patch('coreapp.views.auth.login')
+@patch('coreapp.views.auth.authenticate')
+@patch('coreapp.views.Level_num.objects.create')
+@patch('coreapp.views.User.objects.create_user')
+@patch('coreapp.views.User.objects.filter')
+class CreateUserTest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.request = self.factory.post('/registration-submission',
+                                         {'username':'testuser', 'firstname':'testfname',
+                                          'lastname':'testlname', 'email':'test@test',
+                                          'password':'testpass'})
 
+    def test_user_create_success(self, filter_mock, create_user_mock, create_level_mock,
+                                 auth_mock, login_mock, reg_mock):
+        user = User()
+        filter_mock.return_value = []
+        create_user_mock.return_value = user
+        auth_mock.return_value = user
+        response = registration_submission(self.request)
 
+        create_user_mock.assert_called_with(username='testuser', email='test@test',
+                                            password='testpass', first_name='testfname',
+                                            last_name='testlname')
+        create_level_mock.assert_called_with(user=user, user_point=0, user_level=1)
+        auth_mock.assert_called_with(username='testuser', password='testpass')
+        login_mock.assert_called_with(self.request, user)
+        self.assertFalse(reg_mock.called)
+        self.assertEqual(response.status_code, 302)
+
+    def test_invalid_email(self, filter_mock, create_user_mock, create_level_mock,
+                           auth_mock, login_mock, reg_mock):
+        filter_mock.side_effect = [[], [1]]
+        registration_submission(self.request)
+        reg_mock.assert_called_with(self.request, 'Try again, there is already an' \
+                                    ' account with that email test@test.')
+        self.assertFalse(create_user_mock.called)
+        self.assertFalse(create_level_mock.called)
+        self.assertFalse(auth_mock.called)
+        self.assertFalse(login_mock.called)
