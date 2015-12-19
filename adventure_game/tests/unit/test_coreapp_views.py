@@ -203,24 +203,45 @@ class AddFamilyMemberViewTest(TestCase):
         context = {'csrf':'test'}
         render_mock.assert_called_with(self.request, 'auth/addfamily.html', context)
 
-#@patch('coreapp.views.User.character_set.filter')
-#@patch('coreapp.views.messages.success')
 class AddFamilySubmissionTest(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
 
     @patch('coreapp.views.User.character_set')
     @patch('coreapp.views.messages.success')
-    def test_family_member_exist(self, message_mock, filter_mock):
+    def test_family_member_exist(self, message_mock, char_set_mock):
         request = self.factory.post('/add-family-member-submission/',
                                     {'member-name':'test', 'member-pin':'1234'})
         request.user = User()
-        filter_mock.return_value = True
-        filter_mock.filter = MagicMock(return_value=True)
+        char_set_mock.filter = MagicMock(return_value=True)
         response = add_family_member_submission(request)
 
-        filter_mock.filter.assert_called_with(character_name='test')
+        char_set_mock.filter.assert_called_with(character_name='test')
         message_mock.assert_called_with(request, 'This member has already been' \
                                         ' added, try another name')
+        self.assertEqual(response.status_code, 302)
+
+    @patch('coreapp.views.messages.success')
+    def test_bad_pin_input(self, message_mock):
+        request = self.factory.post('/add-family-member-submission/',
+                                    {'member-name':'test', 'member-pin':'123'})
+        response = add_family_member_submission(request)
+        message_mock.assert_called_with(request, 'Please enter 4 characters as your PIN number')
+        self.assertEqual(response.status_code, 302)
+
+    @patch('coreapp.views.User.character_set')
+    @patch('coreapp.views.messages.success')
+    def test_family_member_success(self, message_mock, char_set_mock):
+        request = self.factory.post('/add-family-member-submission/',
+                                    {'member-name':'test', 'member-pin':'1234'})
+        request.user = User()
+        char_set_mock.filter = MagicMock(return_value=False)
+        char_set_mock.create = MagicMock()
+        response = add_family_member_submission(request)
+
+        char_set_mock.filter.assert_called_with(character_name='test')
+        char_set_mock.create.assert_called_with(character_name='test',
+                                                character_pin='1234')
+        self.assertFalse(message_mock.called)
         self.assertEqual(response.status_code, 302)
 
