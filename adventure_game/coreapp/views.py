@@ -1,12 +1,14 @@
 from django.shortcuts import get_object_or_404, render, render_to_response
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib import auth, messages
 from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
 from django.template import RequestContext
-from .models import Level_num
+from .models import Level_num, Game_saved
 from .queries import get_logged_in_char, get_all_characters
 from .utilities import  get_profile_context
+from django.core.exceptions import PermissionDenied
+import json
 
 def home(request):
     context = {}
@@ -83,6 +85,7 @@ def registration_submission(request):
     user = User.objects.create_user(username=username, email=email, password=password,
                                     first_name=firstname, last_name=lastname) #pylint: disable=E1101
     Level_num.objects.create(user=user, user_point=0, user_level=1)
+    Game_saved.objects.create(user=user, adventure_saved="", task_saved="")
     user = auth.authenticate(username=username, password=password)
     auth.login(request, user)
     return HttpResponseRedirect('/')
@@ -148,3 +151,26 @@ def individual(request):
         messages.success(request, 'The PIN you entered is incorrect or did not' \
                          ' select your family role, please try agian!')
         return HttpResponseRedirect('/profile/')
+
+def getjson(request):
+    if request.is_ajax():
+        alist =[
+                {
+                    "people":"haha",
+                    "age":"20"
+                },
+
+                {
+                    "people":"fsd",
+                    "age":"dfsdf"
+                }
+                ]
+
+        return JsonResponse(alist, safe=False)
+    else:
+        raise PermissionDenied()
+
+
+def usejson(request):
+
+    return render(request, 'coreapp/getjson.html',{"usea":"hahah"})

@@ -23,6 +23,15 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
+            name='current_adventures',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('adventure_saved', models.CharField(default=b'', max_length=10, blank=True)),
+                ('task_saved', models.CharField(default=b'', max_length=10, blank=True)),
+                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+            ],
+        ),
+        migrations.CreateModel(
             name='Game_saved',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
