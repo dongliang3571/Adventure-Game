@@ -9,6 +9,7 @@ from .models import Answer
 from coreapp.models import Level_num
 from coreapp.models import Track
 from coreapp.models import Game_saved
+from .models import adventures_info
 
 
 # Create your views here.
@@ -62,7 +63,16 @@ def beginingstory(request):
     game_saved.adventure_saved = adventureid
     game_saved.task_saved = '1'
     game_saved.save()
-    return render(request, 'map/task1.html')
+    adventure = Adventure.objects.get(adventure_id = adventureid)
+    Adventures_info = adventures_info.objects.get(adventure_name = adventure)
+    context={
+        "items_needed" : Adventures_info.items_needed,
+        "expenses" : Adventures_info.expenses,
+        "locations" : Adventures_info.locations,
+        "map_address" : Adventures_info.map_address
+    }
+
+    return render(request, 'map/task1.html',context)
 
 def task(request):
     """
@@ -95,26 +105,6 @@ def task(request):
 
     return render(request, 'map/taskpage.html', context)
 
-    #     user = request.user
-    #
-    #
-    # adv = Adventure.objects.get(adventure_id="0000") #needed to get from adv
-    # task_num = 1    #needed to get from map
-    #
-    # #saving game
-    # game_saved_adv = adv
-    # game_saved_task = task_num
-    #
-    # task = Task.objects.get(adventure_name=adv, task_number=task_num)
-    # task_detail = task.task_detail
-    # task_ans = task.task_ans
-    #
-    # context = {'adv_name' : adv,
-    #            'task_num' : task_num,
-    #            'task_detail' : task_detail,
-    #            'task_ans' : task_ans,
-    # }
-    # return render(request, 'map/taskpage.html', context)
 
 def mission_task_submission(request):
     user = request.user
@@ -165,34 +155,6 @@ def questions_task_submission(request):
         messages.warning(request, 'Sorry, textfield is empty')
         return HttpResponseRedirect(new_url)
 
-    # adv = Adventure.objects.get(adventure_id="0000")
-    # task_num = 1
-    # task = Task.objects.get(adventure_name=adv, task_number=task_num)
-    # task_detail = task.task_detail
-    # task_ans = task.task_ans
-    #
-    # user_ans = request.POST.get('task_ans','')
-    #
-    # context = {'adv_name' : adv,
-    #            'task_num' : task_num,
-    #            'task_detail' : task_detail,
-    #            'task_ans' : task_ans,
-    # }
-    # if user_ans == task.task_ans:
-    #     task_num = task_num+1
-    #     task = Task.objects.get(adventure_name=adv, task_number=task_num)
-    #     task_detail = task.task_detail
-    #     task_ans = task.task_ans
-    #
-    #     context = {'adv_name' : adv,
-    #                'task_num' : task_num,
-    #                'task_detail' : task_detail,
-    #                'task_ans' : task_ans,
-    #     }
-    #     return render(request, 'map/taskpage.html', context)
-    # else:
-    #     messages.success(request, 'Sorry, the result is incorrect..')
-    #     return render(request, 'map/taskpage.html', context)
 
 
 def task1_question2(request):

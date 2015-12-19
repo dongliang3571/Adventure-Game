@@ -18,19 +18,19 @@
           the petrification of my people!</p>
       </div>
 
-      <h3>Items needed:</h3>
-      <p>{{ item_needed }}</p>
+      <h3 style="color: red;">Items needed:</h3>
+      <p style="font-size: 1.5em;">{{ items_needed }}</p>
 
-      <h3>Expenses:</h3>
-      <p>{{ expenses }}</p>
+      <h3 style="color: red;">Expenses:</h3>
+      <p style="font-size: 1.5em;">{{ expenses }}</p>
 
-      <h3>Locations:</h3>
-      <p>{{ locations }}</p>
+      <h3 style="color: red;">Locations:</h3>
+      <p style="font-size: 1.5em;">{{ locations }}</p>
 
 
     </div>
 
-    <iframe style="margin-left: 50px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.462414474427!2d-73.97305374970642!3d40.77384714166631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25892a6168611%3A0x9d94703beba53b51!2sBethesda+Terrace!5e0!3m2!1sen!2sus!4v1450498650706" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <iframe style="margin-left: 50px;" src="{{ map_address }}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
     <img style="float:right; margin-right: 150px;" src={% static "task/img/vivi.gif" %} class="img-responsive">
     <a class="btn btn-block btn-lg btn-primary" href="{% url 'map:map' %}">We have made our wishes!</a>
 
