@@ -93,6 +93,7 @@ class adventures_info(models.Model):
     items_needed = models.CharField(max_length=1000, blank=True, default='')
     expenses = models.CharField(max_length=1000, blank=True, default='')
     locations = models.CharField(max_length=1000, blank=True, default='')
+    map_address = models.URLField(blank=True, default='')
 
     def __unicode__(self):
         return 'items_needed: ' + str(self.items_needed) + 'expenses: ' + str(self.expenses) + 'locations: '+str(self.locations)

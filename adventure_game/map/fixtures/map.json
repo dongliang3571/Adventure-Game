@@ -10,6 +10,19 @@
   "model": "map.adventure",
   "pk": 1
 },
+
+{
+  "fields": {
+    "adventure_name": 1,
+    "items_needed": "Paper, coins for wishes",
+    "expenses": "Subway tickets 1 set to get to Central Park, 1 to get to Imagination Playground, 1 to get home",
+    "locations": "[1]Central Park - Mid Park - 72nd Street [2]Imagination Playground - 2 Fulton St, New York, NY 10038",
+    "map_address":"https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ4zGFAZpYwokRGUGph3Mf37k&key=AIzaSyDxgGyyC3lCRzAxtNEALcMb_BphXQHG2gI"
+  },
+  "model": "map.adventures_info",
+  "pk": 1
+},
+
 {
   "fields": {
     "adventure_id": "0001",

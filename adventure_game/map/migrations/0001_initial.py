@@ -28,6 +28,7 @@ class Migration(migrations.Migration):
                 ('items_needed', models.CharField(default=b'', max_length=1000, blank=True)),
                 ('expenses', models.CharField(default=b'', max_length=1000, blank=True)),
                 ('locations', models.CharField(default=b'', max_length=1000, blank=True)),
+                ('map_address', models.URLField(default=b'', blank=True)),
                 ('adventure_name', models.OneToOneField(to='map.Adventure')),
             ],
         ),
