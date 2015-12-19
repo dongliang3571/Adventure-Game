@@ -4,7 +4,7 @@
     "adventure_id": "0000",
     "adventure_name": "Help the Wizard",
     "adventure_description": "*****this need to be changed***",
-    "adventure_img_url": "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg",
+    "adventure_img_url": "http://www.planetware.com/photos-large/USNY/new-york-city-central-park-1.jpg",
     "adventure_category": "Outdoor"
   },
   "model": "map.adventure",
@@ -15,7 +15,7 @@
     "adventure_id": "0001",
     "adventure_name": "Go find McChicken",
     "adventure_description": "*****this need to be changed***",
-    "adventure_img_url": "http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/110.png&w=350&h=254",
+    "adventure_img_url": "http://wp.production.patheos.com/blogs/formerlyfundie/files/2015/10/halloween1.jpg",
     "adventure_category": "Outdoor"
   },
   "model": "map.adventure",

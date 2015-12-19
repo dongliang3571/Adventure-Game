@@ -28,6 +28,18 @@
   },
 
   {
+    "fields": {
+      "adventure_saved": "",
+      "task_saved": "",
+      "user": [
+        "admin"
+      ]
+    },
+    "model": "coreapp.game_saved",
+    "pk": 1
+  },
+
+  {
     "model": "auth.user",
     "pk": 2,
     "fields": {
