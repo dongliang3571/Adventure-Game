@@ -67,6 +67,18 @@
   "pk": 2
   },
 
+  {
+    "fields": {
+      "adventure_saved": "",
+      "task_saved": "",
+      "user": [
+        "user1"
+      ]
+    },
+    "model": "coreapp.game_saved",
+    "pk": 2
+  },
+
 
 
   {
@@ -83,6 +95,18 @@
         "user_permissions": [],
         "password": "pbkdf2_sha256$20000$foKVHeV323EC$h3092tZqVMhzMUSoNlLXGOFsfAtREcHR8E16LF97slc="
     }
+  },
+
+  {
+    "fields": {
+      "adventure_saved": "",
+      "task_saved": "",
+      "user": [
+        "user2"
+      ]
+    },
+    "model": "coreapp.game_saved",
+    "pk": 3
   },
 
   {
