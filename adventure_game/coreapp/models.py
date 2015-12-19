@@ -59,3 +59,14 @@ class Game_saved(models.Model):
 
     def __unicode__(self):
         return 'Last saved at adventure id#'+str(self.adventure_saved) + 'task #:' + str(self.task_saved)
+
+class current_adventures(model.Model):
+    """
+    This saves users' adventures that are currently played.
+    """
+    user = models.ForeignKey(User)
+    adventure_saved = models.CharField(max_length=10, blank=True, default='')  #adventure_id
+    task_saved = models.CharField(max_length=10, blank=True, default='')   #task_number
+
+    def __unicode__(self):
+        return 'saved adventure id#'+str(self.adventure_saved) + 'task #:' + str(self.task_saved)

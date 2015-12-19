@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render, render_to_response
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.contrib import auth, messages
 from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
@@ -9,6 +9,8 @@ from .models import Level_num
 from .models import Game_saved
 from .queries import is_character_logged_in, get_all_characters;
 from .utilities import  get_profile_context
+from django.core.exceptions import PermissionDenied
+import json
 
 def home(request):
     context = {}
@@ -165,3 +167,26 @@ def individual(request):
     else:
         messages.success(request, 'The PIN you entered is incorrect or did not select your family role, please try agian!')
         return HttpResponseRedirect('/profile/')
+
+def getjson(request):
+    if request.is_ajax():
+        alist =[
+                {
+                    "people":"haha",
+                    "age":"20"
+                },
+
+                {
+                    "people":"fsd",
+                    "age":"dfsdf"
+                }
+                ]
+
+        return JsonResponse(alist, safe=False)
+    else:
+        raise PermissionDenied()
+
+
+def usejson(request):
+
+    return render(request, 'coreapp/getjson.html',{"usea":"hahah"})
