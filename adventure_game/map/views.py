@@ -54,10 +54,14 @@ def beginingstory(request):
     """
     user = request.user
     adventureid = request.GET.get('adventureid', '')
-    if Game_saved.objects.filter(user=user):
+    if user.game_saved.adventure_saved:
         return HttpResponseRedirect(reverse('map:map'))
     else:
-        game_saved = Game_saved.objects.create(user=user, adventure_saved=adventureid, task_saved='1')
+        # game_saved = Game_saved.objects.create(user=user, adventure_saved=adventureid, task_saved='1')
+        game_saved = user.game_saved
+        game_saved.adventure_saved = adventureid
+        game_saved.task_saved = '1'
+        game_saved.save()
         # track = Track.objects.create(user=user)
         # task_saved = int(game_saved.task_saved)
         return render(request, 'map/task1.html')
