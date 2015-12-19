@@ -289,3 +289,18 @@ class IndividualViewTest(TestCase):
         self.assertTrue(char.is_logged)
         self.assertEqual(response.status_code, 302)
 
+    @patch('coreapp.views.User.character_set')
+    @patch('coreapp.views.messages.success')
+    def test_incorrect_input(self, message_mock, char_set_mock, get_char_mock, logged_char_mock):
+        char_set_mock.return_value = 'testchar'
+        logged_char_mock.returN_value = False
+        char_set_mock.filter = MagicMock(reutrn_value=False)
+
+        response = individual(self.request)
+
+        get_char_mock.assert_called_with(self.request.user)
+        logged_char_mock.assert_called_with('testchar')
+        char_set_mock.filter.assert_called_with(character_name='test', character_pin='1234')
+        message_mock.assert_called_with(self.request, 'The PIN you entered is incorrect or did not'\
+                                        ' select your family role, please try again!')
+        self.assertEqual(response.status_code, 302)
