@@ -4,18 +4,31 @@
     "adventure_id": "0000",
     "adventure_name": "Help the Wizard",
     "adventure_description": "*****this need to be changed***",
-    "adventure_img_url": "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg",
+    "adventure_img_url": "http://www.planetware.com/photos-large/USNY/new-york-city-central-park-1.jpg",
     "adventure_category": "Outdoor"
   },
   "model": "map.adventure",
   "pk": 1
 },
+
+{
+  "fields": {
+    "adventure_name": 1,
+    "items_needed": "Paper, coins for wishes",
+    "expenses": "Subway tickets 1 set to get to Central Park, 1 to get to Imagination Playground, 1 to get home",
+    "locations": "[1]Central Park - Mid Park - 72nd Street [2]Imagination Playground - 2 Fulton St, New York, NY 10038",
+    "map_address":"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.462414474427!2d-73.97305374970642!3d40.77384714166631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25892a6168611%3A0x9d94703beba53b51!2sBethesda+Terrace!5e0!3m2!1sen!2sus!4v1450504370502"
+  },
+  "model": "map.adventures_info",
+  "pk": 1
+},
+
 {
   "fields": {
     "adventure_id": "0001",
     "adventure_name": "Go find McChicken",
     "adventure_description": "*****this need to be changed***",
-    "adventure_img_url": "http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/110.png&w=350&h=254",
+    "adventure_img_url": "http://wp.production.patheos.com/blogs/formerlyfundie/files/2015/10/halloween1.jpg",
     "adventure_category": "Outdoor"
   },
   "model": "map.adventure",

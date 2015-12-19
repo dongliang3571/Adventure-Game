@@ -8,42 +8,30 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="text-center">The Angel of Water and the Wish</h1>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <p class="lead text-center" id="Left">Bethesda Fountain in your world has special qualities! The Angel of Water
+
+      <div class="page-header">
+        <h1>HELP THE WIZARD</h1>
+        <p class="lead">Bethesda Fountain in your world has special qualities! The Angel of Water
           statue you see above it was carved by sorceress from my world to help your
           people. The Angel gives the water the power to heal and the Angel herself
           is able to grant wishes. &nbsp;Please! Wish for the water to &nbsp;reverse
           the petrification of my people!</p>
-        </div>
-        <div class="col-md-6">
-          <img src={% static "task/img/vivi.gif" %} class="img-responsive">
-        </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <ul class="nav nav-pills"></ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <hr>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <a class="btn btn-block btn-lg btn-primary" href="{% url 'map:map' %}">We have made our wishes!</a>
-        </div>
-      </div>
+
+      <h3 style="color: red;">Items needed:</h3>
+      <p style="font-size: 1.5em;">{{ items_needed }}</p>
+
+      <h3 style="color: red;">Expenses:</h3>
+      <p style="font-size: 1.5em;">{{ expenses }}</p>
+
+      <h3 style="color: red;">Locations:</h3>
+      <p style="font-size: 1.5em;">{{ locations }}</p>
+
+
     </div>
+
+    <iframe style="margin-left: 50px;" src="{{ map_address }}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <img style="float:right; margin-right: 150px;" src={% static "task/img/vivi.gif" %} class="img-responsive">
+    <a class="btn btn-block btn-lg btn-primary" href="{% url 'map:map' %}">We have made our wishes!</a>
 
 {% endblock %}

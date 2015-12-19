@@ -9,6 +9,7 @@ from .models import Answer
 from coreapp.models import Level_num
 from coreapp.models import Track
 from coreapp.models import Game_saved
+from .models import adventures_info
 
 
 # Create your views here.
@@ -24,22 +25,26 @@ def map(request):
             messages.warning(request, 'Create your family roles so that you can start your adventures.')
             return HttpResponseRedirect(reverse('coreapp:profile'))
         else:
+            if user.game_saved.adventure_saved:
 
-            game_saved = user.game_saved.task_saved
-            task_saved = int(game_saved)
+                game_saved = user.game_saved.task_saved
+                task_saved = int(game_saved)
 
-            if task_saved == 1:
-                boyn = "boy"
-            elif task_saved == 2:
-                boyn = "boy boy1"
-            elif task_saved == 3:
-                boyn = "boy boy1 boy2"
-            elif task_saved == 4:
-                boyn = "boy boy1 boy2 boy3"
-            elif task_saved == 5:
-                boyn = "boy boy1 boy2 boy3 boy4"
-            messages.warning(request, 'Welcome to your adventures')
-            return render(request, 'map/map.html', {'boyn':boyn})
+                if task_saved == 1:
+                    boyn = "boy"
+                elif task_saved == 2:
+                    boyn = "boy boy1"
+                elif task_saved == 3:
+                    boyn = "boy boy1 boy2"
+                elif task_saved == 4:
+                    boyn = "boy boy1 boy2 boy3"
+                elif task_saved == 5:
+                    boyn = "boy boy1 boy2 boy3 boy4"
+                messages.warning(request, 'Welcome to your adventures')
+                return render(request, 'map/map.html', {'boyn':boyn})
+            else:
+                messages.warning(request, 'Select your adventure to continue.')
+                return HttpResponseRedirect('/profile')
     else:
         messages.warning(request, 'Please sign in')
         return HttpResponseRedirect(reverse('coreapp:home'))
@@ -50,13 +55,24 @@ def beginingstory(request):
     """
     user = request.user
     adventureid = request.GET.get('adventureid', '')
-    if Game_saved.objects.filter(user=user):
+    if user.game_saved.adventure_saved:
         return HttpResponseRedirect(reverse('map:map'))
     else:
-        game_saved = Game_saved.objects.create(user=user, adventure_saved=adventureid, task_saved='1')
-        # track = Track.objects.create(user=user)
-        # task_saved = int(game_saved.task_saved)
-        return render(request, 'map/task1.html')
+    
+        game_saved = user.game_saved
+        game_saved.adventure_saved = adventureid
+        game_saved.task_saved = '1'
+        game_saved.save()
+        adventure = Adventure.objects.get(adventure_id = adventureid)
+        Adventures_info = adventures_info.objects.get(adventure_name = adventure)
+        context={
+            "items_needed" : Adventures_info.items_needed,
+            "expenses" : Adventures_info.expenses,
+            "locations" : Adventures_info.locations,
+            "map_address" : Adventures_info.map_address
+        }
+
+        return render(request, 'map/task1.html',context)
 
 def task(request):
     """
@@ -89,26 +105,6 @@ def task(request):
 
     return render(request, 'map/taskpage.html', context)
 
-    #     user = request.user
-    #
-    #
-    # adv = Adventure.objects.get(adventure_id="0000") #needed to get from adv
-    # task_num = 1    #needed to get from map
-    #
-    # #saving game
-    # game_saved_adv = adv
-    # game_saved_task = task_num
-    #
-    # task = Task.objects.get(adventure_name=adv, task_number=task_num)
-    # task_detail = task.task_detail
-    # task_ans = task.task_ans
-    #
-    # context = {'adv_name' : adv,
-    #            'task_num' : task_num,
-    #            'task_detail' : task_detail,
-    #            'task_ans' : task_ans,
-    # }
-    # return render(request, 'map/taskpage.html', context)
 
 def mission_task_submission(request):
     user = request.user
@@ -159,34 +155,6 @@ def questions_task_submission(request):
         messages.warning(request, 'Sorry, textfield is empty')
         return HttpResponseRedirect(new_url)
 
-    # adv = Adventure.objects.get(adventure_id="0000")
-    # task_num = 1
-    # task = Task.objects.get(adventure_name=adv, task_number=task_num)
-    # task_detail = task.task_detail
-    # task_ans = task.task_ans
-    #
-    # user_ans = request.POST.get('task_ans','')
-    #
-    # context = {'adv_name' : adv,
-    #            'task_num' : task_num,
-    #            'task_detail' : task_detail,
-    #            'task_ans' : task_ans,
-    # }
-    # if user_ans == task.task_ans:
-    #     task_num = task_num+1
-    #     task = Task.objects.get(adventure_name=adv, task_number=task_num)
-    #     task_detail = task.task_detail
-    #     task_ans = task.task_ans
-    #
-    #     context = {'adv_name' : adv,
-    #                'task_num' : task_num,
-    #                'task_detail' : task_detail,
-    #                'task_ans' : task_ans,
-    #     }
-    #     return render(request, 'map/taskpage.html', context)
-    # else:
-    #     messages.success(request, 'Sorry, the result is incorrect..')
-    #     return render(request, 'map/taskpage.html', context)
 
 
 def task1_question2(request):

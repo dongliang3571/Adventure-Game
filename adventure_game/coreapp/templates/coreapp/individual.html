@@ -56,6 +56,9 @@
       </div>
 			<form class="adventureform" action="/adventure{{ z }}/beginingstory" method="get">
 			<input type="hidden" name="adventureid" value="{{ z }}">
+			<input class="tobedeleted btn btn-info" id="play" type="submit" value="Play it!"><br>
+			</form>
+			{% endfor %}
 			{% if game_saved %}
 			{% for n in game_saved %}
 			{% if n == z %}
@@ -64,7 +67,7 @@
 
 			{% endfor %}
 
-			<input class="tobedeleted btn btn-info" id="play" type="submit" value="Play it!"><br>
+
 			<script>
 			$(function(){
 			  var el = document.getElementById("continue")
@@ -77,7 +80,7 @@
 
 			{% else %}
 			<input type="submit" class="btn btn-info" value="Play it!"><br>
-			</form>
+
 
 			{% endif %}
 
@@ -101,7 +104,7 @@
 
 			{% endif %}
 
-			{% endfor%}
+
 
 
 
