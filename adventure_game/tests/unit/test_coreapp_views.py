@@ -1,9 +1,9 @@
 from django.test import TestCase
 from django.test.client import RequestFactory
 from django.contrib.auth.models import User
-from mock import patch
+from mock import patch, MagicMock
 from coreapp.views import (profile, story, auth_view, logout, registration_submission,
-                           registration, add_family_member)
+                           registration, add_family_member, add_family_member_submission)
 
 
 @patch('coreapp.views.render')
@@ -203,4 +203,24 @@ class AddFamilyMemberViewTest(TestCase):
         context = {'csrf':'test'}
         render_mock.assert_called_with(self.request, 'auth/addfamily.html', context)
 
+#@patch('coreapp.views.User.character_set.filter')
+#@patch('coreapp.views.messages.success')
+class AddFamilySubmissionTest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    @patch('coreapp.views.User.character_set')
+    @patch('coreapp.views.messages.success')
+    def test_family_member_exist(self, message_mock, filter_mock):
+        request = self.factory.post('/add-family-member-submission/',
+                                    {'member-name':'test', 'member-pin':'1234'})
+        request.user = User()
+        filter_mock.return_value = True
+        filter_mock.filter = MagicMock(return_value=True)
+        response = add_family_member_submission(request)
+
+        filter_mock.filter.assert_called_with(character_name='test')
+        message_mock.assert_called_with(request, 'This member has already been' \
+                                        ' added, try another name')
+        self.assertEqual(response.status_code, 302)
 
