@@ -41,6 +41,7 @@ class Task(models.Model):
         ('Questions', 'Questions'),
     )
     task_type = models.CharField(max_length=10, choices = task_type_choices, default='Mission')
+    task_description = models.TextField(max_length=2000, blank=True, default='')
     task_detail = models.TextField(max_length=2000, blank=True, default='')
     place_img_url = models.URLField(blank=True, default='')
     task_ans = models.CharField(max_length=200, blank=True, default='')
@@ -84,7 +85,7 @@ class Answer(models.Model):
         return 'Q: '+str(self.question_text) + 'A: '+str(self.answer)
 
 
-class adventures_info(model.Model):
+class adventures_info(models.Model):
     """
     This provides information about each adventure, e.g. Tools needed, expense.
     """
@@ -94,5 +95,4 @@ class adventures_info(model.Model):
     locations = models.CharField(max_length=1000, blank=True, default='')
 
     def __unicode__(self):
-        return 'items_needed: ' + str(self.items_needed) + 'expenses: ' +
-        str(self.expenses) + 'expenses: '+str(self.answer)
+        return 'items_needed: ' + str(self.items_needed) + 'expenses: ' + str(self.expenses) + 'locations: '+str(self.locations)

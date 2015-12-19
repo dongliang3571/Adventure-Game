@@ -60,7 +60,7 @@ class Game_saved(models.Model):
     def __unicode__(self):
         return 'Last saved at adventure id#'+str(self.adventure_saved) + 'task #:' + str(self.task_saved)
 
-class current_adventures(model.Model):
+class current_adventures(models.Model):
     """
     This saves users' adventures that are currently played.
     """
