@@ -17,6 +17,7 @@ class ProileViewTest(TestCase):
         self.request = self.factory.get('/profile/')
         self.request.user = User()
         self.request.user.last_name = "test"
+        self.request.user.level_num = 1
 
     def test_func_logged_in(self, get_all_char_mock, get_prof_context_mock,
                             get_logged_in_char_mock, render_mock):
@@ -105,6 +106,7 @@ class LogoutViewTest(TestCase):
         logout_mock.assert_called_with(request)
         message_mock.assert_called_with(request, 'You have successfully logged out.')
 
+@patch('coreapp.views.Game_saved.objects.create')
 @patch('coreapp.views.registration')
 @patch('coreapp.views.auth.login')
 @patch('coreapp.views.auth.authenticate')
@@ -120,7 +122,7 @@ class CreateUserTest(TestCase):
                                           'password':'testpass'})
 
     def test_user_create_success(self, filter_mock, create_user_mock, create_level_mock,
-                                 auth_mock, login_mock, reg_mock):
+                                 auth_mock, login_mock, reg_mock, game_save_mock):
         user = User()
         filter_mock.return_value = []
         create_user_mock.return_value = user
@@ -131,29 +133,32 @@ class CreateUserTest(TestCase):
                                             password='testpass', first_name='testfname',
                                             last_name='testlname')
         create_level_mock.assert_called_with(user=user, user_point=0, user_level=1)
+        game_save_mock.assert_called_with(user=user, adventure_saved='', task_saved='')
         auth_mock.assert_called_with(username='testuser', password='testpass')
         login_mock.assert_called_with(self.request, user)
         self.assertFalse(reg_mock.called)
         self.assertEqual(response.status_code, 302)
 
     def test_invalid_email(self, filter_mock, create_user_mock, create_level_mock,
-                           auth_mock, login_mock, reg_mock):
+                           auth_mock, login_mock, reg_mock, game_save_mock):
         filter_mock.side_effect = [[], [1]]
         registration_submission(self.request)
         reg_mock.assert_called_with(self.request, 'Try again, there is already an' \
                                     ' account with that email test@test.')
         self.assertFalse(create_user_mock.called)
         self.assertFalse(create_level_mock.called)
+        self.assertFalse(game_save_mock.called)
         self.assertFalse(auth_mock.called)
         self.assertFalse(login_mock.called)
 
     def test_invalid_user(self, filter_mock, create_user_mock, create_level_mock,
-                           auth_mock, login_mock, reg_mock):
+                           auth_mock, login_mock, reg_mock, game_save_mock):
 
         filter_mock.return_value = [1]
         registration_submission(self.request)
         reg_mock.assert_called_with(self.request, 'Try again, the username testuser' \
                                     ' is already taken.')
+        self.assertFalse(game_save_mock.called)
         self.assertFalse(create_user_mock.called)
         self.assertFalse(create_level_mock.called)
         self.assertFalse(auth_mock.called)
