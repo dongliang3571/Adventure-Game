@@ -3,7 +3,8 @@ from django.test.client import RequestFactory
 from django.contrib.auth.models import User
 from mock import patch, MagicMock
 from coreapp.views import (profile, story, auth_view, logout, registration_submission,
-                           registration, add_family_member, add_family_member_submission)
+                           registration, add_family_member, add_family_member_submission,
+                           individual)
 
 
 @patch('coreapp.views.render')
@@ -225,7 +226,9 @@ class AddFamilySubmissionTest(TestCase):
     def test_bad_pin_input(self, message_mock):
         request = self.factory.post('/add-family-member-submission/',
                                     {'member-name':'test', 'member-pin':'123'})
+
         response = add_family_member_submission(request)
+
         message_mock.assert_called_with(request, 'Please enter 4 characters as your PIN number')
         self.assertEqual(response.status_code, 302)
 
@@ -237,11 +240,52 @@ class AddFamilySubmissionTest(TestCase):
         request.user = User()
         char_set_mock.filter = MagicMock(return_value=False)
         char_set_mock.create = MagicMock()
+
         response = add_family_member_submission(request)
 
         char_set_mock.filter.assert_called_with(character_name='test')
         char_set_mock.create.assert_called_with(character_name='test',
                                                 character_pin='1234')
         self.assertFalse(message_mock.called)
+        self.assertEqual(response.status_code, 302)
+
+@patch('coreapp.views.get_logged_in_char')
+@patch('coreapp.views.get_all_characters')
+class IndividualViewTest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.request = self.factory.post('/individual/',
+                                         {'character_name':'test', 'character_pin':'1234'})
+        self.request.user = User()
+    @patch('coreapp.views.profile')
+    def test_family_member_change(self, prof_mock, get_char_mock, logged_char_mock):
+        char = MagicMock()
+        char.save = MagicMock()
+        logged_char_mock.return_value = [char]
+        get_char_mock.return_value = 'test'
+
+        individual(self.request)
+
+        get_char_mock.assert_called_with(self.request.user)
+        logged_char_mock.assert_called_with('test')
+        self.assertTrue(char.save.called)
+        self.assertFalse(char.is_logged)
+        prof_mock.assert_called_with(self.request)
+
+    @patch('coreapp.views.User.character_set')
+    def test_success_member_login(self, char_set_mock, get_char_mock, logged_char_mock):
+        char = MagicMock()
+        char.save = MagicMock()
+        char_set_mock.filter = MagicMock(return_value=[char])
+        logged_char_mock.return_value = False
+        get_char_mock.return_value = 'test'
+
+        response = individual(self.request)
+
+        get_char_mock.assert_called_with(self.request.user)
+        logged_char_mock.assert_called_with('test')
+        char_set_mock.filter.assert_called_with(character_name='test', character_pin='1234')
+        self.assertTrue(char.save.called)
+        self.assertTrue(char.is_logged)
         self.assertEqual(response.status_code, 302)
 
