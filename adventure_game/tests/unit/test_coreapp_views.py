@@ -2,7 +2,9 @@ from django.test import TestCase
 from django.test.client import RequestFactory
 from django.contrib.auth.models import User
 from mock import patch
-from coreapp.views import profile, story, auth_view, logout, registration_submission
+from coreapp.views import (profile, story, auth_view, logout, registration_submission,
+                           registration, add_family_member)
+
 
 @patch('coreapp.views.render')
 @patch('coreapp.views.get_logged_in_char')
@@ -143,3 +145,62 @@ class CreateUserTest(TestCase):
         self.assertFalse(create_level_mock.called)
         self.assertFalse(auth_mock.called)
         self.assertFalse(login_mock.called)
+
+    def test_invalid_user(self, filter_mock, create_user_mock, create_level_mock,
+                           auth_mock, login_mock, reg_mock):
+
+        filter_mock.return_value = [1]
+        registration_submission(self.request)
+        reg_mock.assert_called_with(self.request, 'Try again, the username testuser' \
+                                    ' is already taken.')
+        self.assertFalse(create_user_mock.called)
+        self.assertFalse(create_level_mock.called)
+        self.assertFalse(auth_mock.called)
+        self.assertFalse(login_mock.called)
+
+@patch('coreapp.views.csrf')
+@patch('coreapp.views.render')
+class RegistrationViewTest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.request = self.factory.get('/register/')
+
+    def test_registration_view_with_message(self, render_mock, csrf_mock):
+        message = "test"
+        csrf_mock.return_value = {'csrf':'test'}
+        context = {'message':'test', 'csrf':'test'}
+        registration(self.request, message)
+
+        csrf_mock.assert_called_with(self.request)
+        render_mock.assert_called_with(self.request, 'auth/registration.html', context)
+
+    def test_registration_view_without_message(self, render_mock, csrf_mock):
+        csrf_mock.return_value = {'csrf':'test'}
+        registration(self.request)
+        context = {'csrf':'test'}
+        render_mock.assert_called_with(self.request, 'auth/registration.html', context)
+
+
+@patch('coreapp.views.csrf')
+@patch('coreapp.views.render')
+class AddFamilyMemberViewTest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.request = self.factory.get('/add-family-member/')
+
+    def test_add_fam_view_with_message(self, render_mock, csrf_mock):
+        message = "test"
+        csrf_mock.return_value = {'csrf':'test'}
+        context = {'message':'test', 'csrf':'test'}
+        add_family_member(self.request, message)
+
+        csrf_mock.assert_called_with(self.request)
+        render_mock.assert_called_with(self.request, 'auth/addfamily.html', context)
+
+    def test_add_fam_view_without_message(self, render_mock, csrf_mock):
+        csrf_mock.return_value = {'csrf':'test'}
+        add_family_member(self.request)
+        context = {'csrf':'test'}
+        render_mock.assert_called_with(self.request, 'auth/addfamily.html', context)
+
+
