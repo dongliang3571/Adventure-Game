@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Adventure, Task, Question, Answer
+from .models import Adventure, Task, Question, Answer, adventures_info
 
 
 class TaskInLine(admin.StackedInline):
@@ -35,3 +35,4 @@ class QuestionAdmin(admin.ModelAdmin):
 
 admin.site.register(Adventure, AdventureAdmin)
 admin.site.register(Question, QuestionAdmin)
+admin.site.register(adventures_info)

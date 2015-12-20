@@ -51,7 +51,7 @@ def map(request):
         messages.warning(request, 'Please sign in')
         return HttpResponseRedirect(reverse('coreapp:home'))
 
-@login_required(login_url='/')
+
 def beginingstory(request):
     """
     This function takes user to a transmission page that only displays once when users first begin the adventure.
@@ -63,11 +63,16 @@ def beginingstory(request):
     if Current_adventures:
         current_adventure = Current_adventures.filter(adventure_saved = adventureid)
         if current_adventure:
+            game_saved = user.game_saved
+            game_saved.adventure_saved = current_adventure[0].adventure_saved
+            game_saved.task_saved = current_adventure[0].task_saved
+            game_saved.save()
             return HttpResponseRedirect(reverse('map:map'))
         else:
             adventure = Adventure.objects.get(adventure_id = adventureid)
             Adventures_info = adventures_info.objects.get(adventure_name = adventure)
             context = {
+                "adventure_title" : adventure.adventure_name,
                 "items_needed" : Adventures_info.items_needed,
                 "expenses" : Adventures_info.expenses,
                 "locations" : Adventures_info.locations,
@@ -75,12 +80,13 @@ def beginingstory(request):
                 "adventureid" : adventureid
             }
 
-            return render(request, 'map/task1.html',context)
+            return render(request, 'map/details.html',context)
 
     else:
         adventure = Adventure.objects.get(adventure_id = adventureid)
         Adventures_info = adventures_info.objects.get(adventure_name = adventure)
         context = {
+            "adventure_title" : adventure.adventure_name,
             "items_needed" : Adventures_info.items_needed,
             "expenses" : Adventures_info.expenses,
             "locations" : Adventures_info.locations,
@@ -98,11 +104,10 @@ def save_current(request):
     game_saved.task_saved = '1'
     game_saved.save()
     current_adventures.objects.create(user=user, adventure_saved=adventureid, task_saved='1')
-    
+
     return HttpResponseRedirect(reverse('map:map'))
 
 
-@login_required(login_url='/')
 def task(request):
     """
     This function retrives tasks from database and displays on task pages for users to complete.
@@ -110,8 +115,8 @@ def task(request):
 
     user = request.user
     game_saved = user.game_saved
-    adventure_saved = str(game_saved.adventure_saved)
-    task_saved = int(game_saved.task_saved)
+    adventure_saved = game_saved.adventure_saved
+    task_saved = game_saved.task_saved
     adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
     adv_name = adv.adventure_name
     task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
