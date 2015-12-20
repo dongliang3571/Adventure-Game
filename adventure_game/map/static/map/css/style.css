@@ -265,7 +265,7 @@ div.building_name{
   background-color: rgba(205,200,200,0.9);
   margin-top: 50px;
   margin-left: 147px;
-  height: 650px;
+  height: 900px;
   width: 1000px;
   border-radius: 25px;
   box-shadow: 10px 10px 10px 5px #888;
@@ -274,6 +274,6 @@ div.building_name{
 .space2{
 
   min-width: 1000px;
-  min-height: 700px;
+  min-height: 1000px;
   z-index: 12;
 }
