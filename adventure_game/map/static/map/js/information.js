@@ -5,7 +5,7 @@ $(function(){
 
 
 
-  var information = "<h2>HELP THE WIZARD</h2>"
+
 
   $infobutton.on("click", function(){
     window_class = $window.attr("class")
@@ -17,7 +17,16 @@ $(function(){
         url: '/get_adventure_detail',
         success: function(data) {
           $.each(data, function(i, da) {
-            $window.html(da.name);
+
+            var information = "<h2>" + da.name + "</h2>" +
+                              "<h3 style='color: red;'>Items needed:</h3>" +
+                              "<p style='font-size: 1.5em;'>{{ items_needed }}</p>" +
+                              "<h3 style='color: red;'>Expenses:</h3>" +
+                              "<p style='font-size: 1.5em;'>{{ expenses }}</p>" +
+                              "<h3 style='color: red;'>Locations:</h3>" +
+                              "<p style='font-size: 1.5em;'>{{ locations }}</p>";
+
+            $window.html(information);
           });
 
 
