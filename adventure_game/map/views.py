@@ -29,8 +29,14 @@ def map(request):
         else:
             if user.game_saved.adventure_saved:
 
-                game_saved = user.game_saved.task_saved
-                task_saved = int(game_saved)
+                task_saved = int(user.game_saved.task_saved)
+                adventure_saved = user.game_saved.adventure_saved
+                adv = Adventure.objects.get(adventure_id = adventure_saved)
+                tasks = Task.objects.filter(adventure_name = adv).order_by("id")
+                img_url_list = []
+                for task in tasks:
+                    img_url_list.append(task.place_img_url)
+                # task_saved = int(game_saved)
 
                 if task_saved == 1:
                     boyn = "boy"
@@ -43,7 +49,16 @@ def map(request):
                 elif task_saved == 5:
                     boyn = "boy boy1 boy2 boy3 boy4"
                 messages.warning(request, 'Welcome to your adventures')
-                return render(request, 'map/map.html', {'boyn':boyn})
+                context = {
+                    "boyn" : boyn,
+                    "img1" : img_url_list[0],
+                    "img2" : img_url_list[1],
+                    "img3" : img_url_list[2],
+                    "img4" : img_url_list[3],
+                    "img5" : img_url_list[4]
+
+                }
+                return render(request, 'map/map.html', context)
             else:
                 messages.warning(request, 'Select your adventure to continue.')
                 return HttpResponseRedirect('/profile')
