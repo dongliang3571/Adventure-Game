@@ -61,7 +61,7 @@ def beginingstory(request):
     Current_adventures = current_adventures.objects.filter(user = user)
 
     if Current_adventures:
-        current_adventure = Current_adventures.filter(adventureid)
+        current_adventure = Current_adventures.filter(adventure_saved = adventureid)
         if current_adventure:
             return HttpResponseRedirect(reverse('map:map'))
         else:
@@ -84,27 +84,22 @@ def beginingstory(request):
             "items_needed" : Adventures_info.items_needed,
             "expenses" : Adventures_info.expenses,
             "locations" : Adventures_info.locations,
-            "map_address" : Adventures_info.map_address
+            "map_address" : Adventures_info.map_address,
+            "adventureid" : adventureid
         }
 
         return render(request, 'map/details.html',context)
 
 def save_current(request):
+    adventureid = request.GET.get('adventureid', '')
+    user = request.user
     game_saved = user.game_saved
     game_saved.adventure_saved = adventureid
     game_saved.task_saved = '1'
     game_saved.save()
-
-    adventure = Adventure.objects.get(adventure_id = adventureid)
-    Adventures_info = adventures_info.objects.get(adventure_name = adventure)
-    context = {
-        "items_needed" : Adventures_info.items_needed,
-        "expenses" : Adventures_info.expenses,
-        "locations" : Adventures_info.locations,
-        "map_address" : Adventures_info.map_address
-    }
-
-    return render(request, 'map/task1.html',context)
+    current_adventures.objects.create(user=user, adventure_saved=adventureid, task_saved='1')
+    
+    return HttpResponseRedirect(reverse('map:map'))
 
 
 @login_required(login_url='/')
