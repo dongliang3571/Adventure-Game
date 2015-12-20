@@ -10,6 +10,7 @@ from .models import Answer
 from coreapp.models import Level_num
 from coreapp.models import Track
 from coreapp.models import Game_saved
+from coreapp.models import current_adventures
 from .models import adventures_info
 
 
@@ -57,24 +58,54 @@ def beginingstory(request):
     """
     user = request.user
     adventureid = request.GET.get('adventureid', '')
-    if user.game_saved.adventure_saved:
-        return HttpResponseRedirect(reverse('map:map'))
-    else:
+    Current_adventures = current_adventures.objects.filter(user = user)
 
-        game_saved = user.game_saved
-        game_saved.adventure_saved = adventureid
-        game_saved.task_saved = '1'
-        game_saved.save()
+    if Current_adventures:
+        current_adventure = Current_adventures.filter(adventureid)
+        if current_adventure:
+            return HttpResponseRedirect(reverse('map:map'))
+        else:
+            adventure = Adventure.objects.get(adventure_id = adventureid)
+            Adventures_info = adventures_info.objects.get(adventure_name = adventure)
+            context = {
+                "items_needed" : Adventures_info.items_needed,
+                "expenses" : Adventures_info.expenses,
+                "locations" : Adventures_info.locations,
+                "map_address" : Adventures_info.map_address,
+                "adventureid" : adventureid
+            }
+
+            return render(request, 'map/task1.html',context)
+
+    else:
         adventure = Adventure.objects.get(adventure_id = adventureid)
         Adventures_info = adventures_info.objects.get(adventure_name = adventure)
-        context={
+        context = {
             "items_needed" : Adventures_info.items_needed,
             "expenses" : Adventures_info.expenses,
             "locations" : Adventures_info.locations,
             "map_address" : Adventures_info.map_address
         }
 
-        return render(request, 'map/task1.html',context)
+        return render(request, 'map/details.html',context)
+
+def save_current(request):
+    game_saved = user.game_saved
+    game_saved.adventure_saved = adventureid
+    game_saved.task_saved = '1'
+    game_saved.save()
+
+    adventure = Adventure.objects.get(adventure_id = adventureid)
+    Adventures_info = adventures_info.objects.get(adventure_name = adventure)
+    context = {
+        "items_needed" : Adventures_info.items_needed,
+        "expenses" : Adventures_info.expenses,
+        "locations" : Adventures_info.locations,
+        "map_address" : Adventures_info.map_address
+    }
+
+    return render(request, 'map/task1.html',context)
+
 
 @login_required(login_url='/')
 def task(request):

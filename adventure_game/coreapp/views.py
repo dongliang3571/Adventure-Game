@@ -154,6 +154,9 @@ def individual(request):
         return HttpResponseRedirect('/profile/')
 
 def get_adventure_detail(request):
+    """
+    This function pass adventure details in json format to front end for ajax to receive them.
+    """
     if request.is_ajax():
         user = request.user
         game_saved = user.game_saved
@@ -177,7 +180,7 @@ def get_adventure_detail(request):
     else:
         raise PermissionDenied()
 
-
+#for testing only
 def usejson(request):
 
     return render(request, 'coreapp/getjson.html',{"usea":"hahah"})

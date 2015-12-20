@@ -10,6 +10,6 @@ urlpatterns = [
     # url(r'^scram/$', views.scram, name="task2"),
     url(r'^missiontasksubmission$', views.mission_task_submission, name="missiontasksubmission"),
     url(r'^questionstasksubmission$', views.questions_task_submission, name="questionstasksubmission"),
-    # url(r'^task1/task1_question1/$', views.task1_question1, name="task1_question1"),
+    url(r'^save_current/$', views.save_current, name="save_current"),
     # url(r'^task1/task1_question2/$', views.task1_question2, name="task1_question2"),
 ]
