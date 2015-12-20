@@ -43,7 +43,7 @@ class Task(models.Model):
     task_type = models.CharField(max_length=10, choices = task_type_choices, default='Mission')
     task_description = models.TextField(max_length=2000, blank=True, default='')
     task_detail = models.TextField(max_length=2000, blank=True, default='')
-    place_img_url = models.URLField(blank=True, default='')
+    place_img_url = models.URLField(max_length=3000, blank=True, default='')
     task_ans = models.CharField(max_length=200, blank=True, default='')
     def __unicode__(self):
         return self.task_number
