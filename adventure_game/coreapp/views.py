@@ -9,6 +9,7 @@ from .queries import get_logged_in_char, get_all_characters
 from .utilities import  get_profile_context
 from django.core.exceptions import PermissionDenied
 import json
+from map.models import adventures_info, Adventure
 
 def home(request):
     context = {}
@@ -152,23 +153,29 @@ def individual(request):
                          ' select your family role, please try agian!')
         return HttpResponseRedirect('/profile/')
 
-def getjson(request):
-    if request.is_ajax():
-        alist =[
-                {
-                    "people":"haha",
-                    "age":"20"
-                },
+def get_adventure_detail(request):
+    # if request.is_ajax():
+    user = request.user
+    game_saved = user.game_saved
+    adventure_id = game_saved.adventure_saved
+    # task_num = game_saved.task_saved
+    adventure = Adventure.objects.get(adventure_id=adventure_id)
+    Adventures_info = adventures_info.objects.get(adventure_name=adventure)
+    
+    alist =[
+            {
+                "name" : str(adventure.adventure_name),
+                "items" : str(Adventures_info.items_needed),
+                "expenses" : str(Adventures_info.expenses),
+                "locations" : str(Adventures_info.locations),
+                "mapaddress" : str(Adventures_info.map_address)
+            }
 
-                {
-                    "people":"fsd",
-                    "age":"dfsdf"
-                }
-                ]
+            ]
 
-        return JsonResponse(alist, safe=False)
-    else:
-        raise PermissionDenied()
+    return JsonResponse(alist, safe=False)
+    # else:
+        # raise PermissionDenied()
 
 
 def usejson(request):

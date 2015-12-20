@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^story/$', views.story, name='story'),
     url(r'^add-family-member-submission/$', views.add_family_member_submission, name="addFamilySubmission"),
     url(r'^add-family-member/$', views.add_family_member, name="add-family-member"),
-    url(r'^getjson/$', views.getjson, name='getjson'),
+    url(r'^get_adventure_detail/$', views.get_adventure_detail, name='get_adventure_detail'),
     url(r'^usejson/$', views.usejson, name='usejson'),
 
 ]
