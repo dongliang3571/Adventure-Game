@@ -3,10 +3,6 @@ $(function(){
   $window = $("#window");
   $space = $(".space2")
 
-
-
-
-
   $infobutton.on("click", function(){
     window_class = $window.attr("class")
     if (window_class == "space") {
@@ -30,8 +26,9 @@ $(function(){
 
             $window.html(information);
           });
-
-
+        },
+        error: function(){
+          $window.html("<p style='color: red;margin-left: 30px;'>Failed to retrived data, check your internet connection.</p>");
         }
       });
     }
