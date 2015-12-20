@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from django.contrib import messages
+from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required
 from .models import Adventure
 from .models import Task
 from .models import Question
@@ -49,6 +50,7 @@ def map(request):
         messages.warning(request, 'Please sign in')
         return HttpResponseRedirect(reverse('coreapp:home'))
 
+@login_required(login_url='/')
 def beginingstory(request):
     """
     This function takes user to a transmission page that only displays once when users first begin the adventure.
@@ -58,7 +60,7 @@ def beginingstory(request):
     if user.game_saved.adventure_saved:
         return HttpResponseRedirect(reverse('map:map'))
     else:
-    
+
         game_saved = user.game_saved
         game_saved.adventure_saved = adventureid
         game_saved.task_saved = '1'
@@ -74,6 +76,7 @@ def beginingstory(request):
 
         return render(request, 'map/task1.html',context)
 
+@login_required(login_url='/')
 def task(request):
     """
     This function retrives tasks from database and displays on task pages for users to complete.
