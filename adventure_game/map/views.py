@@ -165,7 +165,10 @@ def mission_task_submission(request):
         return render(request, 'map/adventure_completion.html')
     game_saved.task_saved = str(int(game_saved.task_saved) + 1)
     game_saved.save()
-
+    Current_adventures = current_adventures.objects.filter(user = user)
+    current_adventure = Current_adventures.get(adventure_saved = adventure_saved)
+    current_adventure.task_saved = game_saved.task_saved
+    current_adventure.save()
     adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
     adv_name = adv.adventure_name
     task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
@@ -192,6 +195,10 @@ def questions_task_submission(request):
             game_saved.task_saved = str(int(game_saved.task_saved) + 1)
             game_saved.save()
             task_saved = game_saved.task_saved
+            Current_adventures = current_adventures.objects.filter(user = user)
+            current_adventure = Current_adventures.get(adventure_saved = adventure_saved)
+            current_adventure.task_saved = game_saved.task_saved
+            current_adventure.save()
             new_url = 'task' + str(task_saved)
             return HttpResponseRedirect(new_url)
         else:
