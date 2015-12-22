@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
-from .models import UserProfile, Character, Level_num, Track, Game_saved
+from .models import UserProfile, Character, Level_num, Track, Game_saved, message
 
 
 admin.site.unregister(User)
@@ -27,3 +27,4 @@ class UserProfileAdmin(UserAdmin):
     inlines = [UserProfileInline, CharacterInline, LevelInline, TrackInLine, Game_savedInLine]
 
 admin.site.register(User, UserProfileAdmin)
+admin.site.register(message)

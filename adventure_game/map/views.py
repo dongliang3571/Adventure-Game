@@ -150,6 +150,7 @@ def task(request):
         'task_num' : task_saved,
         'task_detail' : task_detail,
         'task_ans' : task_ans,
+        'task_content' : "haha"
     }
 
     return render(request, 'map/taskpage.html', context)

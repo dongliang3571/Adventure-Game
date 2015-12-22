@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block map_css_js %}
 <link rel="stylesheet" type="text/css" href="{% static "map/css/task.css" %}">
-<!-- <link href="{% static "task/css/scramble.css" %}" rel="stylesheet"> -->
+<link href="{% static "task/css/scramble.css" %}" rel="stylesheet">
 {% endblock %}
 
 
@@ -33,13 +33,7 @@
           {% endautoescape %}
           <br>
 
-<!--
-          <div class="scramble" data-unscrambled="STA"></div>
-
-          <div class="scramble" data-unscrambled="TIGER"></div>
-
-          <div class="scramble" data-unscrambled="SPIDER"></div>
-          <script type="text/javascript" src="{% static "task/js/scramble.js" %}"></script> -->
+          {{ task_content }}
 
           </p>
         </div>
@@ -51,7 +45,7 @@
       {% if show_textbox %}
       <p>The answer for this task is :{{ task_ans }}
         <form action="{% url 'map:questionstasksubmission' %}" method="get" id="nexttask1">
-              <input type="text" class = "result-textarea"name="task_ans" placeholder="Enter you result here">
+              <input type="text" class="result-textarea" name="task_ans" placeholder="Enter you result here">
               <br>
               <button type="submit" class="btn btn-info next-task">Next Task</button>
         </form>
@@ -65,8 +59,8 @@
         </form>
 </div>
 </div>
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{% static "task/js/scramble.js" %}"></script>
 
 
 {% endblock %}
