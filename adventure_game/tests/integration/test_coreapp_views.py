@@ -140,7 +140,7 @@ class IndividualViewTests(TestCase):
         message = list(response.context['messages'])
         self.assertRedirects(response, '/profile/')
         self.assertEqual(str(message[0]), 'The PIN you entered is incorrect or did not select' \
-                                          ' your family role, please try agian!')
+                                          ' your family role, please try again!')
 
     def test_valid_pin(self):
 

@@ -11,6 +11,19 @@ from .utilities import  get_profile_context
 from map.models import adventures_info, Adventure, Task
 
 def home(request):
+    """This is the home view. It is called when the user goes to the '/' route.
+
+    Parameters
+    ----------
+    request: HttpRequest
+        Django request object that contains a variety of information from the middlewares.
+
+
+    Returns
+    -------
+    HttpResponseObject
+        Combines a given template with a given context dictionary and renders the template.
+    """
     context = {}
     context.update(csrf(request))
     return render_to_response('coreapp/home.html',
@@ -18,6 +31,23 @@ def home(request):
                               context_instance=RequestContext(request))
 
 def profile(request):
+    """This is the profile view. It is called when the user goes to the '/profile/' route.
+
+    Parameters
+    ----------
+    request: HttpRequest
+        Django request object that contains a variety of information from the middlewares.
+
+
+    Returns
+    -------
+    HttpResponseObject
+        Combines a given template with a given context dictionary and renders the template.
+        If the user hasn't logged into a char yet, the view renders the individual.html template,
+        with a context dictionary created by the function get_profile_context. Otherwise,
+        the view will be rendered with a context dictionary that contains the names of all
+        the family members attached to the user account as well as the user's last name.
+    """
     user = request.user
     characters = get_all_characters(user)
     if get_logged_in_char(characters):
@@ -32,16 +62,43 @@ def profile(request):
         return render(request, 'coreapp/profile.html', context)
 
 def story(request):
-    """
-    Renders the story.html template when users access this route.
+    """This is the story view. It is called when the user goes to the '/story' route.
+
+    Parameters
+    ----------
+    request: HttpRequest
+        Django request object that contains a variety of information from the middlewares.
+
+
+    Returns
+    -------
+    HttpResponseObject
+        Combines a given template with a given context dictionary and renders
+        the story.html template.
     """
     return render(request, 'coreapp/story.html')
 
 def auth_view(request):
+    """This is the story view. It handles user login authentication.
+
+    Parameters
+    ----------
+    request: HttpRequest
+        Django request object that contains a variety of information from the middlewares.
+
+
+    Returns
+    -------
+    HttpResponseRedirectObject
+        Redirects the user to '/' route. If credentials are correct, the user is logged in
+        and a message is shown confirming user logged in. If account was banned, message
+        is shown message telling them account is banned. If credentials are invalid, user is
+        told credential is invalid."If credentials are correct, the user is logged in
+        and a message is shown confirming user logged in. If account was banned, message
+        is shown message telling them account is banned. If credentials are invalid, user is
+        told credential is invalid.
     """
-    The user is sent to this page after they login for authentication.
-    They are then redirected to the home page.
-    """
+
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
     user = auth.authenticate(username=username, password=password)
