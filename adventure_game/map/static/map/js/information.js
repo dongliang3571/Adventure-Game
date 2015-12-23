@@ -22,7 +22,8 @@ $(function(){
                               "<h3 style='color: red;margin-left: 30px;'>Locations:</h3>" +
                               "<p style='font-size: 1.5em;margin-left: 30px;font-family:Monaco, monospace;'>" + da.locations + "</p>" +
                               "<iframe style='margin-left: 50px;margin-left: 50px;border-radius: 25px;' src=" + da.mapaddress + " width='500' height='400' frameborder='0' style='border:0' allowfullscreen></iframe>" +
-                              "<img style='float:right; margin-right: 150px;width:270px;' src='http://vignette3.wikia.nocookie.net/scribblenauts/images/f/fc/Wizard_Male.png/revision/latest?cb=20130215182314' class='img-responsive'>";
+                              "<img style='float:right; margin-right: 150px;width:270px;' src=" + da.theme_character_url + " class='img-responsive'>";
+                              // "<img style='float:right; margin-right: 150px;width:270px;' src='https://pixabay.com/static/uploads/photo/2012/04/12/13/12/devil-29973_960_720.png' class='img-responsive'>";
 
             $window.html(information);
           });

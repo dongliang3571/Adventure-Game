@@ -173,7 +173,8 @@ def get_adventure_detail(request):
                     "items" : str(Adventures_info.items_needed),
                     "expenses" : str(Adventures_info.expenses),
                     "locations" : Adventures_info.locations,
-                    "mapaddress" : str(task.google_map)
+                    "mapaddress" : str(task.google_map),
+                    "theme_character_url" : str(adventure.theme_character_url)
                 }
 
                 ]

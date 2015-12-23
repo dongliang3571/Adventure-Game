@@ -4,6 +4,7 @@
     "adventure_id": "0000",
     "adventure_name": "Help the Wizard",
     "adventure_description": "*****this need to be changed***",
+    "theme_character_url": "http://vignette3.wikia.nocookie.net/scribblenauts/images/f/fc/Wizard_Male.png/revision/latest?cb=20130215182314",
     "adventure_img_url": "http://www.planetware.com/photos-large/USNY/new-york-city-central-park-1.jpg",
     "adventure_category": "Outdoor"
   },
@@ -28,6 +29,7 @@
     "adventure_id": "0001",
     "adventure_name": "Haunted Adventure",
     "adventure_description": "*****this need to be changed***",
+    "theme_character_url": "https://pixabay.com/static/uploads/photo/2012/04/12/13/12/devil-29973_960_720.png",
     "adventure_img_url": "http://wp.production.patheos.com/blogs/formerlyfundie/files/2015/10/halloween1.jpg",
     "adventure_category": "Outdoor"
   },
@@ -38,9 +40,9 @@
 {
   "fields": {
     "adventure_name": 2,
-    "items_needed": "None",
+    "items_needed": "Camera(beatiful views)",
     "expenses": "Subway Swipes(Roosevelt Island accessible via tram paid for by subway swipes)",
-    "locations": "[1] Woodlawn Cemetery, 517 E 233rd St, Bronx, NY 10470 [2]Roosevelt Island Lighthouse North Point, Roosevelt Island [3]St. Mark’s Church 131 E 10th St, New York, NY 10003",
+    "locations": "[1]Woodlawn Cemetery<br>[2]Lighthouse Park(Roosevelt Island)<br>[3]St. Mark’s Church",
     "map_address":"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12666.119308491177!2d-73.88031731177277!3d40.88800217831952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f31a19e13647%3A0xf0931d7edc905f36!2sWoodlawn+Cemetery!5e0!3m2!1sen!2sus!4v1450579118318"
   },
   "model": "map.adventures_info",
@@ -115,7 +117,10 @@
     "task_type": "Questions",
     "task_number": "1",
     "adventure_name": 2,
-    "place_img_url": "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg",
+    "name_of_location": "Woodlawn Cemetery",
+    "id_of_task": "task1",
+    "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3016.170734999709!2d-73.87644404962353!3d40.890069534538874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f31a19e13647%3A0xf0931d7edc905f36!2sWoodlawn+Cemetery!5e0!3m2!1sen!2sus!4v1450860661892",
+    "place_img_url": "http://vignette3.wikia.nocookie.net/simpsonstappedout/images/8/8a/Petcemetery.png/revision/latest?cb=20130714173650",
     "task_detail": "Intro: Well hello…..My name is Damian. I’m here to take you on a journey to see some of the most mysterious and possibly frightening places in New York City. Do you have the courage to follow me? To meet the ghosts in ghouls in this city? Don’t worry though, I have the power to protect you on your journey.<br>Damian: Our first visit on this mysterious journey will be to Woodlawn Cemetery. My dear Irene’s home. She’s very particular though. I won’t lead you to her. You’ll have to let her call you. If I were you I would walk around the cemetery a bit till she’s decided she wants to meet you.<br>Irene: Gur fgnghr vf pybfrfg gb gur tngr ng Wrebzr Nirahr, naq vf znqr bs pbccre naq fgnvarq n terravfu-oyhr.<br>Damian: I thought she might have this problem. Here use this to decipher her message. Decryption Key A|B|C|D|E|F|G|H|I|J|K|L|M"
   },
   "model": "map.task",
@@ -127,7 +132,10 @@
     "task_type": "Mission",
     "task_number": "2",
     "adventure_name": 2,
-    "place_img_url": "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg",
+    "name_of_location": "History Challenges",
+    "id_of_task": "task2",
+    "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3016.170734999709!2d-73.87644404962353!3d40.890069534538874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f31a19e13647%3A0xf0931d7edc905f36!2sWoodlawn+Cemetery!5e0!3m2!1sen!2sus!4v1450860661892",
+    "place_img_url": "http://www.fsusd.org/cms/lib03/CA01001943/Centricity/Domain/738/history-clip-art-5.gif",
     "task_detail": "Damian: Ah she wants to meet you. That statue is the one that marks her grave. Irene’s husband was lost in World War I. She remarried several times, but her she never got over her grief for her first husband. They’re buried here together. Good luck.<br>Irene: Welcome. It’s nice to see people after so long. Damian brought you here, did he? He’s so kind. But there’s something that you should keep in mind about him, he’s……"
   },
   "model": "map.task",
@@ -139,7 +147,10 @@
     "task_type": "Mission",
     "task_number": "3",
     "adventure_name": 2,
-    "place_img_url": "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg",
+    "name_of_location": "Lighthouse Park(Roosevelt Island)",
+    "id_of_task": "task3",
+    "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.603146020793!2d-73.94422824962774!3d40.770752491855696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258b6800a34e7%3A0x5874390a188bba1c!2sLighthouse+Park!5e0!3m2!1sen!2sus!4v1450860622929",
+    "place_img_url": "http://www.clipartlord.com/wp-content/uploads/2014/02/lighthouse7.png",
     "task_detail": "Spell 2: The second spell will help you fix our fortress! It's of no use here, but will be most amazing when used in the correct way. For now though, the words are, \"renderum foretaress\". I hear there is a park called Imagination Park that is filled with magical blocks! You should go there and I'll explain how to use the spell."
   },
   "model": "map.task",
@@ -151,7 +162,10 @@
     "task_type": "Mission",
     "task_number": "4",
     "adventure_name": 2,
-    "place_img_url": "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg",
+    "name_of_location": "Math Challenges",
+    "id_of_task": "task4",
+    "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.603146020793!2d-73.94422824962774!3d40.770752491855696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258b6800a34e7%3A0x5874390a188bba1c!2sLighthouse+Park!5e0!3m2!1sen!2sus!4v1450860622929",
+    "place_img_url": "https://openclipart.org/image/2400px/svg_to_png/191351/Math-Girl-.png",
     "task_detail": "Damian:This is our final stop on the tour. St. Mark’s Church. This place is haunted by a general called Peter Stuyvesant. We call him Peg Leg Pete now but don’t let him hear about that. He’s not too fond of that name. He built this area up and stayed in the graveyard after his death so that he wouldn’t be forgotten. He’s been sighted lurking in the shadows around the church, in the windows, and ringing the bell of the church. Be careful when he rings the bell though. He’s calling all his ghostly friends from the ground for some mischief.<br>Peter: I heard what you said Damian. I’m not happy about that. You were the one that gave me the peg leg in the first place. You trapped me here for your amusement! Help me. Help me escape and we’ll trap Damian here in my place. He’s been causing trouble for far too long!"
   },
   "model": "map.task",
@@ -163,7 +177,10 @@
     "task_type": "Questions",
     "task_number": "5",
     "adventure_name": 2,
-    "place_img_url": "http://thesource.com/wp-content/uploads/2015/11/Kobe-.jpg",
+    "name_of_location": "St. Mark’s Church",
+    "id_of_task": "task5",
+    "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.440355123209!2d-73.98931184962913!3d40.73033494433022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2599c3c8b0fb1%3A0x6d799c804b630f41!2zU3QuIE1hcmvigJlz!5e0!3m2!1sen!2sus!4v1450860736906",
+    "place_img_url": "http://seamenschurch.org/sites/default/files/image_upload/2-church-color.png",
     "task_detail": "what is 3 x 1"
   },
   "model": "map.task",
