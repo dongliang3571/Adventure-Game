@@ -9,7 +9,7 @@ from .queries import get_logged_in_char, get_all_characters
 from .utilities import  get_profile_context
 from django.core.exceptions import PermissionDenied
 import json
-from map.models import adventures_info, Adventure
+from map.models import adventures_info, Adventure, Task
 
 def home(request):
     context = {}
@@ -161,9 +161,11 @@ def get_adventure_detail(request):
         user = request.user
         game_saved = user.game_saved
         adventure_id = game_saved.adventure_saved
-        # task_num = game_saved.task_saved
+        task_num = game_saved.task_saved
         adventure = Adventure.objects.get(adventure_id = adventure_id)
         Adventures_info = adventures_info.objects.get(adventure_name=adventure)
+        task = Task.objects.get(adventure_name=adventure, task_number = task_num)
+
 
         alist =[
                 {
@@ -171,7 +173,7 @@ def get_adventure_detail(request):
                     "items" : str(Adventures_info.items_needed),
                     "expenses" : str(Adventures_info.expenses),
                     "locations" : Adventures_info.locations,
-                    "mapaddress" : str(Adventures_info.map_address)
+                    "mapaddress" : str(task.google_map)
                 }
 
                 ]

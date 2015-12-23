@@ -41,8 +41,7 @@ def map(request):
                         "name_of_location": task.name_of_location
                     }
                     task_list.append(task_list_context)
-                # task_saved = int(game_saved)
-
+        
                 if task_saved == 1:
                     boyn = "boy"
                 elif task_saved == 2:

@@ -16,7 +16,7 @@
     "adventure_name": 1,
     "items_needed": "Paper, coins for wishes",
     "expenses": "Subway tickets 1 set to get to Central Park, 1 to get to Imagination Playground, 1 to get home",
-    "locations": "[1]Central Park - Mid Park - 72nd Street [2]Imagination Playground - 2 Fulton St, New York, NY 10038",
+    "locations": "[1]Bethesda Fountain<br>[2]Belvedere Castle<br>[3]Imagination Park",
     "map_address":"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.462414474427!2d-73.97305374970642!3d40.77384714166631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25892a6168611%3A0x9d94703beba53b51!2sBethesda+Terrace!5e0!3m2!1sen!2sus!4v1450504370502"
   },
   "model": "map.adventures_info",
@@ -55,6 +55,7 @@
     "adventure_name": 1,
     "name_of_location": "Bethesda Fountain",
     "id_of_task": "task1",
+    "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.462414474427!2d-73.97305374970642!3d40.77384714166631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25892a6168611%3A0x9d94703beba53b51!2sBethesda+Terrace!5e0!3m2!1sen!2sus!4v1450504370502",
     "place_img_url": "http://pixeljoint.com/files/icons/full/emote_fountain.gif",
     "task_detail": "Wizard: There is a fountain in your world that was created by a female wizard from my world. It's watched over by an angel that she calls The Angel of the Waters. She has given it the power to heal those touched by the water. The fountain itself, like all fountains in your amazing world has the power to grant wishes! Please go to the fountain and wish for the Angel of Waters to use her powers on my petrified people!\r\n\r\n<strong style=\"color: red;\">Solve the Word scramble to get next clue. Enter 4-digital PIN that you will get from the item.</strong>"
   },
@@ -69,6 +70,7 @@
     "adventure_name": 1,
     "name_of_location": "Belvedere Castle",
     "id_of_task": "task2",
+    "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.208314559755!2d-73.97126174962739!3d40.7794342413239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258efe1df7c15%3A0x88efe22fb72978b5!2sBelvedere+Castle!5e0!3m2!1sen!2sus!4v1450858462171",
     "place_img_url": "http://img07.deviantart.net/6988/i/2013/033/4/f/png_castle_2_by_moonglowlilly-d5tk46h.png",
     "task_detail": "Wizard: Welcome to Belvedere Castle! I knew you would figure out my clues! I'm sorry for all of the deception, but I had to make sure that Balin couldn't find us here. His displeasure would be very dangerous. I'm going to teach you two spells to help you.\r\n\r\nSpell 1: The first spell will let you change an ordinary piece of paper into a warrior's helmet to protect you! Here, follow these instructions and say these words, \"renderum helmetus\"."
   },
@@ -81,8 +83,9 @@
     "task_type": "Mission",
     "task_number": "3",
     "adventure_name": 1,
-    "name_of_location": "Imagination Park",
+    "name_of_location": "Imagination Playground",
     "id_of_task": "task3",
+    "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37864.877667524604!2d-74.01481355128767!3d40.70719116273272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a3da9d9d291%3A0x3288fc6e857bc204!2sImagination+Playground!5e0!3m2!1sen!2sus!4v1450858633547",
     "place_img_url": "http://i.imgur.com/Vc2zspv.png",
     "task_detail": "Spell 2: The second spell will help you fix our fortress! It's of no use here, but will be most amazing when used in the correct way. For now though, the words are, \"renderum foretaress\". I hear there is a park called Imagination Park that is filled with magical blocks! You should go there and I'll explain how to use the spell."
   },
