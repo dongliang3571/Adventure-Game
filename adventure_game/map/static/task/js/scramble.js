@@ -1,4 +1,4 @@
-(function() {
+function callscramble() {
   $(".scramble").each(function() {
     var $letters, $spacers, $this, insertSpacers, isCorrect, parseWord, randomize, scrambledWord, spacerHTML, unscrambledWord;
     $this = $(this);
@@ -135,4 +135,4 @@
     });
   });
 
-}).call(this);
+}

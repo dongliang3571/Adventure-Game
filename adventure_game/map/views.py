@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.core.urlresolvers import reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
@@ -12,6 +12,7 @@ from coreapp.models import Track
 from coreapp.models import Game_saved
 from coreapp.models import current_adventures
 from .models import adventures_info
+import json
 
 
 # Create your views here.
@@ -41,7 +42,7 @@ def map(request):
                         "name_of_location": task.name_of_location
                     }
                     task_list.append(task_list_context)
-        
+
                 if task_saved == 1:
                     boyn = "boy"
                 elif task_saved == 2:
@@ -222,5 +223,13 @@ def task1_question2(request):
 def task2(request):
     return render(request, 'map/task2.html')
 
-def scram(request):
-    return render(request, 'map/scramble.html')
+def special_game_json(request):
+    user = request.user
+    game_saved = user.game_saved
+    task_saved = game_saved.task_saved
+    adventure_saved = game_saved.adventure_saved
+    adventure = Adventure.objects.get(adventure_id=adventure_saved)
+    task = Task.objects.get(adventure_name=adventure, task_number=task_saved)
+    special_game = task.special_game
+    alist = {"special_game": special_game}
+    return JsonResponse(alist, safe=False)
