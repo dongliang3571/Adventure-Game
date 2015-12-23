@@ -9,19 +9,21 @@
 {% block content %}
 
 
-      <div id="space"></div>
+        <button class="btn btn-info" id="information">Information >></button>
+        <div class="space" id="window"></div>
+        <div class="space2"></div>
+
       <div>
 
-      <!-- <canvas id="girl" style="border:1px solid #000000;"></canvas> -->
       <canvas id="boy" class="{{ boyn }}"></canvas>
       <canvas id="env"></canvas>
 
 
-      <img id="empire" src={% static "map/images/buildings/Empire_State_Building.png" %}>
-      <img id="statue_liberty" src={% static "map/images/buildings/statue_liberty.png" %}>
-      <img id="metropolitan" src={% static "map/images/buildings/metropolitan.png" %}>
-      <img id="grand" src={% static "map/images/buildings/grand.png" %}>
-      <img id="central" src={% static "map/images/buildings/central.png" %}>
+      <img id="empire" src={{ img2 }}>
+      <img id="statue_liberty" src={{ img4 }}>
+      <img id="metropolitan" src={{ img5 }}>
+      <img id="grand" src={{ img3 }}>
+      <img id="central" src={{ img1 }}>
 
       {% if image1 %}
       {% autoescape off %}
@@ -41,10 +43,10 @@
       <a href=""><img id="number4" class="number_mission" src={% static "map/images/numbers/number4.png" %}></a>
       <a href=""><img id="number5" class="number_mission" src={% static "map/images/numbers/number5.png" %}></a>
       <!-- <img id="mist" src="static/images/mist/mist.png"> -->
-      <img id="path1" src={% static "map/images/path1.png" %}>
-      <img id="path2" src={% static "map/images/path1.png" %}>
-      <img id="path3" src={% static "map/images/path1.png" %}>
-      <img id="path4" src={% static "map/images/path1.png" %}>
+      <img id="path1" src="https://doc-00-3k-docs.googleusercontent.com/docs/securesc/8e6a5l3pbhr34q5s6jfvrcnib98sk5qj/3ovbljqpvbq8o3uo7buvnue1dbigk0su/1450591200000/04404355413381452333/14856044240109384408/0Bx-KHIJkuXLsejZfOVFvbTZzV0U?e=download&nonce=0r42p8riih8g2&user=14856044240109384408&hash=lm2u6367mi0n6uf8jnrshkbrs6g3a3dr">
+      <img id="path2" src="https://doc-00-3k-docs.googleusercontent.com/docs/securesc/8e6a5l3pbhr34q5s6jfvrcnib98sk5qj/3ovbljqpvbq8o3uo7buvnue1dbigk0su/1450591200000/04404355413381452333/14856044240109384408/0Bx-KHIJkuXLsejZfOVFvbTZzV0U?e=download&nonce=0r42p8riih8g2&user=14856044240109384408&hash=lm2u6367mi0n6uf8jnrshkbrs6g3a3dr">
+      <img id="path3" src="https://doc-00-3k-docs.googleusercontent.com/docs/securesc/8e6a5l3pbhr34q5s6jfvrcnib98sk5qj/3ovbljqpvbq8o3uo7buvnue1dbigk0su/1450591200000/04404355413381452333/14856044240109384408/0Bx-KHIJkuXLsejZfOVFvbTZzV0U?e=download&nonce=0r42p8riih8g2&user=14856044240109384408&hash=lm2u6367mi0n6uf8jnrshkbrs6g3a3dr">
+      <img id="path4" src="https://doc-00-3k-docs.googleusercontent.com/docs/securesc/8e6a5l3pbhr34q5s6jfvrcnib98sk5qj/3ovbljqpvbq8o3uo7buvnue1dbigk0su/1450591200000/04404355413381452333/14856044240109384408/0Bx-KHIJkuXLsejZfOVFvbTZzV0U?e=download&nonce=0r42p8riih8g2&user=14856044240109384408&hash=lm2u6367mi0n6uf8jnrshkbrs6g3a3dr">
 
       <!-- <img class="question_mark first question_mark1" src={% static "map/images/question_mark.png"%}>
       <img class="question_mark first question_mark2" src={% static "map/images/question_mark.png"%}>
@@ -66,7 +68,8 @@
       <img id="mom" class="parent" src={% static "map/images/characters/mom1.png" %}> -->
       </div>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src={% static "map/js/sprite.js" %}></script>
+<script src={% static "map/js/information.js" %}></script>
 
 {% endblock %}

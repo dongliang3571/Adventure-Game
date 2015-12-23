@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from django.contrib import messages
+from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required
 from .models import Adventure
 from .models import Task
 from .models import Question
@@ -9,6 +10,7 @@ from .models import Answer
 from coreapp.models import Level_num
 from coreapp.models import Track
 from coreapp.models import Game_saved
+from coreapp.models import current_adventures
 from .models import adventures_info
 
 
@@ -27,8 +29,14 @@ def map(request):
         else:
             if user.game_saved.adventure_saved:
 
-                game_saved = user.game_saved.task_saved
-                task_saved = int(game_saved)
+                task_saved = int(user.game_saved.task_saved)
+                adventure_saved = user.game_saved.adventure_saved
+                adv = Adventure.objects.get(adventure_id = adventure_saved)
+                tasks = Task.objects.filter(adventure_name = adv).order_by("id")
+                img_url_list = []
+                for task in tasks:
+                    img_url_list.append(task.place_img_url)
+                # task_saved = int(game_saved)
 
                 if task_saved == 1:
                     boyn = "boy"
@@ -41,7 +49,16 @@ def map(request):
                 elif task_saved == 5:
                     boyn = "boy boy1 boy2 boy3 boy4"
                 messages.warning(request, 'Welcome to your adventures')
-                return render(request, 'map/map.html', {'boyn':boyn})
+                context = {
+                    "boyn" : boyn,
+                    "img1" : img_url_list[0],
+                    "img2" : img_url_list[1],
+                    "img3" : img_url_list[2],
+                    "img4" : img_url_list[3],
+                    "img5" : img_url_list[4]
+
+                }
+                return render(request, 'map/map.html', context)
             else:
                 messages.warning(request, 'Select your adventure to continue.')
                 return HttpResponseRedirect('/profile')
@@ -49,30 +66,62 @@ def map(request):
         messages.warning(request, 'Please sign in')
         return HttpResponseRedirect(reverse('coreapp:home'))
 
+
 def beginingstory(request):
     """
     This function takes user to a transmission page that only displays once when users first begin the adventure.
     """
     user = request.user
     adventureid = request.GET.get('adventureid', '')
-    if user.game_saved.adventure_saved:
-        return HttpResponseRedirect(reverse('map:map'))
+    Current_adventures = current_adventures.objects.filter(user = user)
+
+    if Current_adventures:
+        current_adventure = Current_adventures.filter(adventure_saved = adventureid)
+        if current_adventure:
+            game_saved = user.game_saved
+            game_saved.adventure_saved = current_adventure[0].adventure_saved
+            game_saved.task_saved = current_adventure[0].task_saved
+            game_saved.save()
+            return HttpResponseRedirect(reverse('map:map'))
+        else:
+            adventure = Adventure.objects.get(adventure_id = adventureid)
+            Adventures_info = adventures_info.objects.get(adventure_name = adventure)
+            context = {
+                "adventure_title" : adventure.adventure_name,
+                "items_needed" : Adventures_info.items_needed,
+                "expenses" : Adventures_info.expenses,
+                "locations" : Adventures_info.locations,
+                "map_address" : Adventures_info.map_address,
+                "adventureid" : adventureid
+            }
+
+            return render(request, 'map/details.html',context)
+
     else:
-    
-        game_saved = user.game_saved
-        game_saved.adventure_saved = adventureid
-        game_saved.task_saved = '1'
-        game_saved.save()
         adventure = Adventure.objects.get(adventure_id = adventureid)
         Adventures_info = adventures_info.objects.get(adventure_name = adventure)
-        context={
+        context = {
+            "adventure_title" : adventure.adventure_name,
             "items_needed" : Adventures_info.items_needed,
             "expenses" : Adventures_info.expenses,
             "locations" : Adventures_info.locations,
-            "map_address" : Adventures_info.map_address
+            "map_address" : Adventures_info.map_address,
+            "adventureid" : adventureid
         }
 
-        return render(request, 'map/task1.html',context)
+        return render(request, 'map/details.html',context)
+
+def save_current(request):
+    adventureid = request.GET.get('adventureid', '')
+    user = request.user
+    game_saved = user.game_saved
+    game_saved.adventure_saved = adventureid
+    game_saved.task_saved = '1'
+    game_saved.save()
+    current_adventures.objects.create(user=user, adventure_saved=adventureid, task_saved='1')
+
+    return HttpResponseRedirect(reverse('map:map'))
+
 
 def task(request):
     """
@@ -81,8 +130,8 @@ def task(request):
 
     user = request.user
     game_saved = user.game_saved
-    adventure_saved = str(game_saved.adventure_saved)
-    task_saved = int(game_saved.task_saved)
+    adventure_saved = game_saved.adventure_saved
+    task_saved = game_saved.task_saved
     adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
     adv_name = adv.adventure_name
     task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
@@ -116,7 +165,10 @@ def mission_task_submission(request):
         return render(request, 'map/adventure_completion.html')
     game_saved.task_saved = str(int(game_saved.task_saved) + 1)
     game_saved.save()
-
+    Current_adventures = current_adventures.objects.filter(user = user)
+    current_adventure = Current_adventures.get(adventure_saved = adventure_saved)
+    current_adventure.task_saved = game_saved.task_saved
+    current_adventure.save()
     adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
     adv_name = adv.adventure_name
     task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
@@ -143,6 +195,10 @@ def questions_task_submission(request):
             game_saved.task_saved = str(int(game_saved.task_saved) + 1)
             game_saved.save()
             task_saved = game_saved.task_saved
+            Current_adventures = current_adventures.objects.filter(user = user)
+            current_adventure = Current_adventures.get(adventure_saved = adventure_saved)
+            current_adventure.task_saved = game_saved.task_saved
+            current_adventure.save()
             new_url = 'task' + str(task_saved)
             return HttpResponseRedirect(new_url)
         else:

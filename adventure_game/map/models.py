@@ -10,7 +10,7 @@ class Adventure(models.Model):
     """
     adventure_id = models.CharField(unique=True, max_length=50, default='0000')
     adventure_name = models.CharField(max_length=200)
-    adventure_description = models.TextField(max_length=200, blank=True, default='')
+    adventure_description = models.TextField(max_length=2000, blank=True, default='')
     adventure_img_url = models.URLField(blank=True, default='')
 
     adventure_category_choices = (
@@ -43,7 +43,7 @@ class Task(models.Model):
     task_type = models.CharField(max_length=10, choices = task_type_choices, default='Mission')
     task_description = models.TextField(max_length=2000, blank=True, default='')
     task_detail = models.TextField(max_length=2000, blank=True, default='')
-    place_img_url = models.URLField(blank=True, default='')
+    place_img_url = models.URLField(max_length=3000, blank=True, default='')
     task_ans = models.CharField(max_length=200, blank=True, default='')
     def __unicode__(self):
         return self.task_number
@@ -92,8 +92,8 @@ class adventures_info(models.Model):
     adventure_name = models.OneToOneField(Adventure)
     items_needed = models.CharField(max_length=1000, blank=True, default='')
     expenses = models.CharField(max_length=1000, blank=True, default='')
-    locations = models.CharField(max_length=1000, blank=True, default='')
+    locations = models.CharField(max_length=2000, blank=True, default='')
     map_address = models.CharField(max_length=2000, blank=True, default='')
 
     def __unicode__(self):
-        return 'items_needed: ' + str(self.items_needed) + 'expenses: ' + str(self.expenses) + 'locations: '+str(self.locations)
+        return 'items_needed: ' + self.items_needed + 'expenses: ' + self.expenses + 'locations: '+ self.locations
