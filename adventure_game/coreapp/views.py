@@ -162,16 +162,16 @@ def get_adventure_detail(request):
         game_saved = user.game_saved
         adventure_id = game_saved.adventure_saved
         # task_num = game_saved.task_saved
-        adventure = Adventure.objects.get(adventure_id = adventure_id)
-        Adventures_info = adventures_info.objects.get(adventure_name=adventure)
+        adventure = Adventure.objects.get(adventure_id=adventure_id)
+        adven_info = adventures_info.objects.get(adventure_name=adventure)
 
-        alist =[
+        alist = [
                 {
                     "name" : str(adventure.adventure_name),
-                    "items" : str(Adventures_info.items_needed),
-                    "expenses" : str(Adventures_info.expenses),
-                    "locations" : Adventures_info.locations,
-                    "mapaddress" : str(Adventures_info.map_address)
+                    "items" : str(adven_info.items_needed),
+                    "expenses" : str(adven_info.expenses),
+                    "locations" : adven_info.locations,
+                    "mapaddress" : str(adven_info.map_address)
                 }
 
                 ]

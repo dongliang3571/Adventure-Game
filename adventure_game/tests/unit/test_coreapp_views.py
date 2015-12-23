@@ -3,9 +3,11 @@ from django.test.client import RequestFactory
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.models import User
 from mock import patch, MagicMock
+
+from map.models import adventures_info, Adventure
 from coreapp.views import (profile, story, auth_view, logout, registration_submission,
                            registration, add_family_member, add_family_member_submission,
-                           individual, usejson, getjson)
+                           individual, usejson, get_adventure_detail)
 
 @patch('coreapp.views.render')
 @patch('coreapp.views.get_logged_in_char')
@@ -321,18 +323,42 @@ class JsonTest(TestCase):
         usejson(self.request)
         render_mock.assert_called_with(self.request, 'coreapp/getjson.html', {'usea':'hahah'})
 
+    @patch('coreapp.views.adventures_info.objects')
+    @patch('coreapp.views.Adventure.objects')
     @patch('coreapp.views.JsonResponse')
-    def test_get_json_success(self, json_mock):
+    def test_get_json_success(self, json_mock, adven_mock, adven_info_mock):
         self.request.is_ajax = MagicMock()
         self.request.is_ajax.return_value = True
-        alist = [{"people":"haha", "age":"20"}, {"people":"fsd", "age":"dfsdf"}]
-        getjson(self.request)
+        self.request.user = MagicMock()
+        self.request.user.game_saved = MagicMock()
+        self.request.user.game_saved.adventure_saved = 1
+
+        adven_mock.get = MagicMock()
+        adven = Adventure()
+        adven.adventure_name = 'testname'
+        adven_mock.get.return_value = adven
+
+        adven_info = adventures_info()
+        adven_info.items_needed = 2
+        adven_info.expenses = 3
+        adven_info.locations = "testlocation"
+        adven_info.map_address = 4
+        adven_info_mock.get = MagicMock()
+        adven_info_mock.get.return_value = adven_info
+
+        alist = [{"name" : 'testname',
+                  "items" : '2',
+                  "expenses" : '3',
+                  "locations" : 'testlocation',
+                  "mapaddress" : '4'}]
+
+        get_adventure_detail(self.request)
         json_mock.assert_called_with(alist, safe=False)
 
     def test_get_json_exception(self):
         self.request.is_ajax = MagicMock()
         self.request.is_ajax.return_value = False
         with self.assertRaises(PermissionDenied):
-            getjson(self.request)
+            get_adventure_detail(self.request)
 
 
