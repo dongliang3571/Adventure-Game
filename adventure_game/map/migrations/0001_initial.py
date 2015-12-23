@@ -62,6 +62,8 @@ class Migration(migrations.Migration):
                 ('task_detail', models.TextField(default=b'', max_length=2000, blank=True)),
                 ('place_img_url', models.URLField(default=b'', max_length=3000, blank=True)),
                 ('task_ans', models.CharField(default=b'', max_length=200, blank=True)),
+                ('name_of_location', models.CharField(default=b'', max_length=200, blank=True)),
+                ('google_map', models.URLField(default=b'', max_length=3000, blank=True)),
                 ('adventure_name', models.ForeignKey(to='map.Adventure')),
             ],
         ),

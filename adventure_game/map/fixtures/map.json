@@ -53,7 +53,7 @@
     "task_type": "Questions",
     "task_number": "1",
     "adventure_name": 1,
-    "place_img_url": "https://doc-08-3k-docs.googleusercontent.com/docs/securesc/8e6a5l3pbhr34q5s6jfvrcnib98sk5qj/lgik528al5lhn92rlkeojg8rv7oifolg/1450591200000/04404355413381452333/14856044240109384408/0Bx-KHIJkuXLsR21Xb01XWG85OE0?e=download",
+    "place_img_url": "http://pixeljoint.com/files/icons/full/emote_fountain.gif",
     "task_detail": "Wizard: There is a fountain in your world that was created by a female wizard from my world. It's watched over by an angel that she calls The Angel of the Waters. She has given it the power to heal those touched by the water. The fountain itself, like all fountains in your amazing world has the power to grant wishes! Please go to the fountain and wish for the Angel of Waters to use her powers on my petrified people!\r\n\r\n<strong style=\"color: red;\">Solve the Word scramble to get next clue. Enter 4-digital PIN that you will get from the item.</strong>"
   },
   "model": "map.task",
@@ -65,7 +65,7 @@
     "task_type": "Mission",
     "task_number": "2",
     "adventure_name": 1,
-    "place_img_url": "https://doc-08-3k-docs.googleusercontent.com/docs/securesc/8e6a5l3pbhr34q5s6jfvrcnib98sk5qj/b55o7p9tl4ch1ncp5s6k217g66a6994j/1450591200000/04404355413381452333/14856044240109384408/0Bx-KHIJkuXLsTUR6cTloeWZIR28?e=download",
+    "place_img_url": "http://img07.deviantart.net/6988/i/2013/033/4/f/png_castle_2_by_moonglowlilly-d5tk46h.png",
     "task_detail": "Wizard: Welcome to Belvedere Castle! I knew you would figure out my clues! I'm sorry for all of the deception, but I had to make sure that Balin couldn't find us here. His displeasure would be very dangerous. I'm going to teach you two spells to help you.\r\n\r\nSpell 1: The first spell will let you change an ordinary piece of paper into a warrior's helmet to protect you! Here, follow these instructions and say these words, \"renderum helmetus\"."
   },
   "model": "map.task",
@@ -77,7 +77,7 @@
     "task_type": "Mission",
     "task_number": "3",
     "adventure_name": 1,
-    "place_img_url": "https://doc-14-3k-docs.googleusercontent.com/docs/securesc/8e6a5l3pbhr34q5s6jfvrcnib98sk5qj/5ftd9ifgupo9ie68ro721fn6lepusetl/1450591200000/04404355413381452333/14856044240109384408/0Bx-KHIJkuXLsTzR6RmFuZVVWN00?e=download",
+    "place_img_url": "http://i.imgur.com/Vc2zspv.png",
     "task_detail": "Spell 2: The second spell will help you fix our fortress! It's of no use here, but will be most amazing when used in the correct way. For now though, the words are, \"renderum foretaress\". I hear there is a park called Imagination Park that is filled with magical blocks! You should go there and I'll explain how to use the spell."
   },
   "model": "map.task",

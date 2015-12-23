@@ -18,31 +18,30 @@
       <canvas id="boy" class="{{ boyn }}"></canvas>
       <canvas id="env"></canvas>
 
+      {% for task in tasks %}
 
-      <img id="empire" src={{ img2 }}>
-      <img id="statue_liberty" src={{ img4 }}>
-      <img id="metropolitan" src={{ img5 }}>
-      <img id="grand" src={{ img3 }}>
-      <img id="central" src={{ img1 }}>
+      <img id="task1" src={{ img1 }}>
+      <img id="task2" src={{ img2 }}>
+      <img id="task3" src={{ img3 }}>
+      <img id="task4" src={{ img4 }}>
+      <img id="task5" src={{ img5 }}>
 
-      {% if image1 %}
-      {% autoescape off %}
-      {{ image1 }}
-      {% endautoescape %}
-      {% endif %}
-      <!-- <img src="https://i.kinja-img.com/gawker-media/image/upload/en4oskk7fjw1dm0dczaj.jpg" /> -->
-      <div id="grand_title" class="building_name">Grand Central Terminal</div>
-      <div id="empire_title" class="building_name">Empire State Building</div>
-      <div id="central_title" class="building_name">Central Park</div>
-      <div id="statue_title" class="building_name">Statue of Liberty</div>
-      <div id="metropolitan_title" class="building_name">The Metropolitan Museum of Art</div>
+      <div id="task1_title" class="building_name">Central Park</div>
+      <div id="task2_title" class="building_name">Empire State Building</div>
+      <div id="task3_title" class="building_name">Grand Central Terminal</div>
+      <div id="task4_title" class="building_name">Statue of Liberty</div>
+      <div id="task5_title" class="building_name">The Metropolitan Museum of Art</div>
 
       <a href="/adventure/task1"><img id="number1" class="number_mission" src="http://i.imgur.com/8rDTjUv.png"></a>
       <a href="/adventure/task2"><img id="number2" class="number_mission" src="http://i.imgur.com/dCXXjzV.png"></a>
       <a href="/adventure/task3"><img id="number3" class="number_mission" src="http://i.imgur.com/XqY8gOM.png"></a>
       <a href="/adventure/task4"><img id="number4" class="number_mission" src="http://i.imgur.com/byDmYOl.png"></a>
       <a href="/adventure/task5"><img id="number5" class="number_mission" src="http://i.imgur.com/s9JuArt.png"></a>
-      <!-- <img id="mist" src="static/images/mist/mist.png"> -->
+
+
+      {% endfor %}
+
+      
       <img id="path1" src="http://i.imgur.com/3fquzLR.png">
       <img id="path2" src="http://i.imgur.com/3fquzLR.png">
       <img id="path3" src="http://i.imgur.com/3fquzLR.png">
@@ -73,3 +72,10 @@
 <script src={% static "map/js/information.js" %}></script>
 
 {% endblock %}
+
+<!-- {% if image1 %}
+{% autoescape off %}
+{{ image1 }}
+{% endautoescape %}
+{% endif %}
+-->
