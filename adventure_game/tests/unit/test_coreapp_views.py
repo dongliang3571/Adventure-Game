@@ -323,10 +323,11 @@ class JsonTest(TestCase):
         usejson(self.request)
         render_mock.assert_called_with(self.request, 'coreapp/getjson.html', {'usea':'hahah'})
 
+    @patch('coreapp.views.Task.objects.get')
     @patch('coreapp.views.adventures_info.objects')
     @patch('coreapp.views.Adventure.objects')
     @patch('coreapp.views.JsonResponse')
-    def test_get_json_success(self, json_mock, adven_mock, adven_info_mock):
+    def test_get_json_success(self, json_mock, adven_mock, adven_info_mock, task_mock):
         self.request.is_ajax = MagicMock()
         self.request.is_ajax.return_value = True
         self.request.user = MagicMock()
@@ -336,21 +337,26 @@ class JsonTest(TestCase):
         adven_mock.get = MagicMock()
         adven = Adventure()
         adven.adventure_name = 'testname'
+        adven.theme_character_url = 5
         adven_mock.get.return_value = adven
 
         adven_info = adventures_info()
         adven_info.items_needed = 2
         adven_info.expenses = 3
         adven_info.locations = "testlocation"
-        adven_info.map_address = 4
         adven_info_mock.get = MagicMock()
         adven_info_mock.get.return_value = adven_info
+
+        task = MagicMock()
+        task.google_map = 4
+        task_mock.return_value = task
 
         alist = [{"name" : 'testname',
                   "items" : '2',
                   "expenses" : '3',
                   "locations" : 'testlocation',
-                  "mapaddress" : '4'}]
+                  "mapaddress" : '4',
+                  "theme_character_url" : '5'}]
 
         get_adventure_detail(self.request)
         json_mock.assert_called_with(alist, safe=False)

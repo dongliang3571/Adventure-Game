@@ -1,14 +1,13 @@
 from django.shortcuts import get_object_or_404, render, render_to_response
 from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib import auth, messages
+from django.core.exceptions import PermissionDenied
 from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
 from django.template import RequestContext
 from .models import Level_num, Game_saved
 from .queries import get_logged_in_char, get_all_characters
 from .utilities import  get_profile_context
-from django.core.exceptions import PermissionDenied
-import json
 from map.models import adventures_info, Adventure, Task
 
 def home(request):
@@ -164,7 +163,7 @@ def get_adventure_detail(request):
         task_num = game_saved.task_saved
         adventure = Adventure.objects.get(adventure_id=adventure_id)
         Adventures_info = adventures_info.objects.get(adventure_name=adventure)
-        task = Task.objects.get(adventure_name=adventure, task_number = task_num)
+        task = Task.objects.get(adventure_name=adventure, task_number=task_num)
 
 
         alist =[
