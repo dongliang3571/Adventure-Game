@@ -162,7 +162,7 @@ def get_adventure_detail(request):
         game_saved = user.game_saved
         adventure_id = game_saved.adventure_saved
         task_num = game_saved.task_saved
-        adventure = Adventure.objects.get(adventure_id = adventure_id)
+        adventure = Adventure.objects.get(adventure_id=adventure_id)
         Adventures_info = adventures_info.objects.get(adventure_name=adventure)
         task = Task.objects.get(adventure_name=adventure, task_number = task_num)
 
