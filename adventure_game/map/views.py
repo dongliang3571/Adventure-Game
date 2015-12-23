@@ -33,9 +33,14 @@ def map(request):
                 adventure_saved = user.game_saved.adventure_saved
                 adv = Adventure.objects.get(adventure_id = adventure_saved)
                 tasks = Task.objects.filter(adventure_name = adv).order_by("id")
-                img_url_list = []
+                task_list = []
                 for task in tasks:
-                    img_url_list.append(task.place_img_url)
+                    task_list_context = {
+                        "id_of_task": task.id_of_task,
+                        "place_img_url": task.place_img_url,
+                        "name_of_location": task.name_of_location
+                    }
+                    task_list.append(task_list_context)
                 # task_saved = int(game_saved)
 
                 if task_saved == 1:
@@ -51,11 +56,8 @@ def map(request):
                 messages.warning(request, 'Welcome to your adventures')
                 context = {
                     "boyn" : boyn,
-                    "img1" : img_url_list[0],
-                    "img2" : img_url_list[1],
-                    "img3" : img_url_list[2],
-                    "img4" : img_url_list[3],
-                    "img5" : img_url_list[4]
+                    "tasks" : task_list,
+                    "number_of_task" : len(tasks)
 
                 }
                 return render(request, 'map/map.html', context)

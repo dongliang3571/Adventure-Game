@@ -20,7 +20,10 @@
 
       {% for task in tasks %}
 
-      <img id="task1" src={{ img1 }}>
+      <img id="{{ task.id_of_task }}" src="{{ task.place_img_url }}">
+      <div id="{{ task.id_of_task }}_title" class="building_name">{{ task.name_of_location }}</div>
+
+      <!-- <img id="task1" src={{ img1 }}>
       <img id="task2" src={{ img2 }}>
       <img id="task3" src={{ img3 }}>
       <img id="task4" src={{ img4 }}>
@@ -30,28 +33,42 @@
       <div id="task2_title" class="building_name">Empire State Building</div>
       <div id="task3_title" class="building_name">Grand Central Terminal</div>
       <div id="task4_title" class="building_name">Statue of Liberty</div>
-      <div id="task5_title" class="building_name">The Metropolitan Museum of Art</div>
+      <div id="task5_title" class="building_name">The Metropolitan Museum of Art</div> -->
 
+
+      {% endfor %}
+
+      {% if number_of_task == 3 %}
+      <a href="/adventure/task1"><img id="number1" class="number_mission" src="http://i.imgur.com/8rDTjUv.png"></a>
+      <a href="/adventure/task2"><img id="number2" class="number_mission" src="http://i.imgur.com/dCXXjzV.png"></a>
+      <a href="/adventure/task3"><img id="number3" class="number_mission" src="http://i.imgur.com/XqY8gOM.png"></a>
+
+      <img id="path1" src="http://i.imgur.com/3fquzLR.png">
+      <img id="path2" src="http://i.imgur.com/3fquzLR.png">
+
+      {% elif number_of_task == 4 %}
+      <a href="/adventure/task1"><img id="number1" class="number_mission" src="http://i.imgur.com/8rDTjUv.png"></a>
+      <a href="/adventure/task2"><img id="number2" class="number_mission" src="http://i.imgur.com/dCXXjzV.png"></a>
+      <a href="/adventure/task3"><img id="number3" class="number_mission" src="http://i.imgur.com/XqY8gOM.png"></a>
+      <a href="/adventure/task4"><img id="number4" class="number_mission" src="http://i.imgur.com/byDmYOl.png"></a>
+
+      <img id="path1" src="http://i.imgur.com/3fquzLR.png">
+      <img id="path2" src="http://i.imgur.com/3fquzLR.png">
+      <img id="path3" src="http://i.imgur.com/3fquzLR.png">
+
+      {% elif number_of_task == 5 %}
       <a href="/adventure/task1"><img id="number1" class="number_mission" src="http://i.imgur.com/8rDTjUv.png"></a>
       <a href="/adventure/task2"><img id="number2" class="number_mission" src="http://i.imgur.com/dCXXjzV.png"></a>
       <a href="/adventure/task3"><img id="number3" class="number_mission" src="http://i.imgur.com/XqY8gOM.png"></a>
       <a href="/adventure/task4"><img id="number4" class="number_mission" src="http://i.imgur.com/byDmYOl.png"></a>
       <a href="/adventure/task5"><img id="number5" class="number_mission" src="http://i.imgur.com/s9JuArt.png"></a>
 
-
-      {% endfor %}
-
-      
       <img id="path1" src="http://i.imgur.com/3fquzLR.png">
       <img id="path2" src="http://i.imgur.com/3fquzLR.png">
       <img id="path3" src="http://i.imgur.com/3fquzLR.png">
       <img id="path4" src="http://i.imgur.com/3fquzLR.png">
 
-      <!-- <img class="question_mark first question_mark1" src={% static "map/images/question_mark.png"%}>
-      <img class="question_mark first question_mark2" src={% static "map/images/question_mark.png"%}>
-      <img class="question_mark first question_mark3" src={% static "map/images/question_mark.png"%}>
-      <img class="question_mark first question_mark4" src={% static "map/images/question_mark.png"%}>
-      <img class="question_mark first question_mark5" src={% static "map/images/question_mark.png"%}> -->
+      {% endif %}
 
       <img id="tree1" src={% static "map/images/env/tree1.png" %}>
       <img id="tree2" src={% static "map/images/env/tree2.png" %}>
@@ -61,10 +78,6 @@
       <img id="dog" src={% static "map/images/env/dog.png" %}>
       <img id="monster" src={% static "map/images/env/monster.png" %}>
 
-
-      <!-- <img id="daddy" class="parent" src={% static "map/images/characters/daddy1.png" %}>
-      <img id="girl" src={% static "map/images/characters/girl1.png" %}>
-      <img id="mom" class="parent" src={% static "map/images/characters/mom1.png" %}> -->
       </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
