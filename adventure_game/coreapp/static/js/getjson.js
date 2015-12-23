@@ -1,24 +1,15 @@
 $(function (){
   var $myjson = $('#json');
-  final ="";
-  sfinal = "";
-  function getMessage(){
-    $.ajax({
-      type: 'GET',
-      url: '/getmessage',
-      success: function(data) {
-        $.each(data, function(i, da) {
-          final = final + da.message;
+  $.ajax({
+    type: 'GET',
+    url: '/getjson',
+    success: function(data) {
+      $.each(data, function(i, da) {
+        $myjson.append('<li>{{ usea }}people   '+da.people+' age '+da.age+'</li>');
+      });
 
-          sfinal = final;
-        });
 
-        $myjson.text(final);
-        final = "";
+    }
+  });
 
-      }
-    });
-  }
-
-  setInterval(getMessage, 10);
 });

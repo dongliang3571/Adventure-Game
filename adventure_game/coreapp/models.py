@@ -70,7 +70,3 @@ class current_adventures(models.Model):
 
     def __unicode__(self):
         return 'saved adventure id#'+str(self.adventure_saved) + 'task #:' + str(self.task_saved)
-
-
-class message(models.Model):
-    messages = models.CharField(max_length=2000, blank=True, default='')

@@ -4,13 +4,12 @@ from django.contrib import auth, messages
 from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
 from django.template import RequestContext
-from .models import Level_num, Game_saved, message
+from .models import Level_num, Game_saved
 from .queries import get_logged_in_char, get_all_characters
 from .utilities import  get_profile_context
 from django.core.exceptions import PermissionDenied
 import json
 from map.models import adventures_info, Adventure
-from django.utils import timezone
 
 def home(request):
     context = {}
@@ -151,7 +150,7 @@ def individual(request):
         return HttpResponseRedirect('/profile/')
     else:
         messages.success(request, 'The PIN you entered is incorrect or did not' \
-                         ' select your family role, please try agian!')
+                         ' select your family role, please try again!')
         return HttpResponseRedirect('/profile/')
 
 def get_adventure_detail(request):
@@ -184,18 +183,4 @@ def get_adventure_detail(request):
 #for testing only
 def usejson(request):
 
-    return render(request, 'coreapp/getjson.html',{"usea":"hahah"})
-def Message(request):
-    if message.objects.all():
-
-        context = [
-            {
-                "message":"Start chatting"
-            }
-        ]
-        for mes in message.objects.all():
-            useMessage = mes.messages
-            context.append({"message":useMessage})
-
-
-        return JsonResponse(context, safe=False)
+    return render(request, 'coreapp/getjson.html', {"usea":"hahah"})
