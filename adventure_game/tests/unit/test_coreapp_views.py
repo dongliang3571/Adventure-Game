@@ -1,11 +1,11 @@
 from django.test import TestCase
 from django.test.client import RequestFactory
+from django.core.exceptions import PermissionDenied
 from django.contrib.auth.models import User
 from mock import patch, MagicMock
 from coreapp.views import (profile, story, auth_view, logout, registration_submission,
                            registration, add_family_member, add_family_member_submission,
-                           individual)
-
+                           individual, usejson, getjson)
 
 @patch('coreapp.views.render')
 @patch('coreapp.views.get_logged_in_char')
@@ -17,7 +17,6 @@ class ProileViewTest(TestCase):
         self.request = self.factory.get('/profile/')
         self.request.user = User()
         self.request.user.last_name = "test"
-        self.request.user.level_num = 1
 
     def test_func_logged_in(self, get_all_char_mock, get_prof_context_mock,
                             get_logged_in_char_mock, render_mock):
@@ -262,6 +261,7 @@ class IndividualViewTest(TestCase):
         self.request = self.factory.post('/individual/',
                                          {'character_name':'test', 'character_pin':'1234'})
         self.request.user = User()
+
     @patch('coreapp.views.profile')
     def test_family_member_change(self, prof_mock, get_char_mock, logged_char_mock):
         char = MagicMock()
@@ -297,9 +297,10 @@ class IndividualViewTest(TestCase):
     @patch('coreapp.views.User.character_set')
     @patch('coreapp.views.messages.success')
     def test_incorrect_input(self, message_mock, char_set_mock, get_char_mock, logged_char_mock):
-        char_set_mock.return_value = 'testchar'
-        logged_char_mock.returN_value = False
-        char_set_mock.filter = MagicMock(reutrn_value=False)
+        get_char_mock.return_value = 'testchar'
+        logged_char_mock.return_value = False
+        char_set_mock.filter = MagicMock()
+        char_set_mock.filter.return_value = False
 
         response = individual(self.request)
 
@@ -309,3 +310,29 @@ class IndividualViewTest(TestCase):
         message_mock.assert_called_with(self.request, 'The PIN you entered is incorrect or did not'\
                                         ' select your family role, please try again!')
         self.assertEqual(response.status_code, 302)
+
+class JsonTest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.request = self.factory.get('/')
+
+    @patch('coreapp.views.render')
+    def test_use_json(self, render_mock):
+        usejson(self.request)
+        render_mock.assert_called_with(self.request, 'coreapp/getjson.html', {'usea':'hahah'})
+
+    @patch('coreapp.views.JsonResponse')
+    def test_get_json_success(self, json_mock):
+        self.request.is_ajax = MagicMock()
+        self.request.is_ajax.return_value = True
+        alist = [{"people":"haha", "age":"20"}, {"people":"fsd", "age":"dfsdf"}]
+        getjson(self.request)
+        json_mock.assert_called_with(alist, safe=False)
+
+    def test_get_json_exception(self):
+        self.request.is_ajax = MagicMock()
+        self.request.is_ajax.return_value = False
+        with self.assertRaises(PermissionDenied):
+            getjson(self.request)
+
+

@@ -149,23 +149,12 @@ def individual(request):
         return HttpResponseRedirect('/profile/')
     else:
         messages.success(request, 'The PIN you entered is incorrect or did not' \
-                         ' select your family role, please try agian!')
+                         ' select your family role, please try again!')
         return HttpResponseRedirect('/profile/')
 
 def getjson(request):
     if request.is_ajax():
-        alist =[
-                {
-                    "people":"haha",
-                    "age":"20"
-                },
-
-                {
-                    "people":"fsd",
-                    "age":"dfsdf"
-                }
-                ]
-
+        alist = [{"people":"haha", "age":"20"}, {"people":"fsd", "age":"dfsdf"}]
         return JsonResponse(alist, safe=False)
     else:
         raise PermissionDenied()
@@ -173,4 +162,4 @@ def getjson(request):
 
 def usejson(request):
 
-    return render(request, 'coreapp/getjson.html',{"usea":"hahah"})
+    return render(request, 'coreapp/getjson.html', {"usea":"hahah"})
