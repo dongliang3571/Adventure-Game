@@ -83,14 +83,30 @@
     "task_type": "Mission",
     "task_number": "3",
     "adventure_name": 1,
-    "name_of_location": "Imagination Playground",
+    "name_of_location": "Math Challenges",
     "id_of_task": "task3",
+    "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.208314559755!2d-73.97126174962739!3d40.7794342413239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258efe1df7c15%3A0x88efe22fb72978b5!2sBelvedere+Castle!5e0!3m2!1sen!2sus!4v1450858462171",
+    "place_img_url": "https://openclipart.org/image/2400px/svg_to_png/191351/Math-Girl-.png",
+    "task_detail": "Spell 2: The second spell will help you fix our fortress! It's of no use here, but will be most amazing when used in the correct way. For now though, the words are, \"renderum foretaress\". I hear there is a park called Imagination Park that is filled with magical blocks! You should go there and I'll explain how to use the spell."
+  },
+  "model": "map.task",
+  "pk": 3
+},
+
+{
+  "fields": {
+    "task_ans": "",
+    "task_type": "Mission",
+    "task_number": "4",
+    "adventure_name": 1,
+    "name_of_location": "Imagination Playground",
+    "id_of_task": "task4",
     "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37864.877667524604!2d-74.01481355128767!3d40.70719116273272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a3da9d9d291%3A0x3288fc6e857bc204!2sImagination+Playground!5e0!3m2!1sen!2sus!4v1450858633547",
     "place_img_url": "http://i.imgur.com/Vc2zspv.png",
     "task_detail": "Spell 2: The second spell will help you fix our fortress! It's of no use here, but will be most amazing when used in the correct way. For now though, the words are, \"renderum foretaress\". I hear there is a park called Imagination Park that is filled with magical blocks! You should go there and I'll explain how to use the spell."
   },
   "model": "map.task",
-  "pk": 3
+  "pk": 4
 },
 
 {
