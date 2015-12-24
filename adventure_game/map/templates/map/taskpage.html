@@ -12,28 +12,25 @@
 <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <!-- <img class="img-responsive" src="http://themodernmage.com/wp-content/uploads/2014/01/hamtaro_vector_by_starlyk-d68o33w.png" /> -->
 
-          <h1>
             <img class="hamster_head1" src="http://cliparts.co/cliparts/di9/Bg6/di9Bg6Ai7.png" />
-            <p>{{ adv_name }} <br>
-            You are at task: {{ task_num }} </p>
             <img class="hamster_head2 img-responsive" src="http://www.misskatecuttables.com/uploads/shopping_cart/9493/large_cute-witch.png" />
-          </h1>
-          <br>
-          <h3 class="task-detail">
-            Task details:
-          </h3>
-          <br>
+            <h1 id="adventure_title">{{ adv_name }}</h1>
+
+            <br><br><br><br><br><br>
+            <h3 id="task_num">You are at task: {{ task_num }}</h3>
+            <br>
+            <div>{{ task_description }}</div>
+            <br><br><br>
 
           {% autoescape off %}
 
-          <p>{{ task_detail }}</p>
+          <p><span style="font-size:1.4em;">Your task : </span><span  style="color:red;">{{ task_detail }}</span></p>
 
           {% endautoescape %}
           <br>
 
-          <button id="scramble" class="btn btn-info go-back">Play Word Scramble >></button>
+          <div id="scramble" class=""></div>
           <div id="game"></div>
           </p>
         </div>

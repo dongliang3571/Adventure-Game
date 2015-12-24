@@ -31,11 +31,13 @@ h1{
 }
 
 .hamster_head1{
+  margin-top: 23px;
   float: left;
   max-width: 10%;
 
 }
 .hamster_head2{
+  margin-top: 20px;
   float: right;
   max-width: 13%;
 }
@@ -77,4 +79,13 @@ h1{
 }
 .go-back, .result-textarea, .next-task {
     margin-bottom : 50px;
+}
+
+#adventure_title{
+  font-family: sans-serif;
+}
+
+#task_num{
+  color: blue;
+  margin: 0 auto;
 }

@@ -141,6 +141,7 @@ def task(request):
     task_detail = task.task_detail
     task_ans = task.task_ans
     task_type = str(task.task_type)
+    task_description = task.task_description
     show_textbox = ''
     if task_type == 'Questions':
         show_textbox = "show"
@@ -152,6 +153,7 @@ def task(request):
         'task_num' : task_saved,
         'task_detail' : task_detail,
         'task_ans' : task_ans,
+        "task_description" : task_description,
     }
 
     return render(request, 'map/taskpage.html', context)
