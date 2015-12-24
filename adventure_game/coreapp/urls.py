@@ -15,5 +15,5 @@ urlpatterns = [
     url(r'^add-family-member/$', views.add_family_member, name="add-family-member"),
     url(r'^get_adventure_detail/$', views.get_adventure_detail, name='get_adventure_detail'),
     url(r'^usejson/$', views.usejson, name='usejson'),
-
+    url(r'^adventureslist$', views.adventureslist, name="adventureslist"),
 ]
