@@ -15,16 +15,19 @@ class CoreappQueryTest(TestCase):
         testadv1.adventure_name = 'testname'
         testadv1.adventure_img_url = 'testurl'
         testadv1.adventure_id = 'testid'
+        testadv1.adventure_description = 'testdescription'
         adventure_mock.objects.all.return_value = [testadv1]
 
         adventure_name_list = []
         adventure_img_url_list = []
         adventure_id_list = []
+        adventure_description_list = []
 
-        load_adventures(adventure_name_list, adventure_img_url_list, adventure_id_list)
+        load_adventures(adventure_name_list, adventure_img_url_list, adventure_id_list, adventure_description_list)
         self.assertEqual(adventure_name_list[0], 'testname')
         self.assertEqual(adventure_img_url_list[0], 'testurl')
         self.assertEqual(adventure_id_list[0], 'testid')
+        self.assertEqual(adventure_description_list[0], 'testdescription')
 
     @patch('coreapp.queries.Track')
     def test_load_completed_adventures(self, track_mock):

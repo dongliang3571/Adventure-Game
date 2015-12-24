@@ -1,4 +1,7 @@
-from django.shortcuts import get_object_or_404, render, render_to_response
+""" This module handles the user registration, login, family member creation,
+and also has the home page view.
+"""
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib import auth, messages
 from django.core.exceptions import PermissionDenied
@@ -9,6 +12,7 @@ from .models import Level_num, Game_saved
 from .queries import get_logged_in_char, get_all_characters
 from .utilities import  get_profile_context, get_adventure_info
 from map.models import adventures_info, Adventure, Task
+
 
 def home(request):
     """This is the home view. It is called when the user goes to the '/' route.
@@ -34,6 +38,11 @@ def home(request):
 def profile(request):
     """This is the profile view. It is called when the user goes to the '/profile/' route.
 
+    If the user hasn't logged into a char yet, the view renders the individual.html template,
+    with a context dictionary created by the function get_profile_context. Otherwise,
+    the view will be rendered with a context dictionary that contains the names of all
+    the family members attached to the user account as well as the user's last name.
+
     Parameters
     ----------
     request: HttpRequest
@@ -44,10 +53,6 @@ def profile(request):
     -------
     HttpResponseObject
         Combines a given template with a given context dictionary and renders the template.
-        If the user hasn't logged into a char yet, the view renders the individual.html template,
-        with a context dictionary created by the function get_profile_context. Otherwise,
-        the view will be rendered with a context dictionary that contains the names of all
-        the family members attached to the user account as well as the user's last name.
     """
     user = request.user
     characters = get_all_characters(user)
@@ -82,6 +87,14 @@ def story(request):
 def auth_view(request):
     """This is the story view. It handles user login authentication.
 
+    If credentials are correct, the user is logged in
+    and a message is shown confirming user logged in. If account was banned, message
+    is shown message telling them account is banned. If credentials are invalid, user is
+    told credential is invalid."If credentials are correct, the user is logged in
+    and a message is shown confirming user logged in. If account was banned, message
+    is shown message telling them account is banned. If credentials are invalid, user is
+    told credential is invalid.
+
     Parameters
     ----------
     request: HttpRequest
@@ -91,13 +104,7 @@ def auth_view(request):
     Returns
     -------
     HttpResponseRedirect Object
-        Redirects the user to '/' route. If credentials are correct, the user is logged in
-        and a message is shown confirming user logged in. If account was banned, message
-        is shown message telling them account is banned. If credentials are invalid, user is
-        told credential is invalid."If credentials are correct, the user is logged in
-        and a message is shown confirming user logged in. If account was banned, message
-        is shown message telling them account is banned. If credentials are invalid, user is
-        told credential is invalid.
+        Redirects the user to '/' route.
     """
 
     username = request.POST.get('username', '')
@@ -136,7 +143,9 @@ def logout(request):
     return HttpResponseRedirect('/')
 
 def registration_submission(request):
-    """This is the registration submission view. When the user fills out the registration
+    """This is the registration submission view.
+
+    When the user fills out the registration
     form and hits the submit button, the information is posted to this view which creates
     an account for the user with the credentials in the form. Adventure progress is also created.
 
@@ -173,8 +182,22 @@ def registration_submission(request):
     return HttpResponseRedirect('/')
 
 def registration(request, message=None):
-    """
-    A visitor can register here and submit the registration form.
+    """This is the registration view. User reaches this view when he hits the
+    register button on the login form.
+
+    Parameters
+    ----------
+    request: HttpRequest
+        Django request object that contains a variety of information from the middlewares.
+
+    message: String
+        A message that can be passed from one view to another. Used to display incorrect
+        credential submission.
+
+    Returns
+    -------
+    HttpResponseObject
+        Combines the registration template with a given context dictionary and renders the template.
     """
     context = {}
     context.update(csrf(request))
@@ -183,8 +206,22 @@ def registration(request, message=None):
     return render(request, 'auth/registration.html', context)
 
 def add_family_member(request, message=None):
-    """
-    The user can add family members to their account here
+    """This is the view for adding a family member. Renders a form for users to
+    fill out to add the family member.
+
+    Parameters
+    ----------
+    request: HttpRequest
+        Django request object that contains a variety of information from the middlewares.
+
+    message: String
+        A message that can be passed from one view to another. Used to display incorrect
+        credential submission.
+
+    Returns
+    -------
+    HttpResponseObject
+        Combines the add family template with a given context dictionary and renders the template.
     """
     context = {}
     context.update(csrf(request))

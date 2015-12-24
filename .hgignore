@@ -5,3 +5,4 @@ syntax: glob
 htmlcov
 venv
 backup*
+Sphinx_Documentation
