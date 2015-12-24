@@ -57,10 +57,11 @@
     "adventure_name": 1,
     "name_of_location": "Bethesda Fountain",
     "id_of_task": "task1",
+    "task_description": "Wizard: There is a fountain in your world that was created by a female wizard from my world. It's watched over by an angel that she calls The Angel of the Waters. She has given it the power to heal those touched by the water. The fountain itself, like all fountains in your amazing world has the power to grant wishes! Please go to the fountain and wish for the Angel of Waters to use her powers on my petrified people!\r\n\r\n",
     "special_game": "<div class='scramble' data-unscrambled='UNDER'></div><div class='scramble' data-unscrambled='WHITE'></div><div class='scramble' data-unscrambled='STONE'></div>",
     "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.462414474427!2d-73.97305374970642!3d40.77384714166631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25892a6168611%3A0x9d94703beba53b51!2sBethesda+Terrace!5e0!3m2!1sen!2sus!4v1450504370502",
     "place_img_url": "http://pixeljoint.com/files/icons/full/emote_fountain.gif",
-    "task_detail": "Wizard: There is a fountain in your world that was created by a female wizard from my world. It's watched over by an angel that she calls The Angel of the Waters. She has given it the power to heal those touched by the water. The fountain itself, like all fountains in your amazing world has the power to grant wishes! Please go to the fountain and wish for the Angel of Waters to use her powers on my petrified people!\r\n\r\n<strong style=\"color: red;\">Solve the Word scramble to get next clue. Enter 4-digital PIN that you will get from the item.</strong>"
+    "task_detail": "Solve the Word scramble to get next clue. Enter 4-digital PIN that you will get from the item."
   },
   "model": "map.task",
   "pk": 1
@@ -73,24 +74,28 @@
     "adventure_name": 1,
     "name_of_location": "Belvedere Castle",
     "id_of_task": "task2",
+    "task_description":"Wizard: Welcome to Belvedere Castle! I knew you would figure out my clues! I'm sorry for all of the deception, but I had to make sure that Balin couldn't find us here. His displeasure would be very dangerous. I'm going to teach you two spells to help you.\r\n\r\nSpell 1: The first spell will let you change an ordinary piece of paper into a warrior's helmet to protect you! Here, follow these instructions and say these words, \"renderum helmetus\".",
+    "special_game": "300 seconds left before you can skip this task",
     "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.208314559755!2d-73.97126174962739!3d40.7794342413239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258efe1df7c15%3A0x88efe22fb72978b5!2sBelvedere+Castle!5e0!3m2!1sen!2sus!4v1450858462171",
     "place_img_url": "http://img07.deviantart.net/6988/i/2013/033/4/f/png_castle_2_by_moonglowlilly-d5tk46h.png",
-    "task_detail": "Wizard: Welcome to Belvedere Castle! I knew you would figure out my clues! I'm sorry for all of the deception, but I had to make sure that Balin couldn't find us here. His displeasure would be very dangerous. I'm going to teach you two spells to help you.\r\n\r\nSpell 1: The first spell will let you change an ordinary piece of paper into a warrior's helmet to protect you! Here, follow these instructions and say these words, \"renderum helmetus\"."
+    "task_detail": "Make Warrior's Helmet using a piece of paper."
   },
   "model": "map.task",
   "pk": 2
 },
 {
   "fields": {
-    "task_ans": "",
-    "task_type": "Mission",
+    "task_ans": "8",
+    "task_type": "Questions",
     "task_number": "3",
     "adventure_name": 1,
     "name_of_location": "Math Challenges",
     "id_of_task": "task3",
+    "task_description":"Wizard: Math is powerful and useful tool, get your tool right now!",
+    "special_game": "What is 3+5= ?",
     "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.208314559755!2d-73.97126174962739!3d40.7794342413239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258efe1df7c15%3A0x88efe22fb72978b5!2sBelvedere+Castle!5e0!3m2!1sen!2sus!4v1450858462171",
     "place_img_url": "https://openclipart.org/image/2400px/svg_to_png/191351/Math-Girl-.png",
-    "task_detail": "Spell 2: The second spell will help you fix our fortress! It's of no use here, but will be most amazing when used in the correct way. For now though, the words are, \"renderum foretaress\". I hear there is a park called Imagination Park that is filled with magical blocks! You should go there and I'll explain how to use the spell."
+    "task_detail": "Solve this math problem."
   },
   "model": "map.task",
   "pk": 3
@@ -104,9 +109,11 @@
     "adventure_name": 1,
     "name_of_location": "Imagination Playground",
     "id_of_task": "task4",
+    "task_description":"Wizard: Now the spell only works if you build a fortress and send it to us wit that spell. Those magic blocks at Imagination Park should be perfect for a new fortress! The magic will protect us from Balin's might!",
+    "special_game": "300 seconds left before you can skip this task",
     "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37864.877667524604!2d-74.01481355128767!3d40.70719116273272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a3da9d9d291%3A0x3288fc6e857bc204!2sImagination+Playground!5e0!3m2!1sen!2sus!4v1450858633547",
     "place_img_url": "http://i.imgur.com/Vc2zspv.png",
-    "task_detail": "Spell 2: The second spell will help you fix our fortress! It's of no use here, but will be most amazing when used in the correct way. For now though, the words are, \"renderum foretaress\". I hear there is a park called Imagination Park that is filled with magical blocks! You should go there and I'll explain how to use the spell."
+    "task_detail": "Build a fortress using blocks"
   },
   "model": "map.task",
   "pk": 4
@@ -120,24 +127,28 @@
     "adventure_name": 2,
     "name_of_location": "Woodlawn Cemetery",
     "id_of_task": "task1",
+    "task_description":"Well hello…..My name is Damian. I’m here to take you on a journey to see some of the most mysterious and possibly frightening places in New York City. Do you have the courage to follow me? To meet the ghosts in ghouls in this city? Don’t worry though, I have the power to protect you on your journey.<br>Damian: Our first visit on this mysterious journey will be to Woodlawn Cemetery. My dear Irene’s home. She’s very particular though. I won’t lead you to her. You’ll have to let her call you. If I were you I would walk around the cemetery a bit till she’s decided she wants to meet you.<br>Irene: Gur fgnghr vf pybfrfg gb gur tngr ng Wrebzr Nirahr, naq vf znqr bs pbccre naq fgnvarq n terravfu-oyhr.<br>Damian: I thought she might have this problem. Here use this to decipher her message. Decryption Key A|B|C|D|E|F|G|H|I|J|K|L|M",
+    "special_game": "Irene: Gur fgnghr vf pybfrfg gb gur tngr ng Wrebzr Nirahr, naq vf znqr bs pbccre naq fgnvarq n terravfu-oyhr.<br>Damian: I thought she might have this problem. Here use this to decipher her message. Decryption Key A|B|C|D|E|F|G|H|I|J|K|L|M",
     "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3016.170734999709!2d-73.87644404962353!3d40.890069534538874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f31a19e13647%3A0xf0931d7edc905f36!2sWoodlawn+Cemetery!5e0!3m2!1sen!2sus!4v1450860661892",
     "place_img_url": "http://vignette3.wikia.nocookie.net/simpsonstappedout/images/8/8a/Petcemetery.png/revision/latest?cb=20130714173650",
-    "task_detail": "Intro: Well hello…..My name is Damian. I’m here to take you on a journey to see some of the most mysterious and possibly frightening places in New York City. Do you have the courage to follow me? To meet the ghosts in ghouls in this city? Don’t worry though, I have the power to protect you on your journey.<br>Damian: Our first visit on this mysterious journey will be to Woodlawn Cemetery. My dear Irene’s home. She’s very particular though. I won’t lead you to her. You’ll have to let her call you. If I were you I would walk around the cemetery a bit till she’s decided she wants to meet you.<br>Irene: Gur fgnghr vf pybfrfg gb gur tngr ng Wrebzr Nirahr, naq vf znqr bs pbccre naq fgnvarq n terravfu-oyhr.<br>Damian: I thought she might have this problem. Here use this to decipher her message. Decryption Key A|B|C|D|E|F|G|H|I|J|K|L|M"
+    "task_detail": "Decipher Irene's message"
   },
   "model": "map.task",
   "pk": 6
 },
 {
   "fields": {
-    "task_ans": "",
-    "task_type": "Mission",
+    "task_ans": "george washington",
+    "task_type": "Questions",
     "task_number": "2",
     "adventure_name": 2,
     "name_of_location": "History Challenges",
     "id_of_task": "task2",
+    "task_description": "Knowing history means knowing the world",
+    "special_game": "Who is the first president of the U.S.?",
     "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3016.170734999709!2d-73.87644404962353!3d40.890069534538874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f31a19e13647%3A0xf0931d7edc905f36!2sWoodlawn+Cemetery!5e0!3m2!1sen!2sus!4v1450860661892",
     "place_img_url": "http://www.fsusd.org/cms/lib03/CA01001943/Centricity/Domain/738/history-clip-art-5.gif",
-    "task_detail": "Damian: Ah she wants to meet you. That statue is the one that marks her grave. Irene’s husband was lost in World War I. She remarried several times, but her she never got over her grief for her first husband. They’re buried here together. Good luck.<br>Irene: Welcome. It’s nice to see people after so long. Damian brought you here, did he? He’s so kind. But there’s something that you should keep in mind about him, he’s……"
+    "task_detail": "Solve the history question"
   },
   "model": "map.task",
   "pk": 7
@@ -150,24 +161,28 @@
     "adventure_name": 2,
     "name_of_location": "Lighthouse Park(Roosevelt Island)",
     "id_of_task": "task3",
+    "task_description":"Damian: Ah she wants to meet you. That statue is the one that marks her grave. Irene’s husband was lost in World War I. She remarried several times, but her she never got over her grief for her first husband. They’re buried here together. Good luck.<br>Irene: Welcome. It’s nice to see people after so long. Damian brought you here, did he? He’s so kind. But there’s something that you should keep in mind about him, he’s……<br>Damian: Alright, enough of this! We have places to go, ghouls to see.",
+    "special_game": "Damian: The lighthouse before you was built in 1872. The residents of the island built it to reveal and destroy the angry spirits that crossed the waters to haunt them. Do you wanna see the spirits? Take a picture with your phone and give it to me. I’ll do the rest.<br>Damian: Hehehe. Are you terrified to your core? I’ll take care of them.<br>Damian: There. These silly spirits are nothing compared to me.<br>???: Don…..t……co…..tinu……e. He’s…….no….t….wha….t…<br>Damian:…..Ha. Now for more adventure! I can’t wait to show you this last place! This one’s the best of all!",
     "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.603146020793!2d-73.94422824962774!3d40.770752491855696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258b6800a34e7%3A0x5874390a188bba1c!2sLighthouse+Park!5e0!3m2!1sen!2sus!4v1450860622929",
     "place_img_url": "http://www.clipartlord.com/wp-content/uploads/2014/02/lighthouse7.png",
-    "task_detail": "Spell 2: The second spell will help you fix our fortress! It's of no use here, but will be most amazing when used in the correct way. For now though, the words are, \"renderum foretaress\". I hear there is a park called Imagination Park that is filled with magical blocks! You should go there and I'll explain how to use the spell."
+    "task_detail": "Take a picture with your phone and send it to me"
   },
   "model": "map.task",
   "pk": 8
 },
 {
   "fields": {
-    "task_ans": "",
-    "task_type": "Mission",
+    "task_ans": "9",
+    "task_type": "Questions",
     "task_number": "4",
     "adventure_name": 2,
     "name_of_location": "Math Challenges",
     "id_of_task": "task4",
+    "task_description":"Math is powerful and useful tool, get your tool right now!",
+    "special_game":"what is 3 x 3 = ?",
     "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.603146020793!2d-73.94422824962774!3d40.770752491855696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258b6800a34e7%3A0x5874390a188bba1c!2sLighthouse+Park!5e0!3m2!1sen!2sus!4v1450860622929",
     "place_img_url": "https://openclipart.org/image/2400px/svg_to_png/191351/Math-Girl-.png",
-    "task_detail": "Damian:This is our final stop on the tour. St. Mark’s Church. This place is haunted by a general called Peter Stuyvesant. We call him Peg Leg Pete now but don’t let him hear about that. He’s not too fond of that name. He built this area up and stayed in the graveyard after his death so that he wouldn’t be forgotten. He’s been sighted lurking in the shadows around the church, in the windows, and ringing the bell of the church. Be careful when he rings the bell though. He’s calling all his ghostly friends from the ground for some mischief.<br>Peter: I heard what you said Damian. I’m not happy about that. You were the one that gave me the peg leg in the first place. You trapped me here for your amusement! Help me. Help me escape and we’ll trap Damian here in my place. He’s been causing trouble for far too long!"
+    "task_detail": "Solve the math problem"
   },
   "model": "map.task",
   "pk": 9
@@ -180,6 +195,8 @@
     "adventure_name": 2,
     "name_of_location": "St. Mark’s Church",
     "id_of_task": "task5",
+    "task_description":"This is our final stop on the tour. St. Mark’s Church. This place is haunted by a general called Peter Stuyvesant. We call him Peg Leg Pete now but don’t let him hear about that. He’s not too fond of that name. He built this area up and stayed in the graveyard after his death so that he wouldn’t be forgotten. He’s been sighted lurking in the shadows around the church, in the windows, and ringing the bell of the church. Be careful when he rings the bell though. He’s calling all his ghostly friends from the ground for some mischief.",
+    "special_game":"a game",
     "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.440355123209!2d-73.98931184962913!3d40.73033494433022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2599c3c8b0fb1%3A0x6d799c804b630f41!2zU3QuIE1hcmvigJlz!5e0!3m2!1sen!2sus!4v1450860736906",
     "place_img_url": "http://seamenschurch.org/sites/default/files/image_upload/2-church-color.png",
     "task_detail": "what is 3 x 1"

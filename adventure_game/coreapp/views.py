@@ -141,6 +141,9 @@ def registration_submission(request):
                             % ("there is already an account with that email", email))
     user = User.objects.create_user(username=username, email=email, password=password,
                                     first_name=firstname, last_name=lastname) #pylint: disable=E1101
+    first_char = user.character_set.create(character_name="pin#1111", character_pin="1111")
+    first_char.is_logged = True
+    first_char.save()
     Level_num.objects.create(user=user, user_point=0, user_level=1)
     Game_saved.objects.create(user=user, adventure_saved="", task_saved="")
     user = auth.authenticate(username=username, password=password)
