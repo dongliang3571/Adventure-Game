@@ -1,11 +1,12 @@
 from map.models import Adventure
 from .models import Track, Game_saved
 
-def load_adventures(adventure_name_list, adventure_img_url_list, adventure_id_list):
+def load_adventures(adventure_name_list, adventure_img_url_list, adventure_id_list, adventure_description_list):
     for i in Adventure.objects.all():
         adventure_name_list.append(str(i.adventure_name))
         adventure_img_url_list.append(str(i.adventure_img_url))
         adventure_id_list.append(str(i.adventure_id))
+        adventure_description_list.append(i.adventure_description)
 
 def load_completed_adventures(adventure_complete_list, user):
     for i in Track.objects.filter(user=user):
