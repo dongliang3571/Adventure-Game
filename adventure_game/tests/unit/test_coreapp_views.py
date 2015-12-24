@@ -122,13 +122,23 @@ class CreateUserTest(TestCase):
                                           'lastname':'testlname', 'email':'test@test',
                                           'password':'testpass'})
 
-    def test_user_create_success(self, filter_mock, create_user_mock, create_level_mock,
+    @patch('coreapp.views.User.character_set')
+    def test_user_create_success(self, char_set_mock, filter_mock, create_user_mock, create_level_mock,
                                  auth_mock, login_mock, reg_mock, game_save_mock):
         user = User()
         filter_mock.return_value = []
         create_user_mock.return_value = user
         auth_mock.return_value = user
+        first_char = MagicMock()
+        first_char.save = MagicMock()
+        char_set_mock.create = MagicMock()
+        char_set_mock.create.return_value = first_char
+
         response = registration_submission(self.request)
+
+        char_set_mock.create.assert_called_with(character_name='pin#1111', character_pin='1111')
+        self.assertTrue(first_char.is_logged)
+        self.assertTrue(first_char.save.called)
 
         create_user_mock.assert_called_with(username='testuser', email='test@test',
                                             password='testpass', first_name='testfname',
