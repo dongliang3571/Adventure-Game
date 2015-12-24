@@ -24,12 +24,12 @@ def home(request):
     HttpResponseObject
         Combines a given template with a given context dictionary and renders the template.
     """
-
+    user = request.user
     context = get_adventure_info()
     context.update(csrf(request))
     return render_to_response('coreapp/home.html',
                               context,
-                              context_instance=RequestContext(request))
+                              context_instance=RequestContext(request),)
 
 def profile(request):
     """This is the profile view. It is called when the user goes to the '/profile/' route.

@@ -23,7 +23,7 @@
       <div class="row">
         {% for w, x, y, z in zipped %}
         <div class="col-sm-4 adventure-item">
-          <a href="#adventureModal1" class="adventure-link" data-toggle="modal">
+          <!-- <a href="#adventureModal1" class="adventure-link" data-toggle="modal">
             <div class="caption">
               <div class="caption-content">
                 <i class ="fa fa-search-plus fa-3x"></i>
@@ -33,11 +33,14 @@
               <img src="{{ w }}" class="img-responsive">
               <figcaption>{{ x }}</figcaption>
             </figure>
-          </a>
+          </a> -->
+          {% if user.is_authenticated %}
           <form class="adventureform" action="/adventure/beginingstory" method="get">
           <input type="hidden" name="adventureid" value="{{ y }}">
-          <input class="tobedeleted btn btn-info" id="play" type="submit" value="Play it!"><br>
+          <input class="img-responsive" id="play" type="image" src="{{ w }}"> {{ x }}
           </form>
+          {% endif %}
+
         </div>
         {% endfor %}
       </div>
