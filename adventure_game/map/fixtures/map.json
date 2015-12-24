@@ -85,8 +85,8 @@
 },
 {
   "fields": {
-    "task_ans": "",
-    "task_type": "Mission",
+    "task_ans": "8",
+    "task_type": "Questions",
     "task_number": "3",
     "adventure_name": 1,
     "name_of_location": "Math Challenges",
@@ -110,7 +110,7 @@
     "name_of_location": "Imagination Playground",
     "id_of_task": "task4",
     "task_description":"Wizard: Now the spell only works if you build a fortress and send it to us wit that spell. Those magic blocks at Imagination Park should be perfect for a new fortress! The magic will protect us from Balin's might!",
-    "special_game": "None",
+    "special_game": "300 seconds left before you can skip this task",
     "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37864.877667524604!2d-74.01481355128767!3d40.70719116273272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a3da9d9d291%3A0x3288fc6e857bc204!2sImagination+Playground!5e0!3m2!1sen!2sus!4v1450858633547",
     "place_img_url": "http://i.imgur.com/Vc2zspv.png",
     "task_detail": "Build a fortress using blocks"
@@ -137,7 +137,7 @@
 {
   "fields": {
     "task_ans": "",
-    "task_type": "Mission",
+    "task_type": "Questions",
     "task_number": "2",
     "adventure_name": 2,
     "name_of_location": "History Challenges",
@@ -167,7 +167,7 @@
 {
   "fields": {
     "task_ans": "",
-    "task_type": "Mission",
+    "task_type": "Questions",
     "task_number": "4",
     "adventure_name": 2,
     "name_of_location": "Math Challenges",

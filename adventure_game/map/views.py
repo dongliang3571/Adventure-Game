@@ -29,8 +29,7 @@ def map(request):
             return HttpResponseRedirect(reverse('coreapp:profile'))
         else:
             if user.game_saved.adventure_saved:
-
-                task_saved = int(user.game_saved.task_saved)
+                task_saved = str(user.game_saved.task_saved)
                 adventure_saved = user.game_saved.adventure_saved
                 adv = Adventure.objects.get(adventure_id = adventure_saved)
                 tasks = Task.objects.filter(adventure_name = adv).order_by("id")
@@ -42,16 +41,16 @@ def map(request):
                         "name_of_location": task.name_of_location
                     }
                     task_list.append(task_list_context)
-
-                if task_saved == 1:
+                boyn = ""
+                if task_saved == "1":
                     boyn = "boy"
-                elif task_saved == 2:
+                elif task_saved == "2":
                     boyn = "boy boy1"
-                elif task_saved == 3:
+                elif task_saved == "3":
                     boyn = "boy boy1 boy2"
-                elif task_saved == 4:
+                elif task_saved == "4":
                     boyn = "boy boy1 boy2 boy3"
-                elif task_saved == 5:
+                elif task_saved == "5":
                     boyn = "boy boy1 boy2 boy3 boy4"
                 messages.warning(request, 'Welcome to your adventures')
                 context = {
@@ -163,20 +162,26 @@ def mission_task_submission(request):
     user = request.user
     game_saved = user.game_saved
     adventure_saved = str(game_saved.adventure_saved)
-    task_saved = int(game_saved.task_saved)
-    if task_saved == 5:
+    task_saved = game_saved.task_saved
+    adv = Adventure.objects.get(adventure_id=adventure_saved)
+    Current_adventures = current_adventures.objects.filter(user = user)
+    current_adventure = Current_adventures.get(adventure_saved = adventure_saved)
+    tasks = Task.objects.filter(adventure_name=adv)
+    if task_saved == str(len(tasks)):
+        user.game_saved.task_saved = "1"
+        game_saved.save()
+        current_adventure.task_saved = game_saved.task_saved
+        current_adventure.save()
         Track.objects.create(user=user, adventure_done=adventure_saved)
         return render(request, 'map/adventure_completion.html')
     game_saved.task_saved = str(int(game_saved.task_saved) + 1)
     game_saved.save()
-    Current_adventures = current_adventures.objects.filter(user = user)
-    current_adventure = Current_adventures.get(adventure_saved = adventure_saved)
     current_adventure.task_saved = game_saved.task_saved
     current_adventure.save()
-    adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
+
     adv_name = adv.adventure_name
     task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
-    new_url = 'task' + str(task_saved)
+    new_url = 'task' + str(game_saved.task_saved)
     return HttpResponseRedirect(new_url)
 
 
@@ -184,11 +189,18 @@ def questions_task_submission(request):
     user = request.user
     game_saved = user.game_saved
     adventure_saved = str(game_saved.adventure_saved)
-    task_saved = int(game_saved.task_saved)
-    if task_saved == 5:
+    task_saved = game_saved.task_saved
+    adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
+    Current_adventures = current_adventures.objects.filter(user = user)
+    current_adventure = Current_adventures.get(adventure_saved = adventure_saved)
+    tasks = Task.objects.filter(adventure_name=adv)
+    if task_saved == str(len(tasks)):
+        game_saved.task_saved = "1"
+        game_saved.save()
+        current_adventure.task_saved = game_saved.task_saved
+        current_adventure.save()
         Track.objects.create(user=user, adventure_done=adventure_saved)
         return render(request, 'map/adventure_completion.html')
-    adv = Adventure.objects.get(adventure_id=adventure_saved) #needed to get from adv
     adv_name = adv.adventure_name
     task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
     user_ans = request.GET.get('task_ans','')
@@ -199,8 +211,6 @@ def questions_task_submission(request):
             game_saved.task_saved = str(int(game_saved.task_saved) + 1)
             game_saved.save()
             task_saved = game_saved.task_saved
-            Current_adventures = current_adventures.objects.filter(user = user)
-            current_adventure = Current_adventures.get(adventure_saved = adventure_saved)
             current_adventure.task_saved = game_saved.task_saved
             current_adventure.save()
             new_url = 'task' + str(task_saved)
