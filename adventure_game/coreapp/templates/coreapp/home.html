@@ -34,6 +34,10 @@
               <figcaption>{{ x }}</figcaption>
             </figure>
           </a>
+          <form class="adventureform" action="/adventure/beginingstory" method="get">
+          <input type="hidden" name="adventureid" value="{{ y }}">
+          <input class="tobedeleted btn btn-info" id="play" type="submit" value="Play it!"><br>
+          </form>
         </div>
         {% endfor %}
       </div>
