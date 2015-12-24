@@ -39,10 +39,17 @@
           <input type="hidden" name="adventureid" value="{{ y }}">
           <input class="img-responsive" id="play" type="image" src="{{ w }}"> {{ x }}
           </form>
-          {% endif %}
 
-        </div>
-        {% endfor %}
+          {% else %}
+          <form class="adventureform" action="/adventure/visitorview" method="get">
+          <input type="hidden" name="adventureid" value="{{ y }}">
+          <input class="img-responsive" id="play" type="image" src="{{ w }}"> {{ x }}
+          </form>
+          {% endif %}
+          </div>
+          {% endfor %}
+
+
       </div>
     </section>
     <section id="about">

@@ -11,5 +11,7 @@ urlpatterns = [
     url(r'^questionstasksubmission$', views.questions_task_submission, name="questionstasksubmission"),
     url(r'^save_current/$', views.save_current, name="save_current"),
     url(r'^special_game_json/$', views.special_game_json, name="special_game_json"),
+    url(r'^visitorview$', views.visitorview, name="visitorview"),
+
     # url(r'^task1/task1_question2/$', views.task1_question2, name="task1_question2"),
 ]
