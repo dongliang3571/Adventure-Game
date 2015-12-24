@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.template import RequestContext
 from .models import Level_num, Game_saved
 from .queries import get_logged_in_char, get_all_characters
-from .utilities import  get_profile_context
+from .utilities import  get_profile_context, get_adventure_info
 from map.models import adventures_info, Adventure, Task
 
 def home(request):
@@ -24,7 +24,8 @@ def home(request):
     HttpResponseObject
         Combines a given template with a given context dictionary and renders the template.
     """
-    context = {}
+
+    context = get_adventure_info()
     context.update(csrf(request))
     return render_to_response('coreapp/home.html',
                               context,
