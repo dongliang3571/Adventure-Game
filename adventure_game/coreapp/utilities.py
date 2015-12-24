@@ -7,10 +7,11 @@ def get_profile_context(user, characters):
     adventure_img_url_list = []
     adventure_id_list = []
     adventure_complete_list = []
+    adventure_description_list = []
 
-    load_adventures(adventure_name_list, adventure_img_url_list, adventure_id_list)
+    load_adventures(adventure_name_list, adventure_img_url_list, adventure_id_list, adventure_description_list)
     load_completed_adventures(adventure_complete_list, user)
-    zipped = zip(adventure_img_url_list, adventure_name_list, adventure_id_list)
+    zipped = zip(adventure_img_url_list, adventure_name_list, adventure_id_list, adventure_description_list)
 
     level = user.level_num
     game_saved_id_list = []
@@ -23,3 +24,17 @@ def get_profile_context(user, characters):
                'completed_list' : adventure_complete_list,
               }
     return context
+
+def get_adventure_info(): #for home page, displays adv info
+        adventure_name_list = []
+        adventure_img_url_list = []
+        adventure_id_list = []
+        adventure_description_list = []
+
+        load_adventures(adventure_name_list, adventure_img_url_list, adventure_id_list, adventure_description_list)
+        zipped = zip(adventure_img_url_list, adventure_name_list, adventure_id_list, adventure_description_list)
+
+        context = {
+            'zipped' : zipped,
+        }
+        return context

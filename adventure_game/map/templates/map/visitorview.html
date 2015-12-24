@@ -29,12 +29,7 @@
 
 
     </div>
-
     <iframe style="margin-left: 50px;" src="{{ map_address }}" width="500" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
-    <img style="float:right; margin-right: 150px;" src={% static "task/img/vivi.gif" %} class="img-responsive">
-
-    <form class="save_current" action="/adventure/save_current" method="get">
-    <input type="hidden" name="adventureid" value="{{ adventureid }}">
-    <input class="btn btn-block btn-lg btn-primary" type="submit" value="We have made our wishes!"><br>
-    </form>
+    <img style="float:right; margin-right: 150px;" src={% static "task/img/vivi.gif" %} class="img-responsive"><br>
+<a href="{% url 'coreapp:registration' %}">Want to play? Join with us today!!</a>
 {% endblock %}

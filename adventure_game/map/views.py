@@ -112,6 +112,23 @@ def beginingstory(request):
 
         return render(request, 'map/details.html',context)
 
+def visitorview(request):
+    adventureid = request.GET.get('adventureid', '')
+
+    adventure = Adventure.objects.get(adventure_id = adventureid)
+    Adventures_info = adventures_info.objects.get(adventure_name = adventure)
+    context = {
+        "adventure_title" : adventure.adventure_name,
+        "items_needed" : Adventures_info.items_needed,
+        "expenses" : Adventures_info.expenses,
+        "locations" : Adventures_info.locations,
+        "map_address" : Adventures_info.map_address,
+        "adventureid" : adventureid
+    }
+
+    return render(request, 'map/visitorview.html',context)
+
+
 def save_current(request):
     adventureid = request.GET.get('adventureid', '')
     user = request.user
