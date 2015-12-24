@@ -89,7 +89,7 @@ def auth_view(request):
 
     Returns
     -------
-    HttpResponseRedirectObject
+    HttpResponseRedirect Object
         Redirects the user to '/' route. If credentials are correct, the user is logged in
         and a message is shown confirming user logged in. If account was banned, message
         is shown message telling them account is banned. If credentials are invalid, user is
@@ -116,17 +116,38 @@ def auth_view(request):
         return HttpResponseRedirect('/')
 
 def logout(request):
-    """
-    The user is sent here when they logout. They are then redirected to the home page.
+    """This is the logout view. It is called when the user hits the logout button.
+
+    Parameters
+    ----------
+    request: HttpRequest
+        Django request object that contains a variety of information from the middlewares.
+
+
+    Returns
+    -------
+    HttpResponseRedirect Object
+        Logs the user out, redirects the user to the '/' view and displays a message
+        telling the user they have succesfully logged out.
     """
     auth.logout(request)
     messages.success(request, 'You have successfully logged out.')
     return HttpResponseRedirect('/')
 
 def registration_submission(request):
-    """
-    A visitor is sent to this page when they submit their registration.
-    After being registered they are redirected to the home page.
+    """This is the registration submission view. When the user fills out the registration
+    form and hits the submit button, the information is posted to this view which creates
+    an account for the user with the credentials in the form. Adventure progress is also created.
+
+    Parameters
+    ----------
+    request: HttpRequest
+        Django request object that contains a variety of information from the middlewares.
+
+    Returns
+    -------
+    HttpResponseRedirect Object
+        Redirects the user to the '/' route after user is created.
     """
     username = request.POST.get('username', '')
     firstname = request.POST.get('firstname', '')
