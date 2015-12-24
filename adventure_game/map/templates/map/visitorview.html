@@ -1,0 +1,35 @@
+{% extends "map/task_base.html" %}
+{% load staticfiles %}
+{% block title %}Task 1{% endblock %}
+{% block map_css_js %}
+<link rel="stylesheet" type="text/css" href={% static "map/css/task.css" %}>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+      <div class="page-header">
+        <h1>{{ adventure_title }}</h1>
+        <p class="lead">Bethesda Fountain in your world has special qualities! The Angel of Water
+          statue you see above it was carved by sorceress from my world to help your
+          people. The Angel gives the water the power to heal and the Angel herself
+          is able to grant wishes. &nbsp;Please! Wish for the water to &nbsp;reverse
+          the petrification of my people!</p>
+      </div>
+
+      <h3 style="color: red;">Items needed:</h3>
+      <p style="font-size: 1.5em;">{{ items_needed }}</p>
+
+      <h3 style="color: red;">Expenses:</h3>
+      <p style="font-size: 1.5em;">{{ expenses }}</p>
+
+      <h3 style="color: red;">Locations:</h3>
+      <p style="font-size: 1.5em;">{{ locations }}</p>
+
+
+    </div>
+    <iframe style="margin-left: 50px;" src="{{ map_address }}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <img style="float:right; margin-right: 150px;" src={% static "task/img/vivi.gif" %} class="img-responsive">
+<p>Want to play? Join with us today!!</p>
+{% endblock %}
