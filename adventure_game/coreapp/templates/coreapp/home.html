@@ -27,7 +27,7 @@
           {% if user.is_authenticated %}
           <form class="adventureform" action="/adventure/beginingstory" method="get">
           <input type="hidden" name="adventureid" value="{{ y }}">
-          <input class="img-responsive" id="play" type="image" src="{{ w }}"> {{ x }}
+          <input style="width:700px;height:250px;" class="img-responsive" id="play" type="image" src="{{ w }}"> {{ x }}
           </form>
 
           {% else %}
@@ -38,12 +38,12 @@
           {% endif %}
           </div>
           {% endfor %}
-          <div class="col-sm-4 adventure-item" style="border:1px dashed blue">
+          <div class="col-sm-4 adventure-item">
             <a href="{% url 'coreapp:adventureslist' %}">
-            <img id="more" class="img-responsive" src="https://pbs.twimg.com/profile_images/558750489152458752/pBBTFL0j.png" style="height:185px"></a>
-
+            <img id="more" class="img-responsive" src="http://static1.squarespace.com/static/542c91d6e4b0192f92c6fd5a/55a2f8a3e4b022eb02879698/55a2f8a3e4b0bb17f7b37465/1436743844227/thumb_more-coming-soon.jpg" style="width:700px;height:250px;"></a>
+            Check out for more...
           </div>
-          Check out for more...
+
       </div>
     </section>
     <section id="about">
