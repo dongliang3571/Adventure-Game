@@ -1,8 +1,21 @@
+"""This module is used to test the utilities module.
+"""
 from django.test import TestCase
 from mock import patch, MagicMock
 from coreapp.utilities import get_profile_context
 
 class TestGetProfileContext(TestCase):
+    """TestCase for the get profile context profile.
+
+    Methods
+    -------
+    setUp(self)
+        Sets up the mocked user object.
+
+    test_get_profile_context(self, la_mock, lca_mock, lgsi_mock. get_char_mock)
+        Tests if the mocked out functions are called with the right parameters
+        as well as if the return context is to be expected.
+    """
     def setUp(self):
         self.user = MagicMock()
         self.user.level_num = '1'
@@ -12,6 +25,22 @@ class TestGetProfileContext(TestCase):
     @patch('coreapp.utilities.load_completed_adventures')
     @patch('coreapp.utilities.load_adventures')
     def test_get_profile_context(self, la_mock, lca_mock, lgsi_mock, get_char_mock):
+        """Tests the get_profile_context function behaves as expected.
+
+        Parameters
+        ----------
+        la_mock: MagicMock
+            Mocks the load_adventures function.
+
+        lca_mock: MagicMock
+            Mocks the load_completed_adventures function.
+
+        lgsi_mock: MagicMock
+            Mocks the load_game_save_id function.
+
+        get_char_mock: MagicMock
+            Mocks the get_char_mock function.
+        """
         characters = MagicMock()
         get_char_mock.return_value = 'testchar'
         context = {'character_name' : 'testchar',

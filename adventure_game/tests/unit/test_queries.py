@@ -1,3 +1,5 @@
+"""This module tests if the functions from the queries module behave as expected
+"""
 from django.test import TestCase
 from mock import patch, MagicMock
 from coreapp.queries import (load_adventures, load_completed_adventures,
@@ -5,6 +7,15 @@ from coreapp.queries import (load_adventures, load_completed_adventures,
                              get_character_name, get_all_characters)
 
 class CoreappQueryTest(TestCase):
+    """Tests the query functions.
+    Methods
+    -------
+        test_load_adventures(self, adventure_mock)
+            Tests if load_adventures function populates the lists that are passed in.
+
+        test_load_completed_adventures
+
+    """
     def setUp(self):
         pass
 
