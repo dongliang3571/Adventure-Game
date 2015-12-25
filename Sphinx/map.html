@@ -1,0 +1,547 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>map package &mdash; Adventure Game 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Adventure Game 1.0 documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="map-package">
+<h1>map package<a class="headerlink" href="#map-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="map.migrations.html">map.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="map.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map.migrations.html#module-map.migrations.0001_initial">map.migrations.0001_initial module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map.migrations.html#module-map.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-map.admin">
+<span id="map-admin-module"></span><h2>map.admin module<a class="headerlink" href="#module-map.admin" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="map.admin.AdventureAdmin">
+<em class="property">class </em><code class="descclassname">map.admin.</code><code class="descname">AdventureAdmin</code><span class="sig-paren">(</span><em>model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="headerlink" href="#map.admin.AdventureAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.ModelAdmin</span></code></p>
+<dl class="attribute">
+<dt id="map.admin.AdventureAdmin.fieldsets">
+<code class="descname">fieldsets</code><em class="property"> = [(None, {'fields': ['adventure_id']}), (None, {'fields': ['adventure_name']}), (None, {'fields': ['adventure_category']}), (None, {'fields': ['adventure_img_url']}), ('Description', {'fields': ['adventure_description'], 'classes': ['collapse']})]</em><a class="headerlink" href="#map.admin.AdventureAdmin.fieldsets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.admin.AdventureAdmin.inlines">
+<code class="descname">inlines</code><em class="property"> = [&lt;class 'map.admin.TaskInLine'&gt;]</em><a class="headerlink" href="#map.admin.AdventureAdmin.inlines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.admin.AdventureAdmin.list_display">
+<code class="descname">list_display</code><em class="property"> = ('adventure_name', 'adventure_id', 'adventure_category')</em><a class="headerlink" href="#map.admin.AdventureAdmin.list_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.admin.AdventureAdmin.media">
+<code class="descname">media</code><a class="headerlink" href="#map.admin.AdventureAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.admin.AdventureAdmin.ordering">
+<code class="descname">ordering</code><em class="property"> = ['adventure_id']</em><a class="headerlink" href="#map.admin.AdventureAdmin.ordering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="map.admin.AnswerInLine">
+<em class="property">class </em><code class="descclassname">map.admin.</code><code class="descname">AnswerInLine</code><span class="sig-paren">(</span><em>parent_model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="headerlink" href="#map.admin.AnswerInLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.StackedInline</span></code></p>
+<dl class="attribute">
+<dt id="map.admin.AnswerInLine.media">
+<code class="descname">media</code><a class="headerlink" href="#map.admin.AnswerInLine.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.admin.AnswerInLine.model">
+<code class="descname">model</code><a class="headerlink" href="#map.admin.AnswerInLine.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Answer</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="map.admin.QuestionAdmin">
+<em class="property">class </em><code class="descclassname">map.admin.</code><code class="descname">QuestionAdmin</code><span class="sig-paren">(</span><em>model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="headerlink" href="#map.admin.QuestionAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.ModelAdmin</span></code></p>
+<dl class="attribute">
+<dt id="map.admin.QuestionAdmin.inlines">
+<code class="descname">inlines</code><em class="property"> = [&lt;class 'map.admin.AnswerInLine'&gt;]</em><a class="headerlink" href="#map.admin.QuestionAdmin.inlines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.admin.QuestionAdmin.list_display">
+<code class="descname">list_display</code><em class="property"> = ('question_text', 'question_age', 'question_type')</em><a class="headerlink" href="#map.admin.QuestionAdmin.list_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.admin.QuestionAdmin.media">
+<code class="descname">media</code><a class="headerlink" href="#map.admin.QuestionAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.admin.QuestionAdmin.ordering">
+<code class="descname">ordering</code><em class="property"> = ['question_age']</em><a class="headerlink" href="#map.admin.QuestionAdmin.ordering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="map.admin.TaskInLine">
+<em class="property">class </em><code class="descclassname">map.admin.</code><code class="descname">TaskInLine</code><span class="sig-paren">(</span><em>parent_model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="headerlink" href="#map.admin.TaskInLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.StackedInline</span></code></p>
+<dl class="attribute">
+<dt id="map.admin.TaskInLine.extra">
+<code class="descname">extra</code><em class="property"> = 1</em><a class="headerlink" href="#map.admin.TaskInLine.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.admin.TaskInLine.media">
+<code class="descname">media</code><a class="headerlink" href="#map.admin.TaskInLine.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.admin.TaskInLine.model">
+<code class="descname">model</code><a class="headerlink" href="#map.admin.TaskInLine.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Task</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="map.admin.TaskInLine.ordering">
+<code class="descname">ordering</code><em class="property"> = ['task_number']</em><a class="headerlink" href="#map.admin.TaskInLine.ordering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-map.models">
+<span id="map-models-module"></span><h2>map.models module<a class="headerlink" href="#module-map.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="map.models.Adventure">
+<em class="property">class </em><code class="descclassname">map.models.</code><code class="descname">Adventure</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#map.models.Adventure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This holds our adventure game</p>
+<dl class="exception">
+<dt id="map.models.Adventure.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#map.models.Adventure.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="map.models.Adventure.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descclassname">Adventure.</code><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#map.models.Adventure.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Adventure.adventure_category_choices">
+<code class="descclassname">Adventure.</code><code class="descname">adventure_category_choices</code><em class="property"> = (('Indoor', 'Indoor'), ('Outdoor', 'Outdoor'))</em><a class="headerlink" href="#map.models.Adventure.adventure_category_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Adventure.adventures_info">
+<code class="descclassname">Adventure.</code><code class="descname">adventures_info</code><a class="headerlink" href="#map.models.Adventure.adventures_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="map.models.Adventure.get_adventure_category_display">
+<code class="descclassname">Adventure.</code><code class="descname">get_adventure_category_display</code><span class="sig-paren">(</span><em>*moreargs</em>, <em>**morekwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#map.models.Adventure.get_adventure_category_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Adventure.objects">
+<code class="descclassname">Adventure.</code><code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#map.models.Adventure.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Adventure.task_set">
+<code class="descclassname">Adventure.</code><code class="descname">task_set</code><a class="headerlink" href="#map.models.Adventure.task_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="map.models.Answer">
+<em class="property">class </em><code class="descclassname">map.models.</code><code class="descname">Answer</code><span class="sig-paren">(</span><em>id</em>, <em>question_text</em>, <em>choice_1</em>, <em>choice_2</em>, <em>choice_3</em>, <em>choice_4</em>, <em>answer</em><span class="sig-paren">)</span><a class="headerlink" href="#map.models.Answer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="exception">
+<dt id="map.models.Answer.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#map.models.Answer.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="map.models.Answer.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descclassname">Answer.</code><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#map.models.Answer.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Answer.answer_choices">
+<code class="descclassname">Answer.</code><code class="descname">answer_choices</code><em class="property"> = (('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', 'None from above'))</em><a class="headerlink" href="#map.models.Answer.answer_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="map.models.Answer.get_answer_display">
+<code class="descclassname">Answer.</code><code class="descname">get_answer_display</code><span class="sig-paren">(</span><em>*moreargs</em>, <em>**morekwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#map.models.Answer.get_answer_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Answer.objects">
+<code class="descclassname">Answer.</code><code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#map.models.Answer.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Answer.question_text">
+<code class="descclassname">Answer.</code><code class="descname">question_text</code><a class="headerlink" href="#map.models.Answer.question_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="map.models.Question">
+<em class="property">class </em><code class="descclassname">map.models.</code><code class="descname">Question</code><span class="sig-paren">(</span><em>id</em>, <em>question_type</em>, <em>question_age</em>, <em>question_text</em><span class="sig-paren">)</span><a class="headerlink" href="#map.models.Question" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="exception">
+<dt id="map.models.Question.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#map.models.Question.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="map.models.Question.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descclassname">Question.</code><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#map.models.Question.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Question.answer">
+<code class="descclassname">Question.</code><code class="descname">answer</code><a class="headerlink" href="#map.models.Question.answer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="map.models.Question.get_question_age_display">
+<code class="descclassname">Question.</code><code class="descname">get_question_age_display</code><span class="sig-paren">(</span><em>*moreargs</em>, <em>**morekwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#map.models.Question.get_question_age_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="map.models.Question.get_question_type_display">
+<code class="descclassname">Question.</code><code class="descname">get_question_type_display</code><span class="sig-paren">(</span><em>*moreargs</em>, <em>**morekwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#map.models.Question.get_question_type_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Question.objects">
+<code class="descclassname">Question.</code><code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#map.models.Question.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Question.question_age_choices">
+<code class="descclassname">Question.</code><code class="descname">question_age_choices</code><em class="property"> = (('1. Pre-k', 'Pre-k'), ('2. Age 4-7', 'Age 4-7'), ('3. Age 8-10', 'Age 8-10'))</em><a class="headerlink" href="#map.models.Question.question_age_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Question.question_type_choices">
+<code class="descclassname">Question.</code><code class="descname">question_type_choices</code><em class="property"> = (('Math', 'Math'), ('English', 'English'), ('History', 'History'), ('Science', 'Science'))</em><a class="headerlink" href="#map.models.Question.question_type_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="map.models.Task">
+<em class="property">class </em><code class="descclassname">map.models.</code><code class="descname">Task</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#map.models.Task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This holds the tasks of each adventure game.</p>
+<dl class="exception">
+<dt id="map.models.Task.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#map.models.Task.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="map.models.Task.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descclassname">Task.</code><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#map.models.Task.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Task.adventure_name">
+<code class="descclassname">Task.</code><code class="descname">adventure_name</code><a class="headerlink" href="#map.models.Task.adventure_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="map.models.Task.get_task_number_display">
+<code class="descclassname">Task.</code><code class="descname">get_task_number_display</code><span class="sig-paren">(</span><em>*moreargs</em>, <em>**morekwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#map.models.Task.get_task_number_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="map.models.Task.get_task_type_display">
+<code class="descclassname">Task.</code><code class="descname">get_task_type_display</code><span class="sig-paren">(</span><em>*moreargs</em>, <em>**morekwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#map.models.Task.get_task_type_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Task.objects">
+<code class="descclassname">Task.</code><code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#map.models.Task.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Task.task_num_choices">
+<code class="descclassname">Task.</code><code class="descname">task_num_choices</code><em class="property"> = (('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'))</em><a class="headerlink" href="#map.models.Task.task_num_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.Task.task_type_choices">
+<code class="descclassname">Task.</code><code class="descname">task_type_choices</code><em class="property"> = (('Mission', 'Mission'), ('Questions', 'Questions'))</em><a class="headerlink" href="#map.models.Task.task_type_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="map.models.adventures_info">
+<em class="property">class </em><code class="descclassname">map.models.</code><code class="descname">adventures_info</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#map.models.adventures_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This provides information about each adventure, e.g. Tools needed, expense.</p>
+<dl class="exception">
+<dt id="map.models.adventures_info.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#map.models.adventures_info.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="map.models.adventures_info.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descclassname">adventures_info.</code><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#map.models.adventures_info.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.adventures_info.adventure_name">
+<code class="descclassname">adventures_info.</code><code class="descname">adventure_name</code><a class="headerlink" href="#map.models.adventures_info.adventure_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.models.adventures_info.objects">
+<code class="descclassname">adventures_info.</code><code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#map.models.adventures_info.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-map.tests">
+<span id="map-tests-module"></span><h2>map.tests module<a class="headerlink" href="#module-map.tests" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="map.tests.AdventureTests">
+<em class="property">class </em><code class="descclassname">map.tests.</code><code class="descname">AdventureTests</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#map.tests.AdventureTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.test.testcases.TestCase</span></code></p>
+<dl class="method">
+<dt id="map.tests.AdventureTests.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#map.tests.AdventureTests.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="map.tests.AdventureTests.test_geo_code">
+<code class="descname">test_geo_code</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#map.tests.AdventureTests.test_geo_code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="map.tests.AdventureTests.test_map">
+<code class="descname">test_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#map.tests.AdventureTests.test_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="map.tests.AdventureTests.test_preadventure_information">
+<code class="descname">test_preadventure_information</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#map.tests.AdventureTests.test_preadventure_information" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="map.tests.AdventureTests.test_scramble">
+<code class="descname">test_scramble</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#map.tests.AdventureTests.test_scramble" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="map.tests.AdventureTests.test_story_so_far">
+<code class="descname">test_story_so_far</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#map.tests.AdventureTests.test_story_so_far" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="map.tests.AdventureTests.test_task1">
+<code class="descname">test_task1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#map.tests.AdventureTests.test_task1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-map.urls">
+<span id="map-urls-module"></span><h2>map.urls module<a class="headerlink" href="#module-map.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-map.views">
+<span id="map-views-module"></span><h2>map.views module<a class="headerlink" href="#module-map.views" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="map.views.beginingstory">
+<code class="descclassname">map.views.</code><code class="descname">beginingstory</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.beginingstory" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes user to a transmission page that only displays once when users first begin the adventure.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="map.views.map">
+<code class="descclassname">map.views.</code><code class="descname">map</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function renders entire map where users can see their adventures progress</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="map.views.mission_task_submission">
+<code class="descclassname">map.views.</code><code class="descname">mission_task_submission</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.mission_task_submission" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="map.views.questions_task_submission">
+<code class="descclassname">map.views.</code><code class="descname">questions_task_submission</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.questions_task_submission" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="map.views.save_current">
+<code class="descclassname">map.views.</code><code class="descname">save_current</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.save_current" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="map.views.special_game_json">
+<code class="descclassname">map.views.</code><code class="descname">special_game_json</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.special_game_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="map.views.task">
+<code class="descclassname">map.views.</code><code class="descname">task</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.task" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function retrives tasks from database and displays on task pages for users to complete.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="map.views.task1_question2">
+<code class="descclassname">map.views.</code><code class="descname">task1_question2</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.task1_question2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="map.views.task2">
+<code class="descclassname">map.views.</code><code class="descname">task2</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.task2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="map.views.visitorview">
+<code class="descclassname">map.views.</code><code class="descname">visitorview</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.visitorview" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-map">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-map" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">map package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-map.admin">map.admin module</a></li>
+<li><a class="reference internal" href="#module-map.models">map.models module</a></li>
+<li><a class="reference internal" href="#module-map.tests">map.tests module</a></li>
+<li><a class="reference internal" href="#module-map.urls">map.urls module</a></li>
+<li><a class="reference internal" href="#module-map.views">map.views module</a></li>
+<li><a class="reference internal" href="#module-map">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/map.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Raymond, Meg, Weifan, Dong.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/map.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>map.migrations package &mdash; Adventure Game 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Adventure Game 1.0 documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="map-migrations-package">
+<h1>map.migrations package<a class="headerlink" href="#map-migrations-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-map.migrations.0001_initial">
+<span id="map-migrations-0001-initial-module"></span><h2>map.migrations.0001_initial module<a class="headerlink" href="#module-map.migrations.0001_initial" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="map.migrations.0001_initial.Migration">
+<em class="property">class </em><code class="descclassname">map.migrations.0001_initial.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#map.migrations.0001_initial.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="map.migrations.0001_initial.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = []</em><a class="headerlink" href="#map.migrations.0001_initial.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="map.migrations.0001_initial.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  fields=[(u'id', &lt;django.db.models.fields.AutoField&gt;), (u'adventure_id', &lt;django.db.models.fields.CharField&gt;), (u'adventure_name', &lt;django.db.models.fields.CharField&gt;), (u'adventure_description', &lt;django.db.models.fields.TextField&gt;), (u'adventure_img_url', &lt;django.db.models.fields.URLField&gt;), (u'theme_character_url', &lt;django.db.models.fields.URLField&gt;), (u'adventure_category', &lt;django.db.models.fields.CharField&gt;)], name=u'Adventure'&gt;, &lt;CreateModel  fields=[(u'id', &lt;django.db.models.fields.AutoField&gt;), (u'items_needed', &lt;django.db.models.fields.CharField&gt;), (u'expenses', &lt;django.db.models.fields.CharField&gt;), (u'locations', &lt;django.db.models.fields.CharField&gt;), (u'map_address', &lt;django.db.models.fields.CharField&gt;), (u'adventure_name', &lt;django.db.models.fields.related.OneToOneField&gt;)], name=u'adventures_info'&gt;, &lt;CreateModel  fields=[(u'id', &lt;django.db.models.fields.AutoField&gt;), (u'choice_1', &lt;django.db.models.fields.CharField&gt;), (u'choice_2', &lt;django.db.models.fields.CharField&gt;), (u'choice_3', &lt;django.db.models.fields.CharField&gt;), (u'choice_4', &lt;django.db.models.fields.CharField&gt;), (u'answer', &lt;django.db.models.fields.CharField&gt;)], name=u'Answer'&gt;, &lt;CreateModel  fields=[(u'id', &lt;django.db.models.fields.AutoField&gt;), (u'question_type', &lt;django.db.models.fields.CharField&gt;), (u'question_age', &lt;django.db.models.fields.CharField&gt;), (u'question_text', &lt;django.db.models.fields.TextField&gt;)], name=u'Question'&gt;, &lt;CreateModel  fields=[(u'id', &lt;django.db.models.fields.AutoField&gt;), (u'task_number', &lt;django.db.models.fields.CharField&gt;), (u'task_type', &lt;django.db.models.fields.CharField&gt;), (u'task_description', &lt;django.db.models.fields.TextField&gt;), (u'task_detail', &lt;django.db.models.fields.TextField&gt;), (u'place_img_url', &lt;django.db.models.fields.URLField&gt;), (u'task_ans', &lt;django.db.models.fields.CharField&gt;), (u'name_of_location', &lt;django.db.models.fields.CharField&gt;), (u'id_of_task', &lt;django.db.models.fields.CharField&gt;), (u'google_map', &lt;django.db.models.fields.URLField&gt;), (u'special_game', &lt;django.db.models.fields.CharField&gt;), (u'adventure_name', &lt;django.db.models.fields.related.ForeignKey&gt;)], name=u'Task'&gt;, &lt;AddField  field=&lt;django.db.models.fields.related.OneToOneField&gt;, name=u'question_text', model_name=u'answer'&gt;]</em><a class="headerlink" href="#map.migrations.0001_initial.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-map.migrations">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-map.migrations" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">map.migrations package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-map.migrations.0001_initial">map.migrations.0001_initial module</a></li>
+<li><a class="reference internal" href="#module-map.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/map.migrations.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Raymond, Meg, Weifan, Dong.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/map.migrations.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
