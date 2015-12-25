@@ -194,10 +194,16 @@ def mission_task_submission(request):
     game_saved.save()
     current_adventure.task_saved = game_saved.task_saved
     current_adventure.save()
-
+    level_number = user.level_num
+    level_number.user_point = level_number.user_point + 25
+    if level_number.user_point >= 100:
+        level_number.user_level = level_number.user_level + 1
+        level_number.user_point = level_number.user_point - 100
+    level_number.save()
     adv_name = adv.adventure_name
     task = adv.task_set.get(adventure_name=adv, task_number=task_saved)
     new_url = 'task' + str(game_saved.task_saved)
+    messages.success(request, 'You gain Exp 25 points!')
     return HttpResponseRedirect(new_url)
 
 
@@ -229,7 +235,14 @@ def questions_task_submission(request):
             task_saved = game_saved.task_saved
             current_adventure.task_saved = game_saved.task_saved
             current_adventure.save()
+            level_number = user.level_num
+            level_number.user_point = level_number.user_point + 25
+            if level_number.user_point >= 100:
+                level_number.user_level = level_number.user_level + 1
+                level_number.user_point = level_number.user_point - 100
+            level_number.save()
             new_url = 'task' + str(task_saved)
+            messages.success(request, 'You gain Exp 25 points!')
             return HttpResponseRedirect(new_url)
         else:
             new_url = 'task' + str(task_saved)
