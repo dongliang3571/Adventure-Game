@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^get_adventure_detail/$', views.get_adventure_detail, name='get_adventure_detail'),
     url(r'^usejson/$', views.usejson, name='usejson'),
     url(r'^adventureslist$', views.adventureslist, name="adventureslist"),
+    url(r'^contact$', views.contact, name="contact"),
 ]

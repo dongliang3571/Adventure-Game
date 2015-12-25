@@ -70,3 +70,8 @@ class current_adventures(models.Model):
 
     def __unicode__(self):
         return 'saved adventure id#'+str(self.adventure_saved) + 'task #:' + str(self.task_saved)
+
+class ContactUs(models.Model):
+    name = models.CharField(max_length=20)
+    email = models.EmailField(max_length=254)
+    msg = models.TextField(max_length=2000)

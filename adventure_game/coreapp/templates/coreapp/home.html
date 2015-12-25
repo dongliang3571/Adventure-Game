@@ -67,7 +67,7 @@
        </div>
        <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
-         <form role="form">
+         <form role="form" action="{% url 'coreapp:contact' %}" method="post"> {% csrf_token %}
           <div class="row">
             <div class="form-group col-xs-12 floating-label-form-group">
               <label for="name">Name</label>
@@ -83,7 +83,8 @@
           <div class="row">
             <div class="form-group col-xs-12 floating-label-form-group">
               <label for="message">Message</label>
-              <textarea placeholder="Message" class="form-control" rows="5"></textarea>
+              <textarea placeholder="Message" class="form-control" rows="5" name="msg"></textarea>
+              <!-- <input class="form-control" type="text" name="msg" placeholder="Email Address"> -->
             </div>
           </div>
           <br>
