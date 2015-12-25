@@ -36,12 +36,44 @@ def home(request):
                               context_instance=RequestContext(request),)
 
 def adventureslist(request):
+    """This is the adventures list view. It is called when the user goes to the '/adventureslist/' route.
+    This page lists all of our adventures 
+
+    Parameters
+    ----------
+    request: HttpRequestObject
+        Django request object that contains a variety of information from the middlewares.
+
+
+    Returns
+    -------
+    HttpResponseObject
+        Combines a given template with a given context dictionary and renders the template.
+    """
     user = request.user
     context = get_adventure_info()
 
     return render(request, 'coreapp/adventureslist.html',context)
 
 def contact(request):
+    """This is the contact view. User reaches this view when he hits the
+    send button on the Contact Us form in home page.
+
+    When a visitor fills out the Contact Us
+    form and hits the send button in home page, the information is posted to this view which pushes
+    to database for admin to view.
+
+    Parameters
+    ----------
+    request: HttpRequestObject
+        Django request object that contains a variety of information from the middlewares.
+
+
+    Returns
+    -------
+    HttpResponseRedirectObject
+        Redirects the user to the '/' route after the message is submitted.
+    """
     name = request.POST.get('name', '')
     email = request.POST.get('email', '')
     msg = request.POST.get('msg', '')
