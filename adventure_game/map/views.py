@@ -14,7 +14,6 @@ from coreapp.models import current_adventures
 from .models import adventures_info
 import json
 
-
 # Create your views here.
 
 def map(request):

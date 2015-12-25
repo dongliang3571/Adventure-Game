@@ -35,6 +35,12 @@ def home(request):
                               context,
                               context_instance=RequestContext(request),)
 
+def adventureslist(request):
+    user = request.user
+    context = get_adventure_info()
+
+    return render(request, 'coreapp/adventureslist.html',context)
+
 def profile(request):
     """This is the profile view. It is called when the user goes to the '/profile/' route.
 

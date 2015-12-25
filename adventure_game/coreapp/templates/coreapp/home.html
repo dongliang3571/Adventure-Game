@@ -23,17 +23,7 @@
       <div class="row">
         {% for w, x, y, z in zipped %}
         <div class="col-sm-4 adventure-item">
-          <!-- <a href="#adventureModal1" class="adventure-link" data-toggle="modal">
-            <div class="caption">
-              <div class="caption-content">
-                <i class ="fa fa-search-plus fa-3x"></i>
-              </div>
-            </div>
-            <figure>
-              <img src="{{ w }}" class="img-responsive">
-              <figcaption>{{ x }}</figcaption>
-            </figure>
-          </a> -->
+
           {% if user.is_authenticated %}
           <form class="adventureform" action="/adventure/beginingstory" method="get">
           <input type="hidden" name="adventureid" value="{{ y }}">
@@ -48,8 +38,11 @@
           {% endif %}
           </div>
           {% endfor %}
+          <div class="col-sm-4 adventure-item">
+            <a href="{% url 'coreapp:adventureslist' %}">
+            <img id="more" class="img-responsive" src="https://pbs.twimg.com/profile_images/558750489152458752/pBBTFL0j.png" style="height:200px"></a> Check out for more..
 
-
+          </div>
       </div>
     </section>
     <section id="about">
@@ -105,4 +98,6 @@
   </div>
 </section>
 <script type="text/javascript" src={% static "js/home.js" %}></script>
+
+
 {% endblock %}
