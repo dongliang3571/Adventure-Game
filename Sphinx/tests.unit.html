@@ -271,10 +271,20 @@
 </div>
 <div class="section" id="module-tests.unit.test_queries">
 <span id="tests-unit-test-queries-module"></span><h2>tests.unit.test_queries module<a class="headerlink" href="#module-tests.unit.test_queries" title="Permalink to this headline">¶</a></h2>
+<p>This module tests if the functions from the queries module behave as expected</p>
 <dl class="class">
 <dt id="tests.unit.test_queries.CoreappQueryTest">
 <em class="property">class </em><code class="descclassname">tests.unit.test_queries.</code><code class="descname">CoreappQueryTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_queries.CoreappQueryTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.test.testcases.TestCase</span></code></p>
+<p>Tests the query functions.
+.. method:: test_load_adventures(self, adventure_mock)</p>
+<blockquote>
+<div>Tests if load_adventures function populates the lists that are passed in.</div></blockquote>
+<dl class="method">
+<dt id="tests.unit.test_queries.CoreappQueryTest.test_load_completed_adventures">
+<code class="descname">test_load_completed_adventures</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_queries.CoreappQueryTest.test_load_completed_adventures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="tests.unit.test_queries.CoreappQueryTest.setUp">
 <code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_queries.CoreappQueryTest.setUp" title="Permalink to this definition">¶</a></dt>
@@ -301,14 +311,63 @@
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="tests.unit.test_queries.CoreappQueryTest.test_load_completed_adventures">
-<code class="descname">test_load_completed_adventures</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_queries.CoreappQueryTest.test_load_completed_adventures" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">test_load_completed_adventures</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="tests.unit.test_queries.CoreappQueryTest.test_load_game_save_id">
 <code class="descname">test_load_game_save_id</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_queries.CoreappQueryTest.test_load_game_save_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-tests.unit.test_utilities">
+<span id="tests-unit-test-utilities-module"></span><h2>tests.unit.test_utilities module<a class="headerlink" href="#module-tests.unit.test_utilities" title="Permalink to this headline">¶</a></h2>
+<p>This module is used to test the utilities module.</p>
+<dl class="class">
+<dt id="tests.unit.test_utilities.TestGetProfileContext">
+<em class="property">class </em><code class="descclassname">tests.unit.test_utilities.</code><code class="descname">TestGetProfileContext</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_utilities.TestGetProfileContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.test.testcases.TestCase</span></code></p>
+<p>TestCase for the get profile context profile.</p>
+<dl class="method">
+<dt id="tests.unit.test_utilities.TestGetProfileContext.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_utilities.TestGetProfileContext.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets up the mocked user object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.unit.test_utilities.TestGetProfileContext.test_get_profile_context">
+<code class="descname">test_get_profile_context</code><span class="sig-paren">(</span><em>self</em>, <em>la_mock</em>, <em>lca_mock</em>, <em>lgsi_mock. get_char_mock</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_utilities.TestGetProfileContext.test_get_profile_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if the mocked out functions are called with the right parameters
+as well as if the return context is to be expected.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">test_get_profile_context</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Tests the get_profile_context function behaves as expected.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>la_mock</strong> (<em>MagicMock</em>) &#8211; Mocks the load_adventures function.</li>
+<li><strong>lca_mock</strong> (<em>MagicMock</em>) &#8211; Mocks the load_completed_adventures function.</li>
+<li><strong>lgsi_mock</strong> (<em>MagicMock</em>) &#8211; Mocks the load_game_save_id function.</li>
+<li><strong>get_char_mock</strong> (<em>MagicMock</em>) &#8211; Mocks the get_char_mock function.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -330,6 +389,7 @@
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-tests.unit.test_coreapp_views">tests.unit.test_coreapp_views module</a></li>
 <li><a class="reference internal" href="#module-tests.unit.test_queries">tests.unit.test_queries module</a></li>
+<li><a class="reference internal" href="#module-tests.unit.test_utilities">tests.unit.test_utilities module</a></li>
 <li><a class="reference internal" href="#module-tests.unit">Module contents</a></li>
 </ul>
 </li>

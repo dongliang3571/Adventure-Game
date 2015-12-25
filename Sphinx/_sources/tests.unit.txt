@@ -20,6 +20,14 @@ tests.unit.test_queries module
     :undoc-members:
     :show-inheritance:
 
+tests.unit.test_utilities module
+--------------------------------
+
+.. automodule:: tests.unit.test_utilities
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

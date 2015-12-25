@@ -27,14 +27,6 @@ map.models module
     :undoc-members:
     :show-inheritance:
 
-map.tests module
-----------------
-
-.. automodule:: map.tests
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 map.urls module
 ---------------
 

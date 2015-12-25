@@ -1,3 +1,5 @@
+"""This module contains all the models representing the data in the database.
+"""
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -8,20 +10,22 @@ class UserProfile(models.Model):
 
 class Character(models.Model):
     """
-    This holds family members in database. A family member has a name and pin number that need to go to their own profile page.
+    This holds family members in database.
+    A family member has a name and pin number that
+    need to go to their own profile page.
     """
     user = models.ForeignKey(User)
     character_name = models.CharField(max_length=200)
-    character_pin = models.CharField(max_length=200,null=True)
+    character_pin = models.CharField(max_length=200, null=True)
     is_logged = models.BooleanField(default=False)
 
     def __str__(self):
         return self.character_name
 
-#############################################
 class Level_num(models.Model):
     """
-    Each user has game points which can be gained from our games. A user's level is determined by their points.
+    Each user has game points which can be gained from our games.
+    A user's level is determined by their points.
     """
     user = models.OneToOneField(User)
     user_point = models.PositiveIntegerField(default=0)
@@ -32,7 +36,7 @@ class Level_num(models.Model):
         (4, '4'),
         (5, '5'),
     )
-    user_level = models.IntegerField(choices = user_level_choices, default='1')
+    user_level = models.IntegerField(choices=user_level_choices, default='1')
 
     def __unicode__(self):
         return str(self.user_level)
