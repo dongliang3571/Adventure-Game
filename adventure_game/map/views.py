@@ -183,6 +183,7 @@ def mission_task_submission(request):
     Current_adventures = current_adventures.objects.filter(user = user)
     current_adventure = Current_adventures.get(adventure_saved = adventure_saved)
     tasks = Task.objects.filter(adventure_name=adv)
+    level_number = user.level_num
     if task_saved == str(len(tasks)):
         user.game_saved.task_saved = "1"
         game_saved.save()
@@ -199,7 +200,7 @@ def mission_task_submission(request):
     game_saved.save()
     current_adventure.task_saved = game_saved.task_saved
     current_adventure.save()
-    level_number = user.level_num
+
     level_number.user_point = level_number.user_point + 25
     if level_number.user_point >= 100:
         level_number.user_level = level_number.user_level + 1
