@@ -1,0 +1,725 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>coreapp package &mdash; Adventure Game 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Adventure Game 1.0 documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="coreapp-package">
+<h1>coreapp package<a class="headerlink" href="#coreapp-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="coreapp.migrations.html">coreapp.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coreapp.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coreapp.migrations.html#module-coreapp.migrations.0001_initial">coreapp.migrations.0001_initial module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coreapp.migrations.html#module-coreapp.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-coreapp.admin">
+<span id="coreapp-admin-module"></span><h2>coreapp.admin module<a class="headerlink" href="#module-coreapp.admin" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="coreapp.admin.CharacterInline">
+<em class="property">class </em><code class="descclassname">coreapp.admin.</code><code class="descname">CharacterInline</code><span class="sig-paren">(</span><em>parent_model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.admin.CharacterInline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.TabularInline</span></code></p>
+<dl class="attribute">
+<dt id="coreapp.admin.CharacterInline.extra">
+<code class="descname">extra</code><em class="property"> = 3</em><a class="headerlink" href="#coreapp.admin.CharacterInline.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.admin.CharacterInline.media">
+<code class="descname">media</code><a class="headerlink" href="#coreapp.admin.CharacterInline.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.admin.CharacterInline.model">
+<code class="descname">model</code><a class="headerlink" href="#coreapp.admin.CharacterInline.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Character</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="coreapp.admin.Game_savedInLine">
+<em class="property">class </em><code class="descclassname">coreapp.admin.</code><code class="descname">Game_savedInLine</code><span class="sig-paren">(</span><em>parent_model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.admin.Game_savedInLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.TabularInline</span></code></p>
+<dl class="attribute">
+<dt id="coreapp.admin.Game_savedInLine.media">
+<code class="descname">media</code><a class="headerlink" href="#coreapp.admin.Game_savedInLine.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.admin.Game_savedInLine.model">
+<code class="descname">model</code><a class="headerlink" href="#coreapp.admin.Game_savedInLine.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Game_saved</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="coreapp.admin.LevelInline">
+<em class="property">class </em><code class="descclassname">coreapp.admin.</code><code class="descname">LevelInline</code><span class="sig-paren">(</span><em>parent_model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.admin.LevelInline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.StackedInline</span></code></p>
+<dl class="attribute">
+<dt id="coreapp.admin.LevelInline.media">
+<code class="descname">media</code><a class="headerlink" href="#coreapp.admin.LevelInline.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.admin.LevelInline.model">
+<code class="descname">model</code><a class="headerlink" href="#coreapp.admin.LevelInline.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Level_num</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="coreapp.admin.TrackInLine">
+<em class="property">class </em><code class="descclassname">coreapp.admin.</code><code class="descname">TrackInLine</code><span class="sig-paren">(</span><em>parent_model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.admin.TrackInLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.StackedInline</span></code></p>
+<dl class="attribute">
+<dt id="coreapp.admin.TrackInLine.extra">
+<code class="descname">extra</code><em class="property"> = 1</em><a class="headerlink" href="#coreapp.admin.TrackInLine.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.admin.TrackInLine.media">
+<code class="descname">media</code><a class="headerlink" href="#coreapp.admin.TrackInLine.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.admin.TrackInLine.model">
+<code class="descname">model</code><a class="headerlink" href="#coreapp.admin.TrackInLine.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Track</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="coreapp.admin.UserProfileAdmin">
+<em class="property">class </em><code class="descclassname">coreapp.admin.</code><code class="descname">UserProfileAdmin</code><span class="sig-paren">(</span><em>model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.admin.UserProfileAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.contrib.auth.admin.UserAdmin</span></code></p>
+<dl class="attribute">
+<dt id="coreapp.admin.UserProfileAdmin.inlines">
+<code class="descname">inlines</code><em class="property"> = [&lt;class 'coreapp.admin.UserProfileInline'&gt;, &lt;class 'coreapp.admin.CharacterInline'&gt;, &lt;class 'coreapp.admin.LevelInline'&gt;, &lt;class 'coreapp.admin.TrackInLine'&gt;, &lt;class 'coreapp.admin.Game_savedInLine'&gt;]</em><a class="headerlink" href="#coreapp.admin.UserProfileAdmin.inlines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.admin.UserProfileAdmin.media">
+<code class="descname">media</code><a class="headerlink" href="#coreapp.admin.UserProfileAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="coreapp.admin.UserProfileInline">
+<em class="property">class </em><code class="descclassname">coreapp.admin.</code><code class="descname">UserProfileInline</code><span class="sig-paren">(</span><em>parent_model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.admin.UserProfileInline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.StackedInline</span></code></p>
+<dl class="attribute">
+<dt id="coreapp.admin.UserProfileInline.media">
+<code class="descname">media</code><a class="headerlink" href="#coreapp.admin.UserProfileInline.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.admin.UserProfileInline.model">
+<code class="descname">model</code><a class="headerlink" href="#coreapp.admin.UserProfileInline.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">UserProfile</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-coreapp.models">
+<span id="coreapp-models-module"></span><h2>coreapp.models module<a class="headerlink" href="#module-coreapp.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="coreapp.models.Character">
+<em class="property">class </em><code class="descclassname">coreapp.models.</code><code class="descname">Character</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.models.Character" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This holds family members in database. A family member has a name and pin number that need to go to their own profile page.</p>
+<dl class="exception">
+<dt id="coreapp.models.Character.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#coreapp.models.Character.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="coreapp.models.Character.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descclassname">Character.</code><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#coreapp.models.Character.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.models.Character.objects">
+<code class="descclassname">Character.</code><code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#coreapp.models.Character.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.models.Character.user">
+<code class="descclassname">Character.</code><code class="descname">user</code><a class="headerlink" href="#coreapp.models.Character.user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="coreapp.models.Game_saved">
+<em class="property">class </em><code class="descclassname">coreapp.models.</code><code class="descname">Game_saved</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.models.Game_saved" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This saves the progress of a game.</p>
+<dl class="exception">
+<dt id="coreapp.models.Game_saved.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#coreapp.models.Game_saved.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="coreapp.models.Game_saved.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descclassname">Game_saved.</code><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#coreapp.models.Game_saved.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.models.Game_saved.objects">
+<code class="descclassname">Game_saved.</code><code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#coreapp.models.Game_saved.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.models.Game_saved.user">
+<code class="descclassname">Game_saved.</code><code class="descname">user</code><a class="headerlink" href="#coreapp.models.Game_saved.user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="coreapp.models.Level_num">
+<em class="property">class </em><code class="descclassname">coreapp.models.</code><code class="descname">Level_num</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.models.Level_num" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>Each user has game points which can be gained from our games. A user&#8217;s level is determined by their points.</p>
+<dl class="exception">
+<dt id="coreapp.models.Level_num.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#coreapp.models.Level_num.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="coreapp.models.Level_num.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descclassname">Level_num.</code><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#coreapp.models.Level_num.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="coreapp.models.Level_num.get_user_level_display">
+<code class="descclassname">Level_num.</code><code class="descname">get_user_level_display</code><span class="sig-paren">(</span><em>*moreargs</em>, <em>**morekwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.models.Level_num.get_user_level_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.models.Level_num.objects">
+<code class="descclassname">Level_num.</code><code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#coreapp.models.Level_num.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.models.Level_num.user">
+<code class="descclassname">Level_num.</code><code class="descname">user</code><a class="headerlink" href="#coreapp.models.Level_num.user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.models.Level_num.user_level_choices">
+<code class="descclassname">Level_num.</code><code class="descname">user_level_choices</code><em class="property"> = ((1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5'))</em><a class="headerlink" href="#coreapp.models.Level_num.user_level_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="coreapp.models.Track">
+<em class="property">class </em><code class="descclassname">coreapp.models.</code><code class="descname">Track</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.models.Track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This holds a list of adventures that a user has completed.</p>
+<dl class="exception">
+<dt id="coreapp.models.Track.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#coreapp.models.Track.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="coreapp.models.Track.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descclassname">Track.</code><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#coreapp.models.Track.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.models.Track.objects">
+<code class="descclassname">Track.</code><code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#coreapp.models.Track.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.models.Track.user">
+<code class="descclassname">Track.</code><code class="descname">user</code><a class="headerlink" href="#coreapp.models.Track.user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="coreapp.models.UserProfile">
+<em class="property">class </em><code class="descclassname">coreapp.models.</code><code class="descname">UserProfile</code><span class="sig-paren">(</span><em>id</em>, <em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.models.UserProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="exception">
+<dt id="coreapp.models.UserProfile.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#coreapp.models.UserProfile.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="coreapp.models.UserProfile.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descclassname">UserProfile.</code><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#coreapp.models.UserProfile.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.models.UserProfile.objects">
+<code class="descclassname">UserProfile.</code><code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#coreapp.models.UserProfile.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.models.UserProfile.user">
+<code class="descclassname">UserProfile.</code><code class="descname">user</code><a class="headerlink" href="#coreapp.models.UserProfile.user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="coreapp.models.current_adventures">
+<em class="property">class </em><code class="descclassname">coreapp.models.</code><code class="descname">current_adventures</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.models.current_adventures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This saves users&#8217; adventures that are currently played.</p>
+<dl class="exception">
+<dt id="coreapp.models.current_adventures.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#coreapp.models.current_adventures.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="coreapp.models.current_adventures.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descclassname">current_adventures.</code><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#coreapp.models.current_adventures.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.models.current_adventures.objects">
+<code class="descclassname">current_adventures.</code><code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#coreapp.models.current_adventures.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="coreapp.models.current_adventures.user">
+<code class="descclassname">current_adventures.</code><code class="descname">user</code><a class="headerlink" href="#coreapp.models.current_adventures.user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-coreapp.queries">
+<span id="coreapp-queries-module"></span><h2>coreapp.queries module<a class="headerlink" href="#module-coreapp.queries" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="coreapp.queries.get_all_characters">
+<code class="descclassname">coreapp.queries.</code><code class="descname">get_all_characters</code><span class="sig-paren">(</span><em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.queries.get_all_characters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="coreapp.queries.get_character_name">
+<code class="descclassname">coreapp.queries.</code><code class="descname">get_character_name</code><span class="sig-paren">(</span><em>characters</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.queries.get_character_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="coreapp.queries.get_logged_in_char">
+<code class="descclassname">coreapp.queries.</code><code class="descname">get_logged_in_char</code><span class="sig-paren">(</span><em>characters</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.queries.get_logged_in_char" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="coreapp.queries.load_adventures">
+<code class="descclassname">coreapp.queries.</code><code class="descname">load_adventures</code><span class="sig-paren">(</span><em>adventure_name_list</em>, <em>adventure_img_url_list</em>, <em>adventure_id_list</em>, <em>adventure_description_list</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.queries.load_adventures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="coreapp.queries.load_completed_adventures">
+<code class="descclassname">coreapp.queries.</code><code class="descname">load_completed_adventures</code><span class="sig-paren">(</span><em>adventure_complete_list</em>, <em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.queries.load_completed_adventures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="coreapp.queries.load_game_save_id">
+<code class="descclassname">coreapp.queries.</code><code class="descname">load_game_save_id</code><span class="sig-paren">(</span><em>game_saved_id_list</em>, <em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.queries.load_game_save_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-coreapp.urls">
+<span id="coreapp-urls-module"></span><h2>coreapp.urls module<a class="headerlink" href="#module-coreapp.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-coreapp.utilities">
+<span id="coreapp-utilities-module"></span><h2>coreapp.utilities module<a class="headerlink" href="#module-coreapp.utilities" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="coreapp.utilities.get_adventure_info">
+<code class="descclassname">coreapp.utilities.</code><code class="descname">get_adventure_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.utilities.get_adventure_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="coreapp.utilities.get_profile_context">
+<code class="descclassname">coreapp.utilities.</code><code class="descname">get_profile_context</code><span class="sig-paren">(</span><em>user</em>, <em>characters</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.utilities.get_profile_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-coreapp.views">
+<span id="coreapp-views-module"></span><h2>coreapp.views module<a class="headerlink" href="#module-coreapp.views" title="Permalink to this headline">¶</a></h2>
+<p>This module handles the user registration, login, family member creation,
+and also has the home page view.</p>
+<dl class="function">
+<dt id="coreapp.views.add_family_member">
+<code class="descclassname">coreapp.views.</code><code class="descname">add_family_member</code><span class="sig-paren">(</span><em>request</em>, <em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.views.add_family_member" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the view for adding a family member. Renders a form for users to
+fill out to add the family member.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>request</strong> (<em>HttpRequest</em>) &#8211; Django request object that contains a variety of information from the middlewares.</li>
+<li><strong>message</strong> (<em>String</em>) &#8211; A message that can be passed from one view to another. Used to display incorrect
+credential submission.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Combines the add family template with a given context dictionary and renders the template.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">HttpResponseObject</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="coreapp.views.add_family_member_submission">
+<code class="descclassname">coreapp.views.</code><code class="descname">add_family_member_submission</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.views.add_family_member_submission" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view handles creating a family character in the database.
+If the user&#8217;s PIN entry is less than 4 characters or the family member
+already exist in the database, an error message will be shown.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middleware.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Redirects the user to /profile/ is adding family member is succesful.
+Redirects to /add-family-member/ otheriwse.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseRedirectObject</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="coreapp.views.auth_view">
+<code class="descclassname">coreapp.views.</code><code class="descname">auth_view</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.views.auth_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the story view. It handles user login authentication.</p>
+<p>If credentials are correct, the user is logged in
+and a message is shown confirming user logged in. If account was banned, message
+is shown message telling them account is banned. If credentials are invalid, user is
+told credential is invalid.&#8221;If credentials are correct, the user is logged in
+and a message is shown confirming user logged in. If account was banned, message
+is shown message telling them account is banned. If credentials are invalid, user is
+told credential is invalid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Redirects the user to &#8216;/&#8217; route.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseRedirectObject</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="coreapp.views.get_adventure_detail">
+<code class="descclassname">coreapp.views.</code><code class="descname">get_adventure_detail</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.views.get_adventure_detail" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view gets the adventure information from the database and sends it to the front end.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">JSON that contains details about adventure information.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">JsonResponseObject</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="coreapp.views.home">
+<code class="descclassname">coreapp.views.</code><code class="descname">home</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.views.home" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the home view. It is called when the user goes to the &#8216;/&#8217; route.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Combines a given template with a given context dictionary and renders the template.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseObject</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="coreapp.views.individual">
+<code class="descclassname">coreapp.views.</code><code class="descname">individual</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.views.individual" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the invidual view. It handles family member pin authentication. If information
+is invalid it will redirect to /profile/ with an error. If character is already logged
+in and this view is called, the family member is logged out, the profile view is called.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestOject</em>) &#8211; Django request object that contains a variety of information from the middleware.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">HttpResponseRedirectObject is returned if family member isn&#8217;t logged in or pin is invalid.
+HttpResponseObject is returned when user was already logged in and profile() is called.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseRedirectObject or HttpResponseObject</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="coreapp.views.logout">
+<code class="descclassname">coreapp.views.</code><code class="descname">logout</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.views.logout" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the logout view. It is called when the user hits the logout button.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Logs the user out, redirects the user to the &#8216;/&#8217; view and displays a message
+telling the user they have succesfully logged out.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseRedirectObject</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="coreapp.views.profile">
+<code class="descclassname">coreapp.views.</code><code class="descname">profile</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.views.profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the profile view. It is called when the user goes to the &#8216;/profile/&#8217; route.</p>
+<p>If the user hasn&#8217;t logged into a char yet, the view renders the individual.html template,
+with a context dictionary created by the function get_profile_context. Otherwise,
+the view will be rendered with a context dictionary that contains the names of all
+the family members attached to the user account as well as the user&#8217;s last name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Combines a given template with a given context dictionary and renders the template.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseObject</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="coreapp.views.registration">
+<code class="descclassname">coreapp.views.</code><code class="descname">registration</code><span class="sig-paren">(</span><em>request</em>, <em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.views.registration" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the registration view. User reaches this view when he hits the
+register button on the login form.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</li>
+<li><strong>message</strong> (<em>String</em>) &#8211; A message that can be passed from one view to another. Used to display incorrect
+credential submission.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Combines the registration template with a given context dictionary and renders the template.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">HttpResponseObject</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="coreapp.views.registration_submission">
+<code class="descclassname">coreapp.views.</code><code class="descname">registration_submission</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.views.registration_submission" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the registration submission view.</p>
+<p>When the user fills out the registration
+form and hits the submit button, the information is posted to this view which creates
+an account for the user with the credentials in the form. Adventure progress is also created.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Redirects the user to the &#8216;/&#8217; route after user is created.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseRedirectObject</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="coreapp.views.story">
+<code class="descclassname">coreapp.views.</code><code class="descname">story</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.views.story" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the story view. It is called when the user goes to the &#8216;/story&#8217; route.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Combines a given template with a given context dictionary and renders
+the story.html template.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseObject</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="coreapp.views.usejson">
+<code class="descclassname">coreapp.views.</code><code class="descname">usejson</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.views.usejson" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-coreapp">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-coreapp" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">coreapp package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-coreapp.admin">coreapp.admin module</a></li>
+<li><a class="reference internal" href="#module-coreapp.models">coreapp.models module</a></li>
+<li><a class="reference internal" href="#module-coreapp.queries">coreapp.queries module</a></li>
+<li><a class="reference internal" href="#module-coreapp.urls">coreapp.urls module</a></li>
+<li><a class="reference internal" href="#module-coreapp.utilities">coreapp.utilities module</a></li>
+<li><a class="reference internal" href="#module-coreapp.views">coreapp.views module</a></li>
+<li><a class="reference internal" href="#module-coreapp">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/coreapp.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Raymond, Meg, Weifan, Dong.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/coreapp.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
