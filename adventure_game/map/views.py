@@ -92,7 +92,8 @@ def beginingstory(request):
                 "expenses" : Adventures_info.expenses,
                 "locations" : Adventures_info.locations,
                 "map_address" : Adventures_info.map_address,
-                "adventureid" : adventureid
+                "adventureid" : adventureid,
+                "theme_character_url" : str(adventure.theme_character_url)
             }
 
             return render(request, 'map/details.html',context)
@@ -106,7 +107,8 @@ def beginingstory(request):
             "expenses" : Adventures_info.expenses,
             "locations" : Adventures_info.locations,
             "map_address" : Adventures_info.map_address,
-            "adventureid" : adventureid
+            "adventureid" : adventureid,
+            "theme_character_url" : str(adventure.theme_character_url)
         }
 
         return render(request, 'map/details.html',context)
@@ -122,7 +124,8 @@ def visitorview(request):
         "expenses" : Adventures_info.expenses,
         "locations" : Adventures_info.locations,
         "map_address" : Adventures_info.map_address,
-        "adventureid" : adventureid
+        "adventureid" : adventureid,
+        "theme_character_url" : str(adventure.theme_character_url)
     }
 
     return render(request, 'map/visitorview.html',context)

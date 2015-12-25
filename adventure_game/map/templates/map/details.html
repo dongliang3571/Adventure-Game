@@ -27,13 +27,13 @@
       <p style="font-size: 1.5em;">{{ expenses }}</p>
 
       <h3 style="color: red;">Locations:</h3>
-      <p style="font-size: 1.5em;">{{ locations }}</p>
+      <p style="font-size: 1.5em;font-family:Monaco, monospace;">{{ locations }}</p>
 
       {% endautoescape %}
     </div>
 
     <iframe style="margin-left: 50px;" src="{{ map_address }}" width="500" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
-    <img style="float:right; margin-right: 150px;" src={% static "task/img/vivi.gif" %} class="img-responsive">
+    <img style="width:400px;float:right;margin-right: 100px;" src="{{ theme_character_url }}" class="img-responsive">
 
     <form class="save_current" action="/adventure/save_current" method="get">
     <input type="hidden" name="adventureid" value="{{ adventureid }}">
