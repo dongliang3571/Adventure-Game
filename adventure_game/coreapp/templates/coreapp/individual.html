@@ -48,7 +48,7 @@
 		<div class="container marketing">
 
 
-			{% for x, y, z, u in zipped %}
+			{% for x, y, z, u, q, w in zipped %}
 
       <!-- START THE FEATURETTES -->
 
@@ -65,53 +65,17 @@
       </div>
 			<form class="adventureform" action="/adventure/beginingstory" method="get">
 			<input type="hidden" name="adventureid" value="{{ z }}">
-			<input class="tobedeleted btn btn-info" id="play" type="submit" value="Play it!"><br>
+			{% if q and w %}
+			<p style="color:red;">You have completed this adventure, but you can replay it if you want.</p>
+			<p style="color:red;">(Previous record will be deleted)</p>
+			<input class="btn btn-info" id="continue" type="submit" value="Replay"><br>
+			{% elif q %}
+			<input class="btn btn-info" id="continue" type="submit" value="Continue your adventure"><br>
+			{% else %}
+			<input class="btn btn-info" id="play" type="submit" value="Play it!"><br>
+			{% endif %}
 			</form>
 			{% endfor %}
-			{% if game_saved %}
-			{% for n in game_saved %}
-			{% if n == z %}
-			<input class="tobedeleted btn btn-info" id="continue" type="submit" value="Continue your adventure"><br>
-			{% endif %}
-
-			{% endfor %}
-
-
-			<script>
-			$(function(){
-			  var el = document.getElementById("continue")
-			  if (el) {
-			    $("#continue").next().remove();
-			  }
-			});
-			</script>
-
-
-			{% else %}
-			<input type="submit" class="btn btn-info" value="Play it!"><br>
-
-
-			{% endif %}
-
-			{% if completed_list %}
-			{% for w in completed_list %}
-			{% if w == z %}
-			<p style="color:red;">you have completed this adventure, but if you want to play again, click "Replay"</p>
-			<input id="replay" class="btn replay" type="submit" value="Replay">
-			<script>
-			$(function(){
-			  var el = document.getElementById("replay")
-			  if (el) {
-			    $("#replay").prevAll('input.tobedeleted').remove();
-			  }
-			});
-			</script>
-			{% endif %}
-			{% endfor %}
-
-
-
-			{% endif %}
 
 
 

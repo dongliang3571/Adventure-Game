@@ -8,7 +8,7 @@ from django.core.exceptions import PermissionDenied
 from django.core.context_processors import csrf #user security
 from django.contrib.auth.models import User
 from django.template import RequestContext
-from .models import Level_num, Game_saved, ContactUs
+from .models import Level_num, Game_saved, ContactUs, current_adventures
 from .queries import get_logged_in_char, get_all_characters
 from .utilities import  get_profile_context, get_adventure_info
 from map.models import adventures_info, Adventure, Task
@@ -37,7 +37,7 @@ def home(request):
 
 def adventureslist(request):
     """This is the adventures list view. It is called when the user goes to the '/adventureslist/' route.
-    This page lists all of our adventures 
+    This page lists all of our adventures
 
     Parameters
     ----------
