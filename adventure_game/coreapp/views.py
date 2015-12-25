@@ -41,7 +41,13 @@ def adventureslist(request):
 
     return render(request, 'coreapp/adventureslist.html',context)
 
-
+def contact(request):
+    name = request.POST.get('name', '')
+    email = request.POST.get('email', '')
+    msg = request.POST.get('msg', '')
+    ContactUs.objects.create(name=name, email=email, msg=msg)
+    messages.success(request, 'Submitted, Thank you!')
+    return HttpResponseRedirect('/')
 
 def profile(request):
     """This is the profile view. It is called when the user goes to the '/profile/' route.
