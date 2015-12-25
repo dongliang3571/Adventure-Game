@@ -15,7 +15,16 @@
 				</h8>
 				<br>
 				<br>
-				<p>Your current level is:  {{ level }}</p>
+					<p>Level: {{ level }}
+						{% for l in rangelist %}
+						<img style="width:3%;" src="http://images.clipartpanda.com/medal-clipart-Gold_Medal_2_Vector_Clipart.png">
+						{% endfor %}
+					</p>
+				<div style="width:40%;height:25px;" class="progress">
+  			<div class="progress-bar" role="progressbar" aria-valuenow="{{ exp }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;padding-top:7px;font-size:1em;width:{{ exp }}%">
+    		{{ exp }}%
+  			</div>
+</div>
 			</div>
 		</div>
  <!-- /container -->
