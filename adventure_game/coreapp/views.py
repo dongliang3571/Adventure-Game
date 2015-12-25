@@ -19,7 +19,7 @@ def home(request):
 
     Parameters
     ----------
-    request: HttpRequest
+    request: HttpRequestObject
         Django request object that contains a variety of information from the middlewares.
 
 
@@ -45,7 +45,7 @@ def profile(request):
 
     Parameters
     ----------
-    request: HttpRequest
+    request: HttpRequestObject
         Django request object that contains a variety of information from the middlewares.
 
 
@@ -72,7 +72,7 @@ def story(request):
 
     Parameters
     ----------
-    request: HttpRequest
+    request: HttpRequestObject
         Django request object that contains a variety of information from the middlewares.
 
 
@@ -97,13 +97,13 @@ def auth_view(request):
 
     Parameters
     ----------
-    request: HttpRequest
+    request: HttpRequestObject
         Django request object that contains a variety of information from the middlewares.
 
 
     Returns
     -------
-    HttpResponseRedirect Object
+    HttpResponseRedirectObject
         Redirects the user to '/' route.
     """
 
@@ -128,13 +128,13 @@ def logout(request):
 
     Parameters
     ----------
-    request: HttpRequest
+    request: HttpRequestObject
         Django request object that contains a variety of information from the middlewares.
 
 
     Returns
     -------
-    HttpResponseRedirect Object
+    HttpResponseRedirectObject
         Logs the user out, redirects the user to the '/' view and displays a message
         telling the user they have succesfully logged out.
     """
@@ -151,12 +151,12 @@ def registration_submission(request):
 
     Parameters
     ----------
-    request: HttpRequest
+    request: HttpRequestObject
         Django request object that contains a variety of information from the middlewares.
 
     Returns
     -------
-    HttpResponseRedirect Object
+    HttpResponseRedirectObject
         Redirects the user to the '/' route after user is created.
     """
     username = request.POST.get('username', '')
@@ -187,7 +187,7 @@ def registration(request, message=None):
 
     Parameters
     ----------
-    request: HttpRequest
+    request: HttpRequestObject
         Django request object that contains a variety of information from the middlewares.
 
     message: String
@@ -230,6 +230,21 @@ def add_family_member(request, message=None):
     return render(request, 'auth/addfamily.html', context)
 
 def add_family_member_submission(request):
+    """This view handles creating a family character in the database.
+    If the user's PIN entry is less than 4 characters or the family member
+    already exist in the database, an error message will be shown.
+
+    Parameters
+    ----------
+    request: HttpRequestObject
+        Django request object that contains a variety of information from the middleware.
+
+    Returns
+    -------
+    HttpResponseRedirectObject
+        Redirects the user to /profile/ is adding family member is succesful.
+        Redirects to /add-family-member/ otheriwse.
+    """
     full_name = request.POST.get('member-name', '')
     pin = request.POST.get('member-pin', '')
     if len(pin) != 4:
@@ -246,8 +261,20 @@ def add_family_member_submission(request):
 
 
 def individual(request):
-    """
-    The user is sent to here after enter thier own pin # for selected member
+    """This is the invidual view. It handles family member pin authentication. If information
+    is invalid it will redirect to /profile/ with an error. If character is already logged
+    in and this view is called, the family member is logged out, the profile view is called.
+
+    Parameters
+    ----------
+    request: HttpRequestOject
+        Django request object that contains a variety of information from the middleware.
+
+    Returns
+    -------
+    HttpResponseRedirectObject or HttpResponseObject
+        HttpResponseRedirectObject is returned if family member isn't logged in or pin is invalid.
+        HttpResponseObject is returned when user was already logged in and profile() is called.
     """
     user = request.user
     character_name = request.POST.get('character_name', '')
@@ -272,8 +299,16 @@ def individual(request):
         return HttpResponseRedirect('/profile/')
 
 def get_adventure_detail(request):
-    """
-    This function pass adventure details in json format to front end for ajax to receive them.
+    """This view gets the adventure information from the database and sends it to the front end.
+
+    Parameters
+    ----------
+    request: HttpRequestObject
+
+    Returns
+    -------
+    JsonResponseObject
+        JSON that contains details about adventure information.
     """
     if request.is_ajax():
         user = request.user
