@@ -17,7 +17,7 @@
           is able to grant wishes. &nbsp;Please! Wish for the water to &nbsp;reverse
           the petrification of my people!</p>
       </div>
-
+      {% autoescape off %}
       <h3 style="color: red;">Items needed:</h3>
       <p style="font-size: 1.5em;">{{ items_needed }}</p>
 
@@ -26,7 +26,7 @@
 
       <h3 style="color: red;">Locations:</h3>
       <p style="font-size: 1.5em;">{{ locations }}</p>
-
+      {% endautoescape %}
 
     </div>
     <iframe style="margin-left: 50px;" src="{{ map_address }}" width="500" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
