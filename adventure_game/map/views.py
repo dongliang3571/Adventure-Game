@@ -18,7 +18,20 @@ import json
 
 def map(request):
     """
-    This function renders entire map where users can see their adventures progress
+    This is the map view, it collect a list of context and is pass along with
+    map.html which renders entire map where users can see their adventures progress.
+
+    Parameters
+    ----------
+    request: HttpRequestObject
+        Django request object that contains a variety of information from the middlewares.
+
+
+    Returns
+    -------
+    HttpResponseRedirectObject or HttpResponseObject
+        It returns HttpResponseRedirectObject when user have not yet create a family member.
+        It returns HttpResponseObject when user is logged in and have family member created.
     """
     user = request.user
     adventureid = request.GET.get('adventureid', '')
@@ -69,7 +82,20 @@ def map(request):
 
 def beginingstory(request):
     """
-    This function takes user to a transmission page that only displays once when users first begin the adventure.
+    This function takes user to a infromational page which gives details of specific
+    adventure and only displays once when users first begin the adventure.
+
+    Parameters
+    ----------
+    request: HttpRequestObject
+        Django request object that contains a variety of information from the middlewares.
+
+
+    Returns
+    -------
+    HttpResponseRedirectObject or HttpResponseObject
+        It returns HttpResponseRedirectObject when user is currently playing this adventure.
+        It returns HttpResponseObject when user is first time playing this adventure
     """
     user = request.user
     adventureid = request.GET.get('adventureid', '')
@@ -272,15 +298,6 @@ def questions_task_submission(request):
         messages.warning(request, 'Sorry, textfield is empty')
         return HttpResponseRedirect(new_url)
 
-
-
-def task1_question2(request):
-    h = QuestionAndAnswer.objects.get(QuestionNumber=10).hint
-    housenumber = h.hint_text
-    return render(request, 'map/task1_question2.html', {'houseNumber':housenumber})
-
-def task2(request):
-    return render(request, 'map/task2.html')
 
 def special_game_json(request):
     user = request.user
