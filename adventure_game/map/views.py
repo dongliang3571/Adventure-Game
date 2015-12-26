@@ -26,7 +26,6 @@ def map(request):
     request: HttpRequestObject
         Django request object that contains a variety of information from the middlewares.
 
-
     Returns
     -------
     HttpResponseRedirectObject or HttpResponseObject
@@ -90,7 +89,6 @@ def beginingstory(request):
     request: HttpRequestObject
         Django request object that contains a variety of information from the middlewares.
 
-
     Returns
     -------
     HttpResponseRedirectObject or HttpResponseObject
@@ -142,6 +140,21 @@ def beginingstory(request):
         return render(request, 'map/details.html',context)
 
 def visitorview(request):
+    """
+    This function is triggered when user hit the adventure shown on homepage,
+    which is showing user the adventures' detail even a user is not logged in.
+
+    Parameters
+    ----------
+    request: HttpRequestObject
+        Django request object that contains a variety of information from the middlewares.
+
+    Returns
+    -------
+    HttpResponseObject
+        It always returns HttoResponseObject along with a list of context dictionary
+        collected from user.
+    """
     adventureid = request.GET.get('adventureid', '')
 
     adventure = Adventure.objects.get(adventure_id = adventureid)
@@ -161,6 +174,21 @@ def visitorview(request):
 
 
 def save_current(request):
+    """
+    This function is triggered when a user decides to play a specific adventure
+    and hits the button at the bottom of the detail.html. This update a user's
+    information in database(e.g. save which adventure he/she is playing).
+
+    Parameters
+    ----------
+    request: HttpRequestObject
+        Django request object that contains a variety of information from the middlewares.
+
+    Returns
+    -------
+    HttpResponseRedirectObject
+        It always returns HttoResponseRedirectObject, it redirects user to map page.
+    """
     adventureid = request.GET.get('adventureid', '')
     user = request.user
     game_saved = user.game_saved
@@ -175,6 +203,17 @@ def save_current(request):
 def task(request):
     """
     This function retrives tasks from database and displays on task pages for users to complete.
+
+    Parameters
+    ----------
+    request: HttpRequestObject
+        Django request object that contains a variety of information from the middlewares.
+
+    Returns
+    -------
+    HttpResponseObject
+        It always returns HttoResponseObjects along with a list of context dictionary
+        collected from task information in database.
     """
 
     user = request.user
@@ -207,6 +246,20 @@ def task(request):
 
 
 def mission_task_submission(request):
+    """
+    This function updates user's current progress of the specific adventure(e.g. a user completes a task).
+
+    Parameters
+    ----------
+    request: HttpRequestObject
+        Django request object that contains a variety of information from the middlewares.
+
+    Returns
+    -------
+    HttpResponseRedirectObject or HttoResponseObjects
+        It returns HttoResponseRedirectObjects, it redirects a user to next task when he completes one.
+        It returns HttoResponseObjects when a user completes all the tasks in a specific adventure.
+    """
     user = request.user
     game_saved = user.game_saved
     adventure_saved = str(game_saved.adventure_saved)
@@ -246,6 +299,22 @@ def mission_task_submission(request):
 
 
 def questions_task_submission(request):
+    """
+    This function processes the answers submitted by a user, and takes user to next
+    task if user's answer is correct or keeps user in current page when auser's answer
+    is wrong.
+
+    Parameters
+    ----------
+    request: HttpRequestObject
+        Django request object that contains a variety of information from the middlewares.
+
+    Returns
+    -------
+    HttpResponseRedirectObject or HttoResponseObjects
+        It returns HttoResponseRedirectObjects, it redirects a user to next task when he completes one.
+        It returns HttoResponseObjects when a user completes all the tasks in a specific adventure.
+    """
     user = request.user
     game_saved = user.game_saved
     adventure_saved = str(game_saved.adventure_saved)
@@ -300,6 +369,20 @@ def questions_task_submission(request):
 
 
 def special_game_json(request):
+    """
+    This function pass JSON data to front-end and Javascript in the front-end will
+    processes these data and show it to a user.
+
+    Parameters
+    ----------
+    request: HttpRequestObject
+        Django request object that contains a variety of information from the middlewares.
+
+    Returns
+    -------
+    Application/JSON
+        It returns Application/JSON to front-end.
+    """
     user = request.user
     game_saved = user.game_saved
     task_saved = game_saved.task_saved
