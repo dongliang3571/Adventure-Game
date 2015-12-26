@@ -7,7 +7,7 @@ from mock import patch, MagicMock
 from map.models import adventures_info, Adventure
 from coreapp.views import (profile, story, auth_view, logout, registration_submission,
                            registration, add_family_member, add_family_member_submission,
-                           individual, usejson, get_adventure_detail)
+                           individual, get_adventure_detail)
 
 @patch('coreapp.views.render')
 @patch('coreapp.views.get_logged_in_char')
@@ -327,11 +327,6 @@ class JsonTest(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
         self.request = self.factory.get('/')
-
-    @patch('coreapp.views.render')
-    def test_use_json(self, render_mock):
-        usejson(self.request)
-        render_mock.assert_called_with(self.request, 'coreapp/getjson.html', {'usea':'hahah'})
 
     @patch('coreapp.views.Task.objects.get')
     @patch('coreapp.views.adventures_info.objects')

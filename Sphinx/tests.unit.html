@@ -187,11 +187,6 @@
 <code class="descname">test_get_json_success</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_coreapp_views.JsonTest.test_get_json_success" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="tests.unit.test_coreapp_views.JsonTest.test_use_json">
-<code class="descname">test_use_json</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_coreapp_views.JsonTest.test_use_json" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="class">
@@ -276,15 +271,7 @@
 <dt id="tests.unit.test_queries.CoreappQueryTest">
 <em class="property">class </em><code class="descclassname">tests.unit.test_queries.</code><code class="descname">CoreappQueryTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_queries.CoreappQueryTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.test.testcases.TestCase</span></code></p>
-<p>Tests the query functions.
-.. method:: test_load_adventures(self, adventure_mock)</p>
-<blockquote>
-<div>Tests if load_adventures function populates the lists that are passed in.</div></blockquote>
-<dl class="method">
-<dt id="tests.unit.test_queries.CoreappQueryTest.test_load_completed_adventures">
-<code class="descname">test_load_completed_adventures</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_queries.CoreappQueryTest.test_load_completed_adventures" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<p>Tests the query functions.</p>
 <dl class="method">
 <dt id="tests.unit.test_queries.CoreappQueryTest.setUp">
 <code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_queries.CoreappQueryTest.setUp" title="Permalink to this definition">¶</a></dt>
@@ -293,32 +280,56 @@
 <dl class="method">
 <dt id="tests.unit.test_queries.CoreappQueryTest.test_get_all_characters">
 <code class="descname">test_get_all_characters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_queries.CoreappQueryTest.test_get_all_characters" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Tests if the get_all_character function behaves as expected.
+The test mocks out the query and sets it&#8217;s return value to the
+string &#8216;test.&#8217; The test then asserts the function get_all_character&#8217;s return value
+is the string &#8216;test&#8217;.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="tests.unit.test_queries.CoreappQueryTest.test_get_character_name">
 <code class="descname">test_get_character_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_queries.CoreappQueryTest.test_get_character_name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Tests if the get_character_name function behaves as expected.
+A fake character is created and mocked out. The database query is
+mocked out and the test character is set as the return value of the
+query. The test then asserts if the returned character name is the
+same as the faked character.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="tests.unit.test_queries.CoreappQueryTest.test_get_logged_in_char">
 <code class="descname">test_get_logged_in_char</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_queries.CoreappQueryTest.test_get_logged_in_char" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Tests if the get_logged_in_char behaves as expected.
+The test asserts if the returned value of the function is the return value
+of the mocked out database query. Also asserts if the query was called with
+the right parameters.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="tests.unit.test_queries.CoreappQueryTest.test_load_adventures">
 <code class="descname">test_load_adventures</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_queries.CoreappQueryTest.test_load_adventures" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Tests if the function populates the empty lists that are passed in as arguments.
+Database is mocked out and we create fake values to append to the empty lists. Then
+we test is if these values are actually appended to the list.</p>
+</dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">test_load_completed_adventures</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
+<dt id="tests.unit.test_queries.CoreappQueryTest.test_load_completed_adventures">
+<code class="descname">test_load_completed_adventures</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_queries.CoreappQueryTest.test_load_completed_adventures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if the load_completed_adventures function behaves as expected.
+Database queries are mocked out and test values are returned instead.
+The test asserts if the queries are called with the right parameters and
+asserts if adventure_complete_list has the right values in it.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="tests.unit.test_queries.CoreappQueryTest.test_load_game_save_id">
 <code class="descname">test_load_game_save_id</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_queries.CoreappQueryTest.test_load_game_save_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Tests if the load_game_save_id function behaves as expected.
+The test asserts if the list passed in as a parameter
+to the function contains the fake return value of the mocked
+out query.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -333,25 +344,12 @@
 <p>TestCase for the get profile context profile.</p>
 <dl class="method">
 <dt id="tests.unit.test_utilities.TestGetProfileContext.setUp">
-<code class="descname">setUp</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_utilities.TestGetProfileContext.setUp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets up the mocked user object.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="tests.unit.test_utilities.TestGetProfileContext.test_get_profile_context">
-<code class="descname">test_get_profile_context</code><span class="sig-paren">(</span><em>self</em>, <em>la_mock</em>, <em>lca_mock</em>, <em>lgsi_mock. get_char_mock</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_utilities.TestGetProfileContext.test_get_profile_context" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tests if the mocked out functions are called with the right parameters
-as well as if the return context is to be expected.</p>
-</dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_utilities.TestGetProfileContext.setUp" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">test_get_profile_context</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span></dt>
+<dt id="tests.unit.test_utilities.TestGetProfileContext.test_get_profile_context">
+<code class="descname">test_get_profile_context</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit.test_utilities.TestGetProfileContext.test_get_profile_context" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tests the get_profile_context function behaves as expected.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

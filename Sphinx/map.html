@@ -377,55 +377,160 @@
 <dl class="function">
 <dt id="map.views.beginingstory">
 <code class="descclassname">map.views.</code><code class="descname">beginingstory</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.beginingstory" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function takes user to a transmission page that only displays once when users first begin the adventure.</p>
+<dd><p>This function takes user to a infromational page which gives details of specific
+adventure and only displays once when users first begin the adventure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">It returns HttpResponseRedirectObject when user is currently playing this adventure.
+It returns HttpResponseObject when user is first time playing this adventure</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseRedirectObject or HttpResponseObject</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="map.views.map">
 <code class="descclassname">map.views.</code><code class="descname">map</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.map" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function renders entire map where users can see their adventures progress</p>
+<dd><p>This is the map view, it collect a list of context and is pass along with
+map.html which renders entire map where users can see their adventures progress.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">It returns HttpResponseRedirectObject when user have not yet create a family member.
+It returns HttpResponseObject when user is logged in and have family member created.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseRedirectObject or HttpResponseObject</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="map.views.mission_task_submission">
 <code class="descclassname">map.views.</code><code class="descname">mission_task_submission</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.mission_task_submission" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This function updates user&#8217;s current progress of the specific adventure(e.g. a user completes a task).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">It returns HttoResponseRedirectObjects, it redirects a user to next task when he completes one.
+It returns HttoResponseObjects when a user completes all the tasks in a specific adventure.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseRedirectObject or HttoResponseObjects</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="map.views.questions_task_submission">
 <code class="descclassname">map.views.</code><code class="descname">questions_task_submission</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.questions_task_submission" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This function processes the answers submitted by a user, and takes user to next
+task if user&#8217;s answer is correct or keeps user in current page when auser&#8217;s answer
+is wrong.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">It returns HttoResponseRedirectObjects, it redirects a user to next task when he completes one.
+It returns HttoResponseObjects when a user completes all the tasks in a specific adventure.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseRedirectObject or HttoResponseObjects</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="map.views.save_current">
 <code class="descclassname">map.views.</code><code class="descname">save_current</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.save_current" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This function is triggered when a user decides to play a specific adventure
+and hits the button at the bottom of the detail.html. This update a user&#8217;s
+information in database(e.g. save which adventure he/she is playing).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">It always returns HttoResponseRedirectObject, it redirects user to map page.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseRedirectObject</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="map.views.special_game_json">
 <code class="descclassname">map.views.</code><code class="descname">special_game_json</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.special_game_json" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This function pass JSON data to front-end and Javascript in the front-end will
+processes these data and show it to a user.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">It returns Application/JSON to front-end.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Application/JSON</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="map.views.task">
 <code class="descclassname">map.views.</code><code class="descname">task</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.task" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function retrives tasks from database and displays on task pages for users to complete.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">It always returns HttoResponseObjects along with a list of context dictionary
+collected from task information in database.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseObject</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
-
-<dl class="function">
-<dt id="map.views.task1_question2">
-<code class="descclassname">map.views.</code><code class="descname">task1_question2</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.task1_question2" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="map.views.task2">
-<code class="descclassname">map.views.</code><code class="descname">task2</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.task2" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="function">
 <dt id="map.views.visitorview">
 <code class="descclassname">map.views.</code><code class="descname">visitorview</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#map.views.visitorview" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This function is triggered when user hit the adventure shown on homepage,
+which is showing user the adventures&#8217; detail even a user is not logged in.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>HttpRequestObject</em>) &#8211; Django request object that contains a variety of information from the middlewares.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">It always returns HttoResponseObject along with a list of context dictionary
+collected from user.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">HttpResponseObject</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div>
 <div class="section" id="module-map">

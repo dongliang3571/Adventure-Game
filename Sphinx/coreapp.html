@@ -45,7 +45,6 @@
 <li class="toctree-l1"><a class="reference internal" href="coreapp.migrations.html">coreapp.migrations package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="coreapp.migrations.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coreapp.migrations.html#module-coreapp.migrations.0001_initial">coreapp.migrations.0001_initial module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="coreapp.migrations.html#module-coreapp.migrations.0002_contactus">coreapp.migrations.0002_contactus module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coreapp.migrations.html#module-coreapp.migrations">Module contents</a></li>
 </ul>
 </li>
@@ -448,16 +447,20 @@ and returns it.</p>
 <code class="descclassname">coreapp.queries.</code><code class="descname">load_adventures</code><span class="sig-paren">(</span><em>adventure_name_list</em>, <em>adventure_img_url_list</em>, <em>adventure_id_list</em>, <em>adventure_description_list</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.queries.load_adventures" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function populates the arguments with information about the
 adventure.</p>
-<dl class="docutils">
-<dt>adventure_name_list: list</dt>
-<dd>List that holds the adventure names.</dd>
-<dt>adventure_img_url_list: list</dt>
-<dd>List that holds the image urls.</dd>
-<dt>adventure_id_list: list</dt>
-<dd>List that holds the adventure IDs.</dd>
-<dt>adventure_description_list: list</dt>
-<dd>List that holds the descriptions</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>adventure_name_list</strong> (<em>list</em>) &#8211; List that holds the adventure names.</li>
+<li><strong>adventure_img_url_list</strong> (<em>list</em>) &#8211; List that holds the image urls.</li>
+<li><strong>adventure_id_list</strong> (<em>list</em>) &#8211; List that holds the adventure IDs.</li>
+<li><strong>adventure_description_list</strong> (<em>list</em>) &#8211; List that holds the descriptions</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -504,53 +507,15 @@ populates the list passed in.</p>
 </div>
 <div class="section" id="module-coreapp.utilities">
 <span id="coreapp-utilities-module"></span><h2>coreapp.utilities module<a class="headerlink" href="#module-coreapp.utilities" title="Permalink to this headline">¶</a></h2>
-<p>This module contains a bunch of utility functions used by the views.
-This is to minimize the amount of code inside views.</p>
 <dl class="function">
 <dt id="coreapp.utilities.get_adventure_info">
 <code class="descclassname">coreapp.utilities.</code><code class="descname">get_adventure_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.utilities.get_adventure_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is a utility function that returns a dictionary containing level information</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>context</strong> &#8211;
-A dictionary with the key &#8216;zipped&#8217; who&#8217;s value is a list which contains
-adventure name, list of image urls, ID, and description of the adventure.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Dictionary</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="function">
 <dt id="coreapp.utilities.get_profile_context">
 <code class="descclassname">coreapp.utilities.</code><code class="descname">get_profile_context</code><span class="sig-paren">(</span><em>user</em>, <em>characters</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.utilities.get_profile_context" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function makes queries to the database to get information about
-the adventures and returns a dictionary with the information.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>user</strong> (<em>User Object</em>) &#8211; The current logged in user.</li>
-<li><strong>characters</strong> (<em>List</em>) &#8211; A list of Character models.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>context</strong> &#8211;
-Returns a dictionary container character name, level number,
-game save data, adventure information, experience, and
-rangelist.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Dictionary</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<dd></dd></dl>
 
 </div>
 <div class="section" id="module-coreapp.views">
@@ -833,11 +798,6 @@ the story.html template.</td>
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="function">
-<dt id="coreapp.views.usejson">
-<code class="descclassname">coreapp.views.</code><code class="descname">usejson</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coreapp.views.usejson" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </div>
 <div class="section" id="module-coreapp">

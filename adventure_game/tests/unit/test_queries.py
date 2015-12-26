@@ -8,26 +8,8 @@ from coreapp.queries import (load_adventures, load_completed_adventures,
 
 class CoreappQueryTest(TestCase):
     """Tests the query functions.
-    Methods
-    -------
-        test_load_adventures(self, adventure_mock)
-            Tests the load_adventures function.
-
-        test_load_completed_adventures(self, track_mock)
-            Tests the load_completed_adventures function.
-
-        test_get_logged_in_char(self)
-            Tests the get_logged_in_char function.
-
-        test_load_game_saved_id(self, game_saved_mock)
-            Tests the load_game_save_id function.
-
-        test_get_character_name(self)
-            Tests the get_character_name function.
-
-        test_get_all_characters(self)
-            Tests the get_all_characters function.
     """
+
     def setUp(self):
         pass
 

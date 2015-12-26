@@ -6,15 +6,6 @@ from coreapp.utilities import get_profile_context
 
 class TestGetProfileContext(TestCase):
     """TestCase for the get profile context profile.
-
-    Methods
-    -------
-    setUp(self)
-        Sets up the mocked user object.
-
-    test_get_profile_context(self, la_mock, lca_mock, lgsi_mock. get_char_mock)
-        Tests if the mocked out functions are called with the right parameters
-        as well as if the return context is to be expected.
     """
     def setUp(self):
         self.user = MagicMock()
