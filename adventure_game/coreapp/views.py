@@ -381,8 +381,3 @@ def get_adventure_detail(request):
         return JsonResponse(alist, safe=False)
     else:
         raise PermissionDenied()
-
-#for testing only
-def usejson(request):
-
-    return render(request, 'coreapp/getjson.html', {"usea":"hahah"})
