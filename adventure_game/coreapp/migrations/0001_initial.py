@@ -23,6 +23,15 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
+            name='ContactUs',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=20)),
+                ('email', models.EmailField(max_length=254)),
+                ('msg', models.TextField(max_length=2000)),
+            ],
+        ),
+        migrations.CreateModel(
             name='current_adventures',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
