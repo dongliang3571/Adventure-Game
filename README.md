@@ -6,11 +6,15 @@ Requirements
 
 | Name |  Version |
 | :--: | :---: |
-| [Python][ruby] | 2.1.5 |
-| [Django][rails] | 4.1.8 |
-| [][devise] | |
-| [Simple Token Authentication][simple_token_authentication] | |
-| [Active Model Serializers][active_model_serializers] | |
+| [Python][ruby] | 2.7.X |
+| [Django][rails] | 1.8.0 |
+
+All Dependencies can be install through __requirements.txt__,
+- navigate to app directory
+- type command:
+```
+pip install -r requirements.txt
+```
 
 ###Step 1###
   
