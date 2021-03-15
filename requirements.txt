@@ -1,5 +1,5 @@
 dj-database-url==0.3.0
-Django==1.9.1
+Django==1.11.29
 django-postgrespool==0.3.0
 gunicorn==19.10.0
 psycopg2==2.7.7
