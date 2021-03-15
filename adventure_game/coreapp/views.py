@@ -1,11 +1,11 @@
 """ This module handles the user registration, login, family member creation,
 and also has the home page view.
 """
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib import auth, messages
 from django.core.exceptions import PermissionDenied
-from django.core.context_processors import csrf #user security
+from django.template.context_processors import csrf #user security
 from django.contrib.auth.models import User
 from django.template import RequestContext
 from .models import Level_num, Game_saved, ContactUs, current_adventures
@@ -31,9 +31,10 @@ def home(request):
     user = request.user
     context = get_adventure_info()
     context.update(csrf(request))
-    return render_to_response('coreapp/home.html',
-                              context,
-                              context_instance=RequestContext(request),)
+    return render(
+        request,
+        'coreapp/home.html',
+        context=context)
 
 def adventureslist(request):
     """This is the adventures list view. It is called when the user goes to the '/adventureslist/' route.
