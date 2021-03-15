@@ -1,5 +1,11 @@
 Children and Parent Adventures
 =============================
+
+Demo Link
+=========
+
+https://adventuregame.herokuapp.com
+
 <a href="http://adventuregame.herokuapp.com/adventure/"><img src="http://i.imgur.com/qsqU15x.png" /></a>
 Technoloies are developing fast, humans can't live without smartphone and computers. But somehow we got too attached to these devices that we even spend more time on them rather than our families. But it's hard to get rid of this type of attachment, we want to make an app that can let you play with families. Here comes Children and Parent Adventures, this is initially designed for parents and chidren, it could be developed more for friends and more.
 Requirements
